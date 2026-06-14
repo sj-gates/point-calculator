@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>공무원 근무성적평정(근평) 완전 가이드 — 등급·점수·반영 비율</title>
+<meta name="description" content="공무원 승진의 핵심인 근무성적평정(근평)이란 무엇인지, 수·우·양·가 등급별 점수와 직급별 70점 만점 환산 방법을 알기 쉽게 설명합니다.">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="공무원 평정점수 계산기">
+<meta property="og:title" content="공무원 근무성적평정(근평) 완전 가이드 — 등급·점수·반영 비율">
+<meta property="og:description" content="수·우·양·가 등급별 점수와 70점 만점 환산 방법을 알기 쉽게 설명합니다.">
+<meta property="og:url" content="https://여기에_실제URL.com/performance-rating-guide.html">
+<meta property="og:locale" content="ko_KR">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0f2340;--gold:#c8a84b;--gold-lt:#f0dfa0;--cream:#faf8f3;--paper:#f2ede3;--ink:#1a1a2e;--muted:#6b6b7a;--border:#d8d0be;--card-shadow:0 2px 20px rgba(15,35,64,.10);}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Serif KR',serif;background:var(--cream);color:var(--ink);min-height:100vh;}
+  header{background:var(--navy);padding:36px 24px 28px;text-align:center;position:relative;overflow:hidden;}
+  header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 24px,rgba(200,168,75,.06) 24px,rgba(200,168,75,.06) 25px);}
+  header h1{font-size:clamp(1.1rem,4vw,1.6rem);font-weight:700;color:#fff;letter-spacing:-.02em;position:relative;}
+  header h1 span{color:var(--gold);}
+  header p{margin-top:8px;font-size:.78rem;color:rgba(255,255,255,.55);position:relative;}
+  .gold-line{width:48px;height:2px;background:var(--gold);margin:14px auto 0;position:relative;}
+  nav.breadcrumb{max-width:760px;margin:16px auto 0;padding:0 20px;font-size:.76rem;color:var(--muted);}
+  nav.breadcrumb a{color:var(--gold);text-decoration:none;}
+  main{max-width:760px;margin:0 auto;padding:24px 20px 60px;}
+  .article-hero{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 24px 22px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .article-hero .tag{display:inline-block;background:var(--navy);color:var(--gold);font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:99px;letter-spacing:.05em;margin-bottom:12px;}
+  .article-hero h2{font-size:clamp(1.1rem,3.5vw,1.45rem);font-weight:700;color:var(--navy);line-height:1.45;margin-bottom:10px;}
+  .article-hero .meta{font-size:.74rem;color:var(--muted);}
+  .card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .card h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  .card h3 .num{background:var(--navy);color:var(--gold);font-family:'DM Mono',monospace;font-size:.72rem;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .card p{font-size:.88rem;line-height:1.9;color:var(--ink);margin-bottom:10px;}
+  .card p:last-child{margin-bottom:0;}
+  .hint{font-size:.78rem;color:var(--muted);padding:10px 14px;background:var(--paper);border-left:3px solid var(--gold);border-radius:0 5px 5px 0;margin:12px 0;}
+  table{width:100%;border-collapse:collapse;font-size:.82rem;margin:14px 0;}
+  thead tr{background:var(--navy);color:#fff;}
+  thead th{padding:9px 12px;text-align:left;}
+  tbody tr:nth-child(odd){background:#fff;}
+  tbody tr:nth-child(even){background:var(--paper);}
+  tbody td{padding:9px 12px;border-bottom:1px solid var(--border);}
+  .td-c{text-align:center;}
+  .td-bold{font-weight:700;color:var(--navy);}
+  .grade-bar{display:flex;height:32px;border-radius:6px;overflow:hidden;margin:14px 0;font-size:.76rem;font-weight:700;}
+  .grade-bar div{display:flex;align-items:center;justify-content:center;color:#fff;}
+  .formula-box{background:var(--navy);color:#fff;border-radius:8px;padding:18px 20px;margin:14px 0;font-family:'DM Mono',monospace;font-size:.88rem;line-height:1.8;}
+  .formula-box .f-label{font-size:.7rem;color:rgba(255,255,255,.5);margin-bottom:6px;font-family:'Noto Serif KR',serif;}
+  .formula-box .f-val{color:var(--gold);}
+  .example-box{background:var(--paper);border:1px solid var(--border);border-radius:8px;padding:16px 18px;margin:14px 0;font-size:.84rem;line-height:1.9;}
+  .example-box .ex-title{font-weight:700;color:var(--navy);margin-bottom:8px;}
+  .cta-box{background:var(--navy);border-radius:10px;padding:22px 24px;text-align:center;margin-top:28px;}
+  .cta-box p{color:rgba(255,255,255,.75);font-size:.85rem;margin-bottom:14px;}
+  .cta-btn{display:inline-block;background:var(--gold);color:var(--navy);font-weight:700;font-family:'Noto Serif KR',serif;padding:12px 28px;border-radius:7px;text-decoration:none;font-size:.92rem;transition:opacity .2s;}
+  .cta-btn:hover{opacity:.85;}
+  .ad-slot{background:var(--paper);border:1px dashed var(--border);border-radius:6px;text-align:center;padding:14px;font-size:.75rem;color:var(--muted);margin:20px 0;}
+  .ad-slot strong{display:block;margin-bottom:4px;color:var(--navy);}
+  footer{text-align:center;padding:24px;font-size:.72rem;color:var(--muted);border-top:1px solid var(--border);}
+  @media(max-width:540px){.card{padding:20px 16px;}.article-hero{padding:20px 16px 16px;}}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>공무원 <span>평정점수</span> 계산기</h1>
+  <p>서울시·경기·인천 승진 평정점수 자동 산출</p>
+  <div class="gold-line"></div>
+</header>
+
+<nav class="breadcrumb">
+  <a href="index.html">홈</a> &rsaquo; 근무성적평정(근평) 완전 가이드
+</nav>
+
+<main>
+
+  <div class="ad-slot"><strong>광고 (AD)</strong>📢 상단 광고 구좌</div>
+
+  <div class="article-hero">
+    <span class="tag">근평 가이드</span>
+    <h2>공무원 근무성적평정(근평) 완전 가이드<br>— 등급·점수·반영 비율</h2>
+    <p class="meta">최종 업데이트 2025년 · 지방공무원 평정 규칙 기준</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">1</span> 근무성적평정이란?</h3>
+    <p>근무성적평정(이하 '근평')은 공무원이 반기(6개월)마다 받는 업무 능력 평가입니다. 승진후보자명부를 작성할 때 <strong>최대 70점</strong>으로 반영되며, 평정점수 전체에서 가장 큰 비중을 차지합니다.</p>
+    <p>근평은 보통 <strong>수·우·양·가</strong> 4개 등급으로 이루어지며, 등급별로 점수가 정해져 있습니다. 상위 등급을 받을수록 평정점수가 높아져 승진에 유리합니다.</p>
+    <div class="hint">💡 근평이 평정점수의 70%를 차지하기 때문에, 단 한 번의 '양' 등급이 전체 순위에 큰 영향을 미칩니다.</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">2</span> 등급별 점수 (5급 이하 기준)</h3>
+    <p>5급 이하 공무원의 근평 등급별 점수는 아래와 같습니다. 각 등급은 반기 1회 평정분의 점수이며, 승진에는 최근 수 개 반기의 평균을 활용합니다.</p>
+
+    <div class="grade-bar">
+      <div style="width:40%;background:#0f2340;">수 (최우수)</div>
+      <div style="width:30%;background:#2e5fa3;">우 (우수)</div>
+      <div style="width:20%;background:#6b6b7a;">양 (보통)</div>
+      <div style="width:10%;background:#c0392b;">가 (미흡)</div>
+    </div>
+
+    <table>
+      <thead><tr><th>등급</th><th class="td-c">반기 점수</th><th class="td-c">비율 강제 배분</th><th>의미</th></tr></thead>
+      <tbody>
+        <tr><td><strong>수</strong> (최우수)</td><td class="td-c td-bold">9.5점</td><td class="td-c">상위 20% 이내</td><td>탁월한 성과</td></tr>
+        <tr><td><strong>우</strong> (우수)</td><td class="td-c td-bold">8.5점</td><td class="td-c">다음 40% 이내</td><td>기대 이상</td></tr>
+        <tr><td><strong>양</strong> (보통)</td><td class="td-c td-bold">7.5점</td><td class="td-c">나머지</td><td>기대 수준</td></tr>
+        <tr><td><strong>가</strong> (미흡)</td><td class="td-c td-bold">6.5점</td><td class="td-c">하위 10% 이내</td><td>개선 필요</td></tr>
+      </tbody>
+    </table>
+    <div class="hint">※ 등급별 점수 및 배분 비율은 기관에 따라 다를 수 있으며, 6급 이하와 5급은 별도의 기준을 적용하는 경우가 있습니다.</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">3</span> 근평 평균의 70점 환산 방법</h3>
+    <p>승진에 반영되는 근평 점수는 <strong>최근 반기들의 평균</strong>을 70점 만점으로 환산합니다. 직급과 기관에 따라 몇 개 반기를 반영하는지가 다릅니다.</p>
+
+    <div class="formula-box">
+      <div class="f-label">근무성적평정 환산 공식</div>
+      근평 평균 점수 ÷ <span class="f-val">10</span> × <span class="f-val">70</span> = 근무성적평정 점수
+    </div>
+
+    <div class="example-box">
+      <div class="ex-title">📌 예시 — 수·우·우·양 4개 반기 반영 시</div>
+      (9.5 + 8.5 + 8.5 + 7.5) ÷ 4 = <strong>평균 8.5점</strong><br>
+      8.5 ÷ 10 × 70 = <strong>근무성적평정 59.50점</strong>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">4</span> 등급 강제 배분 — 조직 내 경쟁</h3>
+    <p>근평은 <strong>절대평가가 아닌 상대평가</strong>입니다. '수' 등급은 평정 대상자의 상위 20% 이내에만 부여할 수 있기 때문에, 아무리 열심히 일해도 조직 내 경쟁에서 이겨야 높은 등급을 받을 수 있습니다.</p>
+    <p>특히 팀원이 적은 소규모 부서에서는 '수' 등급 자체가 나오지 않는 경우도 있어, 배치 부서에 따라 근평에 구조적 불이익이 생길 수 있습니다.</p>
+    <div class="hint">📌 서울시 본청 등 일부 기관은 평정 단위(부서)를 통합하거나 최소 규모를 두어 이 문제를 완화하고 있습니다.</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">5</span> 근평이 승진에 미치는 실제 영향</h3>
+    <p>'수'와 '양' 등급의 차이는 반기당 2점입니다. 이를 70점 만점으로 환산하면 약 14점 차이가 납니다. 경력평정과 가점 차이가 보통 1~3점 이내임을 감안하면, <strong>단 한 반기의 '수' vs '양' 차이가 몇 년치 경력 격차를 뒤집을 수 있습니다.</strong></p>
+    <table>
+      <thead><tr><th>4반기 등급 조합</th><th class="td-c">평균</th><th class="td-c">근무성적평정</th></tr></thead>
+      <tbody>
+        <tr><td>수·수·수·수</td><td class="td-c">9.5</td><td class="td-c td-bold">66.50점</td></tr>
+        <tr><td>수·수·우·우</td><td class="td-c">9.0</td><td class="td-c td-bold">63.00점</td></tr>
+        <tr><td>우·우·우·우</td><td class="td-c">8.5</td><td class="td-c td-bold">59.50점</td></tr>
+        <tr><td>우·우·우·양</td><td class="td-c">8.25</td><td class="td-c td-bold">57.75점</td></tr>
+        <tr><td>우·우·양·양</td><td class="td-c">8.0</td><td class="td-c td-bold">56.00점</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="ad-slot"><strong>광고 (AD)</strong>📢 본문 하단 광고 구좌</div>
+
+  <div class="cta-box">
+    <p>내 근평 등급 조합으로 최종 평정점수를 계산해보세요.<br>몇 반기 치를 입력해도 자동으로 평균을 계산해드립니다.</p>
+    <a class="cta-btn" href="index.html">🏆 평정점수 계산하러 가기</a>
+  </div>
+
+</main>
+
+<footer>
+  본 콘텐츠는 참고용이며 실제 평정 결과는 소속 기관 인사담당자에게 확인하시기 바랍니다.<br>
+  문의: <a href="mailto:여기에_이메일@gmail.com" style="color:var(--gold);">여기에_이메일@gmail.com</a>
+  &nbsp;|&nbsp;
+  <a href="privacy.html" style="color:var(--muted);">개인정보처리방침</a>
+</footer>
+
+</body>
+</html>

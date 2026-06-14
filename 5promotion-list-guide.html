@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>승진후보자명부란? 작성 방법·발효일·유효기간 완전 정리</title>
+<meta name="description" content="공무원 승진후보자명부가 어떻게 만들어지고, 평정점수 순위가 어떻게 결정되는지, 명부 발효일과 유효기간까지 한 번에 정리합니다.">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="공무원 평정점수 계산기">
+<meta property="og:title" content="승진후보자명부란? 작성 방법·발효일·유효기간 완전 정리">
+<meta property="og:description" content="평정점수 순위가 어떻게 결정되는지, 명부 발효일과 유효기간까지 한 번에 정리합니다.">
+<meta property="og:url" content="https://여기에_실제URL.com/promotion-list-guide.html">
+<meta property="og:locale" content="ko_KR">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0f2340;--gold:#c8a84b;--gold-lt:#f0dfa0;--cream:#faf8f3;--paper:#f2ede3;--ink:#1a1a2e;--muted:#6b6b7a;--border:#d8d0be;--card-shadow:0 2px 20px rgba(15,35,64,.10);}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Serif KR',serif;background:var(--cream);color:var(--ink);min-height:100vh;}
+  header{background:var(--navy);padding:36px 24px 28px;text-align:center;position:relative;overflow:hidden;}
+  header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 24px,rgba(200,168,75,.06) 24px,rgba(200,168,75,.06) 25px);}
+  header h1{font-size:clamp(1.1rem,4vw,1.6rem);font-weight:700;color:#fff;letter-spacing:-.02em;position:relative;}
+  header h1 span{color:var(--gold);}
+  header p{margin-top:8px;font-size:.78rem;color:rgba(255,255,255,.55);position:relative;}
+  .gold-line{width:48px;height:2px;background:var(--gold);margin:14px auto 0;position:relative;}
+  nav.breadcrumb{max-width:760px;margin:16px auto 0;padding:0 20px;font-size:.76rem;color:var(--muted);}
+  nav.breadcrumb a{color:var(--gold);text-decoration:none;}
+  main{max-width:760px;margin:0 auto;padding:24px 20px 60px;}
+  .article-hero{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 24px 22px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .article-hero .tag{display:inline-block;background:var(--navy);color:var(--gold);font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:99px;letter-spacing:.05em;margin-bottom:12px;}
+  .article-hero h2{font-size:clamp(1.1rem,3.5vw,1.45rem);font-weight:700;color:var(--navy);line-height:1.45;margin-bottom:10px;}
+  .article-hero .meta{font-size:.74rem;color:var(--muted);}
+  .card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .card h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  .card h3 .num{background:var(--navy);color:var(--gold);font-family:'DM Mono',monospace;font-size:.72rem;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .card p{font-size:.88rem;line-height:1.9;color:var(--ink);margin-bottom:10px;}
+  .card p:last-child{margin-bottom:0;}
+  .hint{font-size:.78rem;color:var(--muted);padding:10px 14px;background:var(--paper);border-left:3px solid var(--gold);border-radius:0 5px 5px 0;margin:12px 0;}
+  .faq-list{margin-top:8px;}
+  .faq-item{border-bottom:1px solid var(--border);padding:14px 0;}
+  .faq-item:last-child{border-bottom:none;}
+  .faq-q{font-size:.9rem;font-weight:700;color:var(--navy);margin-bottom:8px;display:flex;gap:8px;}
+  .faq-q::before{content:'Q.';color:var(--gold);flex-shrink:0;}
+  .faq-a{font-size:.84rem;line-height:1.85;color:var(--muted);padding-left:24px;}
+  .timeline{margin:14px 0;}
+  .tl-item{display:flex;gap:14px;margin-bottom:14px;}
+  .tl-dot{width:28px;height:28px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);font-family:'DM Mono',monospace;font-size:.72rem;font-weight:700;flex-shrink:0;margin-top:2px;}
+  .tl-content .tl-title{font-size:.88rem;font-weight:700;color:var(--navy);margin-bottom:3px;}
+  .tl-content .tl-desc{font-size:.8rem;color:var(--muted);line-height:1.7;}
+  .cta-box{background:var(--navy);border-radius:10px;padding:22px 24px;text-align:center;margin-top:28px;}
+  .cta-box p{color:rgba(255,255,255,.75);font-size:.85rem;margin-bottom:14px;}
+  .cta-btn{display:inline-block;background:var(--gold);color:var(--navy);font-weight:700;font-family:'Noto Serif KR',serif;padding:12px 28px;border-radius:7px;text-decoration:none;font-size:.92rem;transition:opacity .2s;}
+  .cta-btn:hover{opacity:.85;}
+  .related-links{background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .related-links h3{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:14px;}
+  .related-links ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .related-links li a{font-size:.85rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:6px;}
+  .related-links li a::before{content:'→';color:var(--gold);}
+  .related-links li a:hover{color:var(--gold);}
+  .ad-slot{background:var(--paper);border:1px dashed var(--border);border-radius:6px;text-align:center;padding:14px;font-size:.75rem;color:var(--muted);margin:20px 0;}
+  .ad-slot strong{display:block;margin-bottom:4px;color:var(--navy);}
+  footer{text-align:center;padding:24px;font-size:.72rem;color:var(--muted);border-top:1px solid var(--border);}
+  @media(max-width:540px){.card{padding:20px 16px;}.article-hero{padding:20px 16px 16px;}}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>공무원 <span>평정점수</span> 계산기</h1>
+  <p>서울시·경기·인천 승진 평정점수 자동 산출</p>
+  <div class="gold-line"></div>
+</header>
+
+<nav class="breadcrumb">
+  <a href="index.html">홈</a> &rsaquo; 승진후보자명부 완전 정리
+</nav>
+
+<main>
+
+  <div class="ad-slot"><strong>광고 (AD)</strong>📢 상단 광고 구좌</div>
+
+  <div class="article-hero">
+    <span class="tag">명부 가이드</span>
+    <h2>승진후보자명부란?<br>작성 방법·발효일·유효기간 완전 정리</h2>
+    <p class="meta">최종 업데이트 2025년 · 지방공무원 평정 규칙 기준</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">1</span> 승진후보자명부란?</h3>
+    <p>승진후보자명부는 각 기관에서 직급별로 <strong>평정점수 순서대로 줄 세운 승진 대기자 명단</strong>입니다. 결원이 생기면 이 명부의 상위자부터 순서대로 승진 발령이 납니다.</p>
+    <p>근무성적평정 + 경력평정 + 가점의 합산 점수가 높을수록 명부 상위에 위치하고, 결원이 생겼을 때 먼저 승진할 수 있습니다.</p>
+    <div class="hint">💡 명부는 반기마다 새로 작성되므로 평정점수가 달라지면 순위도 달라집니다. 매 반기 평정이 중요한 이유입니다.</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">2</span> 명부 작성 프로세스</h3>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot">1</div>
+        <div class="tl-content">
+          <div class="tl-title">근무성적평정 실시 (반기 말)</div>
+          <div class="tl-desc">매년 6월 말, 12월 말 기준으로 근무성적을 평정합니다. 평정권자(부서장 등)가 등급을 부여합니다.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">2</div>
+        <div class="tl-content">
+          <div class="tl-title">경력 산정 및 가점 확인</div>
+          <div class="tl-desc">평정 기준일 기준으로 경력 월수를 산정하고, 자격증·어학·포상 등 가점을 합산합니다.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">3</div>
+        <div class="tl-content">
+          <div class="tl-title">명부 작성 및 확정</div>
+          <div class="tl-desc">점수 순서대로 명부를 작성하고 인사위원회 심의를 거쳐 확정합니다.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">4</div>
+        <div class="tl-content">
+          <div class="tl-title">명부 발효 및 승진 발령</div>
+          <div class="tl-desc">명부 발효 후 결원 발생 시 상위자부터 순서대로 승진 발령을 냅니다.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">3</span> 명부 발효일과 유효기간</h3>
+    <p>승진후보자명부는 보통 <strong>매년 상반기(6월)와 하반기(12월)</strong>에 각각 작성·발효됩니다. 새 명부가 발효되면 이전 명부는 효력을 잃습니다.</p>
+    <p>따라서 이번 반기에 명부 1순위였더라도 다음 반기에 신규로 들어온 공무원의 점수가 더 높으면 밀릴 수 있습니다. 매 반기 근평 관리가 중요한 이유입니다.</p>
+    <div class="hint">📌 기관에 따라 명부 발효일과 유효기간이 다를 수 있습니다. 소속 기관의 인사규칙을 확인하세요.</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">4</span> 자주 묻는 질문 (FAQ)</h3>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">점수가 같으면 누가 먼저 승진하나요?</div>
+        <div class="faq-a">동점자 처리 기준은 기관마다 다르지만, 일반적으로 ① 근무성적평정 점수 ② 경력평정 점수 ③ 임용일자 순으로 우선순위를 적용합니다. 기관 인사규칙의 동점자 처리 조항을 확인하세요.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">인사이동(전보)을 하면 명부 순위가 어떻게 되나요?</div>
+        <div class="faq-a">같은 기관 내 전보는 기존 평정이 그대로 이어집니다. 타 기관으로 전입하는 경우 새 기관의 명부에 편입되며, 인정되는 경력 범위는 기관 규칙에 따라 다릅니다.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">육아휴직 중에도 명부에 오를 수 있나요?</div>
+        <div class="faq-a">육아휴직 중에는 근무성적평정 대상에서 제외되지만, 경력과 가점은 반영됩니다. 복직 후 다음 정기평정부터 다시 근평을 받게 됩니다.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">징계를 받으면 평정점수에 영향이 있나요?</div>
+        <div class="faq-a">징계 처분을 받으면 그 자체로 가점이 삭감되거나 일정 기간 승진 제한이 걸릴 수 있습니다. 또한 직위해제·정직 기간은 경력과 최저연수 산입에서 제외됩니다.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">계산기 결과와 실제 명부 점수가 다를 수 있나요?</div>
+        <div class="faq-a">네, 다를 수 있습니다. 이 계산기는 입력값을 기반으로 한 참고용 시뮬레이션입니다. 실제 명부 점수는 인사담당자가 인사기록과 공식 기준에 따라 산정하므로, 정확한 점수는 소속 인사 부서에 직접 확인하세요.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ad-slot"><strong>광고 (AD)</strong>📢 본문 하단 광고 구좌</div>
+
+  <!-- 관련 글 -->
+  <div class="related-links">
+    <h3>📚 함께 읽으면 좋은 글</h3>
+    <ul>
+      <li><a href="career-rating-guide.html">경력평정 계산 방법 완전 정리</a></li>
+      <li><a href="performance-rating-guide.html">근무성적평정(근평) 등급·점수 가이드</a></li>
+      <li><a href="promotion-minimum-years.html">직급별 승진소요 최저연수 총정리</a></li>
+      <li><a href="bonus-points-guide.html">승진 가점 종류와 획득 전략</a></li>
+    </ul>
+  </div>
+
+  <div class="cta-box">
+    <p>내 평정점수와 예상 명부 순위를 확인해보세요.<br>경쟁자 점수와 비교하는 기능도 있습니다.</p>
+    <a class="cta-btn" href="index.html">🏆 평정점수 계산하러 가기</a>
+  </div>
+
+</main>
+
+<footer>
+  본 콘텐츠는 참고용이며 실제 평정 결과는 소속 기관 인사담당자에게 확인하시기 바랍니다.<br>
+  문의: <a href="mailto:여기에_이메일@gmail.com" style="color:var(--gold);">여기에_이메일@gmail.com</a>
+  &nbsp;|&nbsp;
+  <a href="privacy.html" style="color:var(--muted);">개인정보처리방침</a>
+</footer>
+
+</body>
+</html>

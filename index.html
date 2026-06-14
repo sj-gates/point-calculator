@@ -1,0 +1,2964 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>공무원 평정점수 계산기</title>
+<meta name="description" content="서울시·경기도·인천시 공무원 승진 평정점수를 간편하게 계산하세요. 근무성적평정, 경력평정, 가점을 자동 산출합니다.">
+<meta name="robots" content="index, follow">
+
+<!-- ── Open Graph ── -->
+<meta property="og:type"        content="website">
+<meta property="og:site_name"   content="공무원 평정점수 계산기">
+<meta property="og:title"       content="공무원 평정점수 계산기 — 근평·경력·가점 자동 산출">
+<meta property="og:description" content="서울시·경기·인천 공무원 승진 평정점수를 간편하게 계산하세요. 근무성적평정, 경력평정, 가점을 입력하면 최종 점수를 즉시 산출합니다. 입력 정보는 서버에 저장되지 않습니다.">
+<meta property="og:url"         content="https://여기에_실제URL을_입력하세요.com/">
+<meta property="og:image"       content="https://여기에_실제URL을_입력하세요.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height"content="630">
+<meta property="og:locale"      content="ko_KR">
+
+<!-- ── Twitter Card ── -->
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="공무원 평정점수 계산기 — 근평·경력·가점 자동 산출">
+<meta name="twitter:description" content="서울시·경기·인천 공무원 승진 평정점수를 간편하게 계산하세요. 입력 정보는 서버에 저장되지 않습니다.">
+<meta name="twitter:image"       content="https://여기에_실제URL을_입력하세요.com/og-image.png">
+
+<!-- 애드센스 코드 삽입 자리 (승인 후 아래 두 줄 주석 해제 후 ca-pub 값 교체) -->
+<!--
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy:   #0f2340;
+    --gold:   #c8a84b;
+    --gold-lt:#f0dfa0;
+    --cream:  #faf8f3;
+    --paper:  #f2ede3;
+    --ink:    #1a1a2e;
+    --muted:  #6b6b7a;
+    --border: #d8d0be;
+    --red:    #c0392b;
+    --green:  #1a6b45;
+    --card-shadow: 0 2px 20px rgba(15,35,64,.10);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Serif KR', serif;
+    background: var(--cream);
+    color: var(--ink);
+    min-height: 100vh;
+  }
+
+  /* ── 헤더 ── */
+  header {
+    background: var(--navy);
+    padding: 36px 24px 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      45deg, transparent, transparent 24px,
+      rgba(200,168,75,.06) 24px, rgba(200,168,75,.06) 25px
+    );
+  }
+  header h1 {
+    font-size: clamp(1.25rem, 4vw, 1.75rem);
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -.02em;
+    position: relative;
+  }
+  header h1 span { color: var(--gold); }
+  header p {
+    margin-top: 8px;
+    font-size: .78rem;
+    color: rgba(255,255,255,.55);
+    position: relative;
+  }
+  .gold-line {
+    width: 48px; height: 2px;
+    background: var(--gold);
+    margin: 14px auto 0;
+    position: relative;
+  }
+
+  /* ── 광고 배너 자리 ── */
+  .ad-slot {
+    background: var(--paper);
+    border: 1px dashed var(--border);
+    border-radius: 6px;
+    text-align: center;
+    padding: 14px;
+    font-size: .75rem;
+    color: var(--muted);
+    margin: 20px 0;
+  }
+  .ad-slot strong { display: block; margin-bottom: 4px; color: var(--navy); }
+
+  /* ── 레이아웃 ── */
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 28px 20px 60px;
+  }
+
+  /* ── 카드 ── */
+  .card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 28px 24px;
+    margin-bottom: 20px;
+    box-shadow: var(--card-shadow);
+    animation: fadeUp .4s ease both;
+  }
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(12px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  .card:nth-child(2) { animation-delay:.05s; }
+  .card:nth-child(3) { animation-delay:.10s; }
+  .card:nth-child(4) { animation-delay:.15s; }
+  .card:nth-child(5) { animation-delay:.20s; }
+
+  .card-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card-title .num {
+    background: var(--navy);
+    color: var(--gold);
+    font-family: 'DM Mono', monospace;
+    font-size: .72rem;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* ── 폼 요소 ── */
+  label {
+    display: block;
+    font-size: .78rem;
+    color: var(--muted);
+    margin-bottom: 5px;
+    font-weight: 600;
+    letter-spacing: .02em;
+  }
+  select, input[type="number"], input[type="date"], input[type="text"] {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 7px;
+    font-family: 'Noto Serif KR', serif;
+    font-size: .88rem;
+    color: var(--ink);
+    background: var(--cream);
+    transition: border-color .2s, box-shadow .2s;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  select:focus, input:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(200,168,75,.15);
+    background: #fff;
+  }
+  .select-wrap { position: relative; }
+  .select-wrap::after {
+    content: '▾';
+    position: absolute; right: 12px; top: 50%;
+    transform: translateY(-50%);
+    color: var(--gold); pointer-events: none; font-size: .85rem;
+  }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .field { display: flex; flex-direction: column; }
+
+  .hint {
+    font-size: .73rem;
+    color: var(--muted);
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: var(--paper);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 5px 5px 0;
+  }
+
+  /* ── 경고/정보 박스 ── */
+  .alert {
+    padding: 10px 14px;
+    border-radius: 7px;
+    font-size: .8rem;
+    margin-top: 12px;
+    display: none;
+  }
+  .alert.warn  { background:#fff8e1; border:1px solid #f9c825; color:#7a5c00; }
+  .alert.error { background:#fdecea; border:1px solid #f5a0a0; color:var(--red); }
+  .alert.info  { background:#e8f4fd; border:1px solid #90caf9; color:#0d47a1; }
+  .alert.show  { display: block; }
+
+  /* ── 경력 요약 박스 ── */
+  .career-box {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: .82rem;
+    line-height: 1.9;
+    margin-top: 14px;
+    display: none;
+  }
+  .career-box.show { display: block; }
+  .career-box b { color: var(--navy); }
+
+  /* ── 진행 바 ── */
+  .progress-wrap { margin-top: 10px; }
+  .progress-label {
+    display: flex; justify-content: space-between;
+    font-size: .73rem; color: var(--muted); margin-bottom: 4px;
+  }
+  .progress-bar {
+    height: 8px; background: var(--paper);
+    border-radius: 99px; overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold) 0%, #e8c96a 100%);
+    border-radius: 99px;
+    transition: width .6s cubic-bezier(.4,0,.2,1);
+    width: 0%;
+  }
+
+  /* ── 결과 카드 ── */
+  .result-card {
+    background: var(--navy);
+    color: #fff;
+    border-radius: 10px;
+    padding: 28px 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 30px rgba(15,35,64,.25);
+    display: none;
+  }
+  .result-card.show { display: block; animation: fadeUp .5s ease both; }
+  .compare-cta {
+    display: none;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px;
+    margin: -4px 0 20px;
+    box-shadow: var(--card-shadow);
+  }
+  .compare-cta.show { display: block; animation: fadeUp .4s ease both; }
+  .compare-cta p {
+    font-size: .82rem;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 12px;
+  }
+  .result-card h2 {
+    font-size: 1rem; color: var(--gold-lt);
+    margin-bottom: 20px; letter-spacing: .05em;
+    font-weight: 600;
+  }
+  .score-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 12px; margin-bottom: 20px;
+  }
+  .score-item {
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 8px;
+    padding: 14px 10px;
+    text-align: center;
+  }
+  .score-item .s-label { font-size: .68rem; color: rgba(255,255,255,.55); margin-bottom: 6px; }
+  .score-item .s-val {
+    font-family: 'DM Mono', monospace;
+    font-size: 1.45rem; font-weight: 500;
+    color: var(--gold-lt);
+  }
+  .score-item .s-max { font-size: .68rem; color: rgba(255,255,255,.4); margin-top: 2px; }
+  .total-score {
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,.15);
+    padding-top: 18px;
+  }
+  .total-score .t-label { font-size: .8rem; color: rgba(255,255,255,.6); margin-bottom: 6px; }
+  .total-score .t-val {
+    font-family: 'DM Mono', monospace;
+    font-size: 2.8rem; font-weight: 500;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .total-score .t-sub { font-size: .75rem; color: rgba(255,255,255,.45); margin-top: 8px; }
+
+  /* ── 복사 영역 ── */
+  .copy-area {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: .75rem;
+    line-height: 1.8;
+    color: var(--ink);
+    white-space: pre;
+    overflow-x: auto;
+    margin-bottom: 10px;
+    display: none;
+  }
+  .copy-area.show { display: block; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 11px 22px;
+    border-radius: 7px;
+    font-family: 'Noto Serif KR', serif;
+    font-size: .85rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: all .2s;
+  }
+  .btn-primary {
+    background: var(--navy);
+    color: #fff;
+    width: 100%;
+    justify-content: center;
+    font-size: .95rem;
+    padding: 14px;
+    letter-spacing: .03em;
+  }
+  .btn-primary:hover { background: #1a3a5c; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(15,35,64,.25); }
+  .btn-secondary {
+    background: #fff;
+    color: var(--navy);
+    border: 1.5px solid var(--gold);
+    width: 100%;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  .btn-secondary:hover { background: var(--gold-lt); transform: translateY(-1px); }
+  .btn-copy {
+    background: var(--paper);
+    color: var(--navy);
+    border: 1.5px solid var(--border);
+    font-size: .8rem;
+  }
+  .btn-copy:hover { background: var(--gold-lt); border-color: var(--gold); }
+
+  /* ── URL 공유 ── */
+  .share-url-bar {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    box-shadow: var(--card-shadow);
+  }
+  .share-url-bar p {
+    font-size: .78rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  .share-url-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .share-url-msg {
+    font-size: .74rem;
+    color: var(--green);
+    display: none;
+    white-space: nowrap;
+  }
+
+  /* ── 제휴 마케팅 ── */
+  .affiliate {
+    font-size: .75rem;
+    color: var(--muted);
+    margin-top: 8px;
+    padding: 8px 12px;
+    background: #f0f8ff;
+    border-radius: 6px;
+    border: 1px solid #cce4f7;
+  }
+  .affiliate a { color: #1565c0; font-weight: 700; text-decoration: none; }
+  .affiliate a:hover { text-decoration: underline; }
+  .affiliate .ad-tag { color: #aaa; font-size: .68rem; }
+
+  /* ── 개인정보처리방침 모달 ── */
+  .privacy-modal {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,.5); z-index: 10000;
+    padding: 20px; overflow-y: auto;
+  }
+  .privacy-modal.show { display: flex; align-items: flex-start; justify-content: center; }
+  .privacy-inner {
+    background: #fff; border-radius: 12px;
+    max-width: 640px; width: 100%;
+    padding: 32px 28px; margin: auto;
+    position: relative;
+  }
+  .privacy-inner h2 { font-size: 1.1rem; color: var(--navy); margin-bottom: 18px; }
+  .privacy-inner h3 { font-size: .88rem; color: var(--navy); margin: 16px 0 6px; font-weight: 700; }
+  .privacy-inner p, .privacy-inner li {
+    font-size: .8rem; color: var(--muted); line-height: 1.8;
+  }
+  .privacy-inner ul { padding-left: 16px; }
+  .privacy-close {
+    position: absolute; top: 16px; right: 16px;
+    background: none; border: none; font-size: 1.3rem;
+    cursor: pointer; color: var(--muted);
+  }
+
+  /* ── 서비스 소개 / FAQ ── */
+  .intro-box {
+    background: #fff; border: 1px solid var(--border);
+    border-radius: 10px; padding: 24px;
+    margin-bottom: 20px; box-shadow: var(--card-shadow);
+  }
+  .intro-box h2 {
+    font-size: .95rem; font-weight: 700;
+    color: var(--navy); margin-bottom: 14px;
+  }
+  .intro-box p { font-size: .82rem; color: var(--muted); line-height: 1.9; margin-bottom: 8px; }
+  .faq-item { margin-bottom: 14px; }
+  .faq-q {
+    font-size: .83rem; font-weight: 700;
+    color: var(--navy); margin-bottom: 4px;
+  }
+  .faq-a { font-size: .8rem; color: var(--muted); line-height: 1.8; padding-left: 12px; border-left: 3px solid var(--gold); }
+  footer {
+    text-align: center;
+    padding: 24px;
+    font-size: .72rem;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── 달력 피커 ── */
+  .date-input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .date-input-wrap input {
+    padding-right: 38px;
+  }
+  .cal-icon-btn {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background .15s;
+  }
+  .cal-icon-btn:hover { background: rgba(200,168,75,.15); }
+
+  .cal-popup {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    z-index: 9000;
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    box-shadow: 0 6px 28px rgba(15,35,64,.18);
+    padding: 14px;
+    width: 270px;
+    font-family: 'Noto Serif KR', serif;
+  }
+  /* 달력 팝업 기본 스타일 조정 */
+  .cal-popup {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #c8a84b; /* 기존 골드 포인트 컬러 유지 */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    padding: 12px;
+    z-index: 100;
+    width: 260px;
+  }
+  .cal-popup.open {
+    display: block;
+  }
+
+  /* 연/월 선택 드롭다운 헤더 스타일 */
+  .cal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 5px;
+  }
+  .cal-header button {
+    background: none;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    color: #0f2340; /* 네이비 포인트 */
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+  .cal-header button:hover {
+    background-color: #f2ede3;
+  }
+  .cal-select-wrap {
+    display: flex;
+    gap: 4px;
+  }
+  .cal-year-select, .cal-month-select {
+    width: auto !important; /* 전역 100% 설정 덮어쓰기 */
+    appearance: auto !important; /* 숨겨진 화살표 다시 표시 */
+    -webkit-appearance: auto !important;
+    padding: 4px 6px;
+    font-size: 14px;
+    font-family: inherit;
+    border: 1px solid #c8a84b;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #1a1a2e;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .cal-year-select:focus, .cal-month-select:focus {
+    outline: none;
+    border-color: #c8a84b;
+  }
+
+  /* 요일 및 날짜 그리드 */
+  .cal-weeks {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+    color: #6b6b7a;
+    margin-bottom: 6px;
+  }
+  .cal-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+  }
+  .cal-day-cell {
+    text-align: center;
+    padding: 6px 0;
+    font-size: 13px;
+    cursor: pointer;
+    border-radius: 4px;
+    color: #1a1a2e;
+  }
+  .cal-day-cell:hover {
+    background-color: #f0dfa0;
+  }
+  .cal-day-cell.today {
+    background-color: #f2ede3;
+    font-weight: bold;
+  }
+  .cal-day-cell.selected {
+    background-color: #0f2340;
+    color: #fff;
+    font-weight: bold;
+  }
+  /* ── 반응형 ── */
+  @media (max-width: 540px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .grid-3 { grid-template-columns: 1fr; }
+    .score-grid { grid-template-columns: 1fr; }
+    .share-url-bar {
+      align-items: stretch;
+      flex-direction: column;
+    }
+    .share-url-actions {
+      justify-content: space-between;
+    }
+    header { padding: 28px 16px 22px; }
+    .card { padding: 20px 16px; }
+  }
+
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>
+    <svg width="52" height="52" viewBox="0 0 24 24" fill="none"
+         style="vertical-align:middle; margin-right:8px; margin-bottom:3px;"
+         xmlns="http://www.w3.org/2000/svg">
+      <rect x="3" y="2" width="18" height="20" rx="2.5" fill="#9e9e9e" stroke="#bdbdbd" stroke-width="0.6"/>
+      <rect x="5" y="4" width="14" height="5" rx="1.2" fill="#cfd8dc"/>
+      <rect x="5.5" y="4.5" width="13" height="4" rx="0.8" fill="#eceff1"/>
+      <text x="12" y="8.2" text-anchor="middle" font-size="3.2" fill="#455a64" font-family="monospace" font-weight="bold">1,234</text>
+      <rect x="5" y="11" width="3.5" height="2.5" rx="0.6" fill="#90a4ae"/>
+      <rect x="10.3" y="11" width="3.5" height="2.5" rx="0.6" fill="#90a4ae"/>
+      <rect x="15.5" y="11" width="3.5" height="2.5" rx="0.6" fill="#78909c"/>
+      <rect x="5" y="15" width="3.5" height="2.5" rx="0.6" fill="#90a4ae"/>
+      <rect x="10.3" y="15" width="3.5" height="2.5" rx="0.6" fill="#90a4ae"/>
+      <rect x="15.5" y="15" width="3.5" height="2.5" rx="0.6" fill="#78909c"/>
+      <rect x="5" y="19" width="3.5" height="2.5" rx="0.6" fill="#90a4ae"/>
+      <rect x="10.3" y="19" width="3.5" height="2.5" rx="0.6" fill="#90a4ae"/>
+      <rect x="15.5" y="19" width="3.5" height="2.5" rx="0.6" fill="#ef9a9a"/>
+    </svg>
+    공무원 <span>평정점수</span> 계산기
+  </h1>
+  <p>※ 입력하신 정보는 서버에 저장되지 않습니다 — 브라우저 내 계산 전용</p>
+  <p style="margin-top:6px; font-size:.72rem; color:rgba(255,255,255,.4);">
+    문의: <a href="mailto:여기에_이메일@gmail.com" style="color:rgba(255,255,255,.5); text-decoration:none;">여기에_이메일@gmail.com</a>
+    &nbsp;|&nbsp;
+    <a href="#" onclick="openPrivacy(); return false;" style="color:rgba(255,255,255,.5); text-decoration:none;">개인정보처리방침</a>
+  </p>
+  <div class="gold-line"></div>
+</header>
+
+<main>
+
+  <div class="share-url-bar">
+    <p>계산기가 필요하신 분께 링크를 바로 공유할 수 있습니다.</p>
+    <div class="share-url-actions">
+      <button class="btn btn-copy" type="button" onclick="sharePageUrl()">🔗 공유하기</button>
+      <span class="share-url-msg" id="shareUrlMsg">링크가 복사됐습니다!</span>
+    </div>
+  </div>
+
+
+
+  <!-- 서비스 소개 -->
+  <div class="intro-box">
+    <h2>📌 이 계산기는 무엇인가요?</h2>
+    <p>서울시·경기도·인천시 소속 공무원의 <strong>승진 평정점수</strong>를 간편하게 계산할 수 있는 도구입니다. 근무성적평정(근평), 경력평정, 가점을 입력하면 최종 평정점수를 자동으로 산출합니다.</p>
+    <p>입력하신 모든 정보는 서버에 저장되지 않으며, 브라우저 내에서만 계산됩니다. 본 계산기는 <strong>참고용</strong>이며 실제 평정 결과는 소속 기관 인사담당자에게 확인하시기 바랍니다. 기관별로 근무성적평정 등급간 차가 상이하기에 정확하게 계산하기 위해선 직접입력하여 계산하시기 바랍니다.</p>
+    <p style="margin-top:10px; padding:10px 12px; background:rgba(0,0,0,0.04); border-left:3px solid var(--gold); border-radius:4px; font-size:.75rem; color:var(--muted); line-height:1.7;">
+      ⚠️ <strong style="color:var(--navy);">면책 조항</strong> — 본 계산기의 결과는 참고용이며 어떠한 법적 효력이나 책임을 지지 않습니다. 법령 개정·기관별 내규 차이로 실제 평정점과 다를 수 있으므로, 정확한 평정점수는 반드시 소속 기관 인사부서에 확인하시기 바랍니다.
+    </p>
+  </div>
+
+  <!-- ① 소속 및 직급 선택 -->
+  <div class="card">
+    <div class="card-title"><span class="num">1</span> 소속 · 직렬 · 직급 선택</div>
+    <div class="grid-2" style="margin-bottom:14px;">
+      <div class="field">
+        <label for="region">소속 광역</label>
+        <div class="select-wrap">
+          <select id="region" onchange="onRegionChange()">
+            <option value="seoul">서울특별시</option>
+            <option value="gyeonggi">경기도</option>
+            <option value="incheon">인천광역시</option>
+          </select>
+        </div>
+      </div>
+      <div class="field" id="districtField">
+        <label for="district" id="districtLabel">기초 지자체 (시·구·군)</label>
+        <div class="select-wrap">
+          <select id="district" onchange="onGradeChange()">
+            <!-- 서울특별시 -->
+            <optgroup label="서울특별시" data-region="seoul">
+              <option value="bonchung" data-region="seoul">서울시 본청</option>
+              <option value="gangnam" data-region="seoul">강남구</option>
+              <option value="gangdong" data-region="seoul">강동구</option>
+              <option value="gangbuk" data-region="seoul">강북구</option>
+              <option value="gangseo" data-region="seoul">강서구</option>
+              <option value="gwanak" data-region="seoul">관악구</option>
+              <option value="gwangjin" data-region="seoul">광진구</option>
+              <option value="guro" data-region="seoul">구로구</option>
+              <option value="geumcheon" data-region="seoul">금천구</option>
+              <option value="nowon" data-region="seoul">노원구</option>
+              <option value="dobong" data-region="seoul">도봉구</option>
+              <option value="dongdaemun" data-region="seoul">동대문구</option>
+              <option value="dongjak" data-region="seoul">동작구</option>
+              <option value="mapo" data-region="seoul">마포구</option>
+              <option value="seodaemun" data-region="seoul">서대문구</option>
+              <option value="seocho" data-region="seoul">서초구</option>
+              <option value="seongdong" data-region="seoul">성동구</option>
+              <option value="seongbuk" data-region="seoul">성북구</option>
+              <option value="songpa" data-region="seoul">송파구</option>
+              <option value="yangcheon" data-region="seoul">양천구</option>
+              <option value="yeongdeungpo" data-region="seoul">영등포구</option>
+              <option value="yongsan" data-region="seoul">용산구</option>
+              <option value="eunpyeong" data-region="seoul">은평구</option>
+              <option value="jongno" data-region="seoul">종로구</option>
+              <option value="jung" data-region="seoul">중구</option>
+              <option value="jungnang" data-region="seoul">중랑구</option>
+            </optgroup>
+            <!-- 경기도 -->
+            <optgroup label="경기도" data-region="gyeonggi">
+              <option value="gg_bonchung" data-region="gyeonggi">경기도청 본청</option>
+              <option value="gg_suwon" data-region="gyeonggi">수원시</option>
+              <option value="gg_seongnam" data-region="gyeonggi">성남시</option>
+              <option value="gg_bucheon" data-region="gyeonggi">부천시</option>
+              <option value="gg_yongin" data-region="gyeonggi">용인시</option>
+              <option value="gg_ansan" data-region="gyeonggi">안산시</option>
+              <option value="gg_anyang" data-region="gyeonggi">안양시</option>
+              <option value="gg_namyangju" data-region="gyeonggi">남양주시</option>
+              <option value="gg_hwaseong" data-region="gyeonggi">화성시</option>
+              <option value="gg_pyeongtaek" data-region="gyeonggi">평택시</option>
+              <option value="gg_uijeongbu" data-region="gyeonggi">의정부시</option>
+              <option value="gg_siheung" data-region="gyeonggi">시흥시</option>
+              <option value="gg_paju" data-region="gyeonggi">파주시</option>
+              <option value="gg_gimpo" data-region="gyeonggi">김포시</option>
+              <option value="gg_gwangmyeong" data-region="gyeonggi">광명시</option>
+              <option value="gg_gwangju" data-region="gyeonggi">광주시</option>
+              <option value="gg_gunpo" data-region="gyeonggi">군포시</option>
+              <option value="gg_hanam" data-region="gyeonggi">하남시</option>
+              <option value="gg_osan" data-region="gyeonggi">오산시</option>
+              <option value="gg_icheon" data-region="gyeonggi">이천시</option>
+              <option value="gg_euiwang" data-region="gyeonggi">의왕시</option>
+              <option value="gg_yangju" data-region="gyeonggi">양주시</option>
+              <option value="gg_gapyeong" data-region="gyeonggi">가평군</option>
+              <option value="gg_yangpyeong" data-region="gyeonggi">양평군</option>
+              <option value="gg_yeoju" data-region="gyeonggi">여주시</option>
+              <option value="gg_pocheon" data-region="gyeonggi">포천시</option>
+              <option value="gg_dongducheon" data-region="gyeonggi">동두천시</option>
+              <option value="gg_goyang" data-region="gyeonggi">고양시</option>
+              <option value="gg_gucheon" data-region="gyeonggi">구리시</option>
+              <option value="gg_anseong" data-region="gyeonggi">안성시</option>
+              <option value="gg_uiwang" data-region="gyeonggi">의왕시</option>
+              <option value="gg_gapyeong2" data-region="gyeonggi">연천군</option>
+            </optgroup>
+            <!-- 인천광역시 -->
+            <optgroup label="인천광역시" data-region="incheon">
+              <option value="ic_bonchung" data-region="incheon">인천시 본청</option>
+              <option value="ic_junggu" data-region="incheon">중구</option>
+              <option value="ic_donggu" data-region="incheon">동구</option>
+              <option value="ic_michuhol" data-region="incheon">미추홀구</option>
+              <option value="ic_yeonsu" data-region="incheon">연수구</option>
+              <option value="ic_namdong" data-region="incheon">남동구</option>
+              <option value="ic_bupyeong" data-region="incheon">부평구</option>
+              <option value="ic_gyeyang" data-region="incheon">계양구</option>
+              <option value="ic_seo" data-region="incheon">서구</option>
+              <option value="ic_ganghwa" data-region="incheon">강화군</option>
+              <option value="ic_ongjin" data-region="incheon">옹진군</option>
+            </optgroup>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="field">
+        <label for="series">직렬 선택</label>
+        <div class="select-wrap">
+          <select id="series" onchange="onGradeChange()">
+            <option value="admin">행정</option>
+            <option value="science">과학기술</option>
+            <option value="other">기타</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="grade">현재 직급</label>
+        <div class="select-wrap">
+          <select id="grade" onchange="onGradeChange()">
+            <option value="9">9급</option>
+            <option value="8">8급</option>
+            <option value="7">7급</option>
+            <option value="6">6급</option>
+            <option value="5">5급</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="alert info" id="districtInfo" style="margin-top:12px;">
+    </div>
+  </div>
+
+  <!-- ② 근평 점수 입력 -->
+  <div class="card">
+    <div class="card-title"><span class="num">2</span> 근무성적평정(근평) 점수 입력</div>
+    <div class="hint" id="semesterHint"></div>
+
+    <!-- 탭 -->
+    <div style="display:flex; gap:6px; margin-top:16px; margin-bottom:16px;">
+      <button id="tab-btn-0" onclick="switchTab(0)"
+        style="flex:1; padding:9px 4px; border-radius:7px; border:1.5px solid var(--gold);
+               background:var(--navy); color:var(--gold); font-family:inherit;
+               font-size:.8rem; font-weight:700; cursor:pointer;">
+        이번반기 (예상)
+      </button>
+      <button id="tab-btn-1" onclick="switchTab(1)"
+        style="flex:1; padding:9px 4px; border-radius:7px; border:1.5px solid var(--border);
+               background:var(--paper); color:var(--muted); font-family:inherit;
+               font-size:.8rem; font-weight:700; cursor:pointer;">
+        다음반기 (예상)
+      </button>
+      <button id="tab-btn-2" onclick="switchTab(2)"
+        style="flex:1; padding:9px 4px; border-radius:7px; border:1.5px solid var(--border);
+               background:var(--paper); color:var(--muted); font-family:inherit;
+               font-size:.8rem; font-weight:700; cursor:pointer;">
+        다다음반기 (예상)
+      </button>
+    </div>
+
+    <!-- 탭별 입력 패널 -->
+    <div id="scoreInputs-0"></div>
+    <div id="scoreInputs-1" style="display:none;"></div>
+    <div id="scoreInputs-2" style="display:none;"></div>
+
+    <div class="alert warn" id="warnZero">⚠️ 등급이 선택되지 않은 반기가 있습니다. 확인해 주세요.</div>
+    <div class="progress-wrap" style="margin-top:16px;">
+      <div class="progress-label">
+        <span style="font-size:.9rem; font-weight:700; color:var(--navy);">근무평정 평균</span>
+        <span id="perfAvgLabel" style="font-size:1.25rem; font-weight:700; color:var(--navy); letter-spacing:-.01em;">—</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="perfBar"></div></div>
+    </div>
+  </div>
+
+  <!-- ────────────────────────────────────────
+       광고 슬롯 — ② 근평 카드 바로 아래
+       현재: 카카오 애드핏
+       교체 시: kakao 블록 주석 처리 후 google 블록 주석 해제
+  ──────────────────────────────────────── -->
+
+  <!-- [카카오 애드핏] data-ad-unit 값을 발급받은 코드로 교체하세요 -->
+  <!-- 애드핏 승인 후: DAN-XXXXXXXXXXXXXXXX → 실제 유닛 ID로 교체, 아래 임시 박스 삭제 -->
+  <div style="margin: 0 0 20px; background:var(--paper); border:1px dashed var(--border);
+              border-radius:6px; text-align:center; padding:14px;
+              font-size:.75rem; color:var(--muted);">
+    <strong style="display:block; margin-bottom:4px; color:var(--navy);">광고 (AD)</strong>
+    📢 광고 구좌 — 카카오 애드핏 코드 삽입 위치
+    <ins class="kakao_ad_area"
+         style="display:block; width:100%;"
+         data-ad-unit="DAN-XXXXXXXXXXXXXXXX"
+         data-ad-width="320"
+         data-ad-height="50">
+    </ins>
+    <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+  </div>
+
+  <!-- [구글 애드센스] 카카오 → 구글 교체 시 위 블록 주석 처리 후 아래 주석 해제
+  <div style="margin: 0 0 20px;">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="XXXXXXXXXX"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+  -->
+
+  <!-- ③ 경력 기간 -->
+  <div class="card">
+    <div class="card-title"><span class="num">3</span> 경력 기간 및 휴직 입력</div>
+    <div class="grid-2" style="margin-bottom:14px;">
+      <div class="field">
+        <label for="targetDate">평정 기준일</label>
+        <div class="date-input-wrap" id="wrap-targetDate">
+          <input type="text" id="targetDate" placeholder="YYYY-MM-DD" maxlength="10" oninput="formatDateInput(this, event)" autocomplete="off">
+          <button type="button" class="cal-icon-btn" onclick="toggleCal('targetDate')" tabindex="-1" aria-label="달력 열기">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </button>
+          <div class="cal-popup" id="cal-targetDate"></div>
+        </div>
+      </div>
+      <div class="field">
+        <label for="startDate">현 직급 근무 시작일(임용일)</label>
+        <div class="date-input-wrap" id="wrap-startDate">
+          <input type="text" id="startDate" placeholder="YYYY-MM-DD" maxlength="10" oninput="formatDateInput(this, event)" autocomplete="off">
+          <button type="button" class="cal-icon-btn" onclick="toggleCal('startDate')" tabindex="-1" aria-label="달력 열기">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </button>
+          <div class="cal-popup" id="cal-startDate"></div>
+        </div>
+      </div>
+    </div>
+    <div class="field" style="margin-bottom:14px;">
+      <label for="prevGradeDate">직전급수 진급일</label>
+      <div class="date-input-wrap" id="wrap-prevGradeDate">
+        <input type="text" id="prevGradeDate" placeholder="YYYY-MM-DD" maxlength="10" oninput="formatDateInput(this, event)" autocomplete="off">
+        <button type="button" class="cal-icon-btn" onclick="toggleCal('prevGradeDate')" tabindex="-1" aria-label="달력 열기">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </button>
+        <div class="cal-popup" id="cal-prevGradeDate"></div>
+      </div>
+      <div class="hint">직전급수 진급일부터 현 직급 근무 시작일 전까지의 기간은 60%로 환산해 경력평정에 반영합니다.</div>
+    </div>
+    <div class="field">
+      <label for="excludeBreak">경력 미합산 휴직 개월 수 (일반 질병 등)</label>
+      <input type="number" id="excludeBreak" min="0" value="0">
+    </div>
+    <div class="alert error" id="errorDate">시작일이 평정 기준일보다 미래일 수 없습니다.</div>
+    <div class="career-box" id="careerBox"></div>
+    <div class="progress-wrap" style="margin-top:14px;">
+      <div class="progress-label">
+        <span style="font-size:.9rem; font-weight:700; color:var(--navy);">경력평정</span>
+        <span id="careerLabel" style="font-size:1.25rem; font-weight:700; color:var(--navy); letter-spacing:-.01em;">—</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="careerBar"></div></div>
+    </div>
+  </div>
+
+  <!-- ④ 가점 -->
+  <div class="card">
+    <div class="card-title" style="justify-content:space-between;">
+      <span style="display:flex; align-items:center; gap:8px;">
+        <span class="num">4</span> 가점 항목 입력
+      </span>
+      <button onclick="togglePlusGuide()" id="plusGuideBtn"
+        style="display:inline-flex; align-items:center; gap:5px;
+               padding:6px 13px; border-radius:6px; border:1.5px solid var(--gold);
+               background:#fff; color:var(--navy); font-family:inherit;
+               font-size:.75rem; font-weight:700; cursor:pointer; white-space:nowrap;">
+        📋 가점 종류 보기
+      </button>
+    </div>
+
+    <!-- 가점 안내 테이블 (접기/펼치기) -->
+    <div id="plusGuide" style="display:none; margin-bottom:16px;">
+      <div style="background:var(--paper); border:1px solid var(--border); border-radius:8px;
+                  padding:16px; font-size:.78rem; line-height:1.7;">
+        <div style="font-weight:700; color:var(--navy); margin-bottom:10px; font-size:.85rem;">
+          📌 가점 예시 <span style="font-weight:400; color:var(--muted); font-size:.72rem;">— 각 지자체별로 다르니 확인 후 맞는 가점을 입력해 주세요</span>
+        </div>
+
+       <!-- 자격증 -->
+        <div style="margin-bottom:12px;">
+          <div style="font-weight:700; color:var(--navy); border-bottom:1px solid var(--border);
+                      padding-bottom:4px; margin-bottom:6px;">📜 직무관련 자격증 <span style="font-weight:400; color:var(--muted); font-size:.7rem;">최대 0.5점 (기관별 상이)</span></div>
+          <table style="width:100%; border-collapse:collapse; font-size:.76rem;">
+            <thead>
+              <tr style="background:var(--navy); color:#fff;">
+                <th style="padding:5px 8px; text-align:left;">구분</th>
+                <th style="padding:5px 8px; text-align:center; white-space:nowrap;">가점</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background:#fff;"><td style="padding:5px 8px; border-bottom:1px solid var(--border);">해당 직렬의 해당 계급 또는 상위계급에서 인정하는 자격증</td><td style="padding:5px 8px; text-align:center; border-bottom:1px solid var(--border); font-weight:700; color:var(--navy);"><span style="color:var(--muted); font-weight:400;">(서울)</span> 0.24점<br><span style="color:var(--muted); font-weight:400;">(경기)</span> 0.5점<br><span style="color:var(--muted); font-weight:400;">(인천)</span> 0.5점</td></tr>
+              <tr style="background:var(--paper);"><td style="padding:5px 8px;">해당 직렬의 바로 하위계급에서 인정하는 자격증</td><td style="padding:5px 8px; text-align:center; font-weight:700; color:var(--navy);"><span style="color:var(--muted); font-weight:400;">(서울)</span> 0.12점<br><span style="color:var(--muted); font-weight:400;">(경기)</span> 0.25점</td></tr>
+            </tbody>
+          </table>
+          <div style="margin-top:5px; color:var(--muted); font-size:.7rem; line-height:1.4;">
+            ※ 직렬·직급별 인정 자격증은 각 기관별 인사규칙의 가점 인정 자격증 별표에서 확인하세요.
+          </div>
+        </div>
+
+        <!-- 어학 -->
+        <div style="margin-bottom:12px;">
+          <div style="font-weight:700; color:var(--navy); border-bottom:1px solid var(--border);
+                      padding-bottom:4px; margin-bottom:6px;">🌐 어학 능력 (A시 예시) <span style="font-weight:400; color:var(--muted); font-size:.7rem;">최대 0.12점</span></div>
+          <table style="width:100%; border-collapse:collapse; font-size:.76rem;">
+            <thead>
+              <tr style="background:var(--navy); color:#fff;">
+                <th style="padding:5px 8px; text-align:left;">구분</th>
+                <th style="padding:5px 8px; text-align:center;">가점</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background:#fff;"><td style="padding:5px 8px; border-bottom:1px solid var(--border);">TOEIC 900점 이상</td><td style="padding:5px 8px; text-align:center; border-bottom:1px solid var(--border); font-weight:700; color:var(--navy);">0.12점</td></tr>
+              <tr style="background:var(--paper);"><td style="padding:5px 8px;">TOEIC 800점 이상 ~ 900점 미만</td><td style="padding:5px 8px; text-align:center; font-weight:700; color:var(--navy);">0.05점</td></tr>
+            </tbody>
+          </table>
+          <div style="margin-top:5px; color:var(--muted); font-size:.7rem;">※ 세부 기준은 소속 기관의 가점 규정을 확인하세요.</div>
+        </div>
+
+        <!-- 특수지 근무경력 가산점 -->
+        <div style="margin-bottom:12px;">
+          <div style="font-weight:700; color:var(--navy); border-bottom:1px solid var(--border);
+                      padding-bottom:4px; margin-bottom:6px;">🗺️ 특수지 근무경력 가산점</div>
+          <div style="font-size:.78rem; color:var(--muted); padding:6px 0;">특수지 근무경력에 따른 가산점이 반영됩니다.</div>
+        </div>
+
+        <!-- 실적 가산점 -->
+        <div style="margin-bottom:12px;">
+          <div style="font-weight:700; color:var(--navy); border-bottom:1px solid var(--border);
+                      padding-bottom:4px; margin-bottom:6px;">📊 실적 가산점</div>
+          <div style="font-size:.78rem; color:var(--muted); padding:6px 0;">업무 실적에 따른 가산점이 반영됩니다.</div>
+        </div>
+
+        <!-- 기타 가산점 -->
+        <div style="margin-bottom:12px;">
+          <div style="font-weight:700; color:var(--navy); border-bottom:1px solid var(--border);
+                      padding-bottom:4px; margin-bottom:6px;">🔄 기타 가산점</div>
+          <div style="font-size:.78rem; color:var(--muted); padding:6px 0;">재난안전관리 업무 및 격무기피 가산점이 해당됩니다.</div>
+        </div>
+
+        <div style="margin-top:4px; font-size:.78rem; color:var(--muted); line-height:1.8;">
+          가점 합계 상한은 <b style="color:var(--navy);">5점</b>입니다. 정확한 점수는 소속 인사담당자에게 확인하세요.
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="plusScore">가점 총합 (자격증, 어학, 특수지, 실적 등)</label>
+      <input type="number" id="plusScore" min="0" max="5" step="0.01" value="0">
+    </div>
+    <div class="progress-wrap" style="margin-top:12px;">
+      <div class="progress-label">
+        <span style="font-size:.9rem; font-weight:700; color:var(--navy);">가점</span>
+        <span id="plusLabel" style="font-size:1.25rem; font-weight:700; color:var(--navy); letter-spacing:-.01em;">0 / 5점</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="plusBar"></div></div>
+    </div>
+    <!-- 제휴 마케팅 자리 -->
+    <div class="affiliate" id="affiliateArea">
+      💡 남들 다 채우는 자격증·어학 가점, 나만 놓치고 계신가요?
+      <a id="affiliateLink" href="https://coupa.ng/여기에_파트너스_링크" target="_blank" rel="noopener">
+        추천 수험서 보기
+      </a>
+      <span class="ad-tag">(광고/제휴마케팅)</span>
+    </div>
+  </div>
+
+  <!-- ⑤ 계산 버튼 -->
+  <button class="btn btn-primary" id="calcBtn" onclick="toggleCalculate()">🏆 평정점수 계산하기</button>
+
+  <!-- ⑥ 결과 -->
+  <div class="result-card" id="resultCard">
+    <h2 id="resultTitle">▪ 최종 평정점수 — 이번반기 (예상)</h2>
+    <div class="score-grid">
+      <div class="score-item">
+        <div class="s-label">근무성적평정</div>
+        <div class="s-val" id="rPerf">—</div>
+        <div class="s-max">/ 70점</div>
+      </div>
+      <div class="score-item">
+        <div class="s-label">경력평정</div>
+        <div class="s-val" id="rCareer">—</div>
+        <div class="s-max">/ 30점</div>
+      </div>
+      <div class="score-item">
+        <div class="s-label">가점</div>
+        <div class="s-val" id="rPlus">—</div>
+        <div class="s-max">/ 5점</div>
+      </div>
+    </div>
+    
+    <div class="total-score">
+      <div class="t-label">최종 합산</div>
+      <div class="t-val" id="rTotal">—</div>
+      
+      <div class="t-sub" style="margin-top:14px; font-size:.73rem; line-height:1.7; text-align:left; background:rgba(255,255,255,0.10); padding:14px; border-radius:8px; border:1.5px solid rgba(255,220,80,0.45);">
+        ⚠️ <b>【면책 조항 — 반드시 읽어주세요】</b><br>
+        • 본 계산 결과는 참고용 시뮬레이션이며, <b>어떠한 법적 효력이나 책임을 지지 않습니다.</b><br>
+        • 기관별·연도별 세부 운영 기준 및 법령 개정 사항이 반영되지 않을 수 있어 실제 평정점과 차이가 발생할 수 있습니다.<br>
+        • 정확한 승진 평정점수는 <b>반드시 소속 기관 인사부서에 직접 확인</b>하시기 바랍니다.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="compare-cta" id="compareCta">
+    <p>내 점수를 확인했다면, 예상 경쟁자 점수와 다음 반기 점수차도 이어서 확인할 수 있습니다.</p>
+    <button class="btn btn-secondary" onclick="openCompareModal()">📊 비교 대상과 점수차 확인하기</button>
+  </div>
+
+  <!-- 결과 복사 -->
+  <pre class="copy-area" id="copyArea"></pre>
+  <div id="copyBtnWrap" style="display:none; margin-bottom:20px;">
+    <button class="btn btn-copy" onclick="copyResult()">📋 결과 텍스트 복사</button>
+    <span id="copyMsg" style="font-size:.75rem; color:var(--green); margin-left:10px; display:none;">✔ 복사됐습니다!</span>
+  </div>
+
+  <!-- 하단 광고 슬롯 -->
+  <div class="ad-slot">
+    <strong>광고 (AD)</strong>
+    <!--
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="XXXXXXXXXX"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    -->
+    📢 하단 광고 구좌 (애드센스 코드 삽입 자리)
+  </div>
+
+<!-- 비교 모달 -->
+<div id="compareModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.45); z-index:9999; padding:20px; overflow:auto;">
+  <div style="max-width:620px; margin:40px auto; background:#fff; border-radius:12px; padding:22px; box-shadow:0 10px 40px rgba(0,0,0,.25);">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+      <h2 style="font-size:1.05rem; color:var(--navy); margin:0;">비교 대상과 점수 비교</h2>
+      <button onclick="closeCompareModal()" style="border:none; background:transparent; font-size:1.4rem; cursor:pointer;">×</button>
+    </div>
+
+    <div id="cmpInfo" style="font-size:.8rem; color:var(--muted); margin-bottom:16px;"></div>
+
+    <div id="cmpPerfInputs"></div>
+
+    <div style="background:var(--paper); border:1px solid var(--border); border-radius:8px; padding:16px; margin-top:16px;">
+      <div style="font-size:.82rem; font-weight:700; color:var(--navy); margin-bottom:12px;">⏳ 비교 대상 경력 입력</div>
+      <div class="grid-2" style="margin-bottom:10px;">
+        <div class="field">
+          <label for="cmpCurStart">현 직급 진급일</label>
+          <div class="date-input-wrap" id="wrap-cmpCurStart">
+            <input type="text" id="cmpCurStart" placeholder="YYYY-MM-DD" maxlength="10" oninput="formatDateInput(this, event); onCmpCareerInput();" autocomplete="off">
+            <button type="button" class="cal-icon-btn" onclick="toggleCal('cmpCurStart')" tabindex="-1" aria-label="달력 열기">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </button>
+            <div class="cal-popup" id="cal-cmpCurStart"></div>
+          </div>
+        </div>
+        <div class="field">
+          <label for="cmpPrevStart">직전 직급 진급일</label>
+          <div class="date-input-wrap" id="wrap-cmpPrevStart">
+            <input type="text" id="cmpPrevStart" placeholder="YYYY-MM-DD" maxlength="10" oninput="formatDateInput(this, event); onCmpCareerInput();" autocomplete="off">
+            <button type="button" class="cal-icon-btn" onclick="toggleCal('cmpPrevStart')" tabindex="-1" aria-label="달력 열기">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </button>
+            <div class="cal-popup" id="cal-cmpPrevStart"></div>
+          </div>
+        </div>
+      </div>
+      <div class="field" style="margin-bottom:10px;">
+        <label for="cmpExcBreak">경력 미합산 휴직 개월 수</label>
+        <input type="number" id="cmpExcBreak" min="0" value="0" oninput="onCmpCareerInput()">
+      </div>
+      <div id="cmpCareerBox" style="display:none; font-size:.8rem; color:var(--navy);
+           padding:10px 12px; background:#fff; border:1px solid var(--border);
+           border-radius:6px; line-height:1.9;">
+      </div>
+    </div>
+
+    <div class="field" style="margin-top:12px;">
+      <label for="cmpPlus">비교 대상 가점</label>
+      <input type="number" id="cmpPlus" min="0" max="5" step="0.01" value="0">
+    </div>
+
+    <button class="btn btn-primary" onclick="runCompare()" style="margin-top:14px;">
+      비교 결과 보기
+    </button>
+
+    <div id="cmpResult" style="display:none; margin-top:18px;"></div>
+  </div>
+</div>
+  <!-- FAQ -->
+  <div class="intro-box" style="margin-top:20px;">
+    <h2>❓ 자주 묻는 질문 (FAQ)</h2>
+    <div class="faq-item">
+      <div class="faq-q">Q. 경력평정이란 무엇인가요?</div>
+      <div class="faq-a">현 직급 근무 기간과 직전 직급 근무 기간(60% 환산)을 합산하여 산출하는 점수입니다. 근속 기간이 길수록 높은 점수를 받습니다.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Q. 직전급수 경력을 왜 60%만 반영하나요?</div>
+      <div class="faq-a">현 직급에서의 근무 경험을 더 중시하기 위해 직전 직급 경력은 60%만 인정합니다. 이는 지방공무원 평정규칙에 따른 기준입니다.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Q. 수1, 수2, 우1 등 등급은 어떻게 결정되나요?</div>
+      <div class="faq-a">같은 평정대상 그룹 내 평가 대상자 인원 수에 따라 각 등급별 배정 인원이 정해집니다. 소속 기관의 표준분포표를 참고하시기 바랍니다.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Q. 가점은 어떤 항목이 해당되나요?</div>
+      <div class="faq-a">
+        자격증 가점은 아래 기준으로 반영됩니다 (최대 5점).<br>
+        · 해당 직렬의 해당 계급 또는 상위계급에서 인정하는 자격증: <strong>(서울시) 0.24점 / (경기도) 0.5점 / (인천시) 0.5점</strong><br>
+        · 해당 직렬의 바로 하위계급에서 인정하는 자격증: <strong>(서울시) 0.12점 / (경기도) 0.25점 / (인천시) 0.25점</strong><br>
+        어학의 경우 TOEIC 900점 이상 <strong>0.12점</strong>, 800점 이상 900점 미만 <strong>0.05점</strong>이 반영됩니다. 세부 기준은 소속 기관의 가점 규정을 확인하세요.
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Q. 계산 결과가 실제 평정 결과와 다를 수 있나요?</div>
+      <div class="faq-a"><strong>네, 본 계산기는 참고용입니다. 기관별·연도별 세부 운영 기준이 다를 수 있으므로 정확한 결과는 반드시 소속 기관 인사담당자에게 확인하시기 바랍니다.</strong></div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div style="margin-bottom:8px;">
+    <strong style="color:var(--navy); font-size:.8rem;">공무원 평정점수 계산기</strong>
+  </div>
+  <div style="margin-bottom:6px;">
+    문의: <a href="mailto:여기에_이메일@gmail.com" style="color:var(--muted); text-decoration:none;">여기에_이메일@gmail.com</a>
+    &nbsp;|&nbsp;
+    <a href="#" onclick="openPrivacy(); return false;" style="color:var(--muted); text-decoration:none;">개인정보처리방침</a>
+  </div>
+  본 계산기는 참고용이며 실제 평정 결과는 소속 기관 인사담당자에게 확인하시기 바랍니다.<br>
+  기관별로 근무성적평정 등급간 차가 상이하기에 정확하게 계산하기 위해선 직접입력하여 계산하시기 바랍니다.<br>
+  입력 정보는 서버에 저장되지 않습니다.
+</footer>
+
+<!-- 개인정보처리방침 모달 -->
+<div class="privacy-modal" id="privacyModal" onclick="closePrivacyOutside(event)">
+  <div class="privacy-inner">
+    <button class="privacy-close" onclick="closePrivacy()">✕</button>
+    <h2>🔒 개인정보처리방침</h2>
+    <p>공무원 평정점수 계산기(이하 "본 서비스")는 이용자의 개인정보를 소중히 여기며, 다음과 같이 개인정보처리방침을 안내합니다.</p>
+
+    <h3>1. 수집하는 개인정보</h3>
+    <p>본 서비스는 <strong>별도의 개인정보를 수집하지 않습니다.</strong> 이용자가 입력하는 직급, 근무기간, 점수 등의 정보는 브라우저 내에서만 계산에 사용되며 서버로 전송되거나 저장되지 않습니다.</p>
+
+    <h3>2. 쿠키 및 광고</h3>
+    <p>본 서비스는 광고 제공을 위해 Google AdSense 및 카카오 애드핏을 사용할 수 있습니다. 이 광고 서비스들은 이용자의 브라우저에 쿠키를 저장하여 관심 기반 광고를 제공할 수 있습니다.</p>
+    <ul>
+      <li>Google 개인정보처리방침: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></li>
+      <li>Google 광고 설정: <a href="https://adssettings.google.com" target="_blank" rel="noopener">adssettings.google.com</a></li>
+    </ul>
+
+    <h3>3. 제휴 마케팅</h3>
+    <p>본 서비스는 쿠팡파트너스 등 제휴 마케팅 프로그램에 참여합니다. 제휴 링크를 통해 구매 시 소정의 수수료를 받을 수 있으며, 이용자에게 추가 비용은 발생하지 않습니다. 모든 광고 및 제휴 링크에는 "(광고/제휴마케팅)" 표시를 합니다.</p>
+
+    <h3>4. 문의</h3>
+    <p>개인정보 관련 문의사항은 아래 이메일로 연락해 주세요.<br>
+    📧 <a href="mailto:여기에_이메일@gmail.com">여기에_이메일@gmail.com</a></p>
+
+    <h3>5. 방침 변경</h3>
+    <p>본 방침은 관련 법령 및 서비스 변경에 따라 업데이트될 수 있으며, 변경 시 본 페이지를 통해 공지합니다.</p>
+    <p style="margin-top:16px; color:#aaa; font-size:.73rem;">최종 업데이트: 2026년 6월</p>
+
+    <button class="btn btn-primary" onclick="closePrivacy()" style="margin-top:20px;">닫기</button>
+  </div>
+</div>
+
+<script>
+// ────────────────────────────────────────
+// 상수
+// ────────────────────────────────────────
+// ── 경력평정 파라미터 (지역별) ──
+const GRADE_PARAMS_SEOUL = {
+  9: { base:60, rate:0.48, excessRate:0.05 },
+  8: { base:60, rate:0.48, excessRate:0.05 },
+  7: { base:60, rate:0.48, excessRate:0.05 },
+  6: { base:72, rate:0.40, excessRate:0.04 },
+  5: { base:84, rate:0.34, excessRate:0.03 },
+};
+// 경기도: rate·excessRate 일부 상이
+const GRADE_PARAMS_GYEONGGI = {
+  9: { base:60, rate:0.49, excessRate:0.05 },
+  8: { base:60, rate:0.49, excessRate:0.05 },
+  7: { base:60, rate:0.49, excessRate:0.05 },
+  6: { base:72, rate:0.40, excessRate:0.05 },
+  5: { base:84, rate:0.34, excessRate:0.04 },
+};
+// 인천: 서울시와 동일
+const GRADE_PARAMS_INCHEON = GRADE_PARAMS_SEOUL;
+
+function getGradeParams(grade) {
+  const region = document.getElementById('region') ? document.getElementById('region').value : 'seoul';
+  if (region === 'gyeonggi') return GRADE_PARAMS_GYEONGGI[grade];
+  if (region === 'incheon')  return GRADE_PARAMS_INCHEON[grade];
+  return GRADE_PARAMS_SEOUL[grade];
+}
+
+// ── 반영 반기 수 (지역별) ──
+const GRADE_SEMESTERS_SEOUL    = { 9:2, 8:4, 7:4, 6:6, 5:6 };
+const GRADE_SEMESTERS_GYEONGGI = { 9:2, 8:2, 7:4, 6:4, 5:6 };
+const GRADE_SEMESTERS_INCHEON  = { 9:2, 8:4, 7:6, 6:8, 5:8 };
+
+function getGradeSemesters(grade) {
+  const region = document.getElementById('region') ? document.getElementById('region').value : 'seoul';
+  if (region === 'gyeonggi') return GRADE_SEMESTERS_GYEONGGI[grade];
+  if (region === 'incheon')  return GRADE_SEMESTERS_INCHEON[grade];
+  return GRADE_SEMESTERS_SEOUL[grade];
+}
+// 하위 호환용 (직접 참조 코드 대비)
+const GRADE_SEMESTERS = GRADE_SEMESTERS_SEOUL;
+const MAX_CAREER_SCORE   = 30;
+const MAX_PLUS_SCORE     = 5;
+const MAX_PERF_SCORE     = 70;
+
+const AFFILIATE_TEXT = {
+  9: '행정사·전산세무 등 9급 가점 자격증 교재·인강 ↗️',
+  8: '사회복지사·직업상담사 등 8급 가점 자격증 교재·인강 ↗️',
+  7: '컴퓨터활용능력·한국사 등 7급 가점 자격증 교재·인강 ↗️',
+  6: '공인노무사·행정사 등 6급 가점 자격증 교재·인강 ↗️',
+  5: '기술사·변호사 등 5급 가점 자격증 교재·인강 ↗️',
+};
+
+// ────────────────────────────────────────
+// 근평 등급 점수표
+// ────────────────────────────────────────
+
+// 붙임6: 서울시 본청 행정직군 7급이하 (수1~수9)
+const PERF_TABLE_ADMIN_SEOUL = [
+  { label:'수1', score:70.0 },
+  { label:'수2', score:69.7 },
+  { label:'수3', score:69.4 },
+  { label:'수4', score:69.1 },
+  { label:'수5', score:68.8 },
+  { label:'수6', score:68.5 },
+  { label:'수7', score:68.2 },
+  { label:'수8', score:67.9 },
+  { label:'수9', score:67.6 },
+];
+
+// 붙임7: 과학기술직군 수1~수8 (수/우/양 공통 0.3 간격)
+const PERF_TABLE_SCIENCE_SU   = [70.0,69.7,69.4,69.1,68.8,68.5,68.2,67.9]; // 수1~수8
+const PERF_TABLE_SCIENCE_WOO  = [63.7,63.4,63.1,62.8,62.5,62.2,61.9,61.6,61.3,61.0]; // 우1~우10
+const PERF_TABLE_SCIENCE_YANG = [52.7,52.4,52.1,51.8,51.5,51.2,50.9,50.6,50.3,50.0]; // 양1~양10
+
+// 붙임8: 자치구 행정·세무 — 6급 기준 점수 (등급순번 → 점수)
+// 수(64점이상~70점이하): 등급 1~41
+const PERF_TABLE_GU_SU_6 = [
+  70.00,69.85,69.70,69.55,69.40,69.25,69.10,68.95,68.80,68.65,
+  68.50,68.35,68.20,68.05,67.90,67.75,67.60,67.45,67.30,67.15,
+  67.00,66.85,66.70,66.55,66.40,66.25,66.10,65.95,65.80,65.65,
+  65.50,65.35,65.20,65.05,64.90,64.75,64.60,64.45,64.30,64.15,
+  64.00
+];
+// 우(53점이상~64점미만): 등급 1~75
+// (우등급 - 변수명 유지)
+const PERF_TABLE_GU_MU_6 = [
+  63.85,63.70,63.55,63.40,63.25,63.10,62.95,62.80,62.65,62.50,
+  62.35,62.20,62.05,61.90,61.75,61.60,61.45,61.30,61.15,61.00,
+  60.85,60.70,60.55,60.40,60.25,60.10,59.95,59.80,59.65,59.50,
+  59.35,59.20,59.05,58.90,58.75,58.60,58.45,58.30,58.15,58.00,
+  57.85,57.70,57.55,57.40,57.25,57.10,56.95,56.80,56.65,56.50,
+  56.35,56.20,56.05,55.90,55.75,55.60,55.45,55.30,55.15,55.00,
+  null,null,null,null,null,null,null,null,null,null, // 61~70 없음
+  53.50,null,null,53.05,null,null,null,null,null,null, // 71~75 중 71=53.50, 74=53.05
+  52.75
+];
+// 양(32점이상~53점미만): 등급 1~70
+const PERF_TABLE_GU_YANG = [
+  52.7,52.4,52.1,51.8,51.5,51.2,50.9,50.6,50.3,50.0,
+  49.7,49.4,49.1,48.8,48.5,48.2,47.9,47.6,47.3,47.0,
+  46.7,46.4,46.1,45.8,45.5,45.2,44.9,44.6,44.3,44.0,
+  43.7,43.4,43.1,42.8,42.5,42.2,41.9,41.6,41.3,41.0,
+  40.7,40.4,40.1,39.8,39.5,39.2,38.9,38.6,38.3,38.0,
+  37.7,37.4,37.1,36.8,36.5,36.2,35.9,35.6,35.3,35.0,
+  null,null,null,null,null,null,null,null,null,null, // 61~70
+  32.0
+];
+
+// 붙임8: 자치구 기타직 5급이하 기준 점수
+const PERF_TABLE_GU_SU_5 = [
+  70.0,69.7,69.4,69.1,68.8,68.5,68.2,67.9,67.6,67.3,
+  67.0,66.7,66.4,66.1,65.8,65.5,65.2,64.9,64.6,64.3,
+  64.0
+];
+const PERF_TABLE_GU_MU_5 = [
+  63.7,63.4,63.1,62.8,62.5,62.2,61.9,61.6,61.3,61.0,
+  60.7,60.4,60.1,59.8,59.5,59.2,58.9,58.6,58.3,58.0,
+  57.7,57.4,57.1,56.8,56.5,56.2,55.9,55.6,55.3,55.0,
+  54.7,54.4,54.1,53.8,53.5,53.2,52.9
+];
+
+// 기타직(서울시 전체) 우1~우10 / 양1~양10 고정 점수표
+const PERF_TABLE_WOO_10 = [63.7,63.4,63.1,62.8,62.5,62.2,61.9,61.6,61.3,61.0];
+const PERF_TABLE_YANG_10 = [52.7,52.4,52.1,51.8,51.5,51.2,50.9,50.6,50.3,50.0];
+
+// ────────────────────────────────────────
+// 경기도 근무성적평정 점수표
+// ────────────────────────────────────────
+
+// 경기도 본청 행정직 수(秀) 등급 [수1~수7, 1점 간격]
+const PERF_TABLE_ADMIN_GYEONGGI = [
+  { label:'수1', score:70.0 },
+  { label:'수2', score:69.0 },
+  { label:'수3', score:68.0 },
+  { label:'수4', score:67.0 },
+  { label:'수5', score:66.0 },
+  { label:'수6', score:65.0 },
+  { label:'수7', score:64.0 },
+];
+
+// 경기도 자치구 행정세무&과학기술&기타 6급이상 수/우/양 (수7·우11·양11등급)
+const PERF_TABLE_GG_SU_6  = [70,69,68,67,66,65,64];
+const PERF_TABLE_GG_WOO_6 = [63,62,61,60,59,58,57,56,55,54,53];
+const PERF_TABLE_GG_YANG_6 = [53,51,49,47,45,43,41,39,37,35,33];
+
+// 경기도 5급이하는 서울과 동일하게 적용 (엑셀에 별도 표 없음)
+
+// ────────────────────────────────────────
+// 인천광역시 근무성적평정 점수표 (서울시와 동일)
+// ────────────────────────────────────────
+// 인천 본청 행정직: PERF_TABLE_ADMIN_SEOUL 과 동일
+// 인천 자치구 6급이상: PERF_TABLE_GU_SU_6 / PERF_TABLE_GU_MU_6 / PERF_TABLE_GU_YANG 과 동일
+// 인천 자치구 5급이하: PERF_TABLE_GU_SU_5 / PERF_TABLE_GU_MU_5 과 동일
+// 인천 과학기술직: PERF_TABLE_SCIENCE_SU / WOO / YANG 과 동일
+// 인천 기타직: PERF_TABLE_WOO_10 / PERF_TABLE_YANG_10 과 동일
+
+// ────────────────────────────────────────
+// 현재 소속+직렬+직급 조합으로 점수표 결정
+// ────────────────────────────────────────
+function isDistrict() {
+  const region   = document.getElementById('region').value;
+  const district = document.getElementById('district') ? document.getElementById('district').value : 'bonchung';
+  if (region === 'seoul') return district !== 'bonchung';
+  if (region === 'gyeonggi') return district !== 'gg_bonchung';
+  if (region === 'incheon') return district !== 'ic_bonchung';
+  return false;
+}
+
+function getDistrictName() {
+  const district = document.getElementById('district');
+  if (!district) return '';
+  return district.options[district.selectedIndex].text;
+}
+
+// 자치구 수/우/양 배열을 드롭다운용 {label, score} 목록으로 변환
+function guArrayToList(arr, prefix) {
+  const result = [];
+  arr.forEach((score, idx) => {
+    if (score !== null && score !== undefined) {
+      result.push({ label: prefix + (idx + 1) + ' (' + score.toFixed(2) + '점)', score });
+    }
+  });
+  return result;
+}
+
+function getPerfTableInfo() {
+  const region = document.getElementById('region').value;
+  const series = document.getElementById('series').value;
+  const grade  = parseInt(document.getElementById('grade').value);
+  const gu     = isDistrict();
+
+  // 과학기술직 (소속·구 무관) → 수/우/양 드롭다운
+  if (series === 'science') {
+    return {
+      type: 'gu',
+      label: '과학기술직 등급',
+      tables: {
+        su:   PERF_TABLE_SCIENCE_SU,
+        woo:  PERF_TABLE_SCIENCE_WOO,
+        yang: PERF_TABLE_SCIENCE_YANG,
+      }
+    };
+  }
+
+  // 서울특별시 (본청 + 자치구 전체) → 수/우/양 + 순번 드롭다운
+  if (region === 'seoul') {
+    const is6up = grade >= 6;
+
+    // 본청 행정세무: 수1~수9 + 우1~우10 + 양1~양10
+    if (!gu && series === 'admin') {
+      return {
+        type: 'gu',
+        label: '서울시 본청 행정직 등급',
+        tables: {
+          su:   PERF_TABLE_ADMIN_SEOUL.map(t => t.score),
+          woo:  PERF_TABLE_WOO_10,
+          yang: PERF_TABLE_YANG_10,
+        }
+      };
+    }
+    // 본청 기타: 수1~수9 + 우1~우10 + 양1~양10
+    if (!gu) {
+      return {
+        type: 'gu',
+        label: '서울시 본청 기타직 등급',
+        tables: {
+          su:   PERF_TABLE_ADMIN_SEOUL.map(t => t.score),
+          woo:  PERF_TABLE_WOO_10,
+          yang: PERF_TABLE_YANG_10,
+        }
+      };
+    }
+    // 자치구 행정세무: 수/우/양 전체 등급
+    if (series === 'admin') {
+      return {
+        type: 'gu',
+        label: getDistrictName() + ' 행정세무 ' + (is6up ? '6급이상' : '5급이하') + ' 기준',
+        tables: {
+          su:   is6up ? PERF_TABLE_GU_SU_6  : PERF_TABLE_GU_SU_5,
+          woo:  is6up ? PERF_TABLE_GU_MU_6  : PERF_TABLE_GU_MU_5,
+          yang: PERF_TABLE_GU_YANG,
+        }
+      };
+    }
+    // 자치구 기타직: 수1~수9(또는 GU수) + 우1~우10 + 양1~양10
+    return {
+      type: 'gu',
+      label: getDistrictName() + ' 기타직 ' + (is6up ? '6급이상' : '5급이하') + ' 기준',
+      tables: {
+        su:   is6up ? PERF_TABLE_GU_SU_6  : PERF_TABLE_GU_SU_5,
+        woo:  PERF_TABLE_WOO_10,
+        yang: PERF_TABLE_YANG_10,
+      }
+    };
+  }
+
+  // ── 경기도 ──
+  if (region === 'gyeonggi') {
+    const is6up = grade >= 6;
+    // 본청
+    if (!gu) {
+      return {
+        type: 'gu',
+        label: '경기도 본청 행정직 등급',
+        tables: {
+          su:   PERF_TABLE_ADMIN_GYEONGGI.map(t => t.score),
+          woo:  PERF_TABLE_WOO_10,
+          yang: PERF_TABLE_YANG_10,
+        }
+      };
+    }
+    // 자치구 (행정세무·과학기술·기타 동일 점수표 — 경기도는 직렬 구분 없이 단일표)
+    if (is6up) {
+      return {
+        type: 'gu',
+        label: getDistrictName() + ' ' + (is6up ? '6급이상' : '5급이하') + ' 기준',
+        tables: {
+          su:   PERF_TABLE_GG_SU_6,
+          woo:  PERF_TABLE_GG_WOO_6,
+          yang: PERF_TABLE_GG_YANG_6,
+        }
+      };
+    }
+    // 경기도 5급이하: 서울 자치구 5급이하 표 준용
+    return {
+      type: 'gu',
+      label: getDistrictName() + ' 5급이하 기준',
+      tables: {
+        su:  PERF_TABLE_GU_SU_5,
+        woo: PERF_TABLE_GU_MU_5,
+        yang: PERF_TABLE_GU_YANG,
+      }
+    };
+  }
+
+  // ── 인천광역시 (서울시와 동일한 점수표 적용) ──
+  if (region === 'incheon') {
+    const is6up = grade >= 6;
+    if (!gu && series === 'admin') {
+      return {
+        type: 'gu',
+        label: '인천시 본청 행정직 등급',
+        tables: {
+          su:   PERF_TABLE_ADMIN_SEOUL.map(t => t.score),
+          woo:  PERF_TABLE_WOO_10,
+          yang: PERF_TABLE_YANG_10,
+        }
+      };
+    }
+    if (!gu) {
+      return {
+        type: 'gu',
+        label: '인천시 본청 기타직 등급',
+        tables: {
+          su:   PERF_TABLE_ADMIN_SEOUL.map(t => t.score),
+          woo:  PERF_TABLE_WOO_10,
+          yang: PERF_TABLE_YANG_10,
+        }
+      };
+    }
+    if (series === 'admin') {
+      return {
+        type: 'gu',
+        label: getDistrictName() + ' 행정세무 ' + (is6up ? '6급이상' : '5급이하') + ' 기준',
+        tables: {
+          su:   is6up ? PERF_TABLE_GU_SU_6  : PERF_TABLE_GU_SU_5,
+          woo:  is6up ? PERF_TABLE_GU_MU_6  : PERF_TABLE_GU_MU_5,
+          yang: PERF_TABLE_GU_YANG,
+        }
+      };
+    }
+    return {
+      type: 'gu',
+      label: getDistrictName() + ' 기타직 ' + (is6up ? '6급이상' : '5급이하') + ' 기준',
+      tables: {
+        su:   is6up ? PERF_TABLE_GU_SU_6  : PERF_TABLE_GU_SU_5,
+        woo:  PERF_TABLE_WOO_10,
+        yang: PERF_TABLE_YANG_10,
+      }
+    };
+  }
+
+  // 기타 미지원 지역 fallback
+  return { type: 'list', table: PERF_TABLE_ADMIN_SEOUL, label: '행정직 등급' };
+}
+
+// ────────────────────────────────────────
+// 경력 점수 계산
+// ────────────────────────────────────────
+function calcCareerScore(totalMonths, grade) {
+  if (totalMonths <= 0) return 0;
+  const { base, rate, excessRate } = getGradeParams(grade);
+  let score;
+  if (totalMonths <= base) {
+    score = totalMonths * rate;
+  } else {
+    score = (base * rate) + (totalMonths - base) * excessRate;
+  }
+  return Math.round(Math.min(score, MAX_CAREER_SCORE) * 100) / 100;
+}
+
+// 날짜 간 개월+잔여일 반환 {months, days}
+function dateDiff(start, end) {
+  let years  = end.getFullYear() - start.getFullYear();
+  let months = end.getMonth()    - start.getMonth();
+  let days   = end.getDate()     - start.getDate();
+  if (days < 0) {
+    months--;
+    // 이전 달의 마지막 날짜로 잔여일 계산
+    const prevMonth = new Date(end.getFullYear(), end.getMonth(), 0);
+    days += prevMonth.getDate();
+  }
+  if (months < 0) { years--; months += 12; }
+  return { months: Math.max(0, years * 12 + months), days: Math.max(0, days) };
+}
+
+// 기존 호환용 (개월만)
+function monthDiff(start, end) {
+  return dateDiff(start, end).months;
+}
+
+function formatMonths(months) {
+  const rounded = Math.round(months * 10) / 10;
+  const years = Math.floor(rounded / 12);
+  const rest = Math.round((rounded - years * 12) * 10) / 10;
+  return `${years}년 ${rest}개월`;
+}
+
+function getCareerData() {
+  const grade     = parseInt(document.getElementById('grade').value);
+  const targetStr = document.getElementById('targetDate').value;
+  const startStr  = document.getElementById('startDate').value;
+  const prevStr   = document.getElementById('prevGradeDate').value;
+  const excBreak  = parseFloat(document.getElementById('excludeBreak').value) || 0;
+
+  if (!targetStr || !startStr) return null;
+
+  const target = new Date(targetStr);
+  const start  = new Date(startStr);
+  const prev   = prevStr ? new Date(prevStr) : null;
+
+  if (start > target) return { error: '현 직급 근무 시작일이 평정 기준일보다 미래일 수 없습니다.' };
+  if (prev && prev > start) return { error: '직전급수 진급일은 현 직급 근무 시작일보다 미래일 수 없습니다.' };
+
+  // 현 직급 경력 (항상 +1일 적용)
+  const curDiffRaw = dateDiff(start, target);
+  // +1일 처리: 날짜에 1일 더한 결과로 재계산
+  const startPlus1 = new Date(start);
+  startPlus1.setDate(startPlus1.getDate() - 1); // 시작일을 하루 앞당기는 것과 동일
+  const curDiff   = dateDiff(startPlus1, target);
+  const curMonths = curDiff.months;
+  const curDays   = curDiff.days;
+
+  // 직전급수 경력 (개월 + 잔여일) × 60%
+  let prevRawMonths = 0, prevRawDays = 0;
+  if (prev) {
+    const prevDiff  = dateDiff(prev, start);
+    prevRawMonths   = prevDiff.months;
+    prevRawDays     = prevDiff.days;
+  }
+
+  // 직전급수 경력 60% 적용 후 개월+일 분리
+  const prevW60Months = Math.floor(prevRawMonths * 0.6);
+  const prevW60Days   = Math.round((prevRawMonths * 0.6 - prevW60Months) * 30 + prevRawDays * 0.6);
+
+  // 현직급 잔여일 + 직전급수 60% 잔여일 합산 → 15일 이상이면 1개월 올림
+  const totalRawDays = curDays + prevW60Days;
+  const dayRoundUp   = totalRawDays >= 15 ? 1 : 0;
+
+  const weightedMonths =
+    curMonths +
+    prevW60Months +
+    dayRoundUp;
+
+  const totalMonths = Math.max(0, Math.round((weightedMonths - excBreak) * 100) / 100);
+  const score = calcCareerScore(totalMonths, grade);
+
+  const previousWeightedMonths = prevW60Months;
+
+  return {
+    grade, targetStr, startStr, prevStr, excBreak,
+    curMonths, curDays,
+    prevRawMonths, prevRawDays,
+    prevW60Months, prevW60Days,
+    previousWeightedMonths,
+    totalRawDays,
+    totalMonths,
+    score,
+    currentMonths: curMonths,
+    previousMonths: prevRawMonths,
+  };
+}
+
+// ────────────────────────────────────────
+// 수/우/양 카테고리 변경 시 순번 드롭다운 재구성
+// ────────────────────────────────────────
+function updateRankOptions(i) {
+  const tableInfo = getPerfTableInfo();
+  if (tableInfo.type !== 'gu') return;
+  const catEl    = document.getElementById('grade_cat_' + i);
+  const rankEl   = document.getElementById('grade_rank_' + i);
+  const manualEl = document.getElementById('grade_manual_' + i);
+  if (!catEl || !rankEl) return;
+  const cat = catEl.value;
+  const arr = tableInfo.tables[cat] || [];
+
+  // 유효한 항목만 추출
+  const valid = [];
+  arr.forEach((score, idx) => {
+    if (score !== null && score !== undefined) valid.push({ rank: idx + 1, score });
+  });
+
+  rankEl.innerHTML = '';
+  // 최대 10개만 드롭다운에 표시
+  valid.slice(0, 10).forEach(({ rank, score }) => {
+    const opt = document.createElement('option');
+    opt.value = score;
+    opt.textContent = rank + '번';
+    rankEl.appendChild(opt);
+  });
+  // 항상 맨 아래에 "직접입력" 추가
+  const manualOpt = document.createElement('option');
+  manualOpt.value = '__manual__';
+  manualOpt.textContent = '✏️ 직접입력 (11번 이후)';
+  rankEl.appendChild(manualOpt);
+
+  // 직접입력 input 숨김
+  if (manualEl) manualEl.style.display = 'none';
+}
+
+function onRankSelect(i) {
+  const rankEl   = document.getElementById('grade_rank_' + i);
+  const manualEl = document.getElementById('grade_manual_' + i);
+  if (!rankEl || !manualEl) return;
+  if (rankEl.value === '__manual__') {
+    manualEl.style.display = 'block';
+    manualEl.focus();
+  } else {
+    manualEl.style.display = 'none';
+    onPerfInput();
+  }
+}
+
+// ────────────────────────────────────────
+// 직급·직렬·소속 변경 시 UI 재구성
+// ────────────────────────────────────────
+// ────────────────────────────────────────
+// 현재 활성 탭
+// ────────────────────────────────────────
+let activeTab = 0;
+
+function switchTab(idx) {
+  activeTab = idx;
+  syncTabsFromBase();
+  [0,1,2].forEach(t => {
+    const panel = document.getElementById(`scoreInputs-${t}`);
+    const btn   = document.getElementById(`tab-btn-${t}`);
+    if (t === idx) {
+      panel.style.display = '';
+      btn.style.background = 'var(--navy)';
+      btn.style.color = 'var(--gold)';
+      btn.style.borderColor = 'var(--gold)';
+    } else {
+      panel.style.display = 'none';
+      btn.style.background = 'var(--paper)';
+      btn.style.color = 'var(--muted)';
+      btn.style.borderColor = 'var(--border)';
+    }
+  });
+  onPerfInput();
+}
+
+function onGradeChange() {
+  const grade = parseInt(document.getElementById('grade').value);
+  const n = getGradeSemesters(grade);
+  const tableInfo = getPerfTableInfo();
+
+  updateDistrictInfo();
+
+  const region = document.getElementById('region').value;
+  const series = document.getElementById('series').value;
+  let intervalNote;
+  if (region === 'gyeonggi' || region === 'incheon') {
+    intervalNote = '각 등급간 1점 차이 기본설정';
+  } else {
+    // 서울시
+    intervalNote = series === 'science'
+      ? '근무평정 등급간 과학기술 0.3점 차이 기본설정'
+      : '근무평정 등급간 행정 0.15점 차이 기본설정';
+  }
+  document.getElementById('semesterHint').textContent =
+    `💡 ${grade}급은 직전 ${n}개 반기의 근평 점수 평균이 반영됩니다. (${intervalNote})`;
+
+  // 탭별 라벨 정의
+  // 탭0: 이번반기(예상), 직전1~N반기
+  // 탭1: 다음반기(예상), 이번반기(예상), 직전1~N-1반기
+  // 탭2: 다다음반기(예상), 다음반기(예상), 이번반기(예상), 직전1~N-2반기
+  const tabLabels = [
+    // 탭0
+    Array.from({length: n}, (_, i) =>
+      i === 0 ? '이번반기 (예상)' : `직전 ${i}반기`),
+    // 탭1
+    Array.from({length: n}, (_, i) => {
+      if (i === 0) return '다음반기 (예상)';
+      if (i === 1) return '이번반기 (예상)';
+      return `직전 ${i-1}반기`;
+    }),
+    // 탭2
+    Array.from({length: n}, (_, i) => {
+      if (i === 0) return '다다음반기 (예상)';
+      if (i === 1) return '다음반기 (예상)';
+      if (i === 2) return '이번반기 (예상)';
+      return `직전 ${i-2}반기`;
+    }),
+  ];
+
+  [0,1,2].forEach(tabIdx => {
+    const container = document.getElementById(`scoreInputs-${tabIdx}`);
+    container.innerHTML = '';
+    const cols = n <= 2 ? 2 : n <= 4 ? 2 : 3;
+    const grid = document.createElement('div');
+    grid.className = cols === 3 ? 'grid-3' : 'grid-2';
+
+    for (let i = 0; i < n; i++) {
+      const lbl = tabLabels[tabIdx][i];
+      const field = document.createElement('div');
+      field.className = 'field';
+
+      if (tableInfo.type === 'list') {
+        const options = tableInfo.table.map(t =>
+          `<option value="${t.score}">${t.label} (${t.score}점)</option>`
+        ).join('');
+        field.innerHTML = `
+          <label>${lbl}</label>
+          <div class="select-wrap">
+            <select id="score_${tabIdx}_${i}" onchange="onPerfInput(); if(${tabIdx}===0) syncTabsFromBase()">${options}</select>
+          </div>`;
+      } else {
+        const hasSu   = tableInfo.tables.su.filter(v => v !== null).length > 0;
+        const hasWoo  = tableInfo.tables.woo  ? tableInfo.tables.woo.filter(v => v !== null).length > 0  : false;
+        const hasYang = tableInfo.tables.yang ? tableInfo.tables.yang.filter(v => v !== null).length > 0 : false;
+        let catOpts = '';
+        if (hasSu)   catOpts += '<option value="su">수</option>';
+        if (hasWoo)  catOpts += '<option value="woo">우</option>';
+        if (hasYang) catOpts += '<option value="yang">양</option>';
+        field.innerHTML = `
+          <label>${lbl}</label>
+          <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+            <div class="select-wrap" style="flex:1; min-width:60px;">
+              <select id="grade_cat_${tabIdx}_${i}" onchange="updateRankOptionsTab(${tabIdx},${i}); onPerfInput()">
+                ${catOpts}
+              </select>
+            </div>
+            <div class="select-wrap" style="flex:1.5; min-width:80px;">
+              <select id="grade_rank_${tabIdx}_${i}" onchange="onRankSelectTab(${tabIdx},${i})"></select>
+            </div>
+            <input type="number" id="grade_manual_${tabIdx}_${i}"
+                   min="0" max="70" step="0.01" placeholder="직접입력"
+                   style="display:none; width:90px; padding:10px 8px; border:1.5px solid var(--gold);
+                          border-radius:7px; font-family:inherit; font-size:.85rem; background:#fff;"
+                   oninput="onPerfInput()">
+            <span id="score_display_${tabIdx}_${i}"
+                  style="font-size:1.15rem; color:var(--navy); font-weight:700; min-width:52px; text-align:right;">
+              —점
+            </span>
+          </div>`;
+      }
+      grid.appendChild(field);
+    }
+    container.appendChild(grid);
+
+    if (tableInfo.type === 'gu') {
+      for (let j = 0; j < n; j++) updateRankOptionsTab(tabIdx, j);
+    }
+  });
+
+  // 탭1,2는 탭0 값을 복사해서 초기화 (직전반기 공유)
+  syncTabsFromBase();
+
+  document.getElementById('affiliateLink').textContent = '추천 수험서 보기';
+  switchTab(activeTab);
+  recalcCareer();
+}
+
+// 탭0 입력값 → 탭1,2 직전반기 칸에 동기화
+function syncTabsFromBase() {
+  const grade = parseInt(document.getElementById('grade').value);
+  const n = getGradeSemesters(grade);
+  const tableInfo = getPerfTableInfo();
+
+  if (tableInfo.type === 'list') {
+    // 탭1: 1번칸~N-1칸 = 탭0의 0번칸~N-2칸
+    // 탭2: 2번칸~N-1칸 = 탭0의 0번칸~N-3칸
+    [[1, 1], [2, 2]].forEach(([tabIdx, offset]) => {
+      for (let i = offset; i < n; i++) {
+        const src = document.getElementById(`score_0_${i - offset}`);
+        const dst = document.getElementById(`score_${tabIdx}_${i}`);
+        if (src && dst) dst.value = src.value;
+      }
+    });
+  } else {
+    // gu 타입: cat + rank 둘 다 복사
+    [[1, 1], [2, 2]].forEach(([tabIdx, offset]) => {
+      for (let i = offset; i < n; i++) {
+        const srcCat  = document.getElementById(`grade_cat_0_${i - offset}`);
+        const srcRank = document.getElementById(`grade_rank_0_${i - offset}`);
+        const dstCat  = document.getElementById(`grade_cat_${tabIdx}_${i}`);
+        const dstRank = document.getElementById(`grade_rank_${tabIdx}_${i}`);
+        if (srcCat && dstCat) {
+          dstCat.value = srcCat.value;
+          updateRankOptionsTab(tabIdx, i);
+        }
+        if (srcRank && dstRank) dstRank.value = srcRank.value;
+        // score_display 업데이트
+        const srcDisp = document.getElementById(`score_display_0_${i - offset}`);
+        const dstDisp = document.getElementById(`score_display_${tabIdx}_${i}`);
+        if (srcDisp && dstDisp) dstDisp.textContent = srcDisp.textContent;
+      }
+    });
+  }
+}
+
+function updateRankOptionsTab(tabIdx, i) {
+  // 기존 updateRankOptions 로직을 탭 인덱스 포함해서 처리
+  const catEl  = document.getElementById(`grade_cat_${tabIdx}_${i}`);
+  const rankEl = document.getElementById(`grade_rank_${tabIdx}_${i}`);
+  if (!catEl || !rankEl) return;
+  const tableInfo = getPerfTableInfo();
+  if (tableInfo.type !== 'gu') return;
+  const cat = catEl.value;
+  const tbl = tableInfo.tables[cat] || [];
+  let opts = '';
+  tbl.forEach((score, idx) => {
+    if (score !== null) {
+      opts += `<option value="${score}">${cat === 'su' ? '수' : cat === 'woo' ? '우' : '양'}${idx + 1} (${score}점)</option>`;
+    }
+  });
+  opts += `<option value="__manual__">직접 입력</option>`;
+  rankEl.innerHTML = opts;
+  const manualEl = document.getElementById(`grade_manual_${tabIdx}_${i}`);
+  if (manualEl) manualEl.style.display = 'none';
+  onPerfInput();
+}
+
+function onRankSelectTab(tabIdx, i) {
+  const rankEl   = document.getElementById(`grade_rank_${tabIdx}_${i}`);
+  const manualEl = document.getElementById(`grade_manual_${tabIdx}_${i}`);
+  if (!rankEl) return;
+  if (rankEl.value === '__manual__') {
+    if (manualEl) { manualEl.style.display = ''; manualEl.focus(); }
+  } else {
+    if (manualEl) manualEl.style.display = 'none';
+  }
+  onPerfInput();
+}
+
+// ────────────────────────────────────────
+// 근평 입력 실시간 반영
+// ────────────────────────────────────────
+function onPerfInput() {
+  const grade = parseInt(document.getElementById('grade').value);
+  const n = getGradeSemesters(grade);
+  const tableInfo = getPerfTableInfo();
+  let sum = 0, hasUnset = false;
+
+  for (let i = 0; i < n; i++) {
+    let score = null;
+
+    if (tableInfo.type === 'list') {
+      const el = document.getElementById(`score_${activeTab}_${i}`);
+      score = el ? parseFloat(el.value) : null;
+    } else {
+      const rankEl   = document.getElementById(`grade_rank_${activeTab}_${i}`);
+      const manualEl = document.getElementById(`grade_manual_${activeTab}_${i}`);
+      const dispEl   = document.getElementById(`score_display_${activeTab}_${i}`);
+      const isManual = rankEl && rankEl.value === '__manual__';
+      if (isManual && manualEl) {
+        score = parseFloat(manualEl.value);
+      } else if (rankEl && rankEl.value !== '' && rankEl.value !== '__manual__') {
+        score = parseFloat(rankEl.value);
+      }
+      if (score !== null && !isNaN(score)) {
+        if (dispEl) dispEl.textContent = score.toFixed(2) + '점';
+      } else {
+        score = null;
+        if (dispEl) dispEl.textContent = '—점';
+        hasUnset = true;
+      }
+    }
+
+    if (score === null || score === undefined) { hasUnset = true; score = 0; }
+    sum += score;
+  }
+
+  const avg = Math.round(sum / n * 100) / 100;
+  document.getElementById('warnZero').classList.toggle('show', hasUnset);
+  document.getElementById('perfAvgLabel').textContent = `${avg} / ${MAX_PERF_SCORE}점`;
+  setBar('perfBar', avg / MAX_PERF_SCORE);
+}
+
+// ────────────────────────────────────────
+// 날짜·경력 실시간 반영
+// ────────────────────────────────────────
+function recalcCareer() {
+  const errorEl   = document.getElementById('errorDate');
+  const careerBox = document.getElementById('careerBox');
+  const data = getCareerData();
+
+  if (!data) return;
+  if (data.error) {
+    errorEl.textContent = data.error;
+    errorEl.classList.add('show');
+    careerBox.classList.remove('show');
+    setBar('careerBar', 0);
+    document.getElementById('careerLabel').textContent = '—';
+    return;
+  }
+  errorEl.classList.remove('show');
+
+  // 계산 과정 문구 생성
+  const { base, rate, excessRate } = getGradeParams(data.grade);
+  let formula = '';
+  if (data.totalMonths <= 0) {
+    formula = '0점';
+  } else if (data.totalMonths <= base) {
+    formula = `${data.totalMonths}개월 × ${rate} = <b>${data.score}점</b>`;
+  } else {
+    const excess    = Math.round((data.totalMonths - base) * 100) / 100;
+    const basePart  = Math.round(base * rate * 100) / 100;
+    const excessPart = Math.round(excess * excessRate * 100) / 100;
+    formula = `${base}개월 × ${rate} + ${excess}개월 × ${excessRate} = ${basePart} + ${excessPart} = <b>${data.score}점</b>`;
+  }
+
+  const curStr  = `${data.curMonths}개월 ${data.curDays}일 (+1일 포함)`;
+  const prevStr2 = data.prevRawMonths || data.prevRawDays
+    ? `${data.prevRawMonths}개월 ${data.prevRawDays}일 × 60% = ${data.prevW60Months}개월 ${data.prevW60Days}일`
+    : '미입력';
+  const dayRoundUp = data.totalRawDays >= 15 ? 1 : 0;
+  const dayNotice  = `현직급 ${data.curDays}일 + 직전급수(60%) ${data.prevW60Days}일 = 합산 ${data.totalRawDays}일 → ${dayRoundUp ? '15일 이상으로 1개월 올림' : '15일 미만으로 버림'}`;
+  const excStr  = data.excBreak ? `${data.excBreak}개월` : '없음';
+
+  careerBox.innerHTML = `
+    🔹 <b>현 직급 경력:</b> ${curStr}<br>
+    🔸 <b>직전급수 경력:</b> ${prevStr2}<br>
+    📅 <b>잔여일 처리:</b> ${dayNotice}<br>
+    ➖ <b>경력 미합산 휴직:</b> ${excStr}<br>
+    🎯 <b>최종 인정 경력:</b> <b>${data.totalMonths}개월</b>
+    &nbsp;&nbsp;→&nbsp; ${formula}
+  `;
+  careerBox.classList.add('show');
+
+  document.getElementById('careerLabel').textContent = `${data.score} / ${MAX_CAREER_SCORE}점`;
+  setBar('careerBar', data.score / MAX_CAREER_SCORE);
+}
+
+// ────────────────────────────────────────
+// 가점 실시간 반영
+// ────────────────────────────────────────
+function togglePlusGuide() {
+  const guide = document.getElementById('plusGuide');
+  const btn   = document.getElementById('plusGuideBtn');
+  const open  = guide.style.display === 'none';
+  guide.style.display = open ? 'block' : 'none';
+  btn.textContent = open ? '📋 가점 종류 닫기' : '📋 가점 종류 보기';
+  if (open) guide.scrollIntoView({ behavior:'smooth', block:'nearest' });
+}
+
+function onPlusInput() {
+  const v = Math.min(parseFloat(document.getElementById('plusScore').value) || 0, MAX_PLUS_SCORE);
+  document.getElementById('plusLabel').textContent = `${v} / ${MAX_PLUS_SCORE}점`;
+  setBar('plusBar', v / MAX_PLUS_SCORE);
+}
+
+// ────────────────────────────────────────
+// 최종 계산
+// ────────────────────────────────────────
+function toggleCalculate() {
+  const card = document.getElementById('resultCard');
+  const btn  = document.getElementById('calcBtn');
+  if (card.classList.contains('show')) {
+    // 닫기
+    card.classList.remove('show');
+    document.getElementById('compareCta').classList.remove('show');
+    document.getElementById('copyArea').classList.remove('show');
+    document.getElementById('copyBtnWrap').style.display = 'none';
+    btn.textContent = '🏆 평정점수 계산하기';
+  } else {
+    // 열기 (계산 실행)
+    calculate();
+    btn.textContent = '✖ 결과 닫기';
+  }
+}
+
+function calculate() {
+  const grade     = parseInt(document.getElementById('grade').value);
+  const n         = getGradeSemesters(grade);
+  const targetStr = document.getElementById('targetDate').value;
+  const startStr  = document.getElementById('startDate').value;
+
+  // 근평 평균
+  const tableInfo = getPerfTableInfo();
+  let sum = 0;
+  for (let i = 0; i < n; i++) {
+    let score = 0;
+    if (tableInfo.type === 'list') {
+      const el = document.getElementById(`score_${activeTab}_${i}`);
+      score = el ? parseFloat(el.value) || 0 : 0;
+    } else {
+      const rankEl   = document.getElementById(`grade_rank_${activeTab}_${i}`);
+      const manualEl = document.getElementById(`grade_manual_${activeTab}_${i}`);
+      const isManual = rankEl && rankEl.value === '__manual__';
+      if (isManual && manualEl) {
+        const v = parseFloat(manualEl.value);
+        if (!isNaN(v)) score = v;
+      } else if (rankEl && rankEl.value !== '' && rankEl.value !== '__manual__') {
+        const v = parseFloat(rankEl.value);
+        if (!isNaN(v)) score = v;
+      }
+    }
+    sum += score;
+  }
+  const avgPerf = Math.round(sum / n * 100) / 100;
+
+  // 경력
+  const careerData = getCareerData();
+  if (!careerData) { alert('날짜를 모두 입력해주세요.'); return; }
+  if (careerData.error) { alert(careerData.error); return; }
+  const careerScore = careerData.score;
+
+  // 가점
+  const plusScore = Math.min(parseFloat(document.getElementById('plusScore').value) || 0, MAX_PLUS_SCORE);
+
+  const total = Math.round((avgPerf + careerScore + plusScore) * 100) / 100;
+
+  // 결과 표시
+  const tabNames = ['이번반기 (예상)', '다음반기 (예상)', '다다음반기 (예상)'];
+  document.getElementById('resultTitle').textContent = `▪ 최종 평정점수 — ${tabNames[activeTab]}`;
+  document.getElementById('rPerf').textContent   = avgPerf;
+  document.getElementById('rCareer').textContent = careerScore;
+  document.getElementById('rPlus').textContent   = plusScore;
+  document.getElementById('rTotal').textContent  = total;
+  document.getElementById('resultCard').classList.add('show');
+  document.getElementById('compareCta').classList.add('show');
+  document.getElementById('resultCard').scrollIntoView({ behavior:'smooth', block:'center' });
+  document.getElementById('calcBtn').textContent = '✖ 결과 닫기';
+
+  // 복사 텍스트 (콜론 세로 정렬 - 한글 2바이트 고려, 12칸 고정)
+  function lpad(s) {
+    // 한글 1자=2칸으로 계산해 12칸에 맞춤
+    let w = 0;
+    for (const c of s) w += c.charCodeAt(0) > 127 ? 2 : 1;
+    return s + ' '.repeat(Math.max(0, 12 - w));
+  }
+  const txt = [
+    `=== ${isDistrict() ? getDistrictName() : document.getElementById('region').options[document.getElementById('region').selectedIndex].text} 공무원 평정점수 계산 결과 ===`,
+    `${lpad('직급')} : ${grade}급`,
+    `${lpad('소속')} : ${isDistrict() ? getDistrictName() + ' (자치구)' : '서울시 본청 / 기타 광역'}`,
+    `${lpad('평정기준일')} : ${targetStr}`,
+    `${lpad('근무시작일')} : ${startStr}`,
+    `${lpad('직전급수진급일')} : ${careerData.prevStr || '미입력'}`,
+    `${lpad('인정경력')} : ${formatMonths(careerData.totalMonths)} (${careerData.totalMonths}개월)`,
+    '',
+    `${lpad('근무성적평정')} : ${avgPerf}점 (70점 만점)`,
+    `${lpad('경력평정')} : ${careerScore}점 (30점 만점)`,
+    `${lpad('가점')} : ${plusScore}점 (최대 5점)`,
+    `${lpad('최종합산')} : ${total}점`,
+  ].join('\n');
+
+  document.getElementById('copyArea').textContent = txt;
+  document.getElementById('copyArea').classList.add('show');
+  document.getElementById('copyBtnWrap').style.display = 'block';
+}
+
+// ────────────────────────────────────────
+// 복사
+// ────────────────────────────────────────
+function copyResult() {
+  const txt = document.getElementById('copyArea').textContent;
+  navigator.clipboard.writeText(txt).then(() => {
+    const msg = document.getElementById('copyMsg');
+    msg.style.display = 'inline';
+    setTimeout(() => { msg.style.display = 'none'; }, 2000);
+  }).catch(() => {
+    // 구형 브라우저 fallback
+    const ta = document.createElement('textarea');
+    ta.value = txt;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+  });
+}
+
+function copyTextFallback(txt) {
+  const ta = document.createElement('textarea');
+  ta.value = txt;
+  ta.setAttribute('readonly', '');
+  ta.style.position = 'fixed';
+  ta.style.left = '-9999px';
+  document.body.appendChild(ta);
+  ta.select();
+  document.execCommand('copy');
+  document.body.removeChild(ta);
+}
+
+function showShareUrlMsg(text) {
+  const msg = document.getElementById('shareUrlMsg');
+  msg.textContent = text;
+  msg.style.display = 'inline';
+  setTimeout(() => { msg.style.display = 'none'; }, 2200);
+}
+
+async function sharePageUrl() {
+  const url = window.location.href;
+  const title = document.title || '공무원 평정점수 계산기';
+
+  if (navigator.share) {
+    try {
+      await navigator.share({ title, url });
+      return;
+    } catch (err) {
+      if (err && err.name === 'AbortError') return;
+    }
+  }
+
+  try {
+    await navigator.clipboard.writeText(url);
+  } catch (err) {
+    copyTextFallback(url);
+  }
+  showShareUrlMsg('링크가 복사됐습니다!');
+}
+
+// ────────────────────────────────────────
+// 비교 시뮬레이션
+// ────────────────────────────────────────
+function openPrivacy() {
+  document.getElementById('privacyModal').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closePrivacy() {
+  document.getElementById('privacyModal').classList.remove('show');
+  document.body.style.overflow = '';
+}
+function closePrivacyOutside(e) {
+  if (e.target === document.getElementById('privacyModal')) closePrivacy();
+}
+
+function openCompareModal() {
+  buildCompareInputs();
+  document.getElementById('compareModal').style.display = 'block';
+  document.getElementById('cmpResult').style.display = 'none';
+}
+
+function closeCompareModal() {
+  document.getElementById('compareModal').style.display = 'none';
+}
+
+function buildCompareInputs() {
+  const grade = parseInt(document.getElementById('grade').value);
+  const n = getGradeSemesters(grade);
+  const container = document.getElementById('cmpPerfInputs');
+  const tableInfo = getPerfTableInfo();
+
+  document.getElementById('cmpInfo').textContent =
+    `${grade}급 기준, ${n}개 반기의 근무성적평정 평균과 경력평정 점수를 비교합니다.`;
+
+  let html = '<div class="grid-2">';
+  for (let i = 0; i < n; i++) {
+    const label = i === 0 ? '비교 대상 이번 반기' : `비교 대상 직전 ${i}반기`;
+
+    if (tableInfo.type === 'gu') {
+      // 수/우/양 + 순번 드롭다운 + 직접입력
+      const hasSu   = tableInfo.tables.su   && tableInfo.tables.su.filter(v => v !== null).length > 0;
+      const hasWoo  = tableInfo.tables.woo  && tableInfo.tables.woo.filter(v => v !== null).length > 0;
+      const hasYang = tableInfo.tables.yang && tableInfo.tables.yang.filter(v => v !== null).length > 0;
+      let catOpts = '';
+      if (hasSu)   catOpts += '<option value="su">수</option>';
+      if (hasWoo)  catOpts += '<option value="woo">우</option>';
+      if (hasYang) catOpts += '<option value="yang">양</option>';
+      html += `
+        <div class="field" style="margin-bottom:12px;">
+          <label>${label}</label>
+          <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
+            <div class="select-wrap" style="flex:1; min-width:60px;">
+              <select id="cmp_cat_${i}" onchange="updateCmpRankOptions(${i})">
+                ${catOpts}
+              </select>
+            </div>
+            <div class="select-wrap" style="flex:1.5; min-width:80px;">
+              <select id="cmp_rank_${i}" onchange="onCmpRankSelect(${i})"></select>
+            </div>
+            <input type="number" id="cmp_manual_${i}"
+                   min="0" max="70" step="0.01" placeholder="직접입력"
+                   style="display:none; width:90px; padding:10px 8px; border:1.5px solid var(--gold);
+                          border-radius:7px; font-family:inherit; font-size:.85rem; background:#fff;">
+          </div>
+        </div>`;
+    } else {
+      const options = getComparePerfOptions();
+      html += `
+        <div class="field" style="margin-bottom:12px;">
+          <label>${label}</label>
+          <div class="select-wrap">
+            <select id="cmp_score_${i}">${options}</select>
+          </div>
+        </div>`;
+    }
+  }
+  html += '</div>';
+  container.innerHTML = html;
+
+  // gu 타입이면 순번 드롭다운 초기화
+  if (tableInfo.type === 'gu') {
+    for (let i = 0; i < n; i++) updateCmpRankOptions(i);
+  }
+}
+
+function updateCmpRankOptions(i) {
+  const tableInfo = getPerfTableInfo();
+  if (tableInfo.type !== 'gu') return;
+  const catEl  = document.getElementById(`cmp_cat_${i}`);
+  const rankEl = document.getElementById(`cmp_rank_${i}`);
+  if (!catEl || !rankEl) return;
+  const cat = catEl.value;
+  const arr = tableInfo.tables[cat] || [];
+  const valid = [];
+  arr.forEach((score, idx) => {
+    if (score !== null && score !== undefined) valid.push({ rank: idx + 1, score });
+  });
+  rankEl.innerHTML = '';
+  valid.slice(0, 10).forEach(({ rank, score }) => {
+    const opt = document.createElement('option');
+    opt.value = score;
+    opt.textContent = rank + '번';
+    rankEl.appendChild(opt);
+  });
+  const manualOpt = document.createElement('option');
+  manualOpt.value = '__manual__';
+  manualOpt.textContent = '✏️ 직접입력 (11번 이후)';
+  rankEl.appendChild(manualOpt);
+  const manualEl = document.getElementById(`cmp_manual_${i}`);
+  if (manualEl) manualEl.style.display = 'none';
+}
+
+function onCmpRankSelect(i) {
+  const rankEl   = document.getElementById(`cmp_rank_${i}`);
+  const manualEl = document.getElementById(`cmp_manual_${i}`);
+  if (!rankEl || !manualEl) return;
+  if (rankEl.value === '__manual__') {
+    manualEl.style.display = 'block';
+    manualEl.focus();
+  } else {
+    manualEl.style.display = 'none';
+  }
+}
+
+function getCmpPerfScore(i) {
+  // gu 타입
+  const rankEl   = document.getElementById(`cmp_rank_${i}`);
+  const manualEl = document.getElementById(`cmp_manual_${i}`);
+  if (rankEl) {
+    if (rankEl.value === '__manual__') return manualEl ? parseFloat(manualEl.value) || 0 : 0;
+    return parseFloat(rankEl.value) || 0;
+  }
+  // list 타입
+  const el = document.getElementById(`cmp_score_${i}`);
+  return el ? parseFloat(el.value) || 0 : 0;
+}
+
+function getComparePerfOptions() {
+  return getPerfOptionList().map((item) =>
+    `<option value="${item.score}">${item.label} (${item.score}점)</option>`
+  ).join('');
+}
+
+function getPerfOptionList() {
+  const tableInfo = getPerfTableInfo();
+  if (tableInfo.type === 'list') {
+    return [
+      ...tableInfo.table.map((t) => ({ label: t.label, score: t.score })),
+      ...PERF_TABLE_WOO_10.map((score, idx) => ({ label: `우${idx + 1}`, score })),
+      ...PERF_TABLE_YANG_10.map((score, idx) => ({ label: `양${idx + 1}`, score })),
+    ];
+  }
+
+  const groups = [
+    { key: 'su', label: '수' },
+    { key: 'woo', label: '우' },
+    { key: 'yang', label: '양' },
+  ];
+  const options = [];
+  groups.forEach((group) => {
+    const arr = tableInfo.tables[group.key] || [];
+    arr.forEach((score, idx) => {
+      if (score !== null && score !== undefined) {
+        options.push({ label: `${group.label}${idx + 1}`, score });
+      }
+    });
+  });
+  return options;
+}
+
+function getScoreForLabel(label) {
+  const item = getPerfOptionList().find((option) => option.label === label);
+  if (item) return item.score;
+  if (label === '수1') return PERF_TABLE_ADMIN_SEOUL[0].score;
+  if (label === '우1') return PERF_TABLE_WOO_10[0];
+  return 0;
+}
+
+function getCurrentScores() {
+  const grade = parseInt(document.getElementById('grade').value);
+  const n = getGradeSemesters(grade);
+  const scores = getCurrentPerfScores();
+  const sum = scores.reduce((acc, score) => acc + score, 0);
+
+  const careerData = getCareerData();
+  const careerScore = careerData && !careerData.error ? careerData.score : 0;
+
+  const perfAvg = Math.round(sum / n * 100) / 100;
+  const plusScore = Math.min(parseFloat(document.getElementById('plusScore').value) || 0, MAX_PLUS_SCORE);
+  const total = Math.round((perfAvg + careerScore + plusScore) * 100) / 100;
+  const careerMonths = careerData && !careerData.error ? careerData.totalMonths : 0;
+  return { perfAvg, careerScore, careerMonths, plusScore, total, perfScores: scores };
+}
+
+function getCurrentPerfScores() {
+  const grade = parseInt(document.getElementById('grade').value);
+  const n = getGradeSemesters(grade);
+  const tableInfo = getPerfTableInfo();
+  const scores = [];
+
+  for (let i = 0; i < n; i++) {
+    let score = 0;
+    if (tableInfo.type === 'list') {
+      const el = document.getElementById(`score_${activeTab}_${i}`);
+      score = el ? parseFloat(el.value) || 0 : 0;
+    } else {
+      const rankEl   = document.getElementById(`grade_rank_${activeTab}_${i}`);
+      const manualEl = document.getElementById(`grade_manual_${activeTab}_${i}`);
+      if (rankEl && rankEl.value === '__manual__') {
+        score = manualEl ? parseFloat(manualEl.value) || 0 : 0;
+      } else {
+        score = rankEl ? parseFloat(rankEl.value) || 0 : 0;
+      }
+    }
+    scores.push(score);
+  }
+
+  return scores;
+}
+
+function makeProjectedTotal(scores, replacementScore, mode, careerScore, plusScore) {
+  const n = scores.length;
+  const projectedScores = mode === 'future'
+    ? Array(n).fill(replacementScore)
+    : [replacementScore, ...scores.slice(0, n - 1)];
+  const perfAvg = Math.round(projectedScores.reduce((acc, score) => acc + score, 0) / n * 100) / 100;
+  const total = Math.round((perfAvg + careerScore + plusScore) * 100) / 100;
+  return { perfAvg, total };
+}
+
+function formatDiff(diff) {
+  const rounded = Math.round(diff * 100) / 100;
+  if (rounded > 0) return `${rounded}점 앞섬`;
+  if (rounded < 0) return `${Math.abs(rounded)}점 뒤짐`;
+  return '동점';
+}
+
+// ────────────────────────────────────────
+// 비교 대상 경력 실시간 계산
+// ────────────────────────────────────────
+function getCmpCareerScore() {
+  const grade     = parseInt(document.getElementById('grade').value);
+  const targetStr = document.getElementById('targetDate').value;
+  const curStr    = document.getElementById('cmpCurStart').value;
+  const prevStr   = document.getElementById('cmpPrevStart').value;
+  const excBreak  = parseFloat(document.getElementById('cmpExcBreak').value) || 0;
+
+  if (!targetStr || !curStr) return 0;
+
+  const target = new Date(targetStr);
+  const cur    = new Date(curStr);
+  const prev   = prevStr ? new Date(prevStr) : null;
+
+  const startPlus1 = new Date(cur);
+  startPlus1.setDate(startPlus1.getDate() - 1);
+  const curDiff    = dateDiff(startPlus1, target);
+  const curMonths  = curDiff.months;
+  const curDays    = curDiff.days;
+
+  let prevRawMonths = 0, prevRawDays = 0;
+  if (prev && prev < cur) {
+    const prevDiff  = dateDiff(prev, cur);
+    prevRawMonths   = prevDiff.months;
+    prevRawDays     = prevDiff.days;
+  }
+
+  const cmpPrevW60Months = Math.floor(prevRawMonths * 0.6);
+  const cmpPrevW60Days   = Math.round((prevRawMonths * 0.6 - cmpPrevW60Months) * 30 + prevRawDays * 0.6);
+
+  const totalRawDays = curDays + cmpPrevW60Days;
+  const dayRoundUp   = totalRawDays >= 15 ? 1 : 0;
+  const weightedMonths = curMonths + cmpPrevW60Months + dayRoundUp;
+  const totalMonths  = Math.max(0, Math.round((weightedMonths - excBreak) * 100) / 100);
+  const score = calcCareerScore(totalMonths, grade);
+
+  const { base, rate, excessRate } = getGradeParams(grade);
+  let formula = '';
+  if (totalMonths <= 0) {
+    formula = '0점';
+  } else if (totalMonths <= base) {
+    formula = `${totalMonths}개월 × ${rate} = <b>${score}점</b>`;
+  } else {
+    const excess    = Math.round((totalMonths - base) * 100) / 100;
+    const basePart  = Math.round(base * rate * 100) / 100;
+    const excPart   = Math.round(excess * excessRate * 100) / 100;
+    formula = `${base}개월 × ${rate} + ${excess}개월 × ${excessRate} = ${basePart} + ${excPart} = <b>${score}점</b>`;
+  }
+
+  const box = document.getElementById('cmpCareerBox');
+  box.innerHTML = `
+    🔹 <b>현 직급 경력:</b> ${curMonths}개월 ${curDays}일 (+1일 포함)<br>
+    ${(prevRawMonths || prevRawDays) ? `🔸 <b>직전급수 경력:</b> ${prevRawMonths}개월 ${prevRawDays}일 × 60% = ${cmpPrevW60Months}개월 ${cmpPrevW60Days}일<br>` : ''}
+    📅 <b>잔여일 처리:</b> 현직급 ${curDays}일 + 직전급수(60%) ${cmpPrevW60Days}일 = 합산 ${totalRawDays}일 → ${dayRoundUp ? '15일 이상으로 1개월 올림' : '15일 미만으로 버림'}<br>
+    ${excBreak ? `➖ <b>미합산 휴직:</b> ${excBreak}개월<br>` : ''}
+    🎯 <b>최종 인정 경력:</b> <b>${totalMonths}개월</b> &nbsp;→&nbsp; ${formula}
+  `;
+  box.style.display = 'block';
+  return score;
+}
+
+function onCmpCareerInput() {
+  getCmpCareerScore();
+}
+
+function runCompare() {
+  const grade = parseInt(document.getElementById('grade').value);
+  const n = getGradeSemesters(grade);
+  let cmpPerfSum = 0;
+
+  for (let i = 0; i < n; i++) {
+    cmpPerfSum += getCmpPerfScore(i);
+  }
+
+  const mine = getCurrentScores();
+  const cmpPerfAvg = Math.round(cmpPerfSum / n * 100) / 100;
+  const cmpCareer  = getCmpCareerScore();
+  const cmpPlus    = Math.min(parseFloat(document.getElementById('cmpPlus').value) || 0, MAX_PLUS_SCORE);
+  const cmpTotal   = Math.round((cmpPerfAvg + cmpCareer + cmpPlus) * 100) / 100;
+  const diff       = Math.round((mine.total - cmpTotal) * 100) / 100;
+  const diffText   = formatDiff(diff);
+
+  // 나 - 다음 반기 예상
+  const su1  = getScoreForLabel('수1');
+  const woo1 = getScoreForLabel('우1');
+  const nextCareerScore = (() => {
+    if (mine.careerScore >= MAX_CAREER_SCORE) return MAX_CAREER_SCORE;
+    const data = getCareerData();
+    if (!data || data.error) return calcCareerScore(mine.careerMonths + 6, grade);
+    // 현직급 경력에 6개월 추가, 나머지 로직 동일
+    const curMonths6    = data.curMonths + 6;
+    const prevW60Months = Math.floor(data.prevRawMonths * 0.6);
+    const prevW60Days   = Math.round((data.prevRawMonths * 0.6 - prevW60Months) * 30 + data.prevRawDays * 0.6);
+    const totalRawDays  = data.curDays + prevW60Days;
+    const dayRoundUp    = totalRawDays >= 15 ? 1 : 0;
+    const weighted      = curMonths6 + prevW60Months + dayRoundUp;
+    const total         = Math.max(0, Math.round((weighted - data.excBreak) * 100) / 100);
+    return Math.min(calcCareerScore(total, grade), MAX_CAREER_SCORE);
+  })();
+  const careerGain = Math.round((nextCareerScore - mine.careerScore) * 100) / 100;
+  const nextSu  = makeProjectedTotal(mine.perfScores, su1,  'next', nextCareerScore, mine.plusScore);
+  const nextWoo = makeProjectedTotal(mine.perfScores, woo1, 'next', nextCareerScore, mine.plusScore);
+
+  // 비교 대상 - 다음 반기 예상 (경력 6개월 추가, 근평은 이번 반기와 동일 가정)
+  const cmpNextCareer = (() => {
+    const curStr    = document.getElementById('cmpCurStart').value;
+    const prevStr   = document.getElementById('cmpPrevStart').value;
+    const excBreak  = parseFloat(document.getElementById('cmpExcBreak').value) || 0;
+    const targetStr = document.getElementById('targetDate').value;
+    if (!curStr || !targetStr) return 0;
+
+    const cur    = new Date(curStr);
+    const prev   = prevStr ? new Date(prevStr) : null;
+    const target = new Date(targetStr);
+
+    // +1일 적용
+    const startPlus1 = new Date(cur);
+    startPlus1.setDate(startPlus1.getDate() - 1);
+    const curDiff   = dateDiff(startPlus1, target);
+    const curMonths = curDiff.months + 6; // 6개월 후
+    const curDays   = curDiff.days;
+
+    let prevRawMonths = 0, prevRawDays = 0;
+    if (prev && prev < cur) {
+      const prevDiff  = dateDiff(prev, cur);
+      prevRawMonths   = prevDiff.months;
+      prevRawDays     = prevDiff.days;
+    }
+
+    // 직전급수 60% → 개월+일 분리
+    const prevW60Months = Math.floor(prevRawMonths * 0.6);
+    const prevW60Days   = Math.round((prevRawMonths * 0.6 - prevW60Months) * 30 + prevRawDays * 0.6);
+
+    // 잔여일 합산 15일 이상 올림
+    const totalRawDays  = curDays + prevW60Days;
+    const dayRoundUp    = totalRawDays >= 15 ? 1 : 0;
+    const weightedMonths = curMonths + prevW60Months + dayRoundUp;
+    const totalMonths   = Math.max(0, Math.round((weightedMonths - excBreak) * 100) / 100);
+    return Math.min(calcCareerScore(totalMonths, grade), MAX_CAREER_SCORE);
+  })();
+  const cmpCareerNextGain = Math.round((cmpNextCareer - cmpCareer) * 100) / 100;
+  const cmpNextTotal = Math.round((cmpPerfAvg + cmpNextCareer + cmpPlus) * 100) / 100;
+
+  const result = document.getElementById('cmpResult');
+  result.innerHTML = `
+    <div style="background:var(--paper); border:1px solid var(--border); border-radius:8px; padding:14px; line-height:1.9; font-size:.86rem;">
+      <b>내 점수</b>: 근평 ${mine.perfAvg} + 경력 ${mine.careerScore} + 가점 ${mine.plusScore} = <b>${mine.total}점</b><br>
+      <b>비교 대상</b>: 근평 ${cmpPerfAvg} + 경력 ${cmpCareer} + 가점 ${cmpPlus} = <b>${cmpTotal}점</b><br>
+      <span style="color:${diff >= 0 ? 'var(--green)' : 'var(--red)'}; font-weight:700;">결과: ${diffText}</span>
+      <div style="margin-top:12px; padding-top:12px; border-top:1px solid var(--border);">
+        <b>다음 반기 예상</b>
+        <span style="color:var(--muted); font-size:.78rem;">
+          ※ 비교 대상의 근무평정점수는 이번 반기와 동일하다는 가정
+        </span><br>
+        <span style="color:var(--muted); font-size:.78rem;">
+          나: 경력평정 ${nextCareerScore}점 반영${careerGain > 0 ? ` (+${careerGain}점)` : ''} &nbsp;|&nbsp;
+          비교 대상: 경력평정 ${cmpNextCareer}점 반영${cmpCareerNextGain > 0 ? ` (+${cmpCareerNextGain}점)` : ''}
+        </span><br>
+        내가 <b>수1(${su1}점)</b>을 받으면 총 ${nextSu.total}점, 비교 대상(${cmpNextTotal}점) 대비 <b>${formatDiff(nextSu.total - cmpNextTotal)}</b><br>
+        내가 <b>우1(${woo1}점)</b>을 받으면 총 ${nextWoo.total}점, 비교 대상(${cmpNextTotal}점) 대비 <b>${formatDiff(nextWoo.total - cmpNextTotal)}</b>
+      </div>
+    </div>`;
+  result.style.display = 'block';
+}
+
+// ────────────────────────────────────────
+// 유틸
+// ────────────────────────────────────────
+function setBar(id, ratio) {
+  document.getElementById(id).style.width = `${Math.min(ratio * 100, 100).toFixed(1)}%`;
+}
+
+// ────────────────────────────────────────
+// 광역 변경 시 기초 지자체 드롭다운 show/hide
+// ────────────────────────────────────────
+function onRegionChange() {
+  const region        = document.getElementById('region').value;
+  const districtField = document.getElementById('districtField');
+  const districtSel   = document.getElementById('district');
+  const infoEl        = document.getElementById('districtInfo');
+
+  // 모든 광역에서 기초 지자체 드롭다운 표시
+  districtField.style.display = '';
+
+  // 해당 광역의 optgroup만 표시, 나머지 숨김
+  const optgroups = districtSel.querySelectorAll('optgroup');
+  optgroups.forEach(og => {
+    const show = og.dataset.region === region;
+    og.style.display = show ? '' : 'none';
+    // 각 option도 동기화
+    og.querySelectorAll('option').forEach(opt => {
+      opt.disabled = !show;
+      opt.hidden   = !show;
+    });
+  });
+
+  // 현재 선택된 옵션이 이 광역 소속이 아니면 해당 광역 첫 옵션으로 초기화
+  const selOpt = districtSel.options[districtSel.selectedIndex];
+  if (selOpt && selOpt.dataset.region !== region) {
+    const firstValid = districtSel.querySelector(`option[data-region="${region}"]`);
+    if (firstValid) districtSel.value = firstValid.value;
+  }
+
+  infoEl.textContent = '';
+  infoEl.classList.remove('show');
+
+  onGradeChange();
+}
+
+// 지자체 선택에 따라 안내 문구 업데이트
+function updateDistrictInfo() {
+  const infoEl = document.getElementById('districtInfo');
+  if (!infoEl) return;
+  infoEl.textContent = '';
+  infoEl.classList.remove('show');
+}
+
+// ────────────────────────────────────────
+// 초기화
+// ────────────────────────────────────────
+// ── 날짜 자동 포맷 (YYYY-MM-DD) ──
+function formatDateInput(el, e) {
+  // 백스페이스/Delete는 그냥 통과 (브라우저 기본 동작)
+  if (e && (e.inputType === 'deleteContentBackward' || e.inputType === 'deleteContentForward')) {
+    // 하이픈 바로 뒤에서 백스페이스 시 하이픈도 같이 제거
+    if (e.inputType === 'deleteContentBackward') {
+      const v = el.value;
+      if (v.endsWith('-')) el.value = v.slice(0, -1);
+    }
+    if (typeof recalcCareer === 'function') recalcCareer();
+    return;
+  }
+
+  const cursor = el.selectionStart;
+  let v = el.value.replace(/[^0-9]/g, '');
+  if (v.length > 8) v = v.slice(0, 8);
+
+  let result = '';
+  if      (v.length === 0) result = '';
+  else if (v.length <= 4)  result = v;
+  else if (v.length <= 6)  result = v.slice(0,4) + '-' + v.slice(4);
+  else                     result = v.slice(0,4) + '-' + v.slice(4,6) + '-' + v.slice(6);
+
+  el.value = result;
+
+  // 하이픈 추가된 경우 커서 끝으로
+  if (result.length === 5 || result.length === 8) {
+    el.setSelectionRange(result.length, result.length);
+  }
+
+  // 입력 완료(10자)되면 트리거
+  if (result.length === 10) {
+    const ev = new Event('change');
+    el.dispatchEvent(ev);
+    if (typeof recalcCareer === 'function') recalcCareer();
+    if (typeof onCmpCareerInput === 'function' &&
+        (el.id === 'cmpCurStart' || el.id === 'cmpPrevStart')) {
+      onCmpCareerInput();
+    }
+  } else {
+    if (typeof recalcCareer === 'function') recalcCareer();
+  }
+}
+
+// ────────────────────────────────────────
+// 달력 피커
+// ────────────────────────────────────────
+  (function() {
+    // 평정 점수 계산기에 사용되는 날짜 입력 ID 목록
+    const dateIds = ['startDate', 'targetDate', 'prevGradeDate', 'cmpCurStart', 'cmpPrevStart'];
+    
+    dateIds.forEach(id => {
+      const inp = document.getElementById(id);
+      if (!inp) return;
+      
+      const wrap = inp.closest('.date-input-wrap');
+      if (!wrap) return;
+      
+      // 달력 팝업 요소가 없다면 자동 생성, 있으면 가져오기
+      let popup = document.getElementById('cal-' + id);
+      if (!popup) {
+        popup = document.createElement('div');
+        popup.id = 'cal-' + id;
+        popup.className = 'cal-popup';
+        wrap.appendChild(popup);
+      }
+      
+      let today = new Date();
+      let currentYear = today.getFullYear();
+      let currentMonth = today.getMonth();
+      
+      // 달력 아이콘 또는 입력창 클릭 시 열기/닫기
+      const btn = wrap.querySelector('.cal-btn') || wrap.querySelector('button') || inp;
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        
+        // 다른 열려있는 달력은 모두 닫기
+        document.querySelectorAll('.cal-popup.open').forEach(p => {
+          if(p.id !== 'cal-' + id) p.classList.remove('open');
+        });
+        
+        // 기존에 입력된 날짜가 있다면 그 날짜를 기준으로 달력 초기화
+        if (inp.value) {
+          const parts = inp.value.split('-');
+          if (parts.length === 3) {
+            currentYear = parseInt(parts[0]);
+            currentMonth = parseInt(parts[1]) - 1;
+          }
+        }
+        
+        popup.classList.toggle('open');
+        if (popup.classList.contains('open')) {
+          renderCal(id, popup, currentYear, currentMonth);
+        }
+      });
+    });
+
+    // 달력을 동적으로 그려주는 핵심 함수 (연/월 드롭다운 포함)
+    function renderCal(id, popup, y, m) {
+      popup.innerHTML = '';
+      
+      // 1. 헤더 영역 (이전 버튼 + 연/월 드롭다운 + 다음 버튼)
+      const header = document.createElement('div');
+      header.className = 'cal-header';
+      
+      const prevBtn = document.createElement('button');
+      prevBtn.innerText = '◀';
+      prevBtn.type = 'button';
+      prevBtn.onclick = (e) => {
+        e.stopPropagation();
+        m--;
+        if (m < 0) { m = 11; y--; }
+        renderCal(id, popup, y, m);
+      };
+      
+      const selectWrap = document.createElement('div');
+      selectWrap.className = 'cal-select-wrap';
+      
+      // 연도 선택 드롭다운 (1980년 ~ 2050년까지 광범위하게 선택 가능)
+      const yearSelect = document.createElement('select');
+      yearSelect.className = 'cal-year-select';
+      for (let i = 1980; i <= 2050; i++) {
+        const opt = document.createElement('option');
+        opt.value = i;
+        opt.innerText = i + '년';
+        if (i === y) opt.selected = true;
+        yearSelect.appendChild(opt);
+      }
+      yearSelect.onchange = (e) => {
+        y = parseInt(e.target.value);
+        renderCal(id, popup, y, m);
+      };
+      
+      // 월 선택 드롭다운 (1월 ~ 12월)
+      const monthSelect = document.createElement('select');
+      monthSelect.className = 'cal-month-select';
+      for (let i = 0; i < 12; i++) {
+        const opt = document.createElement('option');
+        opt.value = i;
+        opt.innerText = (i + 1) + '월';
+        if (i === m) opt.selected = true;
+        monthSelect.appendChild(opt);
+      }
+      monthSelect.onchange = (e) => {
+        m = parseInt(e.target.value);
+        renderCal(id, popup, y, m);
+      };
+      
+      selectWrap.appendChild(yearSelect);
+      selectWrap.appendChild(monthSelect);
+      
+      const nextBtn = document.createElement('button');
+      nextBtn.innerText = '▶';
+      nextBtn.type = 'button';
+      nextBtn.onclick = (e) => {
+        e.stopPropagation();
+        m++;
+        if (m > 11) { m = 0; y++; }
+        renderCal(id, popup, y, m);
+      };
+      
+      header.appendChild(prevBtn);
+      header.appendChild(selectWrap);
+      header.appendChild(nextBtn);
+      popup.appendChild(header);
+      
+      // 2. 요일 행 생성
+      const weeks = ['일', '월', '화', '수', '목', '금', '토'];
+      const weekGrid = document.createElement('div');
+      weekGrid.className = 'cal-weeks';
+      weeks.forEach(w => {
+        const d = document.createElement('div');
+        d.innerText = w;
+        weekGrid.appendChild(d);
+      });
+      popup.appendChild(weekGrid);
+      
+      // 3. 날짜 그리드 생성
+      const daysGrid = document.createElement('div');
+      daysGrid.className = 'cal-days';
+      
+      const firstDay = new Date(y, m, 1).getDay();
+      const lastDate = new Date(y, m + 1, 0).getDate();
+      
+      // 1일 시작 전 공백 채우기
+      for (let i = 0; i < firstDay; i++) {
+        const blank = document.createElement('div');
+        daysGrid.appendChild(blank);
+      }
+      
+      // 일자 채우기 및 이벤트 설정
+      for (let d = 1; d <= lastDate; d++) {
+        const dayCell = document.createElement('div');
+        dayCell.className = 'cal-day-cell';
+        dayCell.innerText = d;
+        
+        // 오늘 날짜 하이라이트
+        const today = new Date();
+        if (today.getFullYear() === y && today.getMonth() === m && today.getDate() === d) {
+          dayCell.classList.add('today');
+        }
+        
+        // 현재 입력창에 선택되어 있는 날짜 하이라이트
+        const inp = document.getElementById(id);
+        if (inp && inp.value) {
+          const parts = inp.value.split('-');
+          if (parseInt(parts[0]) === y && parseInt(parts[1]) === (m + 1) && parseInt(parts[2]) === d) {
+            dayCell.classList.add('selected');
+          }
+        }
+        
+        // 날짜 클릭 시 입력창에 반영하고 계산기 트리거
+        dayCell.onclick = (e) => {
+          e.stopPropagation();
+          selectDate(id, y, m + 1, d);
+        };
+        daysGrid.appendChild(dayCell);
+      }
+      popup.appendChild(daysGrid);
+    }
+
+    // 날짜 최종 선택 처리 함수
+    function selectDate(id, y, m, d) {
+      const mm = String(m).padStart(2, '0');
+      const dd = String(d).padStart(2, '0');
+      const val = `${y}-${mm}-${dd}`;
+      const inp = document.getElementById(id);
+      if (!inp) return;
+      
+      inp.value = val;
+      
+      // 기존 평정 계산 로직(Event 및 연동 함수) 정상 호출
+      inp.dispatchEvent(new Event('change'));
+      if (typeof recalcCareer === 'function') recalcCareer();
+      if (typeof onCmpCareerInput === 'function' && (id === 'cmpCurStart' || id === 'cmpPrevStart')) {
+        onCmpCareerInput();
+      }
+      
+      // 달력 닫기
+      const pop = document.getElementById('cal-' + id);
+      if(pop) pop.classList.remove('open');
+    }
+
+    // 달력 외부 영역 클릭 시 닫히는 이벤트
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.date-input-wrap')) {
+        document.querySelectorAll('.cal-popup.open').forEach(p => p.classList.remove('open'));
+      }
+    });
+  })();
+window.addEventListener('DOMContentLoaded', () => {
+  // 이벤트 바인딩
+  document.getElementById('region').addEventListener('change', onRegionChange);
+  document.getElementById('district').addEventListener('change', onGradeChange);
+  document.getElementById('series').addEventListener('change', onGradeChange);
+  document.getElementById('excludeBreak').addEventListener('input', recalcCareer);
+  document.getElementById('targetDate').addEventListener('change', recalcCareer);
+  document.getElementById('startDate').addEventListener('change', recalcCareer);
+  document.getElementById('prevGradeDate').addEventListener('change', recalcCareer);
+  document.getElementById('plusScore').addEventListener('input', onPlusInput);
+
+  onRegionChange();
+  recalcCareer();
+  onPlusInput();
+});
+</script>
+</body>
+</html>

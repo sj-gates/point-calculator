@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>공무원 승진 가점 종류와 획득 전략 — 자격증·어학·포상 가점 총정리</title>
+<meta name="description" content="공무원 승진후보자명부에 반영되는 가점의 종류, 자격증 가점, 어학 가점, 포상 가점을 총정리합니다. 최대 5점의 가점을 어떻게 채울 수 있는지 전략도 함께 설명합니다.">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="공무원 평정점수 계산기">
+<meta property="og:title" content="공무원 승진 가점 종류와 획득 전략 총정리">
+<meta property="og:description" content="자격증·어학·포상 가점 종류와 최대 5점 채우는 전략을 정리했습니다.">
+<meta property="og:url" content="https://여기에_실제URL.com/bonus-points-guide.html">
+<meta property="og:locale" content="ko_KR">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0f2340;--gold:#c8a84b;--gold-lt:#f0dfa0;--cream:#faf8f3;--paper:#f2ede3;--ink:#1a1a2e;--muted:#6b6b7a;--border:#d8d0be;--card-shadow:0 2px 20px rgba(15,35,64,.10);}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Serif KR',serif;background:var(--cream);color:var(--ink);min-height:100vh;}
+  header{background:var(--navy);padding:36px 24px 28px;text-align:center;position:relative;overflow:hidden;}
+  header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 24px,rgba(200,168,75,.06) 24px,rgba(200,168,75,.06) 25px);}
+  header h1{font-size:clamp(1.1rem,4vw,1.6rem);font-weight:700;color:#fff;letter-spacing:-.02em;position:relative;}
+  header h1 span{color:var(--gold);}
+  header p{margin-top:8px;font-size:.78rem;color:rgba(255,255,255,.55);position:relative;}
+  .gold-line{width:48px;height:2px;background:var(--gold);margin:14px auto 0;position:relative;}
+  nav.breadcrumb{max-width:760px;margin:16px auto 0;padding:0 20px;font-size:.76rem;color:var(--muted);}
+  nav.breadcrumb a{color:var(--gold);text-decoration:none;}
+  main{max-width:760px;margin:0 auto;padding:24px 20px 60px;}
+  .article-hero{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 24px 22px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .article-hero .tag{display:inline-block;background:var(--navy);color:var(--gold);font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:99px;letter-spacing:.05em;margin-bottom:12px;}
+  .article-hero h2{font-size:clamp(1.1rem,3.5vw,1.45rem);font-weight:700;color:var(--navy);line-height:1.45;margin-bottom:10px;}
+  .article-hero .meta{font-size:.74rem;color:var(--muted);}
+  .card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .card h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  .card h3 .num{background:var(--navy);color:var(--gold);font-family:'DM Mono',monospace;font-size:.72rem;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .card p{font-size:.88rem;line-height:1.9;color:var(--ink);margin-bottom:10px;}
+  .card p:last-child{margin-bottom:0;}
+  .hint{font-size:.78rem;color:var(--muted);padding:10px 14px;background:var(--paper);border-left:3px solid var(--gold);border-radius:0 5px 5px 0;margin:12px 0;}
+  table{width:100%;border-collapse:collapse;font-size:.82rem;margin:14px 0;}
+  thead tr{background:var(--navy);color:#fff;}
+  thead th{padding:9px 12px;text-align:left;}
+  tbody tr:nth-child(odd){background:#fff;}
+  tbody tr:nth-child(even){background:var(--paper);}
+  tbody td{padding:9px 12px;border-bottom:1px solid var(--border);}
+  .td-c{text-align:center;}
+  .td-bold{font-weight:700;color:var(--navy);}
+  .point-badge{display:inline-block;background:var(--navy);color:var(--gold);font-family:'DM Mono',monospace;font-size:.82rem;font-weight:700;padding:2px 10px;border-radius:5px;}
+  .strategy-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;}
+  .strategy-item{background:var(--paper);border:1px solid var(--border);border-radius:8px;padding:14px;}
+  .strategy-item .s-label{font-size:.72rem;color:var(--muted);margin-bottom:4px;}
+  .strategy-item .s-title{font-size:.88rem;font-weight:700;color:var(--navy);margin-bottom:6px;}
+  .strategy-item .s-desc{font-size:.78rem;color:var(--muted);line-height:1.7;}
+  .affiliate{font-size:.78rem;color:var(--muted);margin-top:8px;padding:10px 14px;background:#f0f8ff;border-radius:6px;border:1px solid #cce4f7;}
+  .affiliate a{color:#1565c0;font-weight:700;text-decoration:none;}
+  .affiliate .ad-tag{color:#aaa;font-size:.68rem;}
+  .cta-box{background:var(--navy);border-radius:10px;padding:22px 24px;text-align:center;margin-top:28px;}
+  .cta-box p{color:rgba(255,255,255,.75);font-size:.85rem;margin-bottom:14px;}
+  .cta-btn{display:inline-block;background:var(--gold);color:var(--navy);font-weight:700;font-family:'Noto Serif KR',serif;padding:12px 28px;border-radius:7px;text-decoration:none;font-size:.92rem;transition:opacity .2s;}
+  .cta-btn:hover{opacity:.85;}
+  .ad-slot{background:var(--paper);border:1px dashed var(--border);border-radius:6px;text-align:center;padding:14px;font-size:.75rem;color:var(--muted);margin:20px 0;}
+  .ad-slot strong{display:block;margin-bottom:4px;color:var(--navy);}
+  footer{text-align:center;padding:24px;font-size:.72rem;color:var(--muted);border-top:1px solid var(--border);}
+  @media(max-width:540px){.card{padding:20px 16px;}.article-hero{padding:20px 16px 16px;}.strategy-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>공무원 <span>평정점수</span> 계산기</h1>
+  <p>서울시·경기·인천 승진 평정점수 자동 산출</p>
+  <div class="gold-line"></div>
+</header>
+
+<nav class="breadcrumb">
+  <a href="index.html">홈</a> &rsaquo; 승진 가점 종류와 획득 전략
+</nav>
+
+<main>
+
+  <div class="ad-slot"><strong>광고 (AD)</strong>📢 상단 광고 구좌</div>
+
+  <div class="article-hero">
+    <span class="tag">가점 전략</span>
+    <h2>공무원 승진 가점 종류와 획득 전략<br>— 자격증·어학·포상 가점 총정리</h2>
+    <p class="meta">최종 업데이트 2025년 · 서울시 인사규칙 기준</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">1</span> 가점이란? 최대 5점의 기회</h3>
+    <p>가점은 평정점수에서 최대 <strong>5점</strong>을 추가로 얻을 수 있는 항목입니다. 근무성적평정(70점)·경력평정(30점)과 달리 <strong>노력으로 직접 높일 수 있는</strong> 유일한 영역이기 때문에, 승진을 앞둔 공무원이라면 반드시 챙겨야 합니다.</p>
+    <p>가점의 종류는 기관마다 다르지만, 대부분 자격증·어학·포상·특수지 근무·실적의 5가지 항목으로 구성됩니다.</p>
+    <div class="hint">💡 경쟁자보다 가점이 1점 높으면 근무성적평정 기준으로 약 0.14점의 등급 차이를 만회하는 효과가 있습니다.</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">2</span> 자격증 가점 (서울시 기준)</h3>
+    <p>직무와 관련된 자격증을 보유하면 가점을 받을 수 있습니다. 자격증의 수준(해당 계급 인정 vs 하위 계급 인정)에 따라 점수가 다릅니다.</p>
+    <table>
+      <thead><tr><th>구분</th><th class="td-c">서울시</th><th class="td-c">경기도</th><th class="td-c">인천시</th></tr></thead>
+      <tbody>
+        <tr><td>해당 계급 이상 인정 자격증</td><td class="td-c"><span class="point-badge">0.24점</span></td><td class="td-c"><span class="point-badge">0.5점</span></td><td class="td-c"><span class="point-badge">0.5점</span></td></tr>
+        <tr><td>바로 하위 계급 인정 자격증</td><td class="td-c"><span class="point-badge">0.12점</span></td><td class="td-c"><span class="point-badge">0.25점</span></td><td class="td-c">—</td></tr>
+      </tbody>
+    </table>
+    <div class="hint">※ 인정 자격증 목록은 각 기관 인사규칙 별표에서 확인하세요. 동일 직렬 내에서 가장 높은 등급 1개만 인정됩니다.</div>
+    <div class="affiliate">
+      💡 직무관련 자격증 준비 중이신가요?
+      <a href="https://coupa.ng/여기에_파트너스_링크" target="_blank" rel="noopener">추천 자격증 교재 보기</a>
+      <span class="ad-tag">(광고/제휴마케팅)</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">3</span> 어학 가점</h3>
+    <p>공인 외국어 성적 보유자에게 부여되는 가점입니다. 서울시 기준 최대 0.12점이며, 성적 구간별로 점수가 다릅니다.</p>
+    <table>
+      <thead><tr><th>구분</th><th class="td-c">TOEIC</th><th class="td-c">가점</th></tr></thead>
+      <tbody>
+        <tr><td>1급</td><td class="td-c">900점 이상</td><td class="td-c td-bold">0.12점</td></tr>
+        <tr><td>2급</td><td class="td-c">800점 이상 ~ 900점 미만</td><td class="td-c td-bold">0.05점</td></tr>
+      </tbody>
+    </table>
+    <div class="hint">※ TOEIC 외 TOEFL·OPIc·JPT 등도 인정됩니다. 자세한 기준은 소속 기관 인사규칙을 확인하세요.</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">4</span> 포상 가점</h3>
+    <p>국가·지자체로부터 포상(훈장·포장·표창)을 받으면 가점이 부여됩니다. 포상의 수여기관과 등급에 따라 점수가 다르며, 중복 적용에 제한이 있습니다.</p>
+    <table>
+      <thead><tr><th>포상 종류</th><th class="td-c">가점 (예시)</th></tr></thead>
+      <tbody>
+        <tr><td>대통령 표창 이상</td><td class="td-c td-bold">1.0점</td></tr>
+        <tr><td>국무총리 표창</td><td class="td-c td-bold">0.75점</td></tr>
+        <tr><td>장관·광역단체장 표창</td><td class="td-c td-bold">0.5점</td></tr>
+        <tr><td>기초단체장 표창</td><td class="td-c td-bold">0.25점</td></tr>
+      </tbody>
+    </table>
+    <div class="hint">⚠️ 포상 가점은 기관별로 차이가 크므로 소속 기관 인사규칙의 별표를 반드시 확인하세요.</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">5</span> 가점 극대화 전략</h3>
+    <p>승진을 앞두고 있다면 아래 순서로 가점 항목을 점검해보세요.</p>
+    <div class="strategy-grid">
+      <div class="strategy-item">
+        <div class="s-label">우선순위 ①</div>
+        <div class="s-title">직무 자격증 취득</div>
+        <div class="s-desc">직렬 관련 국가기술자격증 중 해당 계급 인정 자격증을 먼저 확인하고 취득하세요.</div>
+      </div>
+      <div class="strategy-item">
+        <div class="s-label">우선순위 ②</div>
+        <div class="s-title">어학 성적 유지</div>
+        <div class="s-desc">TOEIC 900점 이상이면 최고 등급. 유효기간(2년) 내에 재취득 필요합니다.</div>
+      </div>
+      <div class="strategy-item">
+        <div class="s-label">우선순위 ③</div>
+        <div class="s-title">포상 기회 챙기기</div>
+        <div class="s-desc">부서 표창 추천 기회가 있을 때 적극 활용하세요. 기초단체장 표창도 0.25점입니다.</div>
+      </div>
+      <div class="strategy-item">
+        <div class="s-label">우선순위 ④</div>
+        <div class="s-title">특수지 근무 고려</div>
+        <div class="s-desc">기피 부서·특수지 근무 경력이 있으면 가점이 부여됩니다. 인사규칙 별표 확인 필수.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ad-slot"><strong>광고 (AD)</strong>📢 본문 하단 광고 구좌</div>
+
+  <div class="cta-box">
+    <p>자격증·어학 가점을 반영한 내 최종 평정점수가 얼마인지 계산해보세요.</p>
+    <a class="cta-btn" href="index.html">🏆 가점 포함 평정점수 계산하기</a>
+  </div>
+
+</main>
+
+<footer>
+  본 콘텐츠는 참고용이며 실제 평정 결과는 소속 기관 인사담당자에게 확인하시기 바랍니다.<br>
+  문의: <a href="mailto:여기에_이메일@gmail.com" style="color:var(--gold);">여기에_이메일@gmail.com</a>
+  &nbsp;|&nbsp;
+  <a href="privacy.html" style="color:var(--muted);">개인정보처리방침</a>
+</footer>
+
+</body>
+</html>

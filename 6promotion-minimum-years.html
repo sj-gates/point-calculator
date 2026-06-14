@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>공무원 직급별 승진소요 최저연수 총정리 — 9급부터 5급까지</title>
+<meta name="description" content="9급, 8급, 7급, 6급 공무원이 승진하기 위한 최저 재직 기간을 직렬별로 정리했습니다. 승진소요연수를 채우지 못하면 명부에 올라가지 않으니 꼭 확인하세요.">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="공무원 평정점수 계산기">
+<meta property="og:title" content="공무원 직급별 승진소요 최저연수 총정리">
+<meta property="og:description" content="9급부터 5급까지 승진에 필요한 최저 재직 기간을 직렬별로 정리했습니다.">
+<meta property="og:url" content="https://여기에_실제URL.com/promotion-minimum-years.html">
+<meta property="og:locale" content="ko_KR">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0f2340;--gold:#c8a84b;--gold-lt:#f0dfa0;--cream:#faf8f3;--paper:#f2ede3;--ink:#1a1a2e;--muted:#6b6b7a;--border:#d8d0be;--card-shadow:0 2px 20px rgba(15,35,64,.10);}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Serif KR',serif;background:var(--cream);color:var(--ink);min-height:100vh;}
+  header{background:var(--navy);padding:36px 24px 28px;text-align:center;position:relative;overflow:hidden;}
+  header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 24px,rgba(200,168,75,.06) 24px,rgba(200,168,75,.06) 25px);}
+  header h1{font-size:clamp(1.1rem,4vw,1.6rem);font-weight:700;color:#fff;letter-spacing:-.02em;position:relative;}
+  header h1 span{color:var(--gold);}
+  header p{margin-top:8px;font-size:.78rem;color:rgba(255,255,255,.55);position:relative;}
+  .gold-line{width:48px;height:2px;background:var(--gold);margin:14px auto 0;position:relative;}
+  nav.breadcrumb{max-width:760px;margin:16px auto 0;padding:0 20px;font-size:.76rem;color:var(--muted);}
+  nav.breadcrumb a{color:var(--gold);text-decoration:none;}
+  main{max-width:760px;margin:0 auto;padding:24px 20px 60px;}
+  .article-hero{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 24px 22px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .article-hero .tag{display:inline-block;background:var(--navy);color:var(--gold);font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:99px;letter-spacing:.05em;margin-bottom:12px;}
+  .article-hero h2{font-size:clamp(1.1rem,3.5vw,1.45rem);font-weight:700;color:var(--navy);line-height:1.45;margin-bottom:10px;}
+  .article-hero .meta{font-size:.74rem;color:var(--muted);}
+  .card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .card h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  .card h3 .num{background:var(--navy);color:var(--gold);font-family:'DM Mono',monospace;font-size:.72rem;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .card p{font-size:.88rem;line-height:1.9;color:var(--ink);margin-bottom:10px;}
+  .card p:last-child{margin-bottom:0;}
+  .hint{font-size:.78rem;color:var(--muted);padding:10px 14px;background:var(--paper);border-left:3px solid var(--gold);border-radius:0 5px 5px 0;margin:12px 0;}
+  table{width:100%;border-collapse:collapse;font-size:.82rem;margin:14px 0;}
+  thead tr{background:var(--navy);color:#fff;}
+  thead th{padding:9px 12px;text-align:left;}
+  tbody tr:nth-child(odd){background:#fff;}
+  tbody tr:nth-child(even){background:var(--paper);}
+  tbody td{padding:9px 12px;border-bottom:1px solid var(--border);}
+  .td-c{text-align:center;}
+  .td-bold{font-weight:700;color:var(--navy);}
+  .badge{display:inline-block;padding:2px 9px;border-radius:99px;font-size:.72rem;font-weight:700;}
+  .badge-green{background:#d4edda;color:#1a6b45;}
+  .badge-warn{background:#fff3cd;color:#856404;}
+  .cta-box{background:var(--navy);border-radius:10px;padding:22px 24px;text-align:center;margin-top:28px;}
+  .cta-box p{color:rgba(255,255,255,.75);font-size:.85rem;margin-bottom:14px;}
+  .cta-btn{display:inline-block;background:var(--gold);color:var(--navy);font-weight:700;font-family:'Noto Serif KR',serif;padding:12px 28px;border-radius:7px;text-decoration:none;font-size:.92rem;transition:opacity .2s;}
+  .cta-btn:hover{opacity:.85;}
+  .ad-slot{background:var(--paper);border:1px dashed var(--border);border-radius:6px;text-align:center;padding:14px;font-size:.75rem;color:var(--muted);margin:20px 0;}
+  .ad-slot strong{display:block;margin-bottom:4px;color:var(--navy);}
+  footer{text-align:center;padding:24px;font-size:.72rem;color:var(--muted);border-top:1px solid var(--border);}
+  @media(max-width:540px){.card{padding:20px 16px;}.article-hero{padding:20px 16px 16px;}}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>공무원 <span>평정점수</span> 계산기</h1>
+  <p>서울시·경기·인천 승진 평정점수 자동 산출</p>
+  <div class="gold-line"></div>
+</header>
+
+<nav class="breadcrumb">
+  <a href="index.html">홈</a> &rsaquo; 직급별 승진소요 최저연수 총정리
+</nav>
+
+<main>
+
+  <div class="ad-slot"><strong>광고 (AD)</strong>📢 상단 광고 구좌</div>
+
+  <div class="article-hero">
+    <span class="tag">승진 가이드</span>
+    <h2>공무원 직급별 승진소요 최저연수 총정리<br>— 9급부터 5급까지</h2>
+    <p class="meta">최종 업데이트 2025년 · 지방공무원임용령 기준</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">1</span> 승진소요 최저연수란?</h3>
+    <p>승진소요 최저연수는 상위 직급으로 승진하기 위해 <strong>현 직급에서 반드시 채워야 하는 최소 재직 기간</strong>입니다. 아무리 근무성적이 좋고 경력평정 점수가 높아도, 최저연수를 채우지 못하면 승진후보자명부에 올라갈 수 없습니다.</p>
+    <div class="hint">💡 최저연수는 휴직·직위해제·강등 기간 등을 제외하고 산정합니다. 단순 재직 기간과 다를 수 있습니다.</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">2</span> 일반직 공무원 직급별 최저연수</h3>
+    <p>지방공무원임용령 기준 일반직 공무원의 직급별 승진소요 최저연수는 아래와 같습니다.</p>
+    <table>
+      <thead><tr><th>현재 직급</th><th class="td-c">승진 목표</th><th class="td-c">최저연수</th><th class="td-c">비고</th></tr></thead>
+      <tbody>
+        <tr><td>9급</td><td class="td-c">8급</td><td class="td-c td-bold">1년 6개월</td><td class="td-c"><span class="badge badge-green">비교적 짧음</span></td></tr>
+        <tr><td>8급</td><td class="td-c">7급</td><td class="td-c td-bold">2년</td><td class="td-c"></td></tr>
+        <tr><td>7급</td><td class="td-c">6급</td><td class="td-c td-bold">2년</td><td class="td-c"></td></tr>
+        <tr><td>6급</td><td class="td-c">5급</td><td class="td-c td-bold">3년 6개월</td><td class="td-c"><span class="badge badge-warn">경쟁 치열</span></td></tr>
+        <tr><td>5급</td><td class="td-c">4급</td><td class="td-c td-bold">4년</td><td class="td-c"></td></tr>
+      </tbody>
+    </table>
+    <div class="hint">※ 연구직·지도직·기능직 등은 별도 기준이 적용됩니다. 기관별로 더 긴 연수를 규칙으로 정할 수 있습니다.</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">3</span> 서울시·자치구 추가 기준</h3>
+    <p>서울시 본청과 25개 자치구는 지방공무원임용령 최저연수 외에 <strong>기관별 인사규칙으로 더 긴 연수를 적용</strong>하는 경우가 많습니다. 특히 6급→5급 승진은 경쟁이 치열해 실질적인 대기 기간이 훨씬 길어지는 경우가 일반적입니다.</p>
+    <table>
+      <thead><tr><th>구분</th><th class="td-c">6급→5급 기준</th><th>특이사항</th></tr></thead>
+      <tbody>
+        <tr><td>서울시 본청</td><td class="td-c td-bold">4년 이상</td><td>직렬별 상이</td></tr>
+        <tr><td>자치구 (일반)</td><td class="td-c td-bold">4년~5년</td><td>구별 인사규칙 확인 필요</td></tr>
+      </tbody>
+    </table>
+    <div class="hint">💡 정확한 최저연수는 소속 기관의 인사규칙을 반드시 확인하세요.</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">4</span> 최저연수 산입 제외 기간</h3>
+    <p>아래 기간은 승진소요 최저연수에 산입되지 않습니다.</p>
+    <table>
+      <thead><tr><th>제외 사유</th><th class="td-c">산입 여부</th></tr></thead>
+      <tbody>
+        <tr><td>일반 질병·가사·자기개발 휴직</td><td class="td-c td-bold" style="color:#c0392b;">미산입</td></tr>
+        <tr><td>직위해제 기간</td><td class="td-c td-bold" style="color:#c0392b;">미산입</td></tr>
+        <tr><td>강등·정직 처분 기간</td><td class="td-c td-bold" style="color:#c0392b;">미산입</td></tr>
+        <tr><td>공무상 질병·병역 휴직</td><td class="td-c td-bold" style="color:#1a6b45;">산입</td></tr>
+        <tr><td>육아휴직 (법정 기간 내)</td><td class="td-c td-bold" style="color:#1a6b45;">산입</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">5</span> 최저연수를 채웠다고 바로 승진되는 건 아니다</h3>
+    <p>최저연수는 <strong>승진 자격의 최소 조건</strong>일 뿐입니다. 실제 승진은 평정점수 순위와 결원 상황에 따라 결정됩니다. 9급 → 8급처럼 경쟁이 적은 직급은 최저연수 도달 직후 승진이 가능하지만, 6급 → 5급처럼 TO가 제한된 경우에는 최저연수를 훨씬 초과하더라도 대기하는 경우가 많습니다.</p>
+    <div class="hint">📌 결국 중요한 건 <strong>평정점수 순위</strong>입니다. 내 점수가 몇 위인지 파악하는 것이 핵심입니다.</div>
+  </div>
+
+  <div class="ad-slot"><strong>광고 (AD)</strong>📢 본문 하단 광고 구좌</div>
+
+  <div class="cta-box">
+    <p>내 현재 평정점수와 예상 순위가 궁금하신가요?<br>직급과 날짜만 입력하면 자동으로 계산해드립니다.</p>
+    <a class="cta-btn" href="index.html">🏆 평정점수 계산하러 가기</a>
+  </div>
+
+</main>
+
+<footer>
+  본 콘텐츠는 참고용이며 실제 승진 기준은 소속 기관 인사담당자에게 확인하시기 바랍니다.<br>
+  문의: <a href="mailto:여기에_이메일@gmail.com" style="color:var(--gold);">여기에_이메일@gmail.com</a>
+  &nbsp;|&nbsp;
+  <a href="privacy.html" style="color:var(--muted);">개인정보처리방침</a>
+</footer>
+
+</body>
+</html>
