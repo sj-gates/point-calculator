@@ -860,8 +860,7 @@
   <div style="margin: 0 0 20px; background:var(--paper); border:1px dashed var(--border);
               border-radius:6px; text-align:center; padding:14px;">
     <strong style="display:block; margin-bottom:8px; color:var(--navy);">추천 도서 (제휴)</strong>
-    <a target="_blank" href="https://click.linkprice.com/click.php?m=kbbook&a=A100705244&l=0391&u_id="><img src="http://img.linkprice.com/files/glink/kbbook/20141125/547410e04a101_468_60.gif" border="0" width="468" height="60"></a>
-    <img src="http://track.linkprice.com/lpshow.php?m_id=kbbook&a_id=A100705244&p_id=0000&l_id=0391&l_cd1=2&l_cd2=0" width="1" height="1" border="0" nosave style="display:none">
+    <a target="_blank" href="https://click.linkprice.com/click.php?m=yes24&a=A100705244&l=0033&u_id="><img src="http://img.linkprice.com/files/glink/yes24/20140402/533b6e590fde1_320_50.jpg" border="0" width="320" height="50"></a> <img src="http://track.linkprice.com/lpshow.php?m_id=yes24&a_id=A100705244&p_id=0000&l_id=0033&l_cd1=2&l_cd2=0" width="1" height="1" border="0" nosave style="display:none">
   </div>
 
   <!-- [구글 애드센스] 카카오 → 구글 교체 시 위 블록 주석 처리 후 아래 주석 해제
@@ -1029,12 +1028,9 @@
       <div class="progress-bar"><div class="progress-fill" id="plusBar"></div></div>
     </div>
     <!-- 제휴 마케팅 자리 -->
-    <div class="affiliate" id="affiliateArea">
-      💡 남들 다 채우는 자격증·어학 가점, 나만 놓치고 계신가요?
-      <a id="affiliateLink" href="https://coupa.ng/여기에_파트너스_링크" target="_blank" rel="noopener">
-        추천 수험서 보기
-      </a>
-      <span class="ad-tag">(광고/제휴마케팅)</span>
+    <div class="affiliate" id="affiliateArea" style="text-align:center; padding:12px;">
+      <a target="_blank" href="https://click.linkprice.com/click.php?m=yes24&a=A100705244&l=0033&u_id="><img src="http://img.linkprice.com/files/glink/yes24/20140402/533b6e590fde1_320_50.jpg" border="0" width="320" height="50"></a> <img src="http://track.linkprice.com/lpshow.php?m_id=yes24&a_id=A100705244&p_id=0000&l_id=0033&l_cd1=2&l_cd2=0" width="1" height="1" border="0" nosave style="display:none">
+      <span class="ad-tag" style="display:block; margin-top:6px;">(광고/제휴마케팅)</span>
     </div>
   </div>
 
@@ -1091,8 +1087,7 @@
   <!-- 하단 광고 슬롯 -->
   <div class="ad-slot" style="padding:16px;">
     <strong style="display:block; margin-bottom:8px; color:var(--navy);">추천 도서 (제휴)</strong>
-    <a target="_blank" href="https://click.linkprice.com/click.php?m=kbbook&a=A100705244&l=0391&u_id="><img src="http://img.linkprice.com/files/glink/kbbook/20141125/547410e04a101_468_60.gif" border="0" width="468" height="60"></a>
-    <img src="http://track.linkprice.com/lpshow.php?m_id=kbbook&a_id=A100705244&p_id=0000&l_id=0391&l_cd1=2&l_cd2=0" width="1" height="1" border="0" nosave style="display:none">
+    <a target="_blank" href="https://click.linkprice.com/click.php?m=yes24&a=A100705244&l=0033&u_id="><img src="http://img.linkprice.com/files/glink/yes24/20140402/533b6e590fde1_320_50.jpg" border="0" width="320" height="50"></a> <img src="http://track.linkprice.com/lpshow.php?m_id=yes24&a_id=A100705244&p_id=0000&l_id=0033&l_cd1=2&l_cd2=0" width="1" height="1" border="0" nosave style="display:none">
   </div>
 
 <!-- 비교 모달 -->
@@ -1910,7 +1905,9 @@ function onGradeChange() {
   // 탭1,2는 탭0 값을 복사해서 초기화 (직전반기 공유)
   syncTabsFromBase();
 
-  document.getElementById('affiliateLink').textContent = '추천 수험서 보기';
+  // affiliateLink 요소가 있을 때만 실행
+  const affLink = document.getElementById('affiliateLink');
+  if (affLink) affLink.textContent = '추천 수험서 보기';
   switchTab(activeTab);
   recalcCareer();
 }
