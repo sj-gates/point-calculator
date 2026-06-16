@@ -1160,32 +1160,87 @@
   <!-- FAQ -->
   <div class="intro-box" style="margin-top:20px;">
     <h2>❓ 자주 묻는 질문 (FAQ)</h2>
-    <div class="faq-item">
-      <div class="faq-q">Q. 경력평정이란 무엇인가요?</div>
-      <div class="faq-a">현 직급 근무 기간과 직전 직급 근무 기간(60% 환산)을 합산하여 산출하는 점수입니다. 근속 기간이 길수록 높은 점수를 받습니다.</div>
+    <style>
+      .acc-item { border-bottom: 1px solid var(--border); }
+      .acc-item:last-child { border-bottom: none; }
+      .acc-btn {
+        width: 100%; background: none; border: none; cursor: pointer;
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 14px 0; font-family: 'Noto Serif KR', serif;
+        font-size: .88rem; font-weight: 700; color: var(--navy);
+        text-align: left; gap: 10px;
+      }
+      .acc-btn .acc-arrow {
+        flex-shrink: 0; width: 20px; height: 20px;
+        background: var(--paper); border: 1px solid var(--border);
+        border-radius: 50%; display: flex; align-items: center;
+        justify-content: center; font-size: .65rem; color: var(--gold);
+        transition: transform .25s;
+      }
+      .acc-btn.open .acc-arrow { transform: rotate(180deg); }
+      .acc-body {
+        font-size: .82rem; line-height: 1.85; color: var(--ink);
+        padding: 0 0 14px 0; display: none;
+        border-left: 3px solid var(--gold); padding-left: 12px;
+        margin-left: 2px;
+      }
+      .acc-body.open { display: block; }
+    </style>
+
+    <div class="acc-item">
+      <button class="acc-btn" onclick="toggleAcc(this)">
+        Q. 경력평정이란 무엇인가요?
+        <span class="acc-arrow">▼</span>
+      </button>
+      <div class="acc-body">현 직급 근무 기간과 직전 직급 근무 기간(60% 환산)을 합산하여 산출하는 점수입니다. 근속 기간이 길수록 높은 점수를 받습니다.</div>
     </div>
-    <div class="faq-item">
-      <div class="faq-q">Q. 직전급수 경력을 왜 60%만 반영하나요?</div>
-      <div class="faq-a">현 직급에서의 근무 경험을 더 중시하기 위해 직전 직급 경력은 60%만 인정합니다. 이는 지방공무원 평정규칙에 따른 기준입니다.</div>
+
+    <div class="acc-item">
+      <button class="acc-btn" onclick="toggleAcc(this)">
+        Q. 직전급수 경력을 왜 60%만 반영하나요?
+        <span class="acc-arrow">▼</span>
+      </button>
+      <div class="acc-body">현 직급에서의 근무 경험을 더 중시하기 위해 직전 직급 경력은 60%만 인정합니다. 이는 지방공무원 평정규칙에 따른 기준입니다.</div>
     </div>
-    <div class="faq-item">
-      <div class="faq-q">Q. 수1, 수2, 우1 등 등급은 어떻게 결정되나요?</div>
-      <div class="faq-a">같은 평정대상 그룹 내 평가 대상자 인원 수에 따라 각 등급별 배정 인원이 정해집니다. 소속 기관의 표준분포표를 참고하시기 바랍니다.</div>
+
+    <div class="acc-item">
+      <button class="acc-btn" onclick="toggleAcc(this)">
+        Q. 수1, 수2, 우1 등 등급은 어떻게 결정되나요?
+        <span class="acc-arrow">▼</span>
+      </button>
+      <div class="acc-body">같은 평정대상 그룹 내 평가 대상자 인원 수에 따라 각 등급별 배정 인원이 정해집니다. 소속 기관의 표준분포표를 참고하시기 바랍니다.</div>
     </div>
-    <div class="faq-item">
-      <div class="faq-q">Q. 가점은 어떤 항목이 해당되나요?</div>
-      <div class="faq-a">
+
+    <div class="acc-item">
+      <button class="acc-btn" onclick="toggleAcc(this)">
+        Q. 가점은 어떤 항목이 해당되나요?
+        <span class="acc-arrow">▼</span>
+      </button>
+      <div class="acc-body">
         자격증 가점은 아래 기준으로 반영됩니다 (최대 5점).<br>
         · 해당 직렬의 해당 계급 또는 상위계급에서 인정하는 자격증: <strong>(서울시) 0.24점 / (경기도) 0.5점 / (인천시) 0.5점</strong><br>
         · 해당 직렬의 바로 하위계급에서 인정하는 자격증: <strong>(서울시) 0.12점 / (경기도) 0.25점 / (인천시) 0.25점</strong><br>
         어학의 경우 TOEIC 900점 이상 <strong>0.12점</strong>, 800점 이상 900점 미만 <strong>0.05점</strong>이 반영됩니다. 세부 기준은 소속 기관의 가점 규정을 확인하세요.
       </div>
     </div>
-    <div class="faq-item">
-      <div class="faq-q">Q. 계산 결과가 실제 평정 결과와 다를 수 있나요?</div>
-      <div class="faq-a"><strong>네, 본 계산기는 참고용입니다. 기관별·연도별 세부 운영 기준이 다를 수 있으므로 정확한 결과는 반드시 소속 기관 인사담당자에게 확인하시기 바랍니다.</strong></div>
+
+    <div class="acc-item">
+      <button class="acc-btn" onclick="toggleAcc(this)">
+        Q. 계산 결과가 실제 평정 결과와 다를 수 있나요?
+        <span class="acc-arrow">▼</span>
+      </button>
+      <div class="acc-body"><strong>네, 본 계산기는 참고용입니다. 기관별·연도별 세부 운영 기준이 다를 수 있으므로 정확한 결과는 반드시 소속 기관 인사담당자에게 확인하시기 바랍니다.</strong></div>
     </div>
   </div>
+
+  <script>
+    function toggleAcc(btn) {
+      const body = btn.nextElementSibling;
+      const isOpen = body.classList.contains('open');
+      btn.classList.toggle('open', !isOpen);
+      body.classList.toggle('open', !isOpen);
+    }
+  </script>
 
 </main>
 
