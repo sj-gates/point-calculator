@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>공무원 평정점수 순위 예측 가이드 — 내 명부 순위 추정하는 방법</title>
+<meta name="description" content="공무원 승진후보자명부에서 내 평정점수가 몇 위인지 추정하는 방법을 설명합니다. 경쟁자 점수 분포 분석, 결원 예측, 승진 시기 역산법까지 실전 가이드를 제공합니다.">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="공무원 평정점수 계산기">
+<meta property="og:title" content="공무원 평정점수 순위 예측 가이드 — 내 명부 순위 추정법">
+<meta property="og:description" content="내 평정점수 순위를 추정하고 승진 시기를 역산하는 실전 방법을 안내합니다.">
+<meta property="og:url" content="https://sj-gates.github.io/point-calculator/score-rank-simulator.html">
+<meta property="og:locale" content="ko_KR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0f2340;--gold:#c8a84b;--cream:#faf8f3;--paper:#f2ede3;--ink:#1a1a2e;--muted:#6b6b7a;--border:#d8d0be;--card-shadow:0 2px 20px rgba(15,35,64,.10);}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Serif KR',serif;background:var(--cream);color:var(--ink);min-height:100vh;}
+  header{background:var(--navy);padding:36px 24px 28px;text-align:center;position:relative;overflow:hidden;}
+  header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 24px,rgba(200,168,75,.06) 24px,rgba(200,168,75,.06) 25px);}
+  header h1{font-size:clamp(1.1rem,4vw,1.6rem);font-weight:700;color:#fff;letter-spacing:-.02em;position:relative;}
+  header h1 span{color:var(--gold);}
+  header p{margin-top:8px;font-size:.78rem;color:rgba(255,255,255,.55);position:relative;}
+  .gold-line{width:48px;height:2px;background:var(--gold);margin:14px auto 0;}
+  nav.breadcrumb{max-width:760px;margin:16px auto 0;padding:0 20px;font-size:.76rem;color:var(--muted);}
+  nav.breadcrumb a{color:var(--gold);text-decoration:none;}
+  main{max-width:760px;margin:0 auto;padding:24px 20px 60px;}
+  .article-hero{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 24px 22px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .article-hero .tag{display:inline-block;background:var(--navy);color:var(--gold);font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:99px;letter-spacing:.05em;margin-bottom:12px;}
+  .article-hero h2{font-size:clamp(1.1rem,3.5vw,1.45rem);font-weight:700;color:var(--navy);line-height:1.45;margin-bottom:10px;}
+  .article-hero .meta{font-size:.74rem;color:var(--muted);}
+  .card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .card h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  .card h3 .num{background:var(--navy);color:var(--gold);font-family:'DM Mono',monospace;font-size:.72rem;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .card p{font-size:.88rem;line-height:1.9;color:var(--ink);margin-bottom:10px;}
+  .hint{font-size:.78rem;color:var(--muted);padding:10px 14px;background:var(--paper);border-left:3px solid var(--gold);border-radius:0 5px 5px 0;margin:12px 0;}
+  table{width:100%;border-collapse:collapse;font-size:.82rem;margin:14px 0;}
+  thead tr{background:var(--navy);color:#fff;}
+  thead th{padding:9px 12px;text-align:left;}
+  tbody tr:nth-child(odd){background:#fff;}
+  tbody tr:nth-child(even){background:var(--paper);}
+  tbody td{padding:10px 12px;border-bottom:1px solid var(--border);line-height:1.6;}
+  .td-c{text-align:center;}
+  .td-bold{font-weight:700;color:var(--navy);}
+  .formula-box{background:var(--navy);color:#fff;border-radius:8px;padding:18px 20px;margin:14px 0;font-family:'DM Mono',monospace;font-size:.86rem;line-height:1.9;}
+  .formula-box .f-label{font-size:.7rem;color:rgba(255,255,255,.5);margin-bottom:6px;font-family:'Noto Serif KR',serif;}
+  .formula-box .f-val{color:var(--gold);}
+  .example-box{background:var(--paper);border:1px solid var(--border);border-radius:8px;padding:16px 18px;margin:14px 0;font-size:.84rem;line-height:1.9;}
+  .example-box .ex-title{font-weight:700;color:var(--navy);margin-bottom:8px;}
+  .score-visual{margin:16px 0;}
+  .sv-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+  .sv-label{font-size:.76rem;color:var(--muted);width:80px;flex-shrink:0;text-align:right;}
+  .sv-bar-wrap{flex:1;background:var(--paper);border-radius:99px;height:24px;overflow:hidden;position:relative;}
+  .sv-bar{height:100%;border-radius:99px;display:flex;align-items:center;padding-left:10px;}
+  .sv-bar span{font-size:.72rem;font-weight:700;color:#fff;white-space:nowrap;}
+  .sv-score{font-size:.78rem;font-weight:700;color:var(--navy);width:54px;flex-shrink:0;font-family:'DM Mono',monospace;}
+  .step-list{display:flex;flex-direction:column;gap:16px;margin-top:10px;}
+  .step-item{display:flex;gap:14px;align-items:flex-start;}
+  .step-num{background:var(--gold);color:var(--navy);font-family:'DM Mono',monospace;font-size:.78rem;font-weight:700;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+  .step-item .s-title{font-size:.9rem;font-weight:700;color:var(--navy);margin-bottom:4px;}
+  .step-item .s-desc{font-size:.83rem;line-height:1.85;color:var(--ink);}
+  .scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0;}
+  .scenario-item{background:var(--paper);border:1px solid var(--border);border-radius:8px;padding:14px;}
+  .scenario-item .sc-label{font-size:.7rem;font-weight:700;color:var(--muted);letter-spacing:.04em;margin-bottom:6px;}
+  .scenario-item .sc-title{font-size:.88rem;font-weight:700;color:var(--navy);margin-bottom:6px;}
+  .scenario-item .sc-result{font-size:.8rem;color:var(--ink);line-height:1.7;}
+  .scenario-item .sc-result strong{color:var(--navy);}
+  .cta-box{background:var(--navy);border-radius:10px;padding:22px 24px;text-align:center;margin-top:28px;}
+  .cta-box p{color:rgba(255,255,255,.75);font-size:.85rem;margin-bottom:14px;}
+  .cta-btn{display:inline-block;background:var(--gold);color:var(--navy);font-weight:700;font-family:'Noto Serif KR',serif;padding:12px 28px;border-radius:7px;text-decoration:none;font-size:.92rem;transition:opacity .2s;}
+  .cta-btn:hover{opacity:.85;}
+  .related-links{background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .related-links h3{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:14px;}
+  .related-links ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .related-links li a{font-size:.85rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:6px;}
+  .related-links li a::before{content:'→';color:var(--gold);}
+  .ad-slot{background:var(--paper);border:1px dashed var(--border);border-radius:6px;text-align:center;padding:14px;font-size:.75rem;color:var(--muted);margin:20px 0;}
+  .ad-slot strong{display:block;margin-bottom:4px;color:var(--navy);}
+  footer{text-align:center;padding:24px;font-size:.72rem;color:var(--muted);border-top:1px solid var(--border);}
+  @media(max-width:540px){.card{padding:20px 16px;}.article-hero{padding:20px 16px 16px;}.scenario-grid{grid-template-columns:1fr;}.sv-label{width:60px;}}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1KXD1P0ZVC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1KXD1P0ZVC');</script>
+</head>
+<body>
+<header>
+  <h1>공무원 <span>평정점수</span> 계산기</h1>
+  <p>서울시·경기·인천 승진 평정점수 자동 산출</p>
+  <div class="gold-line"></div>
+</header>
+<nav class="breadcrumb">
+  <a href="index.html">홈</a> &rsaquo; 평정점수 순위 예측 가이드
+</nav>
+<main>
+
+  <div class="ad-slot" style="padding:16px;">
+    <strong>광고</strong>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="0000000015" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+
+  <div class="article-hero">
+    <span class="tag">순위 분석</span>
+    <h2>공무원 평정점수 순위 예측 가이드<br>— 내 명부 순위 추정하는 법</h2>
+    <p class="meta">최종 업데이트 2025년 · 지방공무원 평정 규칙 기준</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">1</span> 왜 순위 예측이 중요한가?</h3>
+    <p>평정점수 자체가 높아도 <strong>경쟁자들과의 상대적 순위</strong>를 모르면 실제 승진 시기를 가늠하기 어렵습니다. 예를 들어 내 점수가 75점이라도 경쟁자 대부분이 76점 이상이라면 명부 하위권이 됩니다.</p>
+    <p>순위를 미리 추정해두면 가점 취득 우선순위 설정, 어학 성적 갱신 시기, 자격증 준비 일정 등을 전략적으로 결정할 수 있습니다.</p>
+    <div class="hint">💡 명부 공개 여부는 기관마다 다릅니다. 인사담당 부서에 내 현재 순위를 문의하는 것이 가장 정확합니다.</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">2</span> 평정점수 구성 요소별 점수 범위 이해</h3>
+    <p>순위를 예측하려면 먼저 각 구성 요소가 현실에서 어느 범위에 분포하는지 이해해야 합니다.</p>
+
+    <div class="score-visual">
+      <div class="sv-row">
+        <span class="sv-label">근무성적</span>
+        <div class="sv-bar-wrap">
+          <div class="sv-bar" style="width:95%;background:linear-gradient(90deg,#0f2340 0%,#2e5fa3 100%);">
+            <span>56~66.5점 (실질 범위)</span>
+          </div>
+        </div>
+        <span class="sv-score">만점 70</span>
+      </div>
+      <div class="sv-row">
+        <span class="sv-label">경력평정</span>
+        <div class="sv-bar-wrap">
+          <div class="sv-bar" style="width:70%;background:linear-gradient(90deg,#1a6b45 0%,#4caf50 100%);">
+            <span>1~15점 (일반적 범위)</span>
+          </div>
+        </div>
+        <span class="sv-score">만점 30</span>
+      </div>
+      <div class="sv-row">
+        <span class="sv-label">가점</span>
+        <div class="sv-bar-wrap">
+          <div class="sv-bar" style="width:40%;background:linear-gradient(90deg,#b36200 0%,#ffa000 100%);">
+            <span>0~2점 (평균적)</span>
+          </div>
+        </div>
+        <span class="sv-score">최대 5</span>
+      </div>
+    </div>
+
+    <p>현실적으로 승진 경쟁자 대부분의 총점은 <strong>60~85점 사이</strong>에 집중됩니다. 이 안에서 1~2점 차이로 수십 명의 순위가 결정될 수 있어, 가점 한 항목이 명부 순위에 큰 영향을 미칩니다.</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">3</span> 내 순위 추정 5단계</h3>
+    <div class="step-list">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div>
+          <div class="s-title">내 평정점수 산출</div>
+          <div class="s-desc">근무성적평정 + 경력평정 + 가점을 합산해 내 총점을 계산합니다. 계산기를 활용하면 정확하게 산출할 수 있습니다.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div>
+          <div class="s-title">경쟁자 수 파악</div>
+          <div class="s-desc">내 직급에서 승진을 대기 중인 동료가 몇 명인지 파악합니다. 인사담당 부서에 문의하거나 동기·선배 네트워크를 통해 확인합니다.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div>
+          <div class="s-title">경쟁자 점수 분포 추정</div>
+          <div class="s-desc">경쟁자들의 임용일(인사기록)과 근평 등급 이력을 바탕으로 대략적인 점수 분포를 추정합니다. 근무 기간이 비슷한 동료들의 경력평정 차이, 가점 보유 여부를 참고합니다.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div>
+          <div class="s-title">연간 결원 수 파악</div>
+          <div class="s-desc">최근 2~3년간 내 직급에서 몇 명이 승진했는지 파악합니다. 이를 통해 연간 결원(TO) 규모를 추정할 수 있습니다.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">5</div>
+        <div>
+          <div class="s-title">승진 예상 시기 역산</div>
+          <div class="s-desc">내 추정 순위 ÷ 연간 결원 수 = 대기 기간(년). 예를 들어 내가 15순위이고 연간 결원이 5명이라면 약 3년 후 승진을 예상할 수 있습니다.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="formula-box">
+      <div class="f-label">승진 예상 대기 기간 추정식</div>
+      예상 순위 <span class="f-val">÷</span> 연간 평균 결원 수 <span class="f-val">=</span> 예상 대기 기간 (년)
+    </div>
+
+    <div class="example-box">
+      <div class="ex-title">📌 예시 계산</div>
+      내 추정 명부 순위: <strong>12위</strong><br>
+      최근 3년 연평균 결원: <strong>4명/년</strong><br>
+      예상 대기 기간: 12 ÷ 4 = <strong>약 3년</strong><br>
+      → 현 시점에서 약 3년 후 승진 가능성
+    </div>
+  </div>
+
+  <div class="ad-slot" style="padding:16px;">
+    <strong>광고</strong>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="0000000016" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">4</span> 점수 1점 차이가 순위에 미치는 영향</h3>
+    <p>경쟁자들의 점수가 밀집된 구간에서는 <strong>단 1점 차이가 수십 순위 차이</strong>를 만들 수 있습니다. 가점 항목을 하나라도 더 확보하는 것이 왜 중요한지 아래 사례로 확인하세요.</p>
+
+    <div class="example-box">
+      <div class="ex-title">📌 가점 1점 추가 시 순위 변화 시뮬레이션</div>
+      가정: 경쟁자 40명, 내 현재 점수 72.5점, 순위 22위<br><br>
+      <strong>자격증 가점 0.5점 추가 → 총점 73.0점</strong><br>
+      → 73.0점 이하 경쟁자 수만큼 순위 상승<br>
+      → 추정 순위 <strong>약 17~18위</strong>로 상승<br><br>
+      <strong>포상(기초단체장) 0.25점 추가 → 총점 72.75점</strong><br>
+      → 추정 순위 <strong>약 19~20위</strong>로 상승
+    </div>
+
+    <table>
+      <thead><tr><th>가점 추가 항목</th><th class="td-c">점수 증가</th><th>순위 영향 (추정)</th></tr></thead>
+      <tbody>
+        <tr><td>해당계급 자격증 (경기·인천)</td><td class="td-c td-bold">+0.5점</td><td>밀집 구간에서 5~10순위 상승 가능</td></tr>
+        <tr><td>해당계급 자격증 (서울시)</td><td class="td-c td-bold">+0.24점</td><td>밀집 구간에서 2~5순위 상승</td></tr>
+        <tr><td>TOEIC 900점 이상 어학</td><td class="td-c td-bold">+0.12점</td><td>1~3순위 상승</td></tr>
+        <tr><td>기초단체장 표창</td><td class="td-c td-bold">+0.25점</td><td>2~5순위 상승</td></tr>
+        <tr><td>장관급 표창</td><td class="td-c td-bold">+0.5점</td><td>5~10순위 상승 가능</td></tr>
+        <tr><td>대통령 표창</td><td class="td-c td-bold">+1.0점</td><td>10~20순위 이상 대폭 상승</td></tr>
+      </tbody>
+    </table>
+    <div class="hint">※ 실제 순위 변화는 경쟁자 점수 분포에 따라 다릅니다. 점수가 넓게 분산된 경우 영향이 작을 수 있습니다.</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">5</span> 상황별 순위 개선 시나리오</h3>
+    <div class="scenario-grid">
+      <div class="scenario-item">
+        <div class="sc-label">시나리오 A</div>
+        <div class="sc-title">근평은 좋은데 순위가 낮은 경우</div>
+        <div class="sc-result">경쟁자 대비 <strong>경력평정이 낮거나 가점이 부족</strong>한 상황입니다. 자격증·어학 가점을 빠르게 확보하고, 포상 기회를 적극 활용하세요. 가점 2~3점 추가만으로 순위가 크게 오를 수 있습니다.</div>
+      </div>
+      <div class="scenario-item">
+        <div class="sc-label">시나리오 B</div>
+        <div class="sc-title">경력은 길지만 근평이 낮은 경우</div>
+        <div class="sc-result">경력평정에서 앞서도 <strong>근평 차이가 크면 만회가 어렵습니다.</strong> 근평 '수' 등급을 받기 위해 부서 내 입지 강화, 업무 성과 가시화에 집중하세요. 평정 단위 이동(전보)도 검토할 수 있습니다.</div>
+      </div>
+      <div class="scenario-item">
+        <div class="sc-label">시나리오 C</div>
+        <div class="sc-title">모든 항목이 중간 수준인 경우</div>
+        <div class="sc-result"><strong>가점 극대화</strong>가 가장 빠른 순위 상승 방법입니다. 자격증·어학·포상을 모두 챙기면 1~2점 추가가 가능하고, 밀집 구간에서 10순위 이상 상승 효과를 볼 수 있습니다.</div>
+      </div>
+      <div class="scenario-item">
+        <div class="sc-label">시나리오 D</div>
+        <div class="sc-title">이미 상위권인데 불안한 경우</div>
+        <div class="sc-result">다음 반기 명부에서 <strong>신규 진입자나 경력이 쌓인 경쟁자</strong>에게 추월당할 수 있습니다. 어학 성적 유효기간 관리, 근평 등급 유지에 집중하고 결원 발생 시기를 주시하세요.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">6</span> 인사담당 부서에 물어봐야 할 것들</h3>
+    <p>순위 예측은 추정에 불과합니다. 가장 정확한 정보는 소속 기관 인사담당 부서에서 얻을 수 있습니다. 아래 질문들을 참고해 문의해보세요.</p>
+    <table>
+      <thead><tr><th>문의 항목</th><th>구체적 질문</th></tr></thead>
+      <tbody>
+        <tr><td>현재 명부 순위</td><td>"현재 제 직급 승진후보자명부에서 제 순위가 어떻게 되나요?"</td></tr>
+        <tr><td>연간 결원 현황</td><td>"최근 2~3년간 저희 직급에서 연평균 몇 명이 승진했나요?"</td></tr>
+        <tr><td>경력 산입 확인</td><td>"제 휴직·파견 이력이 경력평정에 어떻게 반영됐나요?"</td></tr>
+        <tr><td>가점 반영 확인</td><td>"제 보유 자격증·어학 성적·포상이 모두 가점에 반영됐나요?"</td></tr>
+        <tr><td>동점자 처리 기준</td><td>"동점자 발생 시 어떤 기준으로 순위를 정하나요?"</td></tr>
+        <tr><td>명부 갱신 일정</td><td>"다음 명부는 언제 발효될 예정인가요?"</td></tr>
+      </tbody>
+    </table>
+    <div class="hint">💡 인사담당자에게 문의할 때는 구체적인 수치보다 "제 이력이 제대로 반영됐는지 확인하고 싶다"는 방식으로 접근하면 더 협조적인 답변을 얻을 수 있습니다.</div>
+  </div>
+
+  <div class="ad-slot" style="padding:16px;">
+    <strong>광고</strong>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="0000000017" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+
+  <div class="related-links">
+    <h3>📚 함께 읽으면 좋은 글</h3>
+    <ul>
+      <li><a href="promotion-list-guide.html">승진후보자명부 작성 방법 가이드</a></li>
+      <li><a href="promotion-strategy.html">직급별 승진 전략 가이드</a></li>
+      <li><a href="bonus-points-guide.html">승진 가점 종류와 획득 전략</a></li>
+      <li><a href="evaluation-period.html">평정 기준일·시기 캘린더 완전 정리</a></li>
+      <li><a href="grade-comparison.html">서울시·경기·인천 평정 기준 비교</a></li>
+    </ul>
+  </div>
+
+  <div class="cta-box">
+    <p>내 평정점수를 먼저 정확히 계산하고 순위를 추정해보세요.<br>근평 등급·경력·가점을 모두 반영한 점수를 즉시 산출합니다.</p>
+    <a class="cta-btn" href="index.html">🏆 내 평정점수 계산하러 가기</a>
+  </div>
+</main>
+<footer>
+  본 콘텐츠는 참고용이며 실제 평정 결과는 소속 기관 인사담당자에게 확인하시기 바랍니다.<br>
+  문의: <a href="mailto:sj.gates@gmail.com" style="color:var(--gold);">sj.gates@gmail.com</a>
+  &nbsp;|&nbsp;
+  <a href="privacy.html" style="color:var(--muted);">개인정보처리방침</a>
+</footer>
+</body>
+</html>

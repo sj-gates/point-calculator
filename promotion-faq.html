@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>공무원 승진 평정 자주 묻는 질문 FAQ 총정리 — 근평·경력·가점</title>
+<meta name="description" content="공무원 승진 평정과 관련해 가장 많이 묻는 질문 20가지를 한 곳에 모았습니다. 근무성적평정, 경력평정, 가점, 휴직 산입 등 핵심 궁금증을 해결하세요.">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="공무원 평정점수 계산기">
+<meta property="og:title" content="공무원 승진 평정 자주 묻는 질문 FAQ 총정리">
+<meta property="og:description" content="근무성적평정, 경력평정, 가점, 휴직 산입 등 핵심 궁금증 20가지를 정리했습니다.">
+<meta property="og:url" content="https://sj-gates.github.io/point-calculator/promotion-faq.html">
+<meta property="og:locale" content="ko_KR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0f2340;--gold:#c8a84b;--gold-lt:#f0dfa0;--cream:#faf8f3;--paper:#f2ede3;--ink:#1a1a2e;--muted:#6b6b7a;--border:#d8d0be;--card-shadow:0 2px 20px rgba(15,35,64,.10);}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Serif KR',serif;background:var(--cream);color:var(--ink);min-height:100vh;}
+  header{background:var(--navy);padding:36px 24px 28px;text-align:center;position:relative;overflow:hidden;}
+  header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 24px,rgba(200,168,75,.06) 24px,rgba(200,168,75,.06) 25px);}
+  header h1{font-size:clamp(1.1rem,4vw,1.6rem);font-weight:700;color:#fff;letter-spacing:-.02em;position:relative;}
+  header h1 span{color:var(--gold);}
+  header p{margin-top:8px;font-size:.78rem;color:rgba(255,255,255,.55);position:relative;}
+  .gold-line{width:48px;height:2px;background:var(--gold);margin:14px auto 0;position:relative;}
+  nav.breadcrumb{max-width:760px;margin:16px auto 0;padding:0 20px;font-size:.76rem;color:var(--muted);}
+  nav.breadcrumb a{color:var(--gold);text-decoration:none;}
+  main{max-width:760px;margin:0 auto;padding:24px 20px 60px;}
+  .article-hero{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 24px 22px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .article-hero .tag{display:inline-block;background:var(--navy);color:var(--gold);font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:99px;letter-spacing:.05em;margin-bottom:12px;}
+  .article-hero h2{font-size:clamp(1.1rem,3.5vw,1.45rem);font-weight:700;color:var(--navy);line-height:1.45;margin-bottom:10px;}
+  .article-hero .meta{font-size:.74rem;color:var(--muted);}
+  .card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .card h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+  .card h3 .num{background:var(--navy);color:var(--gold);font-family:'DM Mono',monospace;font-size:.72rem;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .hint{font-size:.78rem;color:var(--muted);padding:10px 14px;background:var(--paper);border-left:3px solid var(--gold);border-radius:0 5px 5px 0;margin:12px 0;}
+  .faq-item{border-bottom:1px solid var(--border);padding:18px 0;}
+  .faq-item:last-child{border-bottom:none;padding-bottom:0;}
+  .faq-q{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:10px;display:flex;gap:10px;line-height:1.5;}
+  .faq-q .q-badge{background:var(--navy);color:var(--gold);font-family:'DM Mono',monospace;font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:5px;flex-shrink:0;height:fit-content;margin-top:2px;}
+  .faq-a{font-size:.85rem;line-height:1.9;color:var(--ink);padding-left:36px;}
+  .faq-a strong{color:var(--navy);}
+  .section-title{font-size:.8rem;font-weight:700;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border);}
+  .related-links{background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .related-links h3{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:14px;}
+  .related-links ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .related-links li a{font-size:.85rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:6px;}
+  .related-links li a::before{content:'→';color:var(--gold);}
+  .related-links li a:hover{color:var(--gold);}
+  .cta-box{background:var(--navy);border-radius:10px;padding:22px 24px;text-align:center;margin-top:28px;}
+  .cta-box p{color:rgba(255,255,255,.75);font-size:.85rem;margin-bottom:14px;}
+  .cta-btn{display:inline-block;background:var(--gold);color:var(--navy);font-weight:700;font-family:'Noto Serif KR',serif;padding:12px 28px;border-radius:7px;text-decoration:none;font-size:.92rem;transition:opacity .2s;}
+  .cta-btn:hover{opacity:.85;}
+  .ad-slot{background:var(--paper);border:1px dashed var(--border);border-radius:6px;text-align:center;padding:14px;font-size:.75rem;color:var(--muted);margin:20px 0;}
+  .ad-slot strong{display:block;margin-bottom:4px;color:var(--navy);}
+  footer{text-align:center;padding:24px;font-size:.72rem;color:var(--muted);border-top:1px solid var(--border);}
+  @media(max-width:540px){.card{padding:20px 16px;}.article-hero{padding:20px 16px 16px;}.faq-a{padding-left:0;margin-top:6px;}}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1KXD1P0ZVC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1KXD1P0ZVC');</script>
+</head>
+<body>
+<header>
+  <h1>공무원 <span>평정점수</span> 계산기</h1>
+  <p>서울시·경기·인천 승진 평정점수 자동 산출</p>
+  <div class="gold-line"></div>
+</header>
+<nav class="breadcrumb">
+  <a href="index.html">홈</a> &rsaquo; 승진 평정 FAQ 총정리
+</nav>
+<main>
+
+  <div class="ad-slot" style="padding:16px;">
+    <strong>광고</strong>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="0000000000" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+
+  <div class="article-hero">
+    <span class="tag">FAQ</span>
+    <h2>공무원 승진 평정 자주 묻는 질문 20가지<br>— 근평·경력·가점 핵심 정리</h2>
+    <p class="meta">최종 업데이트 2025년 · 지방공무원 평정 규칙 기준</p>
+  </div>
+
+  <!-- 근무성적평정 FAQ -->
+  <div class="card">
+    <h3><span class="num">1</span> 근무성적평정 관련 질문</h3>
+    <div class="section-title">근평 (근무성적평정)</div>
+
+    <div class="faq-item">
+      <div class="faq-q"><span class="q-badge">Q1</span> 근무성적평정은 언제, 몇 번 받나요?</div>
+      <div class="faq-a">근무성적평정은 <strong>매년 6월 말과 12월 말</strong>을 기준으로 연 2회(반기 1회) 실시합니다. 6월 평정은 상반기 근무를, 12월 평정은 하반기 근무를 평가합니다. 신규 임용자는 임용 후 6개월이 경과하지 않으면 해당 반기 평정에서 제외됩니다.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q"><span class="q-badge">Q2</span> 수·우·양·가 등급은 어떤 기준으로 정해지나요?</div>
+      <div class="faq-a">등급은 <strong>강제 배분 방식</strong>으로 결정됩니다. 평정 단위(부서) 내 전체 대상자 중 '수'는 상위 20% 이내, '우'는 다음 40% 이내, '양'은 나머지, '가'는 필요 시 하위 10% 이내에 부여합니다. 절대 기준이 아닌 상대평가이므로 소속 부서의 경쟁 상황이 중요합니다.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q"><span class="q-badge">Q3</span> 승진에 반영되는 근평은 몇 개 반기인가요?</div>
+      <div class="faq-a">기관과 직급에 따라 다르지만, 일반적으로 <strong>최근 4개 반기(2년치)</strong>의 근평을 평균 내어 반영합니다. 일부 기관은 3개 반기 또는 5개 반기를 적용하기도 하므로 소속 기관 인사규칙을 반드시 확인하세요.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q"><span class="q-badge">Q4</span> 부서원이 3명뿐이면 '수' 등급을 못 받나요?</div>
+      <div class="faq-a">소수 인원 부서에서는 상위 20% 적용 시 '수' 등급 수가 0명이 될 수 있습니다. 이를 보완하기 위해 <strong>일부 기관은 평정 단위를 통합</strong>하여 최소 인원(예: 5명 이상)을 확보합니다. 소규모 부서 배치가 불리한 구조적 요인이 될 수 있으므로 인사이동 시 고려가 필요합니다.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q"><span class="q-badge">Q5</span> 근평 결과에 이의를 제기할 수 있나요?</div>
+      <div class="faq-a">기관마다 다르지만 대부분의 기관에서 <strong>평정 결과 확인 및 소청 절차</strong>를 두고 있습니다. 평정에 이의가 있는 경우 확정 전 이의신청 기간 내에 인사담당 부서에 문의할 수 있습니다. 다만 강제 배분 구조상 등급 변경이 어려운 경우가 많습니다.</div>
+    </div>
+  </div>
+
+  <!-- 경력평정 FAQ -->
+  <div class="card">
+    <h3><span class="num">2</span> 경력평정 관련 질문</h3>
+    <div class="section-title">경력평정</div>
+
+    <div class="faq-item">
+      <div class="faq-q"><span class="q-badge">Q6</span> 경력평정 만점은 몇 점이고, 언제 도달하나요?</div>
+      <div class="faq-a">경력평정 만점은 <strong>30점</strong>입니다. 현 직급 경력이 24년(288개월) 이상이면 현 직급 경력 만점(24점)에 도달하고, 직전 직급 경력이 약 10년 이상이면 직전 직급 경력 만점(6점)에 도달합니다. 현실적으로 승진 전에 만점에 도달하는 경우는 드뭅니다.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q"><span class="q-badge">Q7</span> 타 기관에서 전입해 오면 이전 경력도 인정되나요?</div>
+      <div class="faq-a"><strong>같은 직렬·직급의 경력은 원칙적으로 인정</strong>됩니다. 다만 국가직에서 지방직으로, 또는 다른 광역자치단체에서 전입하는 경우 인정 범위가 다를 수 있습니다. 전입 시 소속 기관 인사규칙의 경력 인정 조항을 반드시 확인하세요.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q"><span class="q-badge">Q8</span> 15일 미만 근무는 경력에 전혀 산입되지 않나요?</div>
+      <div class="faq-a">네, 경력평정은 <strong>월 단위로 산정</strong>하며 15일 이상이면 1개월로 인정하고 15일 미만은 버립니다. 예를 들어 현 직급에서 25개월 14일을 근무했다면 경력평정에는 25개월만 반영됩니다.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q"><span class="q-badge">Q9</span> 직위해제 기간도 경력에 산입되나요?</div>
+      <div class="faq-a"><strong>직위해제 기간은 경력평정에 산입되지 않습니다.</strong> 또한 직위해제 기간은 승진소요 최저연수 산정에서도 제외됩니다. 다만 직위해제 사유 해소 후 복직하면 그 이후 기간부터 다시 산입됩니다.</div>
+    </div>
+  </div>
+
+  <div class="ad-slot" style="padding:16px;">
+    <strong>광고</strong>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="0000000001" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+
+  <!-- 가점 FAQ -->
+  <div class="card">
+    <h3><span class="num">3</span> 가점 관련 질문</h3>
+    <div class="section-title">가점</div>
+
+    <div class="faq-item">
+      <div class="faq-q"><span class="q-badge">Q10</span> 자격증 가점은 여러 개 취득하면 합산되나요?</div>
+      <div class="faq-a">아닙니다. 자격증 가점은 <strong>동일 직렬 내 가장 높은 등급 1개만 인정</strong>됩니다. 같은 직렬에서 기사 자격증과 산업기사 자격증을 모두 보유하더라도, 상위 자격인 기사 자격증 가점만 반영됩니다. 단, 직렬이 다른 자격증은 별도 인정 여부를 인사규칙에서 확인해야 합니다.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q"><span class="q-badge">Q11</span> 어학 가점의 성적 유효기간은 얼마인가요?</div>
+      <div class="faq-a">어학 가점에 인정되는 공인 외국어 성적의 유효기간은 일반적으로 <strong>취득일로부터 2년</strong>입니다. 평정 기준일 기준으로 2년이 지난 성적은 가점에 반영되지 않으므로, 어학 가점을 유지하려면 주기적으로 재취득해야 합니다.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q"><span class="q-badge">Q12</span> 포상 가점은 몇 번 받아도 합산되나요?</div>
+      <div class="faq-a">포상 가점은 <strong>기관별 규칙에 따라 중복 합산에 제한</strong>이 있습니다. 서울시의 경우 동일 등급 표창은 1회만 인정하며, 전체 포상 가점 합계도 일정 한도 이내로 제한하는 경우가 많습니다. 소속 기관 인사규칙의 가점 합계 상한을 확인하세요.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q"><span class="q-badge">Q13</span> 특수지 근무 가점이란 무엇인가요?</div>
+      <div class="faq-a">기관이 지정한 <strong>기피 부서나 특수지(도서·벽지 등)에 근무한 경력</strong>에 부여하는 가점입니다. 근무 기간과 지정 부서 여부에 따라 점수가 달라집니다. 해당 부서 목록은 인사규칙 별표에서 확인할 수 있으며, 기관마다 인정 부서가 다릅니다.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q"><span class="q-badge">Q14</span> 가점 최대치인 5점을 다 채울 수 있나요?</div>
+      <div class="faq-a">이론적으로 가능하지만 현실적으로는 쉽지 않습니다. <strong>자격증(0.24점) + 어학(0.12점) + 포상(최대 수점)</strong>을 합산해야 5점에 도달합니다. 실제로는 포상 가점이 가장 큰 비중을 차지하며, 대통령 표창(1점) 수준의 고등급 포상을 여러 차례 받아야 합계가 높아집니다.</div>
+    </div>
+  </div>
+
+  <!-- 휴직·특수상황 FAQ -->
+  <div class="card">
+    <h3><span class="num">4</span> 휴직·특수 상황 관련 질문</h3>
+    <div class="section-title">휴직 · 특수 상황</div>
+
+    <div class="faq-item">
+      <div class="faq-q"><span class="q-badge">Q15</span> 육아휴직 중에도 경력평정 점수가 쌓이나요?</div>
+      <div class="faq-a">자녀 1명당 최초 1년의 육아휴직 기간은 경력평정에 <strong>전부 산입</strong>됩니다. 1년을 초과하는 육아휴직 기간이나 두 번째 이후 자녀 육아휴직은 기관 규칙에 따라 일부만 인정될 수 있습니다. 또한 육아휴직 중에는 근무성적평정 대상에서 제외됩니다.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q"><span class="q-badge">Q16</span> 군 복무(병역 휴직) 기간은 경력에 산입되나요?</div>
+      <div class="faq-a">네, 병역 휴직 기간은 경력평정에 <strong>전부 산입</strong>됩니다. 또한 승진소요 최저연수 산정 시에도 포함됩니다. 입대 전 임용된 공무원이 병역 휴직 후 복직하는 경우 복직과 동시에 기존 평정이 그대로 이어집니다.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q"><span class="q-badge">Q17</span> 파견 근무 중에도 소속 기관 근평을 받나요?</div>
+      <div class="faq-a">파견 기관에서 평정하는지, 원 소속 기관에서 평정하는지는 <strong>파견 유형과 기간</strong>에 따라 다릅니다. 일반적으로 장기 파견(6개월 이상)은 파견 기관에서 근평을 실시하고, 단기 파견은 원 소속 기관에서 평정하는 경우가 많습니다. 파견 시작 전 인사담당 부서에 확인하는 것이 좋습니다.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q"><span class="q-badge">Q18</span> 강등 처분을 받으면 이전 경력이 사라지나요?</div>
+      <div class="faq-a">강등 처분 후에는 <strong>하위 직급으로 내려가므로 현 직급(하위 직급) 경력이 새로 시작</strong>됩니다. 강등 처분을 받기 전 상위 직급에서 쌓은 경력은 직전 직급 경력으로 일부 인정될 수 있으나, 승진소요 최저연수에는 강등 이전 기간이 산입되지 않습니다.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q"><span class="q-badge">Q19</span> 명예퇴직 후 재임용되면 이전 경력이 인정되나요?</div>
+      <div class="faq-a">명예퇴직 후 재임용 시 이전 경력 인정 여부는 <strong>재임용 직급과 유형에 따라 다릅니다.</strong> 동일 직급으로 재임용되는 경우 이전 경력의 일부가 인정될 수 있으나, 신규 임용에 준하여 처리되는 경우 이전 경력이 반영되지 않을 수 있습니다. 재임용 전 인사담당 부서에 반드시 확인하세요.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q"><span class="q-badge">Q20</span> 계산기 결과가 실제 평정점수와 다를 수 있나요?</div>
+      <div class="faq-a">네, 다를 수 있습니다. 이 계산기는 <strong>입력값을 기반으로 한 참고용 시뮬레이션</strong>입니다. 실제 평정점수는 인사담당자가 공식 기준과 인사기록에 따라 산정하므로, 정확한 수치는 반드시 소속 인사 부서에 확인하시기 바랍니다. 특히 휴직 이력, 징계, 파견 등 특수 이력이 있는 경우 차이가 더 클 수 있습니다.</div>
+    </div>
+  </div>
+
+  <div class="ad-slot" style="padding:16px;">
+    <strong>광고</strong>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="0000000002" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+
+  <div class="related-links">
+    <h3>📚 함께 읽으면 좋은 글</h3>
+    <ul>
+      <li><a href="performance-rating-guide.html">근무성적평정(근평) 등급·점수 완전 가이드</a></li>
+      <li><a href="career-rating-guide.html">경력평정 계산 방법 완전 정리</a></li>
+      <li><a href="bonus-points-guide.html">승진 가점 종류와 획득 전략</a></li>
+      <li><a href="leave-calculation-guide.html">휴직 유형별 경력 산입 완전 정리</a></li>
+      <li><a href="promotion-list-guide.html">승진후보자명부 작성 방법 가이드</a></li>
+    </ul>
+  </div>
+
+  <div class="cta-box">
+    <p>궁금증이 해소됐다면 내 실제 평정점수를 계산해보세요.<br>근평 등급·임용일·가점을 입력하면 즉시 산출합니다.</p>
+    <a class="cta-btn" href="index.html">🏆 평정점수 계산하러 가기</a>
+  </div>
+</main>
+<footer>
+  본 콘텐츠는 참고용이며 실제 평정 결과는 소속 기관 인사담당자에게 확인하시기 바랍니다.<br>
+  문의: <a href="mailto:sj.gates@gmail.com" style="color:var(--gold);">sj.gates@gmail.com</a>
+  &nbsp;|&nbsp;
+  <a href="privacy.html" style="color:var(--muted);">개인정보처리방침</a>
+</footer>
+</body>
+</html>

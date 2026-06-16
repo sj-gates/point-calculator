@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>공무원 직급별 승진 전략 가이드 — 9급·8급·7급·6급별 평정점수 올리는 법</title>
+<meta name="description" content="9급에서 8급, 7급에서 6급, 6급에서 5급까지 각 직급별로 승진에 유리한 평정점수 관리 전략을 상세히 정리했습니다. 근평·경력·가점을 효율적으로 높이는 방법을 알아보세요.">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="공무원 평정점수 계산기">
+<meta property="og:title" content="공무원 직급별 승진 전략 가이드 — 9급~6급 평정점수 올리는 법">
+<meta property="og:description" content="각 직급별로 승진에 유리한 근평·경력·가점 관리 전략을 정리했습니다.">
+<meta property="og:url" content="https://sj-gates.github.io/point-calculator/promotion-strategy.html">
+<meta property="og:locale" content="ko_KR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0f2340;--gold:#c8a84b;--cream:#faf8f3;--paper:#f2ede3;--ink:#1a1a2e;--muted:#6b6b7a;--border:#d8d0be;--card-shadow:0 2px 20px rgba(15,35,64,.10);}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Serif KR',serif;background:var(--cream);color:var(--ink);min-height:100vh;}
+  header{background:var(--navy);padding:36px 24px 28px;text-align:center;position:relative;overflow:hidden;}
+  header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 24px,rgba(200,168,75,.06) 24px,rgba(200,168,75,.06) 25px);}
+  header h1{font-size:clamp(1.1rem,4vw,1.6rem);font-weight:700;color:#fff;letter-spacing:-.02em;position:relative;}
+  header h1 span{color:var(--gold);}
+  header p{margin-top:8px;font-size:.78rem;color:rgba(255,255,255,.55);position:relative;}
+  .gold-line{width:48px;height:2px;background:var(--gold);margin:14px auto 0;}
+  nav.breadcrumb{max-width:760px;margin:16px auto 0;padding:0 20px;font-size:.76rem;color:var(--muted);}
+  nav.breadcrumb a{color:var(--gold);text-decoration:none;}
+  main{max-width:760px;margin:0 auto;padding:24px 20px 60px;}
+  .article-hero{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 24px 22px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .article-hero .tag{display:inline-block;background:var(--navy);color:var(--gold);font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:99px;letter-spacing:.05em;margin-bottom:12px;}
+  .article-hero h2{font-size:clamp(1.1rem,3.5vw,1.45rem);font-weight:700;color:var(--navy);line-height:1.45;margin-bottom:10px;}
+  .article-hero .meta{font-size:.74rem;color:var(--muted);}
+  .card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .card h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  .card h3 .num{background:var(--navy);color:var(--gold);font-family:'DM Mono',monospace;font-size:.72rem;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .card p{font-size:.88rem;line-height:1.9;color:var(--ink);margin-bottom:10px;}
+  .hint{font-size:.78rem;color:var(--muted);padding:10px 14px;background:var(--paper);border-left:3px solid var(--gold);border-radius:0 5px 5px 0;margin:12px 0;}
+  .grade-card{border:2px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:20px;}
+  .grade-card-header{padding:14px 20px;display:flex;align-items:center;justify-content:space-between;}
+  .grade-card-header .g-title{font-size:1rem;font-weight:700;color:#fff;}
+  .grade-card-header .g-min{font-size:.78rem;color:rgba(255,255,255,.7);}
+  .gc-9to8 .grade-card-header{background:#2e7d32;}
+  .gc-8to7 .grade-card-header{background:#1565c0;}
+  .gc-7to6 .grade-card-header{background:#6a1b9a;}
+  .gc-6to5 .grade-card-header{background:#b71c1c;}
+  .grade-card-body{padding:18px 20px;}
+  .strategy-list{display:flex;flex-direction:column;gap:12px;}
+  .strategy-item{display:flex;gap:12px;align-items:flex-start;}
+  .strategy-item .si-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px;}
+  .strategy-item .si-content .si-title{font-size:.88rem;font-weight:700;color:var(--navy);margin-bottom:3px;}
+  .strategy-item .si-content .si-desc{font-size:.82rem;line-height:1.8;color:var(--ink);}
+  .difficulty-bar{display:flex;align-items:center;gap:10px;margin:16px 0 8px;}
+  .difficulty-bar .d-label{font-size:.75rem;color:var(--muted);width:60px;flex-shrink:0;}
+  .difficulty-bar .d-track{flex:1;height:8px;background:var(--paper);border-radius:99px;overflow:hidden;}
+  .difficulty-bar .d-fill{height:100%;border-radius:99px;}
+  .d-fill-1{background:#4caf50;width:25%;}
+  .d-fill-2{background:#2196f3;width:50%;}
+  .d-fill-3{background:#9c27b0;width:70%;}
+  .d-fill-4{background:#f44336;width:90%;}
+  .table-compact{width:100%;border-collapse:collapse;font-size:.8rem;margin:14px 0;}
+  .table-compact thead tr{background:var(--navy);color:#fff;}
+  .table-compact thead th{padding:8px 10px;text-align:left;}
+  .table-compact tbody tr:nth-child(odd){background:#fff;}
+  .table-compact tbody tr:nth-child(even){background:var(--paper);}
+  .table-compact tbody td{padding:8px 10px;border-bottom:1px solid var(--border);}
+  .td-c{text-align:center;}
+  .td-bold{font-weight:700;color:var(--navy);}
+  .cta-box{background:var(--navy);border-radius:10px;padding:22px 24px;text-align:center;margin-top:28px;}
+  .cta-box p{color:rgba(255,255,255,.75);font-size:.85rem;margin-bottom:14px;}
+  .cta-btn{display:inline-block;background:var(--gold);color:var(--navy);font-weight:700;font-family:'Noto Serif KR',serif;padding:12px 28px;border-radius:7px;text-decoration:none;font-size:.92rem;transition:opacity .2s;}
+  .cta-btn:hover{opacity:.85;}
+  .related-links{background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .related-links h3{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:14px;}
+  .related-links ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .related-links li a{font-size:.85rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:6px;}
+  .related-links li a::before{content:'→';color:var(--gold);}
+  .ad-slot{background:var(--paper);border:1px dashed var(--border);border-radius:6px;text-align:center;padding:14px;font-size:.75rem;color:var(--muted);margin:20px 0;}
+  .ad-slot strong{display:block;margin-bottom:4px;color:var(--navy);}
+  footer{text-align:center;padding:24px;font-size:.72rem;color:var(--muted);border-top:1px solid var(--border);}
+  @media(max-width:540px){.card{padding:20px 16px;}.grade-card-body{padding:14px 16px;}}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1KXD1P0ZVC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1KXD1P0ZVC');</script>
+</head>
+<body>
+<header>
+  <h1>공무원 <span>평정점수</span> 계산기</h1>
+  <p>서울시·경기·인천 승진 평정점수 자동 산출</p>
+  <div class="gold-line"></div>
+</header>
+<nav class="breadcrumb">
+  <a href="index.html">홈</a> &rsaquo; 직급별 승진 전략 가이드
+</nav>
+<main>
+
+  <div class="ad-slot" style="padding:16px;">
+    <strong>광고</strong>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="0000000007" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+
+  <div class="article-hero">
+    <span class="tag">승진 전략</span>
+    <h2>공무원 직급별 승진 전략 가이드<br>— 9급·8급·7급·6급 평정점수 올리는 법</h2>
+    <p class="meta">최종 업데이트 2025년 · 지방공무원 평정 규칙 기준</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">1</span> 승진 전략의 핵심 원칙</h3>
+    <p>평정점수는 근무성적평정(70점) + 경력평정(30점) + 가점(최대 5점)으로 구성됩니다. 하지만 직급별로 경쟁 구도와 핵심 변수가 다릅니다.</p>
+    <table class="table-compact">
+      <thead><tr><th>직급 구간</th><th class="td-c">경쟁 강도</th><th>핵심 변수</th></tr></thead>
+      <tbody>
+        <tr><td>9급 → 8급</td><td class="td-c">★☆☆☆</td><td>최저연수 충족 후 자동에 가까움, 가점 준비 시작</td></tr>
+        <tr><td>8급 → 7급</td><td class="td-c">★★☆☆</td><td>근평 관리 시작, 자격증·어학 가점 확보</td></tr>
+        <tr><td>7급 → 6급</td><td class="td-c">★★★☆</td><td>근평 비중 급상승, 부서 배치와 평정 단위 중요</td></tr>
+        <tr><td>6급 → 5급</td><td class="td-c">★★★★</td><td>TO 경쟁 치열, 포상 가점과 근평 종합 전략 필수</td></tr>
+      </tbody>
+    </table>
+    <div class="hint">💡 어느 직급에 있든 지금 당장 준비할 수 있는 가점 항목(자격증·어학)부터 챙기는 것이 가장 효율적입니다.</div>
+  </div>
+
+  <!-- 9급 → 8급 -->
+  <div class="grade-card gc-9to8">
+    <div class="grade-card-header">
+      <span class="g-title">9급 → 8급 승진 전략</span>
+      <span class="g-min">최저연수: 1년 6개월</span>
+    </div>
+    <div class="grade-card-body">
+      <div class="difficulty-bar">
+        <span class="d-label">경쟁 강도</span>
+        <div class="d-track"><div class="d-fill d-fill-1"></div></div>
+        <span style="font-size:.75rem;color:#4caf50;">낮음</span>
+      </div>
+      <div class="strategy-list">
+        <div class="strategy-item">
+          <span class="si-icon">📋</span>
+          <div class="si-content">
+            <div class="si-title">최저연수 1년 6개월 충족에 집중</div>
+            <div class="si-desc">9급→8급은 대부분의 기관에서 최저연수 도달 후 큰 경쟁 없이 승진됩니다. 가장 중요한 것은 최저연수 산입에 불이익이 되는 휴직(일반 질병·가사 등)을 최소화하는 것입니다.</div>
+          </div>
+        </div>
+        <div class="strategy-item">
+          <span class="si-icon">📜</span>
+          <div class="si-content">
+            <div class="si-title">지금부터 직무 자격증 준비</div>
+            <div class="si-desc">8급 이후 경쟁이 치열해지기 전에 해당 계급 인정 자격증을 미리 취득해두세요. 자격증 취득 후 승진에 반영되기까지 시간이 걸리므로 조기 준비가 유리합니다.</div>
+          </div>
+        </div>
+        <div class="strategy-item">
+          <span class="si-icon">🌐</span>
+          <div class="si-content">
+            <div class="si-title">어학 성적 확보</div>
+            <div class="si-desc">TOEIC 900점 이상(0.12점)을 목표로 어학 성적을 미리 취득하세요. 유효기간(2년)이 있으므로 승진이 임박했을 때 갱신할 수 있도록 계획을 세우세요.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8급 → 7급 -->
+  <div class="grade-card gc-8to7">
+    <div class="grade-card-header">
+      <span class="g-title">8급 → 7급 승진 전략</span>
+      <span class="g-min">최저연수: 2년</span>
+    </div>
+    <div class="grade-card-body">
+      <div class="difficulty-bar">
+        <span class="d-label">경쟁 강도</span>
+        <div class="d-track"><div class="d-fill d-fill-2"></div></div>
+        <span style="font-size:.75rem;color:#2196f3;">보통</span>
+      </div>
+      <div class="strategy-list">
+        <div class="strategy-item">
+          <span class="si-icon">📊</span>
+          <div class="si-content">
+            <div class="si-title">근평 '수' 등급 확보 시작</div>
+            <div class="si-desc">8급부터는 근평 관리가 승진의 핵심이 됩니다. 평정 단위 내에서 상위 20%에 들기 위해 업무 성과를 가시화하고, 평정권자(부서장)에게 업무 성과를 적극 알리는 것이 중요합니다.</div>
+          </div>
+        </div>
+        <div class="strategy-item">
+          <span class="si-icon">🏆</span>
+          <div class="si-content">
+            <div class="si-title">부서 내 표창 기회 챙기기</div>
+            <div class="si-desc">기초단체장 표창(0.25점)이라도 받을 수 있는 기회가 생기면 적극 활용하세요. 부서 추천을 받으려면 팀 내 존재감이 중요합니다.</div>
+          </div>
+        </div>
+        <div class="strategy-item">
+          <span class="si-icon">🔄</span>
+          <div class="si-content">
+            <div class="si-title">평정 단위(부서) 구조 파악</div>
+            <div class="si-desc">내 부서가 몇 명을 묶어 근평을 하는지 파악하세요. 소규모 부서는 '수' 등급이 배정되지 않을 수 있습니다. 인사이동 시 이를 고려하는 것이 유리할 수 있습니다.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ad-slot" style="padding:16px;">
+    <strong>광고</strong>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="0000000008" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+
+  <!-- 7급 → 6급 -->
+  <div class="grade-card gc-7to6">
+    <div class="grade-card-header">
+      <span class="g-title">7급 → 6급 승진 전략</span>
+      <span class="g-min">최저연수: 2년</span>
+    </div>
+    <div class="grade-card-body">
+      <div class="difficulty-bar">
+        <span class="d-label">경쟁 강도</span>
+        <div class="d-track"><div class="d-fill d-fill-3"></div></div>
+        <span style="font-size:.75rem;color:#9c27b0;">높음</span>
+      </div>
+      <div class="strategy-list">
+        <div class="strategy-item">
+          <span class="si-icon">📈</span>
+          <div class="si-content">
+            <div class="si-title">연속 '수' 등급 목표 설정</div>
+            <div class="si-desc">7급부터는 근평 경쟁이 본격화됩니다. 최근 4개 반기 중 '수'를 2~3회 받는 것이 승진 경쟁에서 유리한 위치를 확보하는 핵심입니다. 단 한 번의 '양' 등급도 큰 불이익이 됩니다.</div>
+          </div>
+        </div>
+        <div class="strategy-item">
+          <span class="si-icon">📋</span>
+          <div class="si-content">
+            <div class="si-title">가점 총점 점검 및 극대화</div>
+            <div class="si-desc">자격증·어학·포상 가점을 점검하고 아직 확보하지 못한 항목을 채우세요. 가점 1점 차이가 근평 0.14점의 등급 격차에 해당합니다.</div>
+          </div>
+        </div>
+        <div class="strategy-item">
+          <span class="si-icon">👥</span>
+          <div class="si-content">
+            <div class="si-title">명부 순위 현황 파악</div>
+            <div class="si-desc">인사담당 부서에 내 현재 명부 순위와 결원 현황을 파악해두세요. 언제쯤 승진이 가능한지 역산하면 자격증·어학 갱신 시점을 전략적으로 결정할 수 있습니다.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6급 → 5급 -->
+  <div class="grade-card gc-6to5">
+    <div class="grade-card-header">
+      <span class="g-title">6급 → 5급 승진 전략</span>
+      <span class="g-min">최저연수: 3년 6개월 (서울시 4년 이상)</span>
+    </div>
+    <div class="grade-card-body">
+      <div class="difficulty-bar">
+        <span class="d-label">경쟁 강도</span>
+        <div class="d-track"><div class="d-fill d-fill-4"></div></div>
+        <span style="font-size:.75rem;color:#f44336;">매우 높음</span>
+      </div>
+      <div class="strategy-list">
+        <div class="strategy-item">
+          <span class="si-icon">🎯</span>
+          <div class="si-content">
+            <div class="si-title">장기 전략으로 접근 — 5년 이상 계획</div>
+            <div class="si-desc">6급→5급은 TO가 제한되고 경쟁자가 많아 최저연수를 훨씬 초과해도 대기하는 경우가 많습니다. 단기 전술보다 장기적인 근평 누적 관리가 핵심입니다.</div>
+          </div>
+        </div>
+        <div class="strategy-item">
+          <span class="si-icon">🥇</span>
+          <div class="si-content">
+            <div class="si-title">고등급 포상 적극 추진</div>
+            <div class="si-desc">장관급 이상 포상(0.5점 이상)을 받을 수 있는 기회를 적극 찾으세요. 기관 내 주요 프로젝트 참여, 우수 정책 발굴 등을 통해 포상 기회를 늘릴 수 있습니다.</div>
+          </div>
+        </div>
+        <div class="strategy-item">
+          <span class="si-icon">💡</span>
+          <div class="si-content">
+            <div class="si-title">특별 승진·특수지 근무 활용</div>
+            <div class="si-desc">특별 공로 인정 시 특별 승진 제도를 활용할 수 있습니다. 또한 기피 부서·특수지 근무 가점이 있다면 이를 통해 가점을 추가로 확보하는 방법도 검토하세요.</div>
+          </div>
+        </div>
+        <div class="strategy-item">
+          <span class="si-icon">📅</span>
+          <div class="si-content">
+            <div class="si-title">근평 기준일 전 복직·복귀 조율</div>
+            <div class="si-desc">휴직이나 파견 중이라면 근평 기준일(6월 말, 12월 말) 전 복직을 고려하세요. 해당 반기 근평을 받아야 명부 점수에 반영됩니다.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="related-links">
+    <h3>📚 함께 읽으면 좋은 글</h3>
+    <ul>
+      <li><a href="promotion-minimum-years.html">직급별 승진소요 최저연수 총정리</a></li>
+      <li><a href="bonus-points-guide.html">승진 가점 종류와 획득 전략</a></li>
+      <li><a href="special-appointment.html">특별 승진 제도 완전 정리</a></li>
+      <li><a href="performance-rating-guide.html">근무성적평정(근평) 등급·점수 가이드</a></li>
+    </ul>
+  </div>
+
+  <div class="cta-box">
+    <p>내 직급·경력·가점을 입력해 현재 평정점수를 확인하세요.<br>경쟁자 대비 내 위치를 파악하는 첫걸음입니다.</p>
+    <a class="cta-btn" href="index.html">🏆 평정점수 계산하러 가기</a>
+  </div>
+</main>
+<footer>
+  본 콘텐츠는 참고용이며 실제 평정 결과는 소속 기관 인사담당자에게 확인하시기 바랍니다.<br>
+  문의: <a href="mailto:sj.gates@gmail.com" style="color:var(--gold);">sj.gates@gmail.com</a>
+  &nbsp;|&nbsp;
+  <a href="privacy.html" style="color:var(--muted);">개인정보처리방침</a>
+</footer>
+</body>
+</html>

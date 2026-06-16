@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>공무원 평정 기준일·시기 캘린더 완전 정리 — 상반기·하반기 평정 일정</title>
+<meta name="description" content="공무원 근무성적평정 기준일(6월 말·12월 말), 명부 작성 및 발효 일정, 경력 산정 기준일 등 평정과 관련된 모든 시기를 캘린더 형식으로 정리했습니다.">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="공무원 평정점수 계산기">
+<meta property="og:title" content="공무원 평정 기준일·시기 캘린더 완전 정리">
+<meta property="og:description" content="근무성적평정 기준일, 명부 발효 일정, 경력 산정 시기를 캘린더로 정리했습니다.">
+<meta property="og:url" content="https://sj-gates.github.io/point-calculator/evaluation-period.html">
+<meta property="og:locale" content="ko_KR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0f2340;--gold:#c8a84b;--cream:#faf8f3;--paper:#f2ede3;--ink:#1a1a2e;--muted:#6b6b7a;--border:#d8d0be;--card-shadow:0 2px 20px rgba(15,35,64,.10);}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Serif KR',serif;background:var(--cream);color:var(--ink);min-height:100vh;}
+  header{background:var(--navy);padding:36px 24px 28px;text-align:center;position:relative;overflow:hidden;}
+  header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 24px,rgba(200,168,75,.06) 24px,rgba(200,168,75,.06) 25px);}
+  header h1{font-size:clamp(1.1rem,4vw,1.6rem);font-weight:700;color:#fff;letter-spacing:-.02em;position:relative;}
+  header h1 span{color:var(--gold);}
+  header p{margin-top:8px;font-size:.78rem;color:rgba(255,255,255,.55);position:relative;}
+  .gold-line{width:48px;height:2px;background:var(--gold);margin:14px auto 0;}
+  nav.breadcrumb{max-width:760px;margin:16px auto 0;padding:0 20px;font-size:.76rem;color:var(--muted);}
+  nav.breadcrumb a{color:var(--gold);text-decoration:none;}
+  main{max-width:760px;margin:0 auto;padding:24px 20px 60px;}
+  .article-hero{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 24px 22px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .article-hero .tag{display:inline-block;background:var(--navy);color:var(--gold);font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:99px;letter-spacing:.05em;margin-bottom:12px;}
+  .article-hero h2{font-size:clamp(1.1rem,3.5vw,1.45rem);font-weight:700;color:var(--navy);line-height:1.45;margin-bottom:10px;}
+  .article-hero .meta{font-size:.74rem;color:var(--muted);}
+  .card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .card h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  .card h3 .num{background:var(--navy);color:var(--gold);font-family:'DM Mono',monospace;font-size:.72rem;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .card p{font-size:.88rem;line-height:1.9;color:var(--ink);margin-bottom:10px;}
+  .hint{font-size:.78rem;color:var(--muted);padding:10px 14px;background:var(--paper);border-left:3px solid var(--gold);border-radius:0 5px 5px 0;margin:12px 0;}
+  .year-calendar{display:grid;grid-template-columns:1fr 1fr;gap:0;border:2px solid var(--navy);border-radius:10px;overflow:hidden;margin:14px 0;}
+  .half-year{padding:0;}
+  .half-year:first-child{border-right:1px solid var(--border);}
+  .hy-header{background:var(--navy);color:#fff;padding:12px 16px;text-align:center;}
+  .hy-header .hy-title{font-size:.88rem;font-weight:700;}
+  .hy-header .hy-sub{font-size:.72rem;color:rgba(255,255,255,.6);margin-top:2px;}
+  .month-list{padding:12px;}
+  .month-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);}
+  .month-item:last-child{border-bottom:none;}
+  .month-badge{background:var(--paper);border:1px solid var(--border);border-radius:5px;padding:3px 8px;font-size:.72rem;font-weight:700;color:var(--navy);white-space:nowrap;font-family:'DM Mono',monospace;flex-shrink:0;}
+  .month-badge.gold{background:var(--navy);color:var(--gold);border-color:var(--navy);}
+  .month-events{display:flex;flex-direction:column;gap:4px;}
+  .month-event{font-size:.78rem;line-height:1.5;color:var(--ink);}
+  .month-event.key{font-weight:700;color:var(--navy);}
+  .month-event.sub{color:var(--muted);}
+  table{width:100%;border-collapse:collapse;font-size:.82rem;margin:14px 0;}
+  thead tr{background:var(--navy);color:#fff;}
+  thead th{padding:9px 12px;text-align:left;}
+  tbody tr:nth-child(odd){background:#fff;}
+  tbody tr:nth-child(even){background:var(--paper);}
+  tbody td{padding:9px 12px;border-bottom:1px solid var(--border);}
+  .td-c{text-align:center;}
+  .td-bold{font-weight:700;color:var(--navy);}
+  .checklist{display:flex;flex-direction:column;gap:10px;margin-top:10px;}
+  .check-item{display:flex;gap:10px;align-items:flex-start;background:var(--paper);border:1px solid var(--border);border-radius:7px;padding:12px 14px;}
+  .check-item .ci-icon{font-size:1.1rem;flex-shrink:0;}
+  .check-item .ci-text .ci-title{font-size:.88rem;font-weight:700;color:var(--navy);margin-bottom:3px;}
+  .check-item .ci-text .ci-desc{font-size:.8rem;color:var(--muted);line-height:1.7;}
+  .cta-box{background:var(--navy);border-radius:10px;padding:22px 24px;text-align:center;margin-top:28px;}
+  .cta-box p{color:rgba(255,255,255,.75);font-size:.85rem;margin-bottom:14px;}
+  .cta-btn{display:inline-block;background:var(--gold);color:var(--navy);font-weight:700;font-family:'Noto Serif KR',serif;padding:12px 28px;border-radius:7px;text-decoration:none;font-size:.92rem;transition:opacity .2s;}
+  .cta-btn:hover{opacity:.85;}
+  .related-links{background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .related-links h3{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:14px;}
+  .related-links ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .related-links li a{font-size:.85rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:6px;}
+  .related-links li a::before{content:'→';color:var(--gold);}
+  .ad-slot{background:var(--paper);border:1px dashed var(--border);border-radius:6px;text-align:center;padding:14px;font-size:.75rem;color:var(--muted);margin:20px 0;}
+  .ad-slot strong{display:block;margin-bottom:4px;color:var(--navy);}
+  footer{text-align:center;padding:24px;font-size:.72rem;color:var(--muted);border-top:1px solid var(--border);}
+  @media(max-width:540px){.card{padding:20px 16px;}.year-calendar{grid-template-columns:1fr;}.half-year:first-child{border-right:none;border-bottom:1px solid var(--border);}}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1KXD1P0ZVC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1KXD1P0ZVC');</script>
+</head>
+<body>
+<header>
+  <h1>공무원 <span>평정점수</span> 계산기</h1>
+  <p>서울시·경기·인천 승진 평정점수 자동 산출</p>
+  <div class="gold-line"></div>
+</header>
+<nav class="breadcrumb">
+  <a href="index.html">홈</a> &rsaquo; 평정 기준일·시기 캘린더 완전 정리
+</nav>
+<main>
+
+  <div class="ad-slot" style="padding:16px;">
+    <strong>광고</strong>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="0000000013" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+
+  <div class="article-hero">
+    <span class="tag">평정 캘린더</span>
+    <h2>공무원 평정 기준일·시기 캘린더 완전 정리<br>— 상반기·하반기 평정 일정 한눈에</h2>
+    <p class="meta">최종 업데이트 2025년 · 지방공무원 평정 규칙 기준</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">1</span> 평정 기준일이란?</h3>
+    <p>평정 기준일은 근무성적평정과 경력평정을 산정하는 <strong>기준이 되는 날짜</strong>입니다. 이 날을 기준으로 경력 월수를 계산하고 가점을 산정합니다. 공무원 평정에서 기준일은 <strong>매년 6월 30일(상반기)과 12월 31일(하반기)</strong>이 원칙입니다.</p>
+    <p>기준일이 중요한 이유는 복직, 자격증 취득, 어학 성적 제출 등을 기준일 이전에 완료해야 해당 반기 평정에 반영되기 때문입니다.</p>
+    <div class="hint">💡 복직을 계획 중이라면 6월 30일 또는 12월 31일 이전에 복직해야 해당 반기의 근평을 받을 수 있습니다.</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">2</span> 연간 평정 캘린더</h3>
+
+    <div class="year-calendar">
+      <div class="half-year">
+        <div class="hy-header">
+          <div class="hy-title">상반기 (1월~6월)</div>
+          <div class="hy-sub">기준일: 6월 30일</div>
+        </div>
+        <div class="month-list">
+          <div class="month-item">
+            <span class="month-badge">1월</span>
+            <div class="month-events">
+              <div class="month-event sub">하반기 명부 발효 (전년 12월 평정 기반)</div>
+              <div class="month-event sub">신규 승진 발령 시작</div>
+            </div>
+          </div>
+          <div class="month-item">
+            <span class="month-badge">2~5월</span>
+            <div class="month-events">
+              <div class="month-event sub">상반기 근무성적 누적 기간</div>
+              <div class="month-event sub">자격증·어학 성적 취득 준비</div>
+            </div>
+          </div>
+          <div class="month-item">
+            <span class="month-badge gold">6월 말</span>
+            <div class="month-events">
+              <div class="month-event key">📍 상반기 근평 기준일 (6월 30일)</div>
+              <div class="month-event key">📍 경력평정 기준일</div>
+              <div class="month-event sub">가점 확정 (자격증·어학·포상)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="half-year">
+        <div class="hy-header">
+          <div class="hy-title">하반기 (7월~12월)</div>
+          <div class="hy-sub">기준일: 12월 31일</div>
+        </div>
+        <div class="month-list">
+          <div class="month-item">
+            <span class="month-badge">7월</span>
+            <div class="month-events">
+              <div class="month-event sub">상반기 명부 발효 (6월 평정 기반)</div>
+              <div class="month-event sub">상반기 기반 승진 발령</div>
+            </div>
+          </div>
+          <div class="month-item">
+            <span class="month-badge">8~11월</span>
+            <div class="month-events">
+              <div class="month-event sub">하반기 근무성적 누적 기간</div>
+              <div class="month-event sub">연말 평정 준비: 포상 추천 활용</div>
+            </div>
+          </div>
+          <div class="month-item">
+            <span class="month-badge gold">12월 말</span>
+            <div class="month-events">
+              <div class="month-event key">📍 하반기 근평 기준일 (12월 31일)</div>
+              <div class="month-event key">📍 경력평정 기준일</div>
+              <div class="month-event sub">연간 가점 최종 산정</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ad-slot" style="padding:16px;">
+    <strong>광고</strong>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="0000000014" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">3</span> 평정 기준일별 주요 확인 사항</h3>
+    <table>
+      <thead><tr><th>항목</th><th>기준일</th><th>확인 내용</th></tr></thead>
+      <tbody>
+        <tr><td>근무성적평정</td><td class="td-c">6월 30일 / 12월 31일</td><td>해당 반기 평정 대상자 여부 확인</td></tr>
+        <tr><td>경력평정 월수</td><td class="td-c">6월 30일 / 12월 31일</td><td>기준일까지의 현 직급 근무 월수</td></tr>
+        <tr><td>자격증 가점</td><td class="td-c">기준일 이전 취득분</td><td>기준일 기준 유효한 자격증 보유 여부</td></tr>
+        <tr><td>어학 가점</td><td class="td-c">기준일 이전 취득분</td><td>취득일로부터 2년 이내 성적 유효 여부</td></tr>
+        <tr><td>포상 가점</td><td class="td-c">기준일 이전 수상분</td><td>기준일까지 수여된 포상 내역 확인</td></tr>
+        <tr><td>최저연수 충족</td><td class="td-c">기준일 기준</td><td>기준일까지 최저연수 충족 여부</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">4</span> 평정 기준일 전후 행동 체크리스트</h3>
+    <div class="checklist">
+      <div class="check-item">
+        <span class="ci-icon">📅</span>
+        <div class="ci-text">
+          <div class="ci-title">기준일 3개월 전: 어학 성적 재취득 여부 점검</div>
+          <div class="ci-desc">현재 보유한 공인 어학 성적의 취득일이 기준일로부터 2년 이내인지 확인하세요. 만료 예정이라면 기준일 전에 재취득해야 가점이 유지됩니다.</div>
+        </div>
+      </div>
+      <div class="check-item">
+        <span class="ci-icon">📜</span>
+        <div class="ci-text">
+          <div class="ci-title">기준일 2개월 전: 자격증 취득 마감 점검</div>
+          <div class="ci-desc">취득 예정인 자격증이 있다면 기준일 전에 최종 합격 및 자격증 발급이 완료되어야 해당 반기에 반영됩니다.</div>
+        </div>
+      </div>
+      <div class="check-item">
+        <span class="ci-icon">🏆</span>
+        <div class="ci-text">
+          <div class="ci-title">기준일 1개월 전: 포상 추천 기회 확인</div>
+          <div class="ci-desc">부서 내 포상 추천 기회가 있다면 기준일 전에 수여가 완료되어야 해당 반기 가점에 반영됩니다. 인사담당 부서에 포상 일정을 확인하세요.</div>
+        </div>
+      </div>
+      <div class="check-item">
+        <span class="ci-icon">🔄</span>
+        <div class="ci-text">
+          <div class="ci-title">기준일 직전: 복직·복귀 일정 조율</div>
+          <div class="ci-desc">휴직·파견 중이라면 기준일(6월 30일 또는 12월 31일) 이전에 복직해야 해당 반기 근평 대상자가 됩니다. 기준일 이후 복직 시 다음 반기부터 근평이 재개됩니다.</div>
+        </div>
+      </div>
+      <div class="check-item">
+        <span class="ci-icon">📊</span>
+        <div class="ci-text">
+          <div class="ci-title">기준일 직후: 평정 결과 확인 및 이의 검토</div>
+          <div class="ci-desc">평정 결과가 나오면 예상과 크게 다른 경우 이의신청 절차를 확인하세요. 가점 항목이 빠졌거나 경력이 잘못 산정된 경우 인사담당 부서에 즉시 문의하세요.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">5</span> 명부 발효와 승진 발령 시기</h3>
+    <p>근무성적평정 기준일 이후 경력·가점을 합산하여 명부를 작성하고, 인사위원회 심의를 거쳐 명부가 발효됩니다. 발효 이후 결원이 생기면 순서대로 승진 발령이 납니다.</p>
+    <table>
+      <thead><tr><th>평정 기준일</th><th class="td-c">명부 작성 시기</th><th class="td-c">명부 발효 (통상)</th><th class="td-c">승진 발령</th></tr></thead>
+      <tbody>
+        <tr><td>6월 30일 (상반기)</td><td class="td-c">7월 중</td><td class="td-c td-bold">7~8월</td><td class="td-c">8월 이후 결원 발생 시</td></tr>
+        <tr><td>12월 31일 (하반기)</td><td class="td-c">1월 중</td><td class="td-c td-bold">1~2월</td><td class="td-c">2월 이후 결원 발생 시</td></tr>
+      </tbody>
+    </table>
+    <div class="hint">⚠️ 명부 작성 및 발효 시기는 기관별로 다를 수 있습니다. 소속 기관의 구체적인 일정은 인사담당 부서에 확인하세요.</div>
+  </div>
+
+  <div class="related-links">
+    <h3>📚 함께 읽으면 좋은 글</h3>
+    <ul>
+      <li><a href="promotion-list-guide.html">승진후보자명부 작성 방법 가이드</a></li>
+      <li><a href="career-rating-guide.html">경력평정 계산 방법 완전 정리</a></li>
+      <li><a href="bonus-points-guide.html">승진 가점 종류와 획득 전략</a></li>
+      <li><a href="promotion-strategy.html">직급별 승진 전략 가이드</a></li>
+    </ul>
+  </div>
+
+  <div class="cta-box">
+    <p>평정 기준일 기준으로 내 평정점수를 바로 계산해보세요.<br>기준일만 입력하면 경력·가점을 자동으로 산출합니다.</p>
+    <a class="cta-btn" href="index.html">🏆 평정점수 계산하러 가기</a>
+  </div>
+</main>
+<footer>
+  본 콘텐츠는 참고용이며 실제 평정 결과는 소속 기관 인사담당자에게 확인하시기 바랍니다.<br>
+  문의: <a href="mailto:sj.gates@gmail.com" style="color:var(--gold);">sj.gates@gmail.com</a>
+  &nbsp;|&nbsp;
+  <a href="privacy.html" style="color:var(--muted);">개인정보처리방침</a>
+</footer>
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>공무원 특별 승진 제도 완전 정리 — 조건·절차·일반 승진과의 차이점</title>
+<meta name="description" content="공무원 특별 승진 제도의 종류(공적·모범·제안·사망)와 요건, 신청 절차, 일반 승진과의 차이점을 상세히 정리했습니다. 평정점수 없이 승진하는 방법을 알아보세요.">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="공무원 평정점수 계산기">
+<meta property="og:title" content="공무원 특별 승진 제도 완전 정리 — 조건·절차·종류">
+<meta property="og:description" content="공무원 특별 승진 종류와 요건, 절차, 일반 승진과의 차이를 정리했습니다.">
+<meta property="og:url" content="https://sj-gates.github.io/point-calculator/special-appointment.html">
+<meta property="og:locale" content="ko_KR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0f2340;--gold:#c8a84b;--cream:#faf8f3;--paper:#f2ede3;--ink:#1a1a2e;--muted:#6b6b7a;--border:#d8d0be;--card-shadow:0 2px 20px rgba(15,35,64,.10);}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Serif KR',serif;background:var(--cream);color:var(--ink);min-height:100vh;}
+  header{background:var(--navy);padding:36px 24px 28px;text-align:center;position:relative;overflow:hidden;}
+  header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 24px,rgba(200,168,75,.06) 24px,rgba(200,168,75,.06) 25px);}
+  header h1{font-size:clamp(1.1rem,4vw,1.6rem);font-weight:700;color:#fff;letter-spacing:-.02em;position:relative;}
+  header h1 span{color:var(--gold);}
+  header p{margin-top:8px;font-size:.78rem;color:rgba(255,255,255,.55);position:relative;}
+  .gold-line{width:48px;height:2px;background:var(--gold);margin:14px auto 0;}
+  nav.breadcrumb{max-width:760px;margin:16px auto 0;padding:0 20px;font-size:.76rem;color:var(--muted);}
+  nav.breadcrumb a{color:var(--gold);text-decoration:none;}
+  main{max-width:760px;margin:0 auto;padding:24px 20px 60px;}
+  .article-hero{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 24px 22px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .article-hero .tag{display:inline-block;background:var(--navy);color:var(--gold);font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:99px;letter-spacing:.05em;margin-bottom:12px;}
+  .article-hero h2{font-size:clamp(1.1rem,3.5vw,1.45rem);font-weight:700;color:var(--navy);line-height:1.45;margin-bottom:10px;}
+  .article-hero .meta{font-size:.74rem;color:var(--muted);}
+  .card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .card h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  .card h3 .num{background:var(--navy);color:var(--gold);font-family:'DM Mono',monospace;font-size:.72rem;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .card p{font-size:.88rem;line-height:1.9;color:var(--ink);margin-bottom:10px;}
+  .hint{font-size:.78rem;color:var(--muted);padding:10px 14px;background:var(--paper);border-left:3px solid var(--gold);border-radius:0 5px 5px 0;margin:12px 0;}
+  table{width:100%;border-collapse:collapse;font-size:.82rem;margin:14px 0;}
+  thead tr{background:var(--navy);color:#fff;}
+  thead th{padding:9px 12px;text-align:left;}
+  tbody tr:nth-child(odd){background:#fff;}
+  tbody tr:nth-child(even){background:var(--paper);}
+  tbody td{padding:10px 12px;border-bottom:1px solid var(--border);line-height:1.6;}
+  .td-c{text-align:center;}
+  .td-bold{font-weight:700;color:var(--navy);}
+  .special-card{border:2px solid var(--gold);border-radius:10px;overflow:hidden;margin-bottom:16px;}
+  .special-card-header{background:var(--navy);padding:14px 18px;display:flex;align-items:center;gap:12px;}
+  .special-card-header .sc-icon{font-size:1.3rem;}
+  .special-card-header .sc-title{font-size:.95rem;font-weight:700;color:#fff;}
+  .special-card-header .sc-sub{font-size:.75rem;color:rgba(255,255,255,.6);margin-top:2px;}
+  .special-card-body{padding:16px 18px;}
+  .special-card-body p{font-size:.85rem;line-height:1.85;color:var(--ink);margin-bottom:8px;}
+  .req-list{display:flex;flex-direction:column;gap:6px;margin-top:10px;}
+  .req-item{display:flex;gap:8px;font-size:.82rem;color:var(--ink);line-height:1.7;}
+  .req-item::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0;}
+  .diff-compare{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0;}
+  .diff-box{background:var(--paper);border:1px solid var(--border);border-radius:8px;padding:14px;}
+  .diff-box .db-title{font-size:.8rem;font-weight:700;color:var(--navy);margin-bottom:10px;text-align:center;}
+  .diff-box ul{list-style:none;display:flex;flex-direction:column;gap:6px;}
+  .diff-box li{font-size:.8rem;color:var(--ink);line-height:1.6;padding-left:14px;position:relative;}
+  .diff-box li::before{content:'·';position:absolute;left:0;color:var(--gold);font-weight:700;}
+  .timeline{margin:14px 0;}
+  .tl-item{display:flex;gap:14px;margin-bottom:14px;}
+  .tl-dot{width:28px;height:28px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);font-family:'DM Mono',monospace;font-size:.72rem;font-weight:700;flex-shrink:0;margin-top:2px;}
+  .tl-content .tl-title{font-size:.88rem;font-weight:700;color:var(--navy);margin-bottom:3px;}
+  .tl-content .tl-desc{font-size:.8rem;color:var(--muted);line-height:1.7;}
+  .cta-box{background:var(--navy);border-radius:10px;padding:22px 24px;text-align:center;margin-top:28px;}
+  .cta-box p{color:rgba(255,255,255,.75);font-size:.85rem;margin-bottom:14px;}
+  .cta-btn{display:inline-block;background:var(--gold);color:var(--navy);font-weight:700;font-family:'Noto Serif KR',serif;padding:12px 28px;border-radius:7px;text-decoration:none;font-size:.92rem;transition:opacity .2s;}
+  .cta-btn:hover{opacity:.85;}
+  .related-links{background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .related-links h3{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:14px;}
+  .related-links ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .related-links li a{font-size:.85rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:6px;}
+  .related-links li a::before{content:'→';color:var(--gold);}
+  .ad-slot{background:var(--paper);border:1px dashed var(--border);border-radius:6px;text-align:center;padding:14px;font-size:.75rem;color:var(--muted);margin:20px 0;}
+  .ad-slot strong{display:block;margin-bottom:4px;color:var(--navy);}
+  footer{text-align:center;padding:24px;font-size:.72rem;color:var(--muted);border-top:1px solid var(--border);}
+  @media(max-width:540px){.card{padding:20px 16px;}.diff-compare{grid-template-columns:1fr;}}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1KXD1P0ZVC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1KXD1P0ZVC');</script>
+</head>
+<body>
+<header>
+  <h1>공무원 <span>평정점수</span> 계산기</h1>
+  <p>서울시·경기·인천 승진 평정점수 자동 산출</p>
+  <div class="gold-line"></div>
+</header>
+<nav class="breadcrumb">
+  <a href="index.html">홈</a> &rsaquo; 특별 승진 제도 완전 정리
+</nav>
+<main>
+
+  <div class="ad-slot" style="padding:16px;">
+    <strong>광고</strong>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="0000000011" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+
+  <div class="article-hero">
+    <span class="tag">특별 승진</span>
+    <h2>공무원 특별 승진 제도 완전 정리<br>— 종류·조건·절차·일반 승진과의 차이</h2>
+    <p class="meta">최종 업데이트 2025년 · 지방공무원임용령 기준</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">1</span> 특별 승진이란?</h3>
+    <p>특별 승진은 <strong>평정점수 순위나 승진소요 최저연수와 관계없이</strong> 특정 조건을 충족한 공무원에게 부여하는 승진 제도입니다. 일반 승진이 점수 경쟁이라면, 특별 승진은 특정 공적·사유를 인정하는 예외적 제도입니다.</p>
+    <p>지방공무원임용령에 근거하며, 기관별 인사규칙으로 세부 요건과 운영 방식을 정합니다. 특별 승진에는 크게 <strong>공적 특별 승진, 모범 특별 승진, 제안 특별 승진, 사망 특별 승진</strong> 네 종류가 있습니다.</p>
+    <div class="hint">💡 특별 승진은 최저연수를 충족하지 않아도 되는 경우가 있으나, 기관별로 별도 최저 재직 기간을 두기도 합니다. 반드시 소속 기관 인사규칙을 확인하세요.</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">2</span> 특별 승진 종류별 상세</h3>
+
+    <div class="special-card">
+      <div class="special-card-header">
+        <span class="sc-icon">🏅</span>
+        <div>
+          <div class="sc-title">공적 특별 승진</div>
+          <div class="sc-sub">뛰어난 직무 공적을 세운 공무원</div>
+        </div>
+      </div>
+      <div class="special-card-body">
+        <p>직무 수행 중 탁월한 공적을 세워 기관 발전에 현저히 기여한 공무원에게 부여합니다. 주로 <strong>대규모 예산 절감, 혁신 정책 성과, 재난 대응 공로</strong> 등이 해당됩니다.</p>
+        <div class="req-list">
+          <div class="req-item">직무와 직접 관련된 탁월한 성과가 있어야 함</div>
+          <div class="req-item">인사위원회 심의를 거쳐 인정된 경우에 한함</div>
+          <div class="req-item">최저연수 미충족 시에도 적용 가능(기관별 상이)</div>
+          <div class="req-item">징계 처분 중이거나 제한 기간 내인 경우 불가</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="special-card">
+      <div class="special-card-header">
+        <span class="sc-icon">⭐</span>
+        <div>
+          <div class="sc-title">모범 특별 승진</div>
+          <div class="sc-sub">장기 모범 근무자</div>
+        </div>
+      </div>
+      <div class="special-card-body">
+        <p>오랜 기간 성실하고 모범적으로 근무한 공무원을 대상으로 합니다. 주로 <strong>장기 근속(20년 이상), 무결근·무사고 근무 등</strong>이 요건이 됩니다. 기관마다 요건 차이가 크므로 소속 기관 인사규칙을 확인해야 합니다.</p>
+        <div class="req-list">
+          <div class="req-item">장기 근속 연수 충족(기관별 기준 상이, 일반적으로 20년 이상)</div>
+          <div class="req-item">징계 이력 없거나 일정 기간 경과</div>
+          <div class="req-item">근무성적평정 성적 일정 수준 이상 유지</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="special-card">
+      <div class="special-card-header">
+        <span class="sc-icon">💡</span>
+        <div>
+          <div class="sc-title">제안 특별 승진</div>
+          <div class="sc-sub">우수 행정 제안 채택자</div>
+        </div>
+      </div>
+      <div class="special-card-body">
+        <p>행정 업무 개선에 관한 <strong>우수 제안을 제출하여 채택된 공무원</strong>에게 부여합니다. 제안의 실행 가능성과 기대 효과를 기준으로 심사하며, 최우수 제안에 한해 특별 승진 기회가 부여됩니다. 기관에 따라 제안 가점과 특별 승진 중 하나를 선택하게 하는 경우도 있습니다.</p>
+        <div class="req-list">
+          <div class="req-item">행정 제안 심사에서 최우수 또는 우수 등급 채택</div>
+          <div class="req-item">제안의 실제 시행 및 효과 인정</div>
+          <div class="req-item">인사위원회 심의 통과</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="special-card">
+      <div class="special-card-header">
+        <span class="sc-icon">🕊️</span>
+        <div>
+          <div class="sc-title">사망 특별 승진 (순직 추서)</div>
+          <div class="sc-sub">공무 수행 중 순직한 공무원</div>
+        </div>
+      </div>
+      <div class="special-card-body">
+        <p>직무 수행 중 사망한 공무원(순직)에 대해 사후 1계급 특별 승진을 부여하는 제도입니다. <strong>재해사망·위험직무순직</strong>으로 인정된 경우 적용되며, 유족에게 상위 직급 기준 퇴직급여가 지급됩니다.</p>
+        <div class="req-list">
+          <div class="req-item">공무원 재해보상법에 따른 순직 인정</div>
+          <div class="req-item">유족이 신청하거나 직권으로 처리</div>
+          <div class="req-item">최저연수 요건 미적용</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ad-slot" style="padding:16px;">
+    <strong>광고</strong>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="0000000012" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">3</span> 일반 승진 vs 특별 승진 비교</h3>
+    <div class="diff-compare">
+      <div class="diff-box">
+        <div class="db-title">📋 일반 승진</div>
+        <ul>
+          <li>평정점수 순위 기반</li>
+          <li>승진소요 최저연수 필수</li>
+          <li>결원 발생 시 순서대로</li>
+          <li>명부 순위에 따라 자동 적용</li>
+          <li>근평·경력·가점 모두 반영</li>
+          <li>반기별 명부 갱신</li>
+        </ul>
+      </div>
+      <div class="diff-box">
+        <div class="db-title">🏅 특별 승진</div>
+        <ul>
+          <li>평정점수와 무관</li>
+          <li>최저연수 불필요 (일부 예외)</li>
+          <li>특정 공적·사유 인정 시</li>
+          <li>인사위원회 심의 필수</li>
+          <li>결원과 무관하게 가능</li>
+          <li>연간 횟수 제한 있음</li>
+        </ul>
+      </div>
+    </div>
+    <div class="hint">💡 특별 승진은 기관별 운영 방식이 크게 다릅니다. 연간 특별 승진 건수가 매우 적은 경우도 있으므로 현실적인 가능성을 파악해두는 것이 중요합니다.</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">4</span> 특별 승진 절차</h3>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot">1</div>
+        <div class="tl-content">
+          <div class="tl-title">대상자 발굴 및 추천</div>
+          <div class="tl-desc">부서장 또는 기관장이 특별 승진 대상자를 발굴하거나, 공무원 본인이 신청합니다. 제안 특별 승진의 경우 제안 심사 결과에 따라 자동 추천되기도 합니다.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">2</div>
+        <div class="tl-content">
+          <div class="tl-title">공적 검토 및 서류 준비</div>
+          <div class="tl-desc">인사담당 부서에서 공적 내용, 징계 이력, 근무 성적 등을 검토합니다. 관련 증빙 서류(표창장, 제안 채택 문서 등)를 준비합니다.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">3</div>
+        <div class="tl-content">
+          <div class="tl-title">인사위원회 심의</div>
+          <div class="tl-desc">인사위원회에서 특별 승진 요건 충족 여부와 적정성을 심의합니다. 심의 결과에 따라 승인 또는 반려가 결정됩니다.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">4</div>
+        <div class="tl-content">
+          <div class="tl-title">특별 승진 발령</div>
+          <div class="tl-desc">인사위원회 의결 후 기관장이 특별 승진 발령을 냅니다. 발령일부터 상위 직급의 신분과 보수가 적용됩니다.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="related-links">
+    <h3>📚 함께 읽으면 좋은 글</h3>
+    <ul>
+      <li><a href="promotion-strategy.html">직급별 승진 전략 가이드</a></li>
+      <li><a href="bonus-points-guide.html">승진 가점 종류와 획득 전략</a></li>
+      <li><a href="promotion-list-guide.html">승진후보자명부 작성 방법 가이드</a></li>
+      <li><a href="promotion-minimum-years.html">직급별 승진소요 최저연수 총정리</a></li>
+    </ul>
+  </div>
+
+  <div class="cta-box">
+    <p>특별 승진이 아닌 일반 승진을 준비 중이신가요?<br>내 현재 평정점수와 예상 명부 순위를 확인해보세요.</p>
+    <a class="cta-btn" href="index.html">🏆 평정점수 계산하러 가기</a>
+  </div>
+</main>
+<footer>
+  본 콘텐츠는 참고용이며 실제 승진 기준은 소속 기관 인사담당자에게 확인하시기 바랍니다.<br>
+  문의: <a href="mailto:sj.gates@gmail.com" style="color:var(--gold);">sj.gates@gmail.com</a>
+  &nbsp;|&nbsp;
+  <a href="privacy.html" style="color:var(--muted);">개인정보처리방침</a>
+</footer>
+</body>
+</html>

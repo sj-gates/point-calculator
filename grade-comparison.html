@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>서울시·경기도·인천시 공무원 평정 기준 비교 — 근평·경력·가점 차이점 총정리</title>
+<meta name="description" content="서울시, 경기도, 인천시 공무원의 근무성적평정 등급 점수, 경력평정 산정 방식, 가점 기준이 어떻게 다른지 한눈에 비교합니다.">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="공무원 평정점수 계산기">
+<meta property="og:title" content="서울시·경기도·인천시 공무원 평정 기준 비교">
+<meta property="og:description" content="세 기관의 근평·경력·가점 기준 차이를 한눈에 비교합니다.">
+<meta property="og:url" content="https://sj-gates.github.io/point-calculator/grade-comparison.html">
+<meta property="og:locale" content="ko_KR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0f2340;--gold:#c8a84b;--cream:#faf8f3;--paper:#f2ede3;--ink:#1a1a2e;--muted:#6b6b7a;--border:#d8d0be;--card-shadow:0 2px 20px rgba(15,35,64,.10);--seoul:#1565c0;--gyeonggi:#1a6b45;--incheon:#7b1fa2;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Serif KR',serif;background:var(--cream);color:var(--ink);min-height:100vh;}
+  header{background:var(--navy);padding:36px 24px 28px;text-align:center;position:relative;overflow:hidden;}
+  header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 24px,rgba(200,168,75,.06) 24px,rgba(200,168,75,.06) 25px);}
+  header h1{font-size:clamp(1.1rem,4vw,1.6rem);font-weight:700;color:#fff;letter-spacing:-.02em;position:relative;}
+  header h1 span{color:var(--gold);}
+  header p{margin-top:8px;font-size:.78rem;color:rgba(255,255,255,.55);position:relative;}
+  .gold-line{width:48px;height:2px;background:var(--gold);margin:14px auto 0;}
+  nav.breadcrumb{max-width:760px;margin:16px auto 0;padding:0 20px;font-size:.76rem;color:var(--muted);}
+  nav.breadcrumb a{color:var(--gold);text-decoration:none;}
+  main{max-width:760px;margin:0 auto;padding:24px 20px 60px;}
+  .article-hero{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 24px 22px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .article-hero .tag{display:inline-block;background:var(--navy);color:var(--gold);font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:99px;letter-spacing:.05em;margin-bottom:12px;}
+  .article-hero h2{font-size:clamp(1.1rem,3.5vw,1.45rem);font-weight:700;color:var(--navy);line-height:1.45;margin-bottom:10px;}
+  .article-hero .meta{font-size:.74rem;color:var(--muted);}
+  .card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .card h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  .card h3 .num{background:var(--navy);color:var(--gold);font-family:'DM Mono',monospace;font-size:.72rem;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .card p{font-size:.88rem;line-height:1.9;color:var(--ink);margin-bottom:10px;}
+  .hint{font-size:.78rem;color:var(--muted);padding:10px 14px;background:var(--paper);border-left:3px solid var(--gold);border-radius:0 5px 5px 0;margin:12px 0;}
+  .region-tabs{display:flex;gap:0;margin-bottom:0;border-radius:8px 8px 0 0;overflow:hidden;}
+  .region-tab{flex:1;text-align:center;padding:10px 6px;font-size:.8rem;font-weight:700;color:#fff;cursor:default;}
+  .tab-seoul{background:var(--seoul);}
+  .tab-gyeonggi{background:var(--gyeonggi);}
+  .tab-incheon{background:var(--incheon);}
+  table{width:100%;border-collapse:collapse;font-size:.82rem;margin:14px 0;}
+  thead tr{background:var(--navy);color:#fff;}
+  thead th{padding:9px 12px;text-align:left;}
+  tbody tr:nth-child(odd){background:#fff;}
+  tbody tr:nth-child(even){background:var(--paper);}
+  tbody td{padding:9px 12px;border-bottom:1px solid var(--border);}
+  .td-c{text-align:center;}
+  .td-bold{font-weight:700;color:var(--navy);}
+  .td-seoul{color:var(--seoul);font-weight:700;}
+  .td-gyeonggi{color:var(--gyeonggi);font-weight:700;}
+  .td-incheon{color:var(--incheon);font-weight:700;}
+  .diff-badge{display:inline-block;padding:2px 8px;border-radius:99px;font-size:.7rem;font-weight:700;}
+  .diff-same{background:#e8f5e9;color:#1a6b45;}
+  .diff-diff{background:#fff3e0;color:#e65100;}
+  .point-card{background:var(--paper);border:1px solid var(--border);border-radius:8px;padding:16px;margin-bottom:10px;}
+  .point-card .pc-region{font-size:.72rem;font-weight:700;letter-spacing:.04em;margin-bottom:6px;}
+  .point-card .pc-region.seoul{color:var(--seoul);}
+  .point-card .pc-region.gyeonggi{color:var(--gyeonggi);}
+  .point-card .pc-region.incheon{color:var(--incheon);}
+  .point-card .pc-title{font-size:.9rem;font-weight:700;color:var(--navy);margin-bottom:4px;}
+  .point-card .pc-desc{font-size:.82rem;line-height:1.8;color:var(--ink);}
+  .cta-box{background:var(--navy);border-radius:10px;padding:22px 24px;text-align:center;margin-top:28px;}
+  .cta-box p{color:rgba(255,255,255,.75);font-size:.85rem;margin-bottom:14px;}
+  .cta-btn{display:inline-block;background:var(--gold);color:var(--navy);font-weight:700;font-family:'Noto Serif KR',serif;padding:12px 28px;border-radius:7px;text-decoration:none;font-size:.92rem;transition:opacity .2s;}
+  .cta-btn:hover{opacity:.85;}
+  .related-links{background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .related-links h3{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:14px;}
+  .related-links ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .related-links li a{font-size:.85rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:6px;}
+  .related-links li a::before{content:'→';color:var(--gold);}
+  .ad-slot{background:var(--paper);border:1px dashed var(--border);border-radius:6px;text-align:center;padding:14px;font-size:.75rem;color:var(--muted);margin:20px 0;}
+  .ad-slot strong{display:block;margin-bottom:4px;color:var(--navy);}
+  footer{text-align:center;padding:24px;font-size:.72rem;color:var(--muted);border-top:1px solid var(--border);}
+  @media(max-width:540px){.card{padding:20px 16px;}.article-hero{padding:20px 16px 16px;}}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1KXD1P0ZVC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1KXD1P0ZVC');</script>
+</head>
+<body>
+<header>
+  <h1>공무원 <span>평정점수</span> 계산기</h1>
+  <p>서울시·경기·인천 승진 평정점수 자동 산출</p>
+  <div class="gold-line"></div>
+</header>
+<nav class="breadcrumb">
+  <a href="index.html">홈</a> &rsaquo; 서울시·경기·인천 평정 기준 비교
+</nav>
+<main>
+
+  <div class="ad-slot" style="padding:16px;">
+    <strong>광고</strong>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="0000000005" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+
+  <div class="article-hero">
+    <span class="tag">지역 비교</span>
+    <h2>서울시·경기도·인천시 공무원 평정 기준 비교<br>— 근평·경력·가점 차이점 총정리</h2>
+    <p class="meta">최종 업데이트 2025년 · 각 기관 인사규칙 기준</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">1</span> 세 기관 비교가 필요한 이유</h3>
+    <p>지방공무원 평정은 「지방공무원 평정 규칙」이라는 공통 법령을 기반으로 하지만, 각 기관이 인사규칙으로 세부 기준을 자체적으로 정할 수 있습니다. 이 때문에 <strong>서울시, 경기도, 인천시는 같은 직급·경력이라도 최종 평정점수가 다를 수 있습니다.</strong></p>
+    <p>특히 인사이동이나 전입을 고려하고 있거나, 기관 선택을 앞두고 있다면 각 기관의 평정 기준 차이를 미리 파악해두는 것이 중요합니다.</p>
+    <div class="hint">💡 아래 비교표는 공개된 인사규칙과 일반적인 운영 사례를 기반으로 작성한 참고 자료입니다. 정확한 기준은 반드시 소속 기관에서 확인하세요.</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">2</span> 근무성적평정 등급 점수 비교</h3>
+    <p>등급별 기본 점수는 세 기관 모두 유사하지만, 등급 배분 비율과 평정 단위 기준에서 차이가 납니다.</p>
+    <table>
+      <thead>
+        <tr><th>등급</th><th class="td-c">서울시</th><th class="td-c">경기도</th><th class="td-c">인천시</th><th class="td-c">동일 여부</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>수</strong> (최우수)</td><td class="td-c td-seoul">9.5점</td><td class="td-c td-gyeonggi">9.5점</td><td class="td-c td-incheon">9.5점</td><td class="td-c"><span class="diff-badge diff-same">동일</span></td></tr>
+        <tr><td><strong>우</strong> (우수)</td><td class="td-c td-seoul">8.5점</td><td class="td-c td-gyeonggi">8.5점</td><td class="td-c td-incheon">8.5점</td><td class="td-c"><span class="diff-badge diff-same">동일</span></td></tr>
+        <tr><td><strong>양</strong> (보통)</td><td class="td-c td-seoul">7.5점</td><td class="td-c td-gyeonggi">7.5점</td><td class="td-c td-incheon">7.5점</td><td class="td-c"><span class="diff-badge diff-same">동일</span></td></tr>
+        <tr><td><strong>가</strong> (미흡)</td><td class="td-c td-seoul">6.5점</td><td class="td-c td-gyeonggi">6.5점</td><td class="td-c td-incheon">6.5점</td><td class="td-c"><span class="diff-badge diff-same">동일</span></td></tr>
+        <tr><td>'수' 배분 비율</td><td class="td-c td-seoul">상위 20%</td><td class="td-c td-gyeonggi">상위 20%</td><td class="td-c td-incheon">상위 20%</td><td class="td-c"><span class="diff-badge diff-same">동일</span></td></tr>
+        <tr><td>반영 반기 수</td><td class="td-c td-seoul">4개 반기</td><td class="td-c td-gyeonggi">4개 반기</td><td class="td-c td-incheon">4개 반기</td><td class="td-c"><span class="diff-badge diff-same">동일</span></td></tr>
+      </tbody>
+    </table>
+    <div class="hint">※ 등급별 점수와 배분 비율은 대부분 동일하지만, 기관별 평정 단위(몇 명을 묶어 평가하는지)에 따라 '수' 등급 경쟁 강도가 달라집니다.</div>
+  </div>
+
+  <div class="ad-slot" style="padding:16px;">
+    <strong>광고</strong>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="0000000006" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">3</span> 자격증 가점 비교 — 기관별 차이가 큰 항목</h3>
+    <p>자격증 가점은 세 기관 간 차이가 가장 두드러지는 항목입니다. 서울시는 경기·인천에 비해 자격증 가점 단가가 낮게 책정되어 있습니다.</p>
+    <table>
+      <thead>
+        <tr><th>자격증 등급</th><th class="td-c">서울시</th><th class="td-c">경기도</th><th class="td-c">인천시</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>해당 계급 이상 인정 자격증</td><td class="td-c td-seoul">0.24점</td><td class="td-c td-gyeonggi">0.5점</td><td class="td-c td-incheon">0.5점</td></tr>
+        <tr><td>바로 하위 계급 인정 자격증</td><td class="td-c td-seoul">0.12점</td><td class="td-c td-gyeonggi">0.25점</td><td class="td-c td-incheon">—</td></tr>
+      </tbody>
+    </table>
+    <div class="point-card">
+      <div class="pc-region seoul">🔵 서울시</div>
+      <div class="pc-title">자격증 가점 단가가 낮지만 포상 가점 구조가 체계적</div>
+      <div class="pc-desc">해당 계급 자격증 1개당 0.24점으로 경기·인천(0.5점)의 절반 수준입니다. 자격증만으로 가점을 채우기 어려우므로 포상·어학 가점과 병행하는 전략이 필요합니다.</div>
+    </div>
+    <div class="point-card">
+      <div class="pc-region gyeonggi">🟢 경기도</div>
+      <div class="pc-title">자격증 가점 단가가 높아 자격증 취득 효과가 큼</div>
+      <div class="pc-desc">해당 계급 자격증 1개로 0.5점을 받을 수 있어 자격증 전략이 유리합니다. 직무 관련 국가기술자격증을 적극 취득하면 가점 확보에 효과적입니다.</div>
+    </div>
+    <div class="point-card">
+      <div class="pc-region incheon">🟣 인천시</div>
+      <div class="pc-title">경기도와 유사한 구조, 하위 계급 자격증은 별도 인정 없음</div>
+      <div class="pc-desc">해당 계급 자격증은 0.5점으로 경기도와 동일하지만, 하위 계급 자격증은 가점에서 제외됩니다. 해당 계급 이상 자격증 취득에 집중하는 것이 유리합니다.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">4</span> 경력평정 구조 비교</h3>
+    <p>경력평정의 기본 구조(현 직급 100% + 직전 직급 60%, 만점 30점)는 세 기관 모두 동일합니다. 다만 직전 직급 경력 인정 범위와 만점 기준은 기관 규칙에 따라 세부 차이가 있을 수 있습니다.</p>
+    <table>
+      <thead>
+        <tr><th>항목</th><th class="td-c">서울시</th><th class="td-c">경기도</th><th class="td-c">인천시</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>경력평정 만점</td><td class="td-c td-seoul">30점</td><td class="td-c td-gyeonggi">30점</td><td class="td-c td-incheon">30점</td></tr>
+        <tr><td>현 직급 경력 비율</td><td class="td-c td-seoul">100%</td><td class="td-c td-gyeonggi">100%</td><td class="td-c td-incheon">100%</td></tr>
+        <tr><td>직전 직급 경력 비율</td><td class="td-c td-seoul">60%</td><td class="td-c td-gyeonggi">60%</td><td class="td-c td-incheon">60%</td></tr>
+        <tr><td>현 직급 만점 기간</td><td class="td-c td-seoul">약 24년</td><td class="td-c td-gyeonggi">약 24년</td><td class="td-c td-incheon">약 24년</td></tr>
+        <tr><td>월 환산 단위</td><td class="td-c td-seoul">1/12점</td><td class="td-c td-gyeonggi">1/12점</td><td class="td-c td-incheon">1/12점</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">5</span> 포상 가점 비교</h3>
+    <p>포상 가점은 훈장·포장·표창의 수여 기관과 등급에 따라 점수가 달라집니다. 큰 틀은 비슷하지만 기관별 세부 점수에 차이가 있습니다.</p>
+    <table>
+      <thead>
+        <tr><th>포상 종류</th><th class="td-c">서울시(참고)</th><th class="td-c">경기도(참고)</th><th class="td-c">인천시(참고)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>대통령 표창 이상</td><td class="td-c td-seoul">1.0점</td><td class="td-c td-gyeonggi">1.0점</td><td class="td-c td-incheon">1.0점</td></tr>
+        <tr><td>국무총리 표창</td><td class="td-c td-seoul">0.75점</td><td class="td-c td-gyeonggi">0.75점</td><td class="td-c td-incheon">0.75점</td></tr>
+        <tr><td>장관·광역단체장 표창</td><td class="td-c td-seoul">0.5점</td><td class="td-c td-gyeonggi">0.5점</td><td class="td-c td-incheon">0.5점</td></tr>
+        <tr><td>기초단체장 표창</td><td class="td-c td-seoul">0.25점</td><td class="td-c td-gyeonggi">0.25점</td><td class="td-c td-incheon">0.25점</td></tr>
+      </tbody>
+    </table>
+    <div class="hint">⚠️ 포상 가점은 기관별로 중복 제한 및 합산 상한이 다릅니다. 반드시 소속 기관 인사규칙 별표를 확인하세요.</div>
+  </div>
+
+  <div class="related-links">
+    <h3>📚 함께 읽으면 좋은 글</h3>
+    <ul>
+      <li><a href="bonus-points-guide.html">승진 가점 종류와 획득 전략 총정리</a></li>
+      <li><a href="performance-rating-guide.html">근무성적평정(근평) 등급·점수 가이드</a></li>
+      <li><a href="career-rating-guide.html">경력평정 계산 방법 완전 정리</a></li>
+      <li><a href="promotion-strategy.html">직급별 승진 전략 가이드</a></li>
+    </ul>
+  </div>
+
+  <div class="cta-box">
+    <p>내 소속 기관 기준으로 평정점수를 직접 계산해보세요.<br>서울시·경기도·인천시 기준을 선택해 자동 산출합니다.</p>
+    <a class="cta-btn" href="index.html">🏆 평정점수 계산하러 가기</a>
+  </div>
+</main>
+<footer>
+  본 콘텐츠는 참고용이며 실제 평정 결과는 소속 기관 인사담당자에게 확인하시기 바랍니다.<br>
+  문의: <a href="mailto:sj.gates@gmail.com" style="color:var(--gold);">sj.gates@gmail.com</a>
+  &nbsp;|&nbsp;
+  <a href="privacy.html" style="color:var(--muted);">개인정보처리방침</a>
+</footer>
+</body>
+</html>

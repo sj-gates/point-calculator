@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>공무원 휴직 종류별 경력 산입 완전 정리 — 승진·최저연수·경력평정 영향</title>
+<meta name="description" content="육아휴직, 병가, 질병휴직, 가사휴직, 자기개발휴직 등 공무원 휴직 유형별로 경력평정 산입 여부와 승진소요 최저연수 인정 여부를 한눈에 정리했습니다.">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="공무원 평정점수 계산기">
+<meta property="og:title" content="공무원 휴직 종류별 경력 산입 완전 정리">
+<meta property="og:description" content="육아휴직·병가·질병휴직 등 유형별 경력평정 산입 여부와 승진 영향을 정리했습니다.">
+<meta property="og:url" content="https://sj-gates.github.io/point-calculator/leave-calculation-guide.html">
+<meta property="og:locale" content="ko_KR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0f2340;--gold:#c8a84b;--cream:#faf8f3;--paper:#f2ede3;--ink:#1a1a2e;--muted:#6b6b7a;--border:#d8d0be;--card-shadow:0 2px 20px rgba(15,35,64,.10);--green:#1a6b45;--red:#c0392b;--orange:#b36200;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Serif KR',serif;background:var(--cream);color:var(--ink);min-height:100vh;}
+  header{background:var(--navy);padding:36px 24px 28px;text-align:center;position:relative;overflow:hidden;}
+  header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 24px,rgba(200,168,75,.06) 24px,rgba(200,168,75,.06) 25px);}
+  header h1{font-size:clamp(1.1rem,4vw,1.6rem);font-weight:700;color:#fff;letter-spacing:-.02em;position:relative;}
+  header h1 span{color:var(--gold);}
+  header p{margin-top:8px;font-size:.78rem;color:rgba(255,255,255,.55);position:relative;}
+  .gold-line{width:48px;height:2px;background:var(--gold);margin:14px auto 0;}
+  nav.breadcrumb{max-width:760px;margin:16px auto 0;padding:0 20px;font-size:.76rem;color:var(--muted);}
+  nav.breadcrumb a{color:var(--gold);text-decoration:none;}
+  main{max-width:760px;margin:0 auto;padding:24px 20px 60px;}
+  .article-hero{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 24px 22px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .article-hero .tag{display:inline-block;background:var(--navy);color:var(--gold);font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:99px;letter-spacing:.05em;margin-bottom:12px;}
+  .article-hero h2{font-size:clamp(1.1rem,3.5vw,1.45rem);font-weight:700;color:var(--navy);line-height:1.45;margin-bottom:10px;}
+  .article-hero .meta{font-size:.74rem;color:var(--muted);}
+  .card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .card h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  .card h3 .num{background:var(--navy);color:var(--gold);font-family:'DM Mono',monospace;font-size:.72rem;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .card p{font-size:.88rem;line-height:1.9;color:var(--ink);margin-bottom:10px;}
+  .hint{font-size:.78rem;color:var(--muted);padding:10px 14px;background:var(--paper);border-left:3px solid var(--gold);border-radius:0 5px 5px 0;margin:12px 0;}
+  table{width:100%;border-collapse:collapse;font-size:.82rem;margin:14px 0;}
+  thead tr{background:var(--navy);color:#fff;}
+  thead th{padding:9px 12px;text-align:left;}
+  tbody tr:nth-child(odd){background:#fff;}
+  tbody tr:nth-child(even){background:var(--paper);}
+  tbody td{padding:10px 12px;border-bottom:1px solid var(--border);line-height:1.6;}
+  .td-c{text-align:center;}
+  .badge{display:inline-block;padding:3px 10px;border-radius:99px;font-size:.72rem;font-weight:700;}
+  .badge-green{background:#d4edda;color:var(--green);}
+  .badge-red{background:#fde8e8;color:var(--red);}
+  .badge-orange{background:#fff3cd;color:var(--orange);}
+  .leave-block{background:var(--paper);border:1px solid var(--border);border-radius:8px;padding:18px;margin-bottom:14px;}
+  .leave-block .lb-title{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+  .leave-block .lb-title .icon{font-size:1.1rem;}
+  .leave-block .lb-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:10px;}
+  .lb-stat{text-align:center;background:#fff;border-radius:6px;padding:10px 6px;border:1px solid var(--border);}
+  .lb-stat .s-label{font-size:.68rem;color:var(--muted);margin-bottom:4px;}
+  .lb-stat .s-val{font-size:.85rem;font-weight:700;}
+  .lb-stat .s-val.green{color:var(--green);}
+  .lb-stat .s-val.red{color:var(--red);}
+  .lb-stat .s-val.orange{color:var(--orange);}
+  .leave-block p{font-size:.83rem;line-height:1.85;color:var(--ink);}
+  .summary-table-wrap{overflow-x:auto;}
+  .cta-box{background:var(--navy);border-radius:10px;padding:22px 24px;text-align:center;margin-top:28px;}
+  .cta-box p{color:rgba(255,255,255,.75);font-size:.85rem;margin-bottom:14px;}
+  .cta-btn{display:inline-block;background:var(--gold);color:var(--navy);font-weight:700;font-family:'Noto Serif KR',serif;padding:12px 28px;border-radius:7px;text-decoration:none;font-size:.92rem;transition:opacity .2s;}
+  .cta-btn:hover{opacity:.85;}
+  .ad-slot{background:var(--paper);border:1px dashed var(--border);border-radius:6px;text-align:center;padding:14px;font-size:.75rem;color:var(--muted);margin:20px 0;}
+  .ad-slot strong{display:block;margin-bottom:4px;color:var(--navy);}
+  .related-links{background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .related-links h3{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:14px;}
+  .related-links ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .related-links li a{font-size:.85rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:6px;}
+  .related-links li a::before{content:'→';color:var(--gold);}
+  footer{text-align:center;padding:24px;font-size:.72rem;color:var(--muted);border-top:1px solid var(--border);}
+  @media(max-width:540px){.card{padding:20px 16px;}.leave-block .lb-grid{grid-template-columns:1fr 1fr;}}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1KXD1P0ZVC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1KXD1P0ZVC');</script>
+</head>
+<body>
+<header>
+  <h1>공무원 <span>평정점수</span> 계산기</h1>
+  <p>서울시·경기·인천 승진 평정점수 자동 산출</p>
+  <div class="gold-line"></div>
+</header>
+<nav class="breadcrumb">
+  <a href="index.html">홈</a> &rsaquo; 휴직 종류별 경력 산입 완전 정리
+</nav>
+<main>
+
+  <div class="ad-slot" style="padding:16px;">
+    <strong>광고</strong>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="0000000003" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+
+  <div class="article-hero">
+    <span class="tag">휴직 가이드</span>
+    <h2>공무원 휴직 종류별 경력 산입 완전 정리<br>— 승진·최저연수·경력평정 영향</h2>
+    <p class="meta">최종 업데이트 2025년 · 지방공무원법 및 평정 규칙 기준</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">1</span> 왜 휴직 종류가 중요한가?</h3>
+    <p>공무원이 휴직을 하면 단순히 출근하지 않는 것에서 그치지 않고 <strong>경력평정 점수, 승진소요 최저연수, 근무성적평정 대상 여부</strong>에 모두 영향을 미칩니다. 같은 기간 동안 휴직을 하더라도 어떤 유형의 휴직이냐에 따라 승진 타이밍이 수 개월에서 수 년까지 달라질 수 있습니다.</p>
+    <p>특히 육아휴직처럼 자주 사용하는 제도도 기간과 자녀 수에 따라 경력 인정 범위가 달라지므로, 휴직 전에 반드시 확인이 필요합니다.</p>
+    <div class="hint">💡 경력평정 산입 여부 + 최저연수 산입 여부 + 근평 대상 여부, 이 세 가지를 함께 확인하세요.</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">2</span> 휴직 유형별 산입 현황 한눈에 보기</h3>
+    <div class="summary-table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>휴직 유형</th>
+          <th class="td-c">경력평정</th>
+          <th class="td-c">최저연수</th>
+          <th class="td-c">근평 대상</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>공무상 질병·부상 휴직</td>
+          <td class="td-c"><span class="badge badge-green">전부 산입</span></td>
+          <td class="td-c"><span class="badge badge-green">산입</span></td>
+          <td class="td-c"><span class="badge badge-red">제외</span></td>
+        </tr>
+        <tr>
+          <td>병역 휴직</td>
+          <td class="td-c"><span class="badge badge-green">전부 산입</span></td>
+          <td class="td-c"><span class="badge badge-green">산입</span></td>
+          <td class="td-c"><span class="badge badge-red">제외</span></td>
+        </tr>
+        <tr>
+          <td>육아휴직 (자녀 1명, 최초 1년)</td>
+          <td class="td-c"><span class="badge badge-green">전부 산입</span></td>
+          <td class="td-c"><span class="badge badge-green">산입</span></td>
+          <td class="td-c"><span class="badge badge-red">제외</span></td>
+        </tr>
+        <tr>
+          <td>육아휴직 (1년 초과분)</td>
+          <td class="td-c"><span class="badge badge-orange">일부 산입</span></td>
+          <td class="td-c"><span class="badge badge-orange">일부 산입</span></td>
+          <td class="td-c"><span class="badge badge-red">제외</span></td>
+        </tr>
+        <tr>
+          <td>일반 질병 휴직</td>
+          <td class="td-c"><span class="badge badge-red">미산입</span></td>
+          <td class="td-c"><span class="badge badge-red">미산입</span></td>
+          <td class="td-c"><span class="badge badge-red">제외</span></td>
+        </tr>
+        <tr>
+          <td>가사 휴직 (간호·돌봄)</td>
+          <td class="td-c"><span class="badge badge-red">미산입</span></td>
+          <td class="td-c"><span class="badge badge-red">미산입</span></td>
+          <td class="td-c"><span class="badge badge-red">제외</span></td>
+        </tr>
+        <tr>
+          <td>자기개발 휴직</td>
+          <td class="td-c"><span class="badge badge-red">미산입</span></td>
+          <td class="td-c"><span class="badge badge-red">미산입</span></td>
+          <td class="td-c"><span class="badge badge-red">제외</span></td>
+        </tr>
+        <tr>
+          <td>유학 휴직</td>
+          <td class="td-c"><span class="badge badge-red">미산입</span></td>
+          <td class="td-c"><span class="badge badge-red">미산입</span></td>
+          <td class="td-c"><span class="badge badge-red">제외</span></td>
+        </tr>
+        <tr>
+          <td>배우자 동반 휴직</td>
+          <td class="td-c"><span class="badge badge-red">미산입</span></td>
+          <td class="td-c"><span class="badge badge-red">미산입</span></td>
+          <td class="td-c"><span class="badge badge-red">제외</span></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="hint">⚠️ 위 표는 일반적인 기준이며 기관 인사규칙에 따라 달라질 수 있습니다. 반드시 소속 기관 규정을 확인하세요.</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">3</span> 유형별 상세 설명</h3>
+
+    <div class="leave-block">
+      <div class="lb-title"><span class="icon">🏥</span> 공무상 질병·부상 휴직</div>
+      <p>직무 수행 중 발생한 질병이나 부상으로 인한 휴직입니다. 공무원 재해보상법에 따른 인정이 필요하며, 인정 시 경력평정·최저연수 모두 전부 산입됩니다.</p>
+      <div class="lb-grid">
+        <div class="lb-stat"><div class="s-label">경력평정</div><div class="s-val green">전부 산입</div></div>
+        <div class="lb-stat"><div class="s-label">최저연수</div><div class="s-val green">산입</div></div>
+        <div class="lb-stat"><div class="s-label">근평 대상</div><div class="s-val red">제외</div></div>
+      </div>
+    </div>
+
+    <div class="leave-block">
+      <div class="lb-title"><span class="icon">👶</span> 육아휴직</div>
+      <p>만 8세 이하 또는 초등학교 2학년 이하 자녀를 양육하기 위한 휴직입니다. 자녀 1명당 최초 1년은 전부 산입되지만, 1년을 초과하는 기간은 기관 규칙에 따라 달리 적용됩니다. 두 번째 이후 자녀의 경우도 첫 번째 자녀와 동일하게 최초 1년이 산입됩니다.</p>
+      <div class="lb-grid">
+        <div class="lb-stat"><div class="s-label">경력평정 (1년 이내)</div><div class="s-val green">전부 산입</div></div>
+        <div class="lb-stat"><div class="s-label">최저연수 (1년 이내)</div><div class="s-val green">산입</div></div>
+        <div class="lb-stat"><div class="s-label">1년 초과분</div><div class="s-val orange">기관마다 상이</div></div>
+      </div>
+    </div>
+
+    <div class="leave-block">
+      <div class="lb-title"><span class="icon">🪖</span> 병역 휴직</div>
+      <p>현역 복무, 사회복무요원 소집 등 병역 의무 이행을 위한 휴직입니다. 병역 기간 전부가 경력평정과 최저연수에 산입됩니다. 복직 후에는 기존 평정이 그대로 이어집니다.</p>
+      <div class="lb-grid">
+        <div class="lb-stat"><div class="s-label">경력평정</div><div class="s-val green">전부 산입</div></div>
+        <div class="lb-stat"><div class="s-label">최저연수</div><div class="s-val green">산입</div></div>
+        <div class="lb-stat"><div class="s-label">근평 대상</div><div class="s-val red">제외</div></div>
+      </div>
+    </div>
+
+    <div class="leave-block">
+      <div class="lb-title"><span class="icon">🤒</span> 일반 질병 휴직</div>
+      <p>공무와 관계없는 개인 질병 또는 부상으로 인한 휴직입니다. 경력평정과 최저연수 모두 산입되지 않아 승진에 직접적인 영향을 미칩니다. 장기 질병 휴직 시 복직 후 불리한 상황이 될 수 있으므로 주의가 필요합니다.</p>
+      <div class="lb-grid">
+        <div class="lb-stat"><div class="s-label">경력평정</div><div class="s-val red">미산입</div></div>
+        <div class="lb-stat"><div class="s-label">최저연수</div><div class="s-val red">미산입</div></div>
+        <div class="lb-stat"><div class="s-label">근평 대상</div><div class="s-val red">제외</div></div>
+      </div>
+    </div>
+
+    <div class="leave-block">
+      <div class="lb-title"><span class="icon">🏠</span> 가사 휴직 (간호·돌봄)</div>
+      <p>부모, 배우자, 자녀, 형제자매를 돌보기 위한 휴직입니다. 경력평정과 최저연수 모두 산입되지 않습니다. 가족 돌봄이 장기화될 경우 승진 불이익이 클 수 있으므로 대안(연차·단기 휴직 조합 등)을 인사담당자와 상담해보는 것이 좋습니다.</p>
+      <div class="lb-grid">
+        <div class="lb-stat"><div class="s-label">경력평정</div><div class="s-val red">미산입</div></div>
+        <div class="lb-stat"><div class="s-label">최저연수</div><div class="s-val red">미산입</div></div>
+        <div class="lb-stat"><div class="s-label">근평 대상</div><div class="s-val red">제외</div></div>
+      </div>
+    </div>
+
+    <div class="leave-block">
+      <div class="lb-title"><span class="icon">📚</span> 자기개발 휴직·유학 휴직</div>
+      <p>학위 취득, 연구 활동 등 자기계발 목적의 휴직입니다. 경력평정 및 최저연수에 산입되지 않아 승진 측면에서는 불이익이 됩니다. 자격증 등 가점으로 보완할 수 있는지 검토가 필요합니다.</p>
+      <div class="lb-grid">
+        <div class="lb-stat"><div class="s-label">경력평정</div><div class="s-val red">미산입</div></div>
+        <div class="lb-stat"><div class="s-label">최저연수</div><div class="s-val red">미산입</div></div>
+        <div class="lb-stat"><div class="s-label">근평 대상</div><div class="s-val red">제외</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ad-slot" style="padding:16px;">
+    <strong>광고</strong>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="0000000004" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">4</span> 휴직 전에 반드시 확인할 체크리스트</h3>
+    <p>휴직을 결정하기 전에 다음 사항을 인사담당 부서와 함께 확인하세요.</p>
+    <table>
+      <thead><tr><th>확인 항목</th><th>확인 내용</th></tr></thead>
+      <tbody>
+        <tr><td>경력평정 산입 여부</td><td>휴직 기간이 경력평정에 반영되는지 확인</td></tr>
+        <tr><td>최저연수 산입 여부</td><td>휴직 기간이 승진 최저연수에 포함되는지 확인</td></tr>
+        <tr><td>근평 처리 방법</td><td>해당 반기 근평을 어떻게 처리하는지 확인</td></tr>
+        <tr><td>복직 후 명부 편입</td><td>복직 후 언제부터 명부에 다시 올라가는지 확인</td></tr>
+        <tr><td>가점 유효기간</td><td>자격증·어학 가점 유효기간이 휴직 중 만료되는지 확인</td></tr>
+        <tr><td>승진 예정 시기와의 관계</td><td>내 예상 승진 시기와 휴직 기간이 충돌하는지 검토</td></tr>
+      </tbody>
+    </table>
+    <div class="hint">💡 특히 승진을 앞두고 있다면 근평 기준일(6월 말, 12월 말) 직전에 복직하는 것이 유리할 수 있습니다. 인사담당자와 상담하세요.</div>
+  </div>
+
+  <div class="related-links">
+    <h3>📚 함께 읽으면 좋은 글</h3>
+    <ul>
+      <li><a href="career-rating-guide.html">경력평정 계산 방법 완전 정리</a></li>
+      <li><a href="promotion-minimum-years.html">직급별 승진소요 최저연수 총정리</a></li>
+      <li><a href="promotion-faq.html">승진 평정 자주 묻는 질문 FAQ</a></li>
+      <li><a href="discipline-effect.html">징계·직위해제가 승진에 미치는 영향</a></li>
+    </ul>
+  </div>
+
+  <div class="cta-box">
+    <p>휴직 이력을 반영한 내 경력평정 점수를 계산해보세요.<br>임용일부터 휴직 기간을 제외한 실제 경력을 자동 산출합니다.</p>
+    <a class="cta-btn" href="index.html">🏆 경력평정 점수 계산하러 가기</a>
+  </div>
+</main>
+<footer>
+  본 콘텐츠는 참고용이며 실제 평정 결과는 소속 기관 인사담당자에게 확인하시기 바랍니다.<br>
+  문의: <a href="mailto:sj.gates@gmail.com" style="color:var(--gold);">sj.gates@gmail.com</a>
+  &nbsp;|&nbsp;
+  <a href="privacy.html" style="color:var(--muted);">개인정보처리방침</a>
+</footer>
+</body>
+</html>

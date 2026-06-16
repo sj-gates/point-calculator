@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>공무원 징계·직위해제가 승진에 미치는 영향 — 경력·최저연수·가점 불이익 정리</title>
+<meta name="description" content="공무원이 징계(감봉·정직·강등)나 직위해제를 받으면 승진 평정점수에 어떤 영향이 있는지, 경력 산입·최저연수·가점 삭감 여부를 상세히 정리했습니다.">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="공무원 평정점수 계산기">
+<meta property="og:title" content="공무원 징계·직위해제가 승진에 미치는 영향 완전 정리">
+<meta property="og:description" content="감봉·정직·강등·직위해제가 경력평정·최저연수·가점에 미치는 불이익을 정리했습니다.">
+<meta property="og:url" content="https://sj-gates.github.io/point-calculator/discipline-effect.html">
+<meta property="og:locale" content="ko_KR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0f2340;--gold:#c8a84b;--cream:#faf8f3;--paper:#f2ede3;--ink:#1a1a2e;--muted:#6b6b7a;--border:#d8d0be;--card-shadow:0 2px 20px rgba(15,35,64,.10);--red:#c0392b;--orange:#b36200;--green:#1a6b45;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Serif KR',serif;background:var(--cream);color:var(--ink);min-height:100vh;}
+  header{background:var(--navy);padding:36px 24px 28px;text-align:center;position:relative;overflow:hidden;}
+  header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 24px,rgba(200,168,75,.06) 24px,rgba(200,168,75,.06) 25px);}
+  header h1{font-size:clamp(1.1rem,4vw,1.6rem);font-weight:700;color:#fff;letter-spacing:-.02em;position:relative;}
+  header h1 span{color:var(--gold);}
+  header p{margin-top:8px;font-size:.78rem;color:rgba(255,255,255,.55);position:relative;}
+  .gold-line{width:48px;height:2px;background:var(--gold);margin:14px auto 0;}
+  nav.breadcrumb{max-width:760px;margin:16px auto 0;padding:0 20px;font-size:.76rem;color:var(--muted);}
+  nav.breadcrumb a{color:var(--gold);text-decoration:none;}
+  main{max-width:760px;margin:0 auto;padding:24px 20px 60px;}
+  .article-hero{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 24px 22px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .article-hero .tag{display:inline-block;background:#b71c1c;color:#fff;font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:99px;letter-spacing:.05em;margin-bottom:12px;}
+  .article-hero h2{font-size:clamp(1.1rem,3.5vw,1.45rem);font-weight:700;color:var(--navy);line-height:1.45;margin-bottom:10px;}
+  .article-hero .meta{font-size:.74rem;color:var(--muted);}
+  .card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .card h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  .card h3 .num{background:var(--navy);color:var(--gold);font-family:'DM Mono',monospace;font-size:.72rem;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .card p{font-size:.88rem;line-height:1.9;color:var(--ink);margin-bottom:10px;}
+  .hint{font-size:.78rem;color:var(--muted);padding:10px 14px;background:var(--paper);border-left:3px solid var(--gold);border-radius:0 5px 5px 0;margin:12px 0;}
+  .warn-box{font-size:.82rem;color:#7b1a1a;padding:12px 16px;background:#fdecea;border-left:3px solid var(--red);border-radius:0 6px 6px 0;margin:12px 0;line-height:1.8;}
+  table{width:100%;border-collapse:collapse;font-size:.82rem;margin:14px 0;}
+  thead tr{background:var(--navy);color:#fff;}
+  thead th{padding:9px 12px;text-align:left;}
+  tbody tr:nth-child(odd){background:#fff;}
+  tbody tr:nth-child(even){background:var(--paper);}
+  tbody td{padding:10px 12px;border-bottom:1px solid var(--border);line-height:1.6;}
+  .td-c{text-align:center;}
+  .td-bold{font-weight:700;}
+  .badge{display:inline-block;padding:3px 10px;border-radius:99px;font-size:.72rem;font-weight:700;}
+  .badge-red{background:#fde8e8;color:var(--red);}
+  .badge-orange{background:#fff3cd;color:var(--orange);}
+  .badge-green{background:#d4edda;color:var(--green);}
+  .discipline-item{border:1px solid var(--border);border-radius:8px;margin-bottom:14px;overflow:hidden;}
+  .di-header{padding:12px 16px;font-size:.9rem;font-weight:700;color:#fff;display:flex;align-items:center;justify-content:space-between;}
+  .di-header.level-1{background:#e53935;}
+  .di-header.level-2{background:#e57373;}
+  .di-header.level-3{background:#ef9a9a;color:#7b1a1a;}
+  .di-header.level-4{background:#ffcdd2;color:#7b1a1a;}
+  .di-body{padding:14px 16px;font-size:.83rem;line-height:1.85;color:var(--ink);}
+  .di-effects{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+  .cta-box{background:var(--navy);border-radius:10px;padding:22px 24px;text-align:center;margin-top:28px;}
+  .cta-box p{color:rgba(255,255,255,.75);font-size:.85rem;margin-bottom:14px;}
+  .cta-btn{display:inline-block;background:var(--gold);color:var(--navy);font-weight:700;font-family:'Noto Serif KR',serif;padding:12px 28px;border-radius:7px;text-decoration:none;font-size:.92rem;transition:opacity .2s;}
+  .cta-btn:hover{opacity:.85;}
+  .related-links{background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .related-links h3{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:14px;}
+  .related-links ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .related-links li a{font-size:.85rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:6px;}
+  .related-links li a::before{content:'→';color:var(--gold);}
+  .ad-slot{background:var(--paper);border:1px dashed var(--border);border-radius:6px;text-align:center;padding:14px;font-size:.75rem;color:var(--muted);margin:20px 0;}
+  .ad-slot strong{display:block;margin-bottom:4px;color:var(--navy);}
+  footer{text-align:center;padding:24px;font-size:.72rem;color:var(--muted);border-top:1px solid var(--border);}
+  @media(max-width:540px){.card{padding:20px 16px;}.article-hero{padding:20px 16px 16px;}}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1KXD1P0ZVC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1KXD1P0ZVC');</script>
+</head>
+<body>
+<header>
+  <h1>공무원 <span>평정점수</span> 계산기</h1>
+  <p>서울시·경기·인천 승진 평정점수 자동 산출</p>
+  <div class="gold-line"></div>
+</header>
+<nav class="breadcrumb">
+  <a href="index.html">홈</a> &rsaquo; 징계·직위해제가 승진에 미치는 영향
+</nav>
+<main>
+
+  <div class="ad-slot" style="padding:16px;">
+    <strong>광고</strong>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="0000000009" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+
+  <div class="article-hero">
+    <span class="tag">주의 사항</span>
+    <h2>공무원 징계·직위해제가 승진에 미치는 영향<br>— 경력·최저연수·가점 불이익 완전 정리</h2>
+    <p class="meta">최종 업데이트 2025년 · 지방공무원법 및 평정 규칙 기준</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">1</span> 징계의 종류와 승진 영향 개요</h3>
+    <p>지방공무원법상 징계의 종류는 파면·해임·강등·정직·감봉·견책 6가지입니다. 이 중 파면·해임은 공무원 신분을 박탈하므로 승진 논의 자체가 불필요하고, <strong>강등·정직·감봉·견책은 신분을 유지하면서도 승진 평정에 다양한 불이익</strong>을 초래합니다.</p>
+    <div class="warn-box">⚠️ 징계 처분은 종류와 기간에 따라 승진 제한 기간, 경력 산입 불이익, 가점 삭감 등 복합적인 영향을 줍니다. 자신의 상황에 맞는 정확한 기준은 소속 기관 인사담당 부서에 확인하세요.</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">2</span> 징계 종류별 승진 영향 한눈에 보기</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>징계 종류</th>
+          <th class="td-c">승진 제한</th>
+          <th class="td-c">경력 산입</th>
+          <th class="td-c">최저연수 산입</th>
+          <th class="td-c">가점 영향</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>강등</strong></td>
+          <td class="td-c"><span class="badge badge-red">18개월</span></td>
+          <td class="td-c"><span class="badge badge-red">미산입</span></td>
+          <td class="td-c"><span class="badge badge-red">미산입</span></td>
+          <td class="td-c"><span class="badge badge-red">가점 삭감</span></td>
+        </tr>
+        <tr>
+          <td><strong>정직</strong></td>
+          <td class="td-c"><span class="badge badge-red">18개월</span></td>
+          <td class="td-c"><span class="badge badge-red">미산입</span></td>
+          <td class="td-c"><span class="badge badge-red">미산입</span></td>
+          <td class="td-c"><span class="badge badge-red">가점 삭감</span></td>
+        </tr>
+        <tr>
+          <td><strong>감봉</strong></td>
+          <td class="td-c"><span class="badge badge-orange">12개월</span></td>
+          <td class="td-c"><span class="badge badge-green">산입</span></td>
+          <td class="td-c"><span class="badge badge-green">산입</span></td>
+          <td class="td-c"><span class="badge badge-orange">일부 삭감</span></td>
+        </tr>
+        <tr>
+          <td><strong>견책</strong></td>
+          <td class="td-c"><span class="badge badge-orange">6개월</span></td>
+          <td class="td-c"><span class="badge badge-green">산입</span></td>
+          <td class="td-c"><span class="badge badge-green">산입</span></td>
+          <td class="td-c"><span class="badge badge-green">영향 없음</span></td>
+        </tr>
+        <tr>
+          <td><strong>직위해제</strong></td>
+          <td class="td-c"><span class="badge badge-red">해제 기간</span></td>
+          <td class="td-c"><span class="badge badge-red">미산입</span></td>
+          <td class="td-c"><span class="badge badge-red">미산입</span></td>
+          <td class="td-c"><span class="badge badge-orange">상황별 상이</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="hint">※ 승진 제한 기간 및 구체적인 적용 기준은 기관 인사규칙에 따라 다를 수 있습니다.</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">3</span> 징계 종류별 상세 설명</h3>
+
+    <div class="discipline-item">
+      <div class="di-header level-1">강등 — 가장 무거운 신분 유지 징계</div>
+      <div class="di-body">
+        강등은 현 직급에서 1계급 아래로 내려가는 징계입니다. 강등 처분을 받으면 <strong>3개월간 직무에 종사하지 못하고 그 기간 중 보수의 2/3가 감액</strong>됩니다. 승진 측면에서는 강등된 날로부터 18개월간 승진이 제한되며, 강등 전 직급에서의 경력은 직전 직급 경력으로만 인정됩니다. 직위해제 기간과 정직 기간은 경력 및 최저연수에 산입되지 않습니다.
+        <div class="di-effects">
+          <span class="badge badge-red">승진 18개월 제한</span>
+          <span class="badge badge-red">직무 3개월 정지</span>
+          <span class="badge badge-red">경력 미산입</span>
+          <span class="badge badge-red">최저연수 미산입</span>
+          <span class="badge badge-red">가점 삭감 가능</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="discipline-item">
+      <div class="di-header level-2">정직 — 직무 정지 + 18개월 승진 제한</div>
+      <div class="di-body">
+        정직은 1개월 이상 3개월 이하 기간 동안 직무에 종사하지 못하는 징계입니다. 정직 기간 중 보수는 전액 지급되지 않습니다. 정직 처분일로부터 <strong>18개월간 승진이 제한</strong>되며, 정직 기간은 경력평정과 최저연수에 산입되지 않습니다. 포상 가점이 삭감될 수 있습니다.
+        <div class="di-effects">
+          <span class="badge badge-red">승진 18개월 제한</span>
+          <span class="badge badge-red">보수 전액 미지급</span>
+          <span class="badge badge-red">경력 미산입</span>
+          <span class="badge badge-red">최저연수 미산입</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="discipline-item">
+      <div class="di-header level-3">감봉 — 12개월 승진 제한, 경력은 인정</div>
+      <div class="di-body">
+        감봉은 1개월 이상 3개월 이하 기간 동안 보수의 1/3을 감액하는 징계입니다. 업무는 계속 수행하므로 경력평정과 최저연수는 산입됩니다. 다만 처분일로부터 <strong>12개월간 승진이 제한</strong>됩니다. 일부 기관에서는 포상 가점 일부가 삭감될 수 있습니다.
+        <div class="di-effects">
+          <span class="badge badge-orange">승진 12개월 제한</span>
+          <span class="badge badge-orange">보수 1/3 감액</span>
+          <span class="badge badge-green">경력 산입</span>
+          <span class="badge badge-green">최저연수 산입</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="discipline-item">
+      <div class="di-header level-4">견책 — 가장 가벼운 징계, 6개월 제한</div>
+      <div class="di-body">
+        견책은 전과(前過)에 대한 훈계·반성을 촉구하는 가장 가벼운 징계입니다. 업무와 보수에는 영향이 없으나 처분일로부터 <strong>6개월간 승진이 제한</strong>됩니다. 경력과 최저연수에는 영향이 없으며, 가점도 원칙적으로 삭감되지 않습니다.
+        <div class="di-effects">
+          <span class="badge badge-orange">승진 6개월 제한</span>
+          <span class="badge badge-green">보수 정상 지급</span>
+          <span class="badge badge-green">경력 산입</span>
+          <span class="badge badge-green">가점 유지</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ad-slot" style="padding:16px;">
+    <strong>광고</strong>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="0000000010" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">4</span> 직위해제와 승진</h3>
+    <p>직위해제는 징계가 아니지만 승진에 큰 영향을 미칩니다. 직위해제 기간은 <strong>경력평정과 최저연수 모두에서 제외</strong>됩니다. 또한 직위해제 상태에서는 근무성적평정 대상에서도 제외됩니다.</p>
+    <table>
+      <thead><tr><th>직위해제 사유</th><th class="td-c">경력 산입</th><th class="td-c">최저연수</th><th>비고</th></tr></thead>
+      <tbody>
+        <tr><td>형사 사건 기소</td><td class="td-c"><span class="badge badge-red">미산입</span></td><td class="td-c"><span class="badge badge-red">미산입</span></td><td>무죄 확정 시 소급 인정 여부 기관 확인 필요</td></tr>
+        <tr><td>징계 의결 요구 중</td><td class="td-c"><span class="badge badge-red">미산입</span></td><td class="td-c"><span class="badge badge-red">미산입</span></td><td>징계 결과에 따라 처리</td></tr>
+        <tr><td>직무 수행 능력 부족</td><td class="td-c"><span class="badge badge-red">미산입</span></td><td class="td-c"><span class="badge badge-red">미산입</span></td><td>직위 부여 후 경력 재개</td></tr>
+      </tbody>
+    </table>
+    <div class="hint">💡 무죄 판결이나 징계 없이 직위해제가 해소된 경우, 소급 경력 인정 여부는 소속 기관 인사규칙과 개별 사안에 따라 다를 수 있습니다.</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">5</span> 징계 이후 승진 타임라인 계획법</h3>
+    <p>징계 처분 후 승진 계획을 다시 세울 때는 다음 순서로 점검하세요.</p>
+    <table>
+      <thead><tr><th>순서</th><th>확인 항목</th><th>내용</th></tr></thead>
+      <tbody>
+        <tr><td class="td-c">1</td><td>승진 제한 기간 확인</td><td>처분일로부터 견책 6개월 / 감봉 12개월 / 강등·정직 18개월</td></tr>
+        <tr><td class="td-c">2</td><td>경력 공백 계산</td><td>강등·정직 기간은 경력평정에서 빠지므로 실제 경력월수 재산정 필요</td></tr>
+        <tr><td class="td-c">3</td><td>최저연수 재산정</td><td>강등·정직·직위해제 기간 제외 후 최저연수 충족 시점 재계산</td></tr>
+        <tr><td class="td-c">4</td><td>가점 현황 재점검</td><td>삭감된 가점 항목 확인 후 대체 가점 확보 계획 수립</td></tr>
+        <tr><td class="td-c">5</td><td>근평 정상화 전략</td><td>복귀 후 첫 근평부터 '수' 목표로 업무 재정비</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="related-links">
+    <h3>📚 함께 읽으면 좋은 글</h3>
+    <ul>
+      <li><a href="promotion-minimum-years.html">직급별 승진소요 최저연수 총정리</a></li>
+      <li><a href="leave-calculation-guide.html">휴직 유형별 경력 산입 완전 정리</a></li>
+      <li><a href="career-rating-guide.html">경력평정 계산 방법 완전 정리</a></li>
+      <li><a href="promotion-faq.html">승진 평정 자주 묻는 질문 FAQ</a></li>
+    </ul>
+  </div>
+
+  <div class="cta-box">
+    <p>징계 이후 바뀐 경력을 반영해 평정점수를 다시 계산해보세요.<br>경력 공백 기간을 직접 조정해 시뮬레이션할 수 있습니다.</p>
+    <a class="cta-btn" href="index.html">🏆 평정점수 재계산하러 가기</a>
+  </div>
+</main>
+<footer>
+  본 콘텐츠는 참고용이며 실제 평정 결과는 소속 기관 인사담당자에게 확인하시기 바랍니다.<br>
+  문의: <a href="mailto:sj.gates@gmail.com" style="color:var(--gold);">sj.gates@gmail.com</a>
+  &nbsp;|&nbsp;
+  <a href="privacy.html" style="color:var(--muted);">개인정보처리방침</a>
+</footer>
+</body>
+</html>
