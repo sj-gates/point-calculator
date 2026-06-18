@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
@@ -84,7 +84,6 @@
 </nav>
 
 <main>  <div class="ad-slot" style="padding:16px;min-height:90px;display:flex;align-items:center;justify-content:center;">
-    <span style="color:var(--muted);font-size:.75rem;">광고 영역</span>
   </div>
 
   <div class="article-hero">
@@ -112,30 +111,31 @@
     </div>
 
     <table>
-      <thead><tr><th>등급</th><th class="td-c">반기 점수</th><th class="td-c">비율 강제 배분</th><th>의미</th></tr></thead>
+      <thead><tr><th>등급</th><th class="td-c">비율 강제 배분</th><th>의미</th></tr></thead>
       <tbody>
-        <tr><td><strong>수</strong> (최우수)</td><td class="td-c td-bold">9.5점</td><td class="td-c">상위 20% 이내</td><td>탁월한 성과</td></tr>
-        <tr><td><strong>우</strong> (우수)</td><td class="td-c td-bold">8.5점</td><td class="td-c">다음 40% 이내</td><td>기대 이상</td></tr>
-        <tr><td><strong>양</strong> (보통)</td><td class="td-c td-bold">7.5점</td><td class="td-c">나머지</td><td>기대 수준</td></tr>
-        <tr><td><strong>가</strong> (미흡)</td><td class="td-c td-bold">6.5점</td><td class="td-c">하위 10% 이내</td><td>개선 필요</td></tr>
+        <tr><td><strong>수</strong> (최우수)</td><td class="td-c">상위 20% 이내</td><td>탁월한 성과</td></tr>
+        <tr><td><strong>우</strong> (우수)</td><td class="td-c">다음 40% 이내</td><td>기대 이상</td></tr>
+        <tr><td><strong>양</strong> (보통)</td><td class="td-c">나머지</td><td>기대 수준</td></tr>
+        <tr><td><strong>가</strong> (미흡)</td><td class="td-c">하위 10% 이내</td><td>개선 필요</td></tr>
       </tbody>
     </table>
     <div class="hint">※ 등급별 점수 및 배분 비율은 기관에 따라 다를 수 있으며, 6급 이하와 5급은 별도의 기준을 적용하는 경우가 있습니다.</div>
   </div>
 
   <div class="card">
-    <h3><span class="num">3</span> 근평 평균의 70점 환산 방법</h3>
-    <p>승진에 반영되는 근평 점수는 <strong>최근 반기들의 평균</strong>을 70점 만점으로 환산합니다. 직급과 기관에 따라 몇 개 반기를 반영하는지가 다릅니다.</p>
+    <h3><span class="num">3</span> 근평 점수 산출 방법</h3>
+    <p>각 등급에는 기관·직렬·직급별로 미리 정해진 점수(70점 만점 기준)가 배정되어 있습니다. 승진에 반영되는 근평 점수는 <strong>반영 반기 수만큼의 점수를 합산해 평균</strong>낸 값입니다. 직급과 기관에 따라 반영 반기 수가 다릅니다.</p>
 
     <div class="formula-box">
-      <div class="f-label">근무성적평정 환산 공식</div>
-      근평 평균 점수 ÷ <span class="f-val">10</span> × <span class="f-val">70</span> = 근무성적평정 점수
+      <div class="f-label">근무성적평정 산출 공식</div>
+      (반기1 점수 + 반기2 점수 + … ) ÷ <span class="f-val">반영 반기 수</span> = 근무성적평정 점수
     </div>
 
     <div class="example-box">
-      <div class="ex-title">📌 예시 — 수·우·우·양 4개 반기 반영 시</div>
-      (9.5 + 8.5 + 8.5 + 7.5) ÷ 4 = <strong>평균 8.5점</strong><br>
-      8.5 ÷ 10 × 70 = <strong>근무성적평정 59.50점</strong>
+      <div class="ex-title">📌 서울시 8급 행정직 예시 — 4반기 반영</div>
+      수1(70.0점) + 우1(63.7점) + 우1(63.7점) + 양1(52.7점) = 250.1점<br>
+      250.1 ÷ 4 = <strong>근무성적평정 62.53점</strong>
+      <div style="margin-top:8px; font-size:.8rem; color:var(--muted);">※ 서울시 8급 행정직은 4개 반기, 9급은 2개 반기, 6·5급은 6개 반기를 반영합니다.</div>
     </div>
   </div>
 
@@ -148,19 +148,19 @@
 
   <div class="card">
     <h3><span class="num">5</span> 근평이 승진에 미치는 실제 영향</h3>
-    <p>'수'와 '양' 등급의 차이는 반기당 2점입니다. 이를 70점 만점으로 환산하면 약 14점 차이가 납니다. 경력평정과 가점 차이가 보통 1~3점 이내임을 감안하면, <strong>단 한 반기의 '수' vs '양' 차이가 몇 년치 경력 격차를 뒤집을 수 있습니다.</strong></p>
+    <p>서울시 본청 행정직 기준 수1등급(70.0점)과 양1등급(52.7점)의 차이는 반기당 17.3점입니다. 4반기 평균 기준으로 한 반기 차이가 약 4.3점을 좌우합니다. 경력평정과 가점 차이가 보통 1~3점 이내임을 감안하면, <strong>단 한 반기의 '수' vs '양' 차이가 몇 년치 경력 격차를 뒤집을 수 있습니다.</strong></p>
     <table>
-      <thead><tr><th>4반기 등급 조합</th><th class="td-c">평균</th><th class="td-c">근무성적평정</th></tr></thead>
+      <thead><tr><th>4반기 등급 조합 (서울시 본청 행정직 기준)</th><th class="td-c">근무성적평정</th></tr></thead>
       <tbody>
-        <tr><td>수·수·수·수</td><td class="td-c">9.5</td><td class="td-c td-bold">66.50점</td></tr>
-        <tr><td>수·수·우·우</td><td class="td-c">9.0</td><td class="td-c td-bold">63.00점</td></tr>
-        <tr><td>우·우·우·우</td><td class="td-c">8.5</td><td class="td-c td-bold">59.50점</td></tr>
-        <tr><td>우·우·우·양</td><td class="td-c">8.25</td><td class="td-c td-bold">57.75점</td></tr>
-        <tr><td>우·우·양·양</td><td class="td-c">8.0</td><td class="td-c td-bold">56.00점</td></tr>
+        <tr><td>수1·수1·수1·수1</td><td class="td-c td-bold">70.00점</td></tr>
+        <tr><td>수1·수1·우1·우1</td><td class="td-c td-bold">66.85점</td></tr>
+        <tr><td>우1·우1·우1·우1</td><td class="td-c td-bold">63.70점</td></tr>
+        <tr><td>우1·우1·우1·양1</td><td class="td-c td-bold">60.95점</td></tr>
+        <tr><td>우1·우1·양1·양1</td><td class="td-c td-bold">58.20점</td></tr>
       </tbody>
     </table>
+    <div class="hint">※ 수1=70.0점, 우1=63.7점, 양1=52.7점 기준. 기관·직렬·직급에 따라 점수가 다릅니다.</div>
   </div>  <div class="ad-slot" style="padding:16px;min-height:90px;display:flex;align-items:center;justify-content:center;">
-    <span style="color:var(--muted);font-size:.75rem;">광고 영역</span>
   </div>
 
   <div class="related-links" style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);">
