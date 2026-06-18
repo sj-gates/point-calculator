@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
@@ -93,7 +93,6 @@
 <main>
 
   <div class="ad-slot" style="padding:16px;min-height:90px;display:flex;align-items:center;justify-content:center;">
-    <span style="color:var(--muted);font-size:.75rem;">광고 영역</span>
   </div>
 
   <div class="article-hero">
@@ -104,9 +103,9 @@
 
   <div class="card">
     <h3><span class="num">1</span> 평정 기준일이란?</h3>
-    <p>평정 기준일은 근무성적평정과 경력평정을 산정하는 <strong>기준이 되는 날짜</strong>입니다. 이 날을 기준으로 경력 월수를 계산하고 가점을 산정합니다. 공무원 평정에서 기준일은 <strong>매년 6월 30일(상반기)과 12월 31일(하반기)</strong>이 원칙입니다.</p>
+    <p>평정 기준일은 근무성적평정과 경력평정을 산정하는 <strong>기준이 되는 날짜</strong>입니다. 이 날을 기준으로 경력 월수를 계산하고 가점을 산정합니다. 공무원 평정에서 기준일은 <strong>매년 6월 30일(상반기)과 12월 31일(하반기)</strong>이 원칙입니다. 단, <strong>기관에 따라 기준일이 다를 수 있으며</strong> 4월 30일·10월 31일을 기준일로 운영하는 기관도 있습니다.</p>
     <p>기준일이 중요한 이유는 복직, 자격증 취득, 어학 성적 제출 등을 기준일 이전에 완료해야 해당 반기 평정에 반영되기 때문입니다.</p>
-    <div class="hint">💡 복직을 계획 중이라면 6월 30일 또는 12월 31일 이전에 복직해야 해당 반기의 근평을 받을 수 있습니다.</div>
+    <div class="hint">💡 복직을 계획 중이라면 소속 기관의 기준일(통상 6월 30일 또는 12월 31일, 기관에 따라 4월 30일·10월 31일) 이전에 복직해야 해당 반기의 근평을 받을 수 있습니다.</div>
   </div>
 
   <div class="card">
@@ -116,7 +115,7 @@
       <div class="half-year">
         <div class="hy-header">
           <div class="hy-title">상반기 (1월~6월)</div>
-          <div class="hy-sub">기준일: 6월 30일</div>
+          <div class="hy-sub">기준일: 6월 30일 <span style="font-weight:400; opacity:.75;">(기관에 따라 4월 30일)</span></div>
         </div>
         <div class="month-list">
           <div class="month-item">
@@ -146,7 +145,7 @@
       <div class="half-year">
         <div class="hy-header">
           <div class="hy-title">하반기 (7월~12월)</div>
-          <div class="hy-sub">기준일: 12월 31일</div>
+          <div class="hy-sub">기준일: 12월 31일 <span style="font-weight:400; opacity:.75;">(기관에 따라 10월 31일)</span></div>
         </div>
         <div class="month-list">
           <div class="month-item">
@@ -177,7 +176,6 @@
   </div>
 
   <div class="ad-slot" style="padding:16px;min-height:90px;display:flex;align-items:center;justify-content:center;">
-    <span style="color:var(--muted);font-size:.75rem;">광고 영역</span>
   </div>
 
   <div class="card">
@@ -185,11 +183,11 @@
     <table>
       <thead><tr><th>항목</th><th>기준일</th><th>확인 내용</th></tr></thead>
       <tbody>
-        <tr><td>근무성적평정</td><td class="td-c">6월 30일 / 12월 31일</td><td>해당 반기 평정 대상자 여부 확인</td></tr>
-        <tr><td>경력평정 월수</td><td class="td-c">6월 30일 / 12월 31일</td><td>기준일까지의 현 직급 근무 월수</td></tr>
+        <tr><td>근무성적평정</td><td class="td-c">6월 30일 / 12월 31일<br><span style="font-size:.74rem;color:var(--muted);">기관에 따라 4월 30일 / 10월 31일</span></td><td>해당 반기 평정 대상자 여부 확인</td></tr>
+        <tr><td>경력평정 월수</td><td class="td-c">6월 30일 / 12월 31일<br><span style="font-size:.74rem;color:var(--muted);">기관에 따라 4월 30일 / 10월 31일</span></td><td>기준일까지의 현 직급 근무 월수</td></tr>
         <tr><td>자격증 가점</td><td class="td-c">기준일 이전 취득분</td><td>기준일 기준 유효한 자격증 보유 여부</td></tr>
         <tr><td>어학 가점</td><td class="td-c">기준일 이전 취득분</td><td>취득일로부터 2년 이내 성적 유효 여부</td></tr>
-        <tr><td>포상 가점</td><td class="td-c">기준일 이전 수상분</td><td>기준일까지 수여된 포상 내역 확인</td></tr>
+
         <tr><td>최저연수 충족</td><td class="td-c">기준일 기준</td><td>기준일까지 최저연수 충족 여부</td></tr>
       </tbody>
     </table>
@@ -213,17 +211,10 @@
         </div>
       </div>
       <div class="check-item">
-        <span class="ci-icon">🏆</span>
-        <div class="ci-text">
-          <div class="ci-title">기준일 1개월 전: 포상 추천 기회 확인</div>
-          <div class="ci-desc">부서 내 포상 추천 기회가 있다면 기준일 전에 수여가 완료되어야 해당 반기 가점에 반영됩니다. 인사담당 부서에 포상 일정을 확인하세요.</div>
-        </div>
-      </div>
-      <div class="check-item">
         <span class="ci-icon">🔄</span>
         <div class="ci-text">
           <div class="ci-title">기준일 직전: 복직·복귀 일정 조율</div>
-          <div class="ci-desc">휴직·파견 중이라면 기준일(6월 30일 또는 12월 31일) 이전에 복직해야 해당 반기 근평 대상자가 됩니다. 기준일 이후 복직 시 다음 반기부터 근평이 재개됩니다.</div>
+          <div class="ci-desc">휴직·파견 중이라면 기준일(통상 6월 30일 또는 12월 31일, 기관에 따라 4월 30일·10월 31일) 이전에 복직해야 해당 반기 근평 대상자가 됩니다. 기준일 이후 복직 시 다음 반기부터 근평이 재개됩니다.</div>
         </div>
       </div>
       <div class="check-item">
@@ -242,11 +233,11 @@
     <table>
       <thead><tr><th>평정 기준일</th><th class="td-c">명부 작성 시기</th><th class="td-c">명부 발효 (통상)</th><th class="td-c">승진 발령</th></tr></thead>
       <tbody>
-        <tr><td>6월 30일 (상반기)</td><td class="td-c">7월 중</td><td class="td-c td-bold">7~8월</td><td class="td-c">8월 이후 결원 발생 시</td></tr>
-        <tr><td>12월 31일 (하반기)</td><td class="td-c">1월 중</td><td class="td-c td-bold">1~2월</td><td class="td-c">2월 이후 결원 발생 시</td></tr>
+        <tr><td>6월 30일 (상반기)<br><span style="font-size:.74rem;color:var(--muted);">일부 기관: 4월 30일</span></td><td class="td-c">7월 중</td><td class="td-c td-bold">7~8월</td><td class="td-c">8월 이후 결원 발생 시</td></tr>
+        <tr><td>12월 31일 (하반기)<br><span style="font-size:.74rem;color:var(--muted);">일부 기관: 10월 31일</span></td><td class="td-c">1월 중</td><td class="td-c td-bold">1~2월</td><td class="td-c">2월 이후 결원 발생 시</td></tr>
       </tbody>
     </table>
-    <div class="hint">⚠️ 명부 작성 및 발효 시기는 기관별로 다를 수 있습니다. 소속 기관의 구체적인 일정은 인사담당 부서에 확인하세요.</div>
+    <div class="hint">⚠️ 기준일 및 명부 작성·발효 시기는 기관별로 다를 수 있습니다. 소속 기관의 구체적인 일정은 인사담당 부서에 확인하세요.</div>
   </div>
 
   <div class="related-links">

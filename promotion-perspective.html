@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>승진, 정말 그만큼 중요한가? — 공무원 승진의 실제 가치와 삶의 균형</title>
+<meta name="description" content="승진이 주는 실제 급여 차이는 얼마일까요? 현행 공무원 봉급표 기준으로 승진의 경제적 효과를 계산하고, 승진 외에도 인생에서 중요한 것들을 되짚어봅니다.">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="공무원 평정점수 계산기">
+<meta property="og:title" content="승진, 정말 그만큼 중요한가? — 공무원 승진의 실제 가치와 삶의 균형">
+<meta property="og:description" content="봉급표로 직접 계산해본 승진 후 실수령 차이와, 승진에 쏟는 에너지를 삶의 다른 곳에 써야 하는 이유">
+<meta property="og:url" content="https://gong-score.co.kr/promotion-perspective.html">
+<meta property="og:locale" content="ko_KR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0f2340;--gold:#c8a84b;--cream:#faf8f3;--paper:#f2ede3;--ink:#1a1a2e;--muted:#6b6b7a;--border:#d8d0be;--card-shadow:0 2px 20px rgba(15,35,64,.10);}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Serif KR',serif;background:var(--cream);color:var(--ink);min-height:100vh;}
+  header{background:var(--navy);padding:36px 24px 28px;text-align:center;position:relative;overflow:hidden;}
+  header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 24px,rgba(200,168,75,.06) 24px,rgba(200,168,75,.06) 25px);}
+  header h1{font-size:clamp(1.1rem,4vw,1.6rem);font-weight:700;color:#fff;letter-spacing:-.02em;position:relative;}
+  header h1 span{color:var(--gold);}
+  header p{margin-top:8px;font-size:.78rem;color:rgba(255,255,255,.55);position:relative;}
+  .gold-line{width:48px;height:2px;background:var(--gold);margin:14px auto 0;}
+  nav.breadcrumb{max-width:760px;margin:16px auto 0;padding:0 20px;font-size:.76rem;color:var(--muted);}
+  nav.breadcrumb a{color:var(--gold);text-decoration:none;}
+  main{max-width:760px;margin:0 auto;padding:24px 20px 60px;}
+  .article-hero{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 24px 22px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .article-hero .tag{display:inline-block;background:#4a6741;color:#fff;font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:99px;letter-spacing:.05em;margin-bottom:12px;}
+  .article-hero h2{font-size:clamp(1.1rem,3.5vw,1.45rem);font-weight:700;color:var(--navy);line-height:1.45;margin-bottom:10px;}
+  .article-hero .meta{font-size:.74rem;color:var(--muted);}
+  .article-hero .lead{font-size:.92rem;line-height:1.95;color:var(--ink);margin-top:14px;border-top:1px solid var(--border);padding-top:14px;}
+  .card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .card h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  .card h3 .num{background:var(--navy);color:var(--gold);font-family:'DM Mono',monospace;font-size:.72rem;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .card p{font-size:.88rem;line-height:1.9;color:var(--ink);margin-bottom:10px;}
+  .hint{font-size:.78rem;color:var(--muted);padding:10px 14px;background:var(--paper);border-left:3px solid var(--gold);border-radius:0 5px 5px 0;margin:12px 0;}
+  .hint-green{font-size:.78rem;color:#2d5a27;padding:10px 14px;background:#f0f7ee;border-left:3px solid #4a6741;border-radius:0 5px 5px 0;margin:12px 0;}
+  table{width:100%;border-collapse:collapse;font-size:.82rem;margin:14px 0;}
+  thead tr{background:var(--navy);color:#fff;}
+  thead th{padding:9px 12px;text-align:left;}
+  tbody tr:nth-child(odd){background:#fff;}
+  tbody tr:nth-child(even){background:var(--paper);}
+  tbody td{padding:10px 12px;border-bottom:1px solid var(--border);line-height:1.6;}
+  .td-c{text-align:center;}
+  .td-bold{font-weight:700;color:var(--navy);}
+  .td-muted{color:var(--muted);font-size:.78rem;}
+  .td-red{font-weight:700;color:#c0392b;}
+  .formula-box{background:var(--navy);color:#fff;border-radius:8px;padding:18px 20px;margin:14px 0;font-family:'DM Mono',monospace;font-size:.86rem;line-height:1.9;}
+  .formula-box .f-label{font-size:.7rem;color:rgba(255,255,255,.5);margin-bottom:6px;font-family:'Noto Serif KR',serif;}
+  .formula-box .f-val{color:var(--gold);}
+  .example-box{background:var(--paper);border:1px solid var(--border);border-radius:8px;padding:16px 18px;margin:14px 0;font-size:.84rem;line-height:1.9;}
+  .example-box .ex-title{font-weight:700;color:var(--navy);margin-bottom:8px;}
+  .big-number{text-align:center;padding:24px 16px;background:var(--paper);border-radius:10px;margin:16px 0;}
+  .big-number .bn-val{font-family:'DM Mono',monospace;font-size:2.4rem;font-weight:700;color:var(--navy);}
+  .big-number .bn-val span{color:#c0392b;}
+  .big-number .bn-label{font-size:.8rem;color:var(--muted);margin-top:6px;}
+  .life-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0;}
+  .life-item{background:var(--paper);border:1px solid var(--border);border-radius:8px;padding:14px 16px;}
+  .life-item .li-icon{font-size:1.5rem;margin-bottom:8px;}
+  .life-item .li-title{font-size:.88rem;font-weight:700;color:var(--navy);margin-bottom:4px;}
+  .life-item .li-desc{font-size:.78rem;color:var(--muted);line-height:1.7;}
+  .compare-row{display:flex;gap:12px;margin:14px 0;}
+  .compare-box{flex:1;border-radius:8px;padding:16px;}
+  .compare-box.stress{background:#fef0ee;border:1px solid #f5c6c0;}
+  .compare-box.gain{background:#f0f7ee;border:1px solid #b8d9b2;}
+  .compare-box .cb-label{font-size:.7rem;font-weight:700;letter-spacing:.05em;margin-bottom:8px;}
+  .compare-box.stress .cb-label{color:#c0392b;}
+  .compare-box.gain .cb-label{color:#2d5a27;}
+  .compare-box ul{font-size:.81rem;line-height:1.9;color:var(--ink);padding-left:14px;}
+  .quote-box{background:var(--navy);color:#fff;border-radius:10px;padding:22px 24px;margin:20px 0;text-align:center;}
+  .quote-box .q-text{font-size:1.05rem;line-height:1.8;font-weight:700;margin-bottom:10px;}
+  .quote-box .q-sub{font-size:.78rem;color:rgba(255,255,255,.55);}
+  .cta-box{background:#4a6741;border-radius:10px;padding:22px 24px;text-align:center;margin-top:28px;}
+  .cta-box p{color:rgba(255,255,255,.8);font-size:.85rem;margin-bottom:14px;}
+  .cta-btn{display:inline-block;background:#fff;color:#4a6741;font-weight:700;font-family:'Noto Serif KR',serif;padding:12px 28px;border-radius:7px;text-decoration:none;font-size:.92rem;transition:opacity .2s;}
+  .cta-btn:hover{opacity:.85;}
+  .related-links{background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .related-links h3{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:14px;}
+  .related-links ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .related-links li a{font-size:.85rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:6px;}
+  .related-links li a::before{content:'→';color:var(--gold);}
+  .ad-slot{background:var(--paper);border:1px dashed var(--border);border-radius:6px;text-align:center;padding:14px;font-size:.75rem;color:var(--muted);margin:20px 0;}
+  footer{text-align:center;padding:24px;font-size:.72rem;color:var(--muted);border-top:1px solid var(--border);}
+  @media(max-width:540px){.card{padding:20px 16px;}.article-hero{padding:20px 16px 16px;}.life-grid{grid-template-columns:1fr;}.compare-row{flex-direction:column;}.bn-val{font-size:1.8rem !important;}}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1KXD1P0ZVC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1KXD1P0ZVC');</script>
+</head>
+<body>
+<header>
+  <h1>공무원 <span>평정점수</span> 계산기</h1>
+  <p>서울시·경기·인천 승진 평정점수 자동 산출</p>
+  <div class="gold-line"></div>
+</header>
+<nav class="breadcrumb">
+  <a href="index.html">홈</a> &rsaquo; 승진, 정말 그만큼 중요한가?
+</nav>
+<main>
+
+  <div class="ad-slot" style="padding:16px;min-height:90px;display:flex;align-items:center;justify-content:center;">
+  </div>
+
+  <div class="article-hero">
+    <span class="tag">관점</span>
+    <h2>승진, 정말 그만큼 중요한가?<br>— 숫자로 보는 승진의 실제 가치</h2>
+    <p class="meta">2026년 봉급표 기준 · 지방공무원 일반직</p>
+    <p class="lead">이 사이트는 승진 점수 계산을 위해 만들어졌습니다. 하지만 점수를 계산하다 보면 한 가지 질문이 생깁니다. <strong>"이게 정말 그만큼의 가치가 있을까?"</strong> 봉급표를 직접 들여다보면, 생각보다 냉정한 숫자가 나옵니다.</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">1</span> 승진하면 월급이 얼마나 오를까?</h3>
+    <p>승진 시 급여는 <strong>호봉 재획정</strong>을 거칩니다. 단순히 직급이 올라가는 게 아니라, 현직급 경력을 새 직급 기준으로 다시 환산해 호봉을 부여합니다. 일반적으로 승진 직후 기본급 인상폭은 다음과 같습니다.</p>
+
+    <table>
+      <thead>
+        <tr><th>승진 구간</th><th class="td-c">승진 전 (예시)</th><th class="td-c">승진 후 (예시)</th><th class="td-c">월 기본급 차이</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>9급 → 8급</td>
+          <td class="td-c">9급 10호봉<br><span class="td-muted">약 217만원</span></td>
+          <td class="td-c">8급 8호봉<br><span class="td-muted">약 227만원</span></td>
+          <td class="td-c td-bold">+약 10만원</td>
+        </tr>
+        <tr>
+          <td>8급 → 7급</td>
+          <td class="td-c">8급 12호봉<br><span class="td-muted">약 251만원</span></td>
+          <td class="td-c">7급 9호봉<br><span class="td-muted">약 263만원</span></td>
+          <td class="td-c td-bold">+약 12만원</td>
+        </tr>
+        <tr>
+          <td>7급 → 6급</td>
+          <td class="td-c">7급 14호봉<br><span class="td-muted">약 288만원</span></td>
+          <td class="td-c">6급 11호봉<br><span class="td-muted">약 302만원</span></td>
+          <td class="td-c td-bold">+약 14만원</td>
+        </tr>
+        <tr>
+          <td>6급 → 5급</td>
+          <td class="td-c">6급 15호봉<br><span class="td-muted">약 331만원</span></td>
+          <td class="td-c">5급 11호봉<br><span class="td-muted">약 352만원</span></td>
+          <td class="td-c td-bold">+약 21만원</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="hint">※ 위 수치는 2026년 지방공무원 봉급표 기준 예시입니다. 실제 호봉 재획정은 개인 이력에 따라 다르며, 수당·성과급은 별도입니다.</div>
+
+    <div class="big-number">
+      <div class="bn-val"><span>월 10~20만원</span></div>
+      <div class="bn-label">대부분의 승진 구간에서 기본급 인상폭 (세전)</div>
+    </div>
+
+    <p>세전 기준입니다. 소득세·건강보험료 등을 제하면 <strong>실수령 차이는 더 줄어듭니다.</strong> 연간으로 환산해도 120~240만원 수준 — 월 평균 10~20만원입니다.</p>
+
+    <div class="example-box">
+      <div class="ex-title">📌 8급→7급 승진의 경제적 효과 계산</div>
+      월 기본급 증가: 약 <strong>12만원</strong><br>
+      실수령 증가 (세후 추정): 약 <strong>8~9만원</strong>/월<br>
+      연간 실수령 증가: 약 <strong>100~110만원</strong><br><br>
+      → 커피 한 잔 값(5천원)으로 환산하면 <strong>하루 약 3잔</strong> 수준<br>
+      → 승진을 위해 수년간 쏟은 스트레스와 노력에 비례하는가?
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">2</span> 승진 스트레스의 보이지 않는 비용</h3>
+    <p>승진 경쟁에서 오는 스트레스는 단순한 심리적 불편함이 아닙니다. 실질적인 삶의 질과 건강에 영향을 미칩니다.</p>
+
+    <div class="compare-row">
+      <div class="compare-box stress">
+        <div class="cb-label">승진 경쟁에서 치르는 것들</div>
+        <ul>
+          <li>동료와의 비교에서 오는 피로감</li>
+          <li>근평 시즌마다 반복되는 불안</li>
+          <li>인사담당·상사와의 관계 관리 부담</li>
+          <li>가족·취미에 쓸 에너지 소모</li>
+          <li>승진 실패 시의 자존감 타격</li>
+          <li>만성 스트레스로 인한 건강 비용</li>
+        </ul>
+      </div>
+      <div class="compare-box gain">
+        <div class="cb-label">승진으로 얻는 것들</div>
+        <ul>
+          <li>월 10~20만원 기본급 인상</li>
+          <li>직책수당 (직책 보임 시)</li>
+          <li>명함에 새로운 직급</li>
+          <li>일부 기관의 업무 재배치</li>
+          <li>동기부여 (일시적)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="hint">💡 스트레스가 건강에 미치는 비용을 금전으로 환산하면 승진으로 얻는 경제적 이익을 초과한다는 연구 결과들이 있습니다. 만성 스트레스는 수면, 소화, 면역 기능에 직접 영향을 미칩니다.</div>
+  </div>
+
+  <div class="ad-slot" style="padding:16px;min-height:90px;display:flex;align-items:center;justify-content:center;">
+  </div>
+
+  <div class="card">
+    <h3><span class="num">3</span> 승진 말고도 인생에 중요한 것들</h3>
+    <p>공무원 생활은 길게는 30~35년입니다. 그 긴 시간 중 승진에 쏟는 에너지가 얼마나 될까요? 그리고 승진 이외의 것들은 얼마나 챙기고 계신가요?</p>
+
+    <div class="life-grid">
+      <div class="life-item">
+        <div class="li-icon">🏠</div>
+        <div class="li-title">가족과의 시간</div>
+        <div class="li-desc">자녀가 어린 시절은 다시 오지 않습니다. 퇴근 후 남는 에너지가 가족에게 향하는지, 근평 걱정으로 소모되는지를 돌아볼 필요가 있습니다.</div>
+      </div>
+      <div class="life-item">
+        <div class="li-icon">🌿</div>
+        <div class="li-title">건강과 체력</div>
+        <div class="li-desc">스트레스는 신체에 축적됩니다. 직급 하나 올라가는 것보다 20년 후에도 건강하게 일하는 것이 훨씬 가치 있는 목표일 수 있습니다.</div>
+      </div>
+      <div class="life-item">
+        <div class="li-icon">📚</div>
+        <div class="li-title">개인 성장과 배움</div>
+        <div class="li-desc">승진을 위한 자격증 공부가 아니라, 내가 진짜 관심 있는 분야에 시간을 투자하면 어떨까요? 그것이 더 오래 지속되는 만족감을 줍니다.</div>
+      </div>
+      <div class="life-item">
+        <div class="li-icon">💰</div>
+        <div class="li-title">재테크·부수입</div>
+        <div class="li-desc">월 10~20만원 승진 인상분을 기다리는 것보다, 재테크나 소액 부수입을 만드는 데 같은 에너지를 쓰면 더 큰 효과를 볼 수 있는 경우도 많습니다.</div>
+      </div>
+      <div class="life-item">
+        <div class="li-icon">👥</div>
+        <div class="li-title">인간관계</div>
+        <div class="li-desc">승진 경쟁 구도 안에서는 동료가 경쟁자가 됩니다. 그 구도에서 벗어나면 직장 내 관계가 훨씬 편안해질 수 있습니다.</div>
+      </div>
+      <div class="life-item">
+        <div class="li-icon">🎯</div>
+        <div class="li-title">업무 전문성</div>
+        <div class="li-desc">승진 명부 순위보다 특정 분야의 깊은 전문성을 쌓는 것이 장기적으로 더 큰 직업적 만족감과 영향력을 줍니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">4</span> 그래도 승진을 준비하는 분들께</h3>
+    <p>이 글은 승진을 포기하라는 이야기가 아닙니다. 승진은 분명 경제적·사회적 의미가 있고, 열심히 일한 것에 대한 정당한 보상이기도 합니다.</p>
+    <p>다만 이런 관점으로 접근하면 어떨까요.</p>
+
+    <div class="hint-green">
+      <strong>승진을 목표로 삼되, 결과에 연연하지 않는다.</strong><br>
+      해야 할 것들을 꾸준히 하되, 그것이 내 삶의 전부가 되지 않도록 한다. 승진은 삶의 많은 목표 중 하나일 뿐입니다.
+    </div>
+
+    <table>
+      <thead><tr><th>관점</th><th>승진에 연연할 때</th><th>균형 잡힌 관점</th></tr></thead>
+      <tbody>
+        <tr><td>명부 순위</td><td>"내가 몇 위인지 매일 신경 쓰인다"</td><td>"내 순위는 알지만 삶의 다른 것도 챙긴다"</td></tr>
+        <tr><td>근평 결과</td><td>"등급 하나에 며칠씩 우울하다"</td><td>"아쉽지만 다음 반기가 있다"</td></tr>
+        <tr><td>동료 비교</td><td>"저 사람이 나보다 먼저 승진하면 어쩌나"</td><td>"각자 다른 상황과 조건이 있다"</td></tr>
+        <tr><td>승진 시기</td><td>"몇 년 안에 꼭 해야 한다"</td><td>"때가 되면 된다, 그때까지 즐겁게 일한다"</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="quote-box">
+    <div class="q-text">"나는 승진을 위해 일하는 것이 아니라,<br>잘 살기 위해 일하는 것이다."</div>
+    <div class="q-sub">직급은 이름표일 뿐, 일하는 사람의 가치를 정의하지 않습니다.</div>
+  </div>
+
+  <div class="related-links">
+    <h3>📚 평정점수 계산이 필요하다면</h3>
+    <ul>
+      <li><a href="index.html">내 평정점수 계산하기 (근평 + 경력 + 가점)</a></li>
+      <li><a href="performance-rating-guide.html">근무성적평정 완전 가이드</a></li>
+      <li><a href="career-rating-guide.html">경력평정 계산 방법 완전 정리</a></li>
+      <li><a href="evaluation-period.html">평정 기준일·시기 캘린더</a></li>
+    </ul>
+  </div>
+
+  <div class="cta-box">
+    <p>그래도 내 점수가 궁금하다면, 정확히 계산해두는 것이 오히려 마음 편합니다.<br>모르는 것에 불안해하기보다, 알고 나서 내려놓는 것이 낫습니다.</p>
+    <a class="cta-btn" href="index.html">내 평정점수 확인하기</a>
+  </div>
+</main>
+<footer>
+  본 콘텐츠는 참고용이며 실제 평정 결과는 소속 기관 인사담당자에게 확인하시기 바랍니다.<br>
+  문의: <a href="mailto:sj.gates@gmail.com" style="color:var(--gold);">sj.gates@gmail.com</a>
+  &nbsp;|&nbsp;
+  <a href="privacy.html" style="color:var(--muted);">개인정보처리방침</a>
+  &nbsp;|&nbsp;
+  <a href="about.html" style="color:var(--muted);">서비스 소개</a>
+</footer>
+</body>
+</html>
