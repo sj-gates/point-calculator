@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
@@ -105,7 +105,6 @@
 </nav>
 
 <main>  <div class="ad-slot" style="padding:16px;min-height:90px;display:flex;align-items:center;justify-content:center;">
-    <span style="color:var(--muted);font-size:.75rem;">광고 영역</span>
   </div>
 
   <!-- 아티클 헤더 -->
@@ -126,36 +125,39 @@
   <!-- 2. 산정 구조 -->
   <div class="card">
     <h3><span class="num">2</span> 경력평정 산정 구조</h3>
-    <p>경력평정은 <strong>현 직급 경력</strong>과 <strong>직전 직급 경력</strong>을 구분하여 다른 비율로 환산합니다.</p>
+    <p>경력평정은 현 직급 경력과 직전 직급 경력을 합산해 단일 점수율로 환산합니다. 직전 직급 경력은 <strong>60% 환산</strong> 후 현 직급 경력에 합산하고, 합산된 가중 경력 개월수에 직급별 점수율을 적용합니다.</p>
     <table>
-      <thead><tr><th>구분</th><th>산입 비율</th><th>만점</th></tr></thead>
+      <thead><tr><th>구분</th><th>처리 방법</th></tr></thead>
       <tbody>
-        <tr><td>현 직급 근무 기간</td><td class="td-c td-bold">100%</td><td class="td-c">최대 24점</td></tr>
-        <tr><td>직전 직급 근무 기간</td><td class="td-c td-bold">60%</td><td class="td-c">최대 6점</td></tr>
+        <tr><td>현 직급 경력</td><td class="td-bold">100% 그대로 산입</td></tr>
+        <tr><td>직전 직급 경력</td><td class="td-bold">60% 환산 후 합산</td></tr>
+        <tr><td>합산 가중 경력</td><td class="td-bold">직급별 점수율 적용 → 경력평정 산출 (만점 30점)</td></tr>
       </tbody>
     </table>
-    <div class="hint">※ 직전 직급 경력은 직전 직급 진급일부터 현 직급 임용일 전날까지의 기간을 60%로 환산합니다.</div>
+    <div class="hint">※ 잔여일 합산(현 직급 잔여일 + 직전 직급 60% 환산 잔여일)이 15일 이상이면 1개월로 올림 처리합니다.</div>
   </div>
 
   <!-- 3. 점수 환산 방법 -->
   <div class="card">
-    <h3><span class="num">3</span> 월 단위 점수 환산</h3>
-    <p>경력평정은 <strong>1개월 = 0.0833점(1/12점)</strong>을 기준으로 월 단위로 환산합니다. 15일 이상이면 1개월로 인정되고, 15일 미만은 버립니다.</p>
+    <h3><span class="num">3</span> 직급별 점수율 및 환산 공식</h3>
+    <p>경력평정은 직급별로 기준 개월수(base)까지는 높은 점수율을, 초과분에는 낮은 점수율을 적용합니다. 서울시·인천시·경기도 기준은 아래와 같습니다.</p>
 
-    <div class="formula-box">
-      <div class="f-label">현 직급 경력평정 계산식</div>
-      현 직급 근무 월수 × <span class="f-val">1/12점</span> (최대 24점)
-    </div>
-    <div class="formula-box">
-      <div class="f-label">직전 직급 경력평정 계산식</div>
-      직전 직급 근무 월수 × <span class="f-val">1/12점</span> × 60% (최대 6점)
-    </div>
+    <table>
+      <thead><tr><th>지역</th><th>직급</th><th class="td-c">base (개월)</th><th class="td-c">이하 점수율</th><th class="td-c">초과 점수율</th></tr></thead>
+      <tbody>
+        <tr><td>서울</td><td>9·8·7급</td><td class="td-c">60개월</td><td class="td-c td-bold">0.48점/월</td><td class="td-c">0.05점/월</td></tr>
+        <tr><td>서울</td><td>6급</td><td class="td-c">72개월</td><td class="td-c td-bold">0.40점/월</td><td class="td-c">0.04점/월</td></tr>
+        <tr><td>서울</td><td>5급</td><td class="td-c">84개월</td><td class="td-c td-bold">0.34점/월</td><td class="td-c">0.03점/월</td></tr>
+        <tr><td>경기도</td><td>9·8·7급</td><td class="td-c">60개월</td><td class="td-c td-bold">0.49점/월</td><td class="td-c">0.05점/월</td></tr>
+        <tr><td>경기도</td><td>6급</td><td class="td-c">72개월</td><td class="td-c td-bold">0.40점/월</td><td class="td-c">0.05점/월</td></tr>
+        <tr><td>경기도</td><td>5급</td><td class="td-c">84개월</td><td class="td-c td-bold">0.34점/월</td><td class="td-c">0.04점/월</td></tr>
+      </tbody>
+    </table>
 
     <div class="example-box">
-      <div class="ex-title">📌 예시 — 현 직급 36개월 + 직전 직급 24개월 근무</div>
-      현 직급: 36개월 × (1/12) = <strong>3.00점</strong><br>
-      직전 직급: 24개월 × (1/12) × 0.6 = <strong>1.20점</strong><br>
-      경력평정 합계 = <strong>4.20점</strong>
+      <div class="ex-title">📌 예시 — 서울시 8급, 현 직급 36개월 + 직전 직급 24개월</div>
+      직전 직급 60% 환산: 24개월 × 0.6 = 14개월<br>
+      합산: 36 + 14 = 50개월 → 50 × 0.48 = <strong>경력평정 24.00점</strong>
     </div>
   </div>
 
@@ -179,21 +181,23 @@
 
   <!-- 5. 만점 도달 기간 -->
   <div class="card">
-    <h3><span class="num">5</span> 만점(30점) 도달까지 얼마나 걸리나?</h3>
-    <p>현 직급 만점(24점)은 <strong>약 24년 근무</strong>시 도달합니다. 직전 직급 만점(6점)은 직전 직급에서 <strong>약 10년 근무</strong>시 도달합니다. 현실적으로 현 직급 경력 10년 이내에 승진하는 경우가 많기 때문에, 경력평정은 최대 10점 내외인 경우가 많습니다.</p>
+    <h3><span class="num">5</span> 경력이 쌓일수록 점수가 덜 오르는 이유</h3>
+    <p>경력평정은 초반에 빠르게 오르다가 일정 기간(base)을 넘으면 증가폭이 크게 줄어드는 구조입니다. <strong>경기도 7급</strong>을 예로 들면, 60개월(5년)까지는 월 <strong>0.49점</strong>씩 오르지만, 60개월을 넘는 순간부터 월 <strong>0.05점</strong>으로 약 10분의 1 수준으로 급감합니다.</p>
+
     <table>
-      <thead><tr><th>현 직급 근무 기간</th><th class="td-c">경력평정 (현 직급)</th></tr></thead>
+      <thead><tr><th>가중 경력</th><th class="td-c">경력평정</th><th class="td-c">월 증가폭</th></tr></thead>
       <tbody>
-        <tr><td>1년 (12개월)</td><td class="td-c td-bold">1.00점</td></tr>
-        <tr><td>3년 (36개월)</td><td class="td-c td-bold">3.00점</td></tr>
-        <tr><td>5년 (60개월)</td><td class="td-c td-bold">5.00점</td></tr>
-        <tr><td>10년 (120개월)</td><td class="td-c td-bold">10.00점</td></tr>
-        <tr><td>20년 (240개월)</td><td class="td-c td-bold">20.00점</td></tr>
-        <tr><td>24년 이상</td><td class="td-c td-bold">24.00점 (만점)</td></tr>
+        <tr><td>1년 (12개월)</td><td class="td-c td-bold">5.88점</td><td class="td-c" style="color:#1a6b45; font-weight:700;">+0.49점/월</td></tr>
+        <tr><td>2년 (24개월)</td><td class="td-c td-bold">11.76점</td><td class="td-c" style="color:#1a6b45; font-weight:700;">+0.49점/월</td></tr>
+        <tr><td>3년 (36개월)</td><td class="td-c td-bold">17.64점</td><td class="td-c" style="color:#1a6b45; font-weight:700;">+0.49점/월</td></tr>
+        <tr><td>4년 (48개월)</td><td class="td-c td-bold">23.52점</td><td class="td-c" style="color:#1a6b45; font-weight:700;">+0.49점/월</td></tr>
+        <tr><td style="font-weight:700; color:var(--navy);">5년 (60개월) — 기준점</td><td class="td-c td-bold">29.40점</td><td class="td-c" style="color:#1a6b45; font-weight:700;">+0.49점/월</td></tr>
+        <tr><td style="color:var(--muted);">5년 6개월 (66개월)</td><td class="td-c td-bold" style="color:var(--muted);">29.70점</td><td class="td-c" style="color:#c0392b; font-weight:700;">+0.05점/월</td></tr>
+        <tr><td style="color:var(--muted);">6년 (72개월) — 만점</td><td class="td-c td-bold" style="color:var(--muted);">30.00점</td><td class="td-c" style="color:#c0392b; font-weight:700;">+0.05점/월</td></tr>
       </tbody>
     </table>
+    <div class="hint">💡 60개월(5년) 이후에는 만점(30점)까지 12개월을 더 채워야 0.60점만 올라갑니다. 사실상 60개월이 경력평정의 실질적 포화 시점이므로, 승진을 노린다면 5년 전후 타이밍이 핵심입니다.</div>
   </div>  <div class="ad-slot" style="padding:16px;min-height:90px;display:flex;align-items:center;justify-content:center;">
-    <span style="color:var(--muted);font-size:.75rem;">광고 영역</span>
   </div>
 
   <!-- CTA -->
