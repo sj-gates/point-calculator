@@ -2,91 +2,103 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://gong-score.co.kr/</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://gong-score.co.kr/performance-rating-guide.html</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gong-score.co.kr/career-rating-guide.html</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gong-score.co.kr/bonus-points-guide.html</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gong-score.co.kr/promotion-list-guide.html</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gong-score.co.kr/promotion-minimum-years.html</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gong-score.co.kr/promotion-faq.html</loc>
-    <lastmod>2025-06-16</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gong-score.co.kr/leave-calculation-guide.html</loc>
-    <lastmod>2025-06-16</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gong-score.co.kr/grade-comparison.html</loc>
-    <lastmod>2025-06-16</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gong-score.co.kr/promotion-strategy.html</loc>
-    <lastmod>2025-06-16</lastmod>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gong-score.co.kr/promotion-perspective.html</loc>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gong-score.co.kr/discipline-effect.html</loc>
-    <lastmod>2025-06-16</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gong-score.co.kr/special-appointment.html</loc>
-    <lastmod>2025-06-16</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gong-score.co.kr/evaluation-period.html</loc>
-    <lastmod>2025-06-16</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gong-score.co.kr/score-rank-simulator.html</loc>
-    <lastmod>2025-06-16</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://gong-score.co.kr/about.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://gong-score.co.kr/privacy.html</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
