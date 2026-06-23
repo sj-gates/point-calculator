@@ -1779,13 +1779,16 @@ function getCareerData() {
   const prevW60Months = Math.floor(prevRawMonths * 0.6);
   const prevW60Days   = Math.round((prevRawMonths * 0.6 - prevW60Months) * 30 + prevRawDays * 0.6);
 
-  // 현직급 잔여일 + 직전급수 60% 잔여일 합산 → 15일 이상이면 1개월 올림
-  const totalRawDays = curDays + prevW60Days;
-  const dayRoundUp   = totalRawDays >= 15 ? 1 : 0;
+  // 현직급 잔여일 + 직전급수 60% 잔여일 합산 → 30일 단위로 개월 환산 후, 남은 일수가 15일 이상이면 1개월 추가 올림
+  const totalRawDays  = curDays + prevW60Days;
+  const dayExtraMonths = Math.floor(totalRawDays / 30);
+  const dayRemainder   = totalRawDays - dayExtraMonths * 30;
+  const dayRoundUp     = dayRemainder >= 15 ? 1 : 0;
 
   const weightedMonths =
     curMonths +
     prevW60Months +
+    dayExtraMonths +
     dayRoundUp;
 
   const totalMonths = Math.max(0, Math.round((weightedMonths - excBreak) * 100) / 100);
@@ -1800,6 +1803,7 @@ function getCareerData() {
     prevW60Months, prevW60Days,
     previousWeightedMonths,
     totalRawDays,
+    dayExtraMonths,
     totalMonths,
     score,
     currentMonths: curMonths,
@@ -2153,8 +2157,10 @@ function recalcCareer() {
   const prevStr2 = data.prevRawMonths || data.prevRawDays
     ? `${data.prevRawMonths}개월 ${data.prevRawDays}일 × 60% = ${data.prevW60Months}개월 ${data.prevW60Days}일`
     : '미입력';
-  const dayRoundUp = data.totalRawDays >= 15 ? 1 : 0;
-  const dayNotice  = `현직급 ${data.curDays}일 + 직전급수(60%) ${data.prevW60Days}일 = 합산 ${data.totalRawDays}일 → ${dayRoundUp ? '15일 이상으로 1개월 올림' : '15일 미만으로 버림'}`;
+  const dayRemainder = data.totalRawDays - data.dayExtraMonths * 30;
+  const dayRoundUp   = dayRemainder >= 15 ? 1 : 0;
+  const dayExtraText = data.dayExtraMonths > 0 ? `30일씩 ${data.dayExtraMonths}개월 환산 후 ` : '';
+  const dayNotice  = `현직급 ${data.curDays}일 + 직전급수(60%) ${data.prevW60Days}일 = 합산 ${data.totalRawDays}일 → ${dayExtraText}나머지 ${dayRemainder}일은 ${dayRoundUp ? '15일 이상으로 1개월 올림' : '15일 미만으로 버림'}`;
   const excStr  = data.excBreak ? `${data.excBreak}개월` : '없음';
 
   careerBox.innerHTML = `
@@ -2618,9 +2624,11 @@ function getCmpCareerScore() {
   const cmpPrevW60Months = Math.floor(prevRawMonths * 0.6);
   const cmpPrevW60Days   = Math.round((prevRawMonths * 0.6 - cmpPrevW60Months) * 30 + prevRawDays * 0.6);
 
-  const totalRawDays = curDays + cmpPrevW60Days;
-  const dayRoundUp   = totalRawDays >= 15 ? 1 : 0;
-  const weightedMonths = curMonths + cmpPrevW60Months + dayRoundUp;
+  const totalRawDays   = curDays + cmpPrevW60Days;
+  const dayExtraMonths = Math.floor(totalRawDays / 30);
+  const dayRemainder   = totalRawDays - dayExtraMonths * 30;
+  const dayRoundUp     = dayRemainder >= 15 ? 1 : 0;
+  const weightedMonths = curMonths + cmpPrevW60Months + dayExtraMonths + dayRoundUp;
   const totalMonths  = Math.max(0, Math.round((weightedMonths - excBreak) * 100) / 100);
   const score = calcCareerScore(totalMonths, grade);
 
@@ -2641,7 +2649,7 @@ function getCmpCareerScore() {
   box.innerHTML = `
     🔹 <b>현 직급 경력:</b> ${curMonths}개월 ${curDays}일 (+1일 포함)<br>
     ${(prevRawMonths || prevRawDays) ? `🔸 <b>직전급수 경력:</b> ${prevRawMonths}개월 ${prevRawDays}일 × 60% = ${cmpPrevW60Months}개월 ${cmpPrevW60Days}일<br>` : ''}
-    📅 <b>잔여일 처리:</b> 현직급 ${curDays}일 + 직전급수(60%) ${cmpPrevW60Days}일 = 합산 ${totalRawDays}일 → ${dayRoundUp ? '15일 이상으로 1개월 올림' : '15일 미만으로 버림'}<br>
+    📅 <b>잔여일 처리:</b> 현직급 ${curDays}일 + 직전급수(60%) ${cmpPrevW60Days}일 = 합산 ${totalRawDays}일 → ${dayExtraMonths > 0 ? `30일씩 ${dayExtraMonths}개월 환산 후 ` : ''}나머지 ${dayRemainder}일은 ${dayRoundUp ? '15일 이상으로 1개월 올림' : '15일 미만으로 버림'}<br>
     ${excBreak ? `➖ <b>미합산 휴직:</b> ${excBreak}개월<br>` : ''}
     🎯 <b>최종 인정 경력:</b> <b>${totalMonths}개월</b> &nbsp;→&nbsp; ${formula}
   `;
@@ -2682,8 +2690,9 @@ function runCompare() {
     const prevW60Months = Math.floor(data.prevRawMonths * 0.6);
     const prevW60Days   = Math.round((data.prevRawMonths * 0.6 - prevW60Months) * 30 + data.prevRawDays * 0.6);
     const totalRawDays  = data.curDays + prevW60Days;
-    const dayRoundUp    = totalRawDays >= 15 ? 1 : 0;
-    const weighted      = curMonths6 + prevW60Months + dayRoundUp;
+    const dayExtraMonths = Math.floor(totalRawDays / 30);
+    const dayRoundUp    = (totalRawDays - dayExtraMonths * 30) >= 15 ? 1 : 0;
+    const weighted      = curMonths6 + prevW60Months + dayExtraMonths + dayRoundUp;
     const total         = Math.max(0, Math.round((weighted - data.excBreak) * 100) / 100);
     return Math.min(calcCareerScore(total, grade), MAX_CAREER_SCORE);
   })();
@@ -2721,10 +2730,11 @@ function runCompare() {
     const prevW60Months = Math.floor(prevRawMonths * 0.6);
     const prevW60Days   = Math.round((prevRawMonths * 0.6 - prevW60Months) * 30 + prevRawDays * 0.6);
 
-    // 잔여일 합산 15일 이상 올림
+    // 잔여일 합산 → 30일 단위로 개월 환산 후, 나머지가 15일 이상이면 1개월 추가 올림
     const totalRawDays  = curDays + prevW60Days;
-    const dayRoundUp    = totalRawDays >= 15 ? 1 : 0;
-    const weightedMonths = curMonths + prevW60Months + dayRoundUp;
+    const dayExtraMonths = Math.floor(totalRawDays / 30);
+    const dayRoundUp    = (totalRawDays - dayExtraMonths * 30) >= 15 ? 1 : 0;
+    const weightedMonths = curMonths + prevW60Months + dayExtraMonths + dayRoundUp;
     const totalMonths   = Math.max(0, Math.round((weightedMonths - excBreak) * 100) / 100);
     return Math.min(calcCareerScore(totalMonths, grade), MAX_CAREER_SCORE);
   })();
