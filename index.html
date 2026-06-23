@@ -1395,6 +1395,36 @@ function getGradeSemesters(grade) {
 }
 // 하위 호환용 (직접 참조 코드 대비)
 const GRADE_SEMESTERS = GRADE_SEMESTERS_SEOUL;
+
+// ── 근무성적평가점수 반영방법: 연도별(2개 반기 평균) 가중평균 ──
+// 실제 평정 규칙: 연도 평균을 낸 뒤, 최근 연도일수록 더 높은(또는 동일한) 비중을 적용
+// 공식 기준 — 5급(3년): 34/33/33%, 6·7급(2년): 50/50%, 8급이하(1년): 100%
+// 4년 이상(일부 기관 인천 6·5급 등 8반기)은 공식 기준이 없어 연도별 균등 비중으로 가정
+const YEAR_WEIGHTS = {
+  1: [100],
+  2: [50, 50],
+  3: [34, 33, 33],
+  4: [25, 25, 25, 25],
+};
+function getYearWeights(years) {
+  return YEAR_WEIGHTS[years] || Array(years).fill(Math.round(100 / years * 100) / 100);
+}
+// scores: 반기 점수 배열, [0]=이번반기(가장 최근) ... [n-1]=가장 오래된 반기. 반드시 짝수 길이.
+function calcWeightedPerfAvg(scores) {
+  const n = scores.length;
+  if (n === 0) return 0;
+  const years = Math.ceil(n / 2);
+  const weights = getYearWeights(years);
+  let total = 0;
+  for (let y = 0; y < years; y++) {
+    const a = scores[y * 2];
+    const b = scores[y * 2 + 1];
+    const yearAvg = (b === undefined) ? a : (a + b) / 2; // 홀수로 끝나는 마지막 연도는 그 반기만 사용
+    total += yearAvg * (weights[y] / 100);
+  }
+  return Math.round(total * 100) / 100;
+}
+
 const MAX_CAREER_SCORE   = 30;
 const MAX_PLUS_SCORE     = 5;
 const MAX_PERF_SCORE     = 70;
@@ -1909,8 +1939,12 @@ function onGradeChange() {
       ? '근무평정 등급간 과학기술 0.3점 차이 기본설정'
       : '근무평정 등급간 행정 0.15점 차이 기본설정';
   }
+  const years = Math.ceil(n / 2);
+  const weights = getYearWeights(years);
+  const yearLabels = ['최근 1년', '최근 1~2년', '최근 2~3년', '최근 3~4년'];
+  const weightDesc = weights.map((w, idx) => `${yearLabels[idx] || `최근 ${idx}~${idx+1}년`} ${w}%`).join(' + ');
   document.getElementById('semesterHint').textContent =
-    `💡 ${grade}급은 직전 ${n}개 반기의 근평 점수 평균이 반영됩니다. (${intervalNote})`;
+    `💡 ${grade}급은 직전 ${n}개 반기(${years}년)를 연도별(반기 평균) 가중평균으로 반영합니다 — ${weightDesc}. (${intervalNote})`;
 
   // 탭별 라벨 정의
   // 탭0: 이번반기(예상), 직전1~N반기
@@ -2535,15 +2569,12 @@ function getScoreForLabel(label) {
 }
 
 function getCurrentScores() {
-  const grade = parseInt(document.getElementById('grade').value);
-  const n = getGradeSemesters(grade);
   const scores = getCurrentPerfScores();
-  const sum = scores.reduce((acc, score) => acc + score, 0);
 
   const careerData = getCareerData();
   const careerScore = careerData && !careerData.error ? careerData.score : 0;
 
-  const perfAvg = Math.round(sum / n * 100) / 100;
+  const perfAvg = calcWeightedPerfAvg(scores);
   const plusScore = Math.min(parseFloat(document.getElementById('plusScore').value) || 0, MAX_PLUS_SCORE);
   const total = Math.round((perfAvg + careerScore + plusScore) * 100) / 100;
   const careerMonths = careerData && !careerData.error ? careerData.totalMonths : 0;
@@ -2581,7 +2612,7 @@ function makeProjectedTotal(scores, replacementScore, mode, careerScore, plusSco
   const projectedScores = mode === 'future'
     ? Array(n).fill(replacementScore)
     : [replacementScore, ...scores.slice(0, n - 1)];
-  const perfAvg = Math.round(projectedScores.reduce((acc, score) => acc + score, 0) / n * 100) / 100;
+  const perfAvg = calcWeightedPerfAvg(projectedScores);
   const total = Math.round((perfAvg + careerScore + plusScore) * 100) / 100;
   return { perfAvg, total };
 }
@@ -2665,14 +2696,14 @@ function onCmpCareerInput() {
 function runCompare() {
   const grade = parseInt(document.getElementById('grade').value);
   const n = getGradeSemesters(grade);
-  let cmpPerfSum = 0;
+  const cmpScores = [];
 
   for (let i = 0; i < n; i++) {
-    cmpPerfSum += getCmpPerfScore(i);
+    cmpScores.push(getCmpPerfScore(i));
   }
 
   const mine = getCurrentScores();
-  const cmpPerfAvg = Math.round(cmpPerfSum / n * 100) / 100;
+  const cmpPerfAvg = calcWeightedPerfAvg(cmpScores);
   const cmpCareer  = getCmpCareerScore();
   const cmpPlus    = Math.min(parseFloat(document.getElementById('cmpPlus').value) || 0, MAX_PLUS_SCORE);
   const cmpTotal   = Math.round((cmpPerfAvg + cmpCareer + cmpPlus) * 100) / 100;
