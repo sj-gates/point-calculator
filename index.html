@@ -689,6 +689,62 @@
   <div class="intro-box">
     <h2>📌 이 계산기는 무엇인가요?</h2>
     <p>서울시·경기도·인천시 소속 공무원의 <strong>승진 평정점수</strong>를 간편하게 계산할 수 있는 도구입니다. 근무성적평정(근평), 경력평정, 가점을 입력하면 최종 평정점수를 자동으로 산출합니다.</p>
+
+    <div style="margin:1px 0; overflow-x:auto;">
+      <svg viewBox="0 0 760 150" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%; max-width:607px; height:96px; display:block; margin:0 auto;">
+        <title>평정점수 구성 인포그래픽</title>
+        <desc>근무성적평정 70점, 경력평정 30점, 가점 5점을 합산해 105점 만점의 내 평정점수가 나온다는 것을 보여주는 다이어그램</desc>
+        <defs>
+          <style>
+            .ig-navy{fill:#0f2340} .ig-gold{fill:#c8a84b} .ig-paper{fill:#f2ede3} .ig-border{stroke:#d8d0be}
+            .ig-ink{fill:#1a1a2e} .ig-muted{fill:#6b6b7a} .ig-white{fill:#ffffff}
+            .ig-lbl{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:700}
+            .ig-sub{font-family:'Noto Serif KR',serif;font-size:10.5px}
+            .ig-num{font-family:'DM Mono',monospace;font-size:19px;font-weight:700}
+          </style>
+        </defs>
+        <g>
+          <rect x="20" y="20" width="150" height="110" rx="10" class="ig-paper ig-border"/>
+          <text x="95" y="42" text-anchor="middle" class="ig-lbl ig-navy">근무성적평정</text>
+          <text x="95" y="58" text-anchor="middle" class="ig-sub ig-muted">(근평)</text>
+          <text x="95" y="80" text-anchor="middle" class="ig-num ig-navy">70<tspan class="ig-sub ig-muted">점</tspan></text>
+          <line x1="32" y1="92" x2="158" y2="92" stroke="#d8d0be"/>
+          <text x="95" y="106" text-anchor="middle" class="ig-sub ig-ink">수ㆍ우ㆍ양ㆍ가 등급을</text>
+          <text x="95" y="120" text-anchor="middle" class="ig-sub ig-ink">같은 직급ㆍ같은 그룹(국 등)</text>
+        </g>
+        <text x="178" y="78" text-anchor="middle" class="ig-num ig-gold">+</text>
+        <g>
+          <rect x="196" y="20" width="150" height="110" rx="10" class="ig-paper ig-border"/>
+          <text x="271" y="42" text-anchor="middle" class="ig-lbl ig-navy">경력평정</text>
+          <text x="271" y="58" text-anchor="middle" class="ig-sub ig-muted">(근무 연수)</text>
+          <text x="271" y="80" text-anchor="middle" class="ig-num ig-navy">30<tspan class="ig-sub ig-muted">점</tspan></text>
+          <line x1="208" y1="92" x2="334" y2="92" stroke="#d8d0be"/>
+          <text x="271" y="106" text-anchor="middle" class="ig-sub ig-ink">현 직급 100% +</text>
+          <text x="271" y="120" text-anchor="middle" class="ig-sub ig-ink">직전 직급 60% 환산</text>
+        </g>
+        <text x="354" y="78" text-anchor="middle" class="ig-num ig-gold">+</text>
+        <g>
+          <rect x="372" y="20" width="150" height="110" rx="10" class="ig-paper ig-border"/>
+          <text x="447" y="42" text-anchor="middle" class="ig-lbl ig-navy">가점</text>
+          <text x="447" y="58" text-anchor="middle" class="ig-sub ig-muted">(노력으로 채우는 점수)</text>
+          <text x="447" y="80" text-anchor="middle" class="ig-num ig-navy">5<tspan class="ig-sub ig-muted">점</tspan></text>
+          <line x1="384" y1="92" x2="510" y2="92" stroke="#d8d0be"/>
+          <text x="447" y="106" text-anchor="middle" class="ig-sub ig-ink">자격증ㆍ어학ㆍ</text>
+          <text x="447" y="120" text-anchor="middle" class="ig-sub ig-ink">특수지 근무 등</text>
+        </g>
+        <text x="540" y="78" text-anchor="middle" class="ig-num ig-gold">=</text>
+        <g>
+          <rect x="558" y="14" width="182" height="122" rx="10" class="ig-navy"/>
+          <text x="649" y="42" text-anchor="middle" class="ig-lbl ig-gold">내 평정점수</text>
+          <text x="649" y="60" text-anchor="middle" class="ig-sub ig-white" opacity="0.7">(105점 만점)</text>
+          <text x="649" y="84" text-anchor="middle" class="ig-num ig-gold">최대 105점</text>
+          <line x1="572" y1="98" x2="726" y2="98" stroke="#ffffff" opacity="0.25"/>
+          <text x="649" y="114" text-anchor="middle" class="ig-sub ig-white" opacity="0.85">세 점수를 다 더해서</text>
+          <text x="649" y="128" text-anchor="middle" class="ig-sub ig-white" opacity="0.85">최종 점수가 나옴</text>
+        </g>
+      </svg>
+    </div>
+
     <p>입력하신 모든 정보는 서버에 저장되지 않으며, 브라우저 내에서만 계산됩니다. 본 계산기는 <strong>참고용</strong>이며 실제 평정 결과는 소속 기관 인사담당자에게 확인하시기 바랍니다. 기관별로 근무성적평정 등급간 차가 상이하기에 정확하게 계산하기 위해선 직접입력하여 계산하시기 바랍니다.</p>
     <p style="margin-top:10px; padding:10px 12px; background:rgba(0,0,0,0.04); border-left:3px solid var(--gold); border-radius:4px; font-size:.75rem; color:var(--muted); line-height:1.7;">
       ⚠️ <strong style="color:var(--navy);">면책 조항</strong> — 본 계산기의 결과는 참고용이며 어떠한 법적 효력이나 책임을 지지 않습니다. 법령 개정·기관별 내규 차이로 실제 평정점과 다를 수 있으므로, 정확한 평정점수는 반드시 소속 기관 인사부서에 확인하시기 바랍니다.
