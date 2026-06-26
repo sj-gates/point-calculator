@@ -1527,6 +1527,27 @@ Object.keys(OTHER_REGIONS).forEach(key => {
   OTHER_REGIONS[key].semesters = { ...GRADE_SEMESTERS_GYEONGGI };
 });
 
+// 경상북도: 경력평정 파라미터 확인 완료 (경상북도 인사규칙 기준)
+// 7급이하·기능7급이하: 60개월 이내 월0.40점, 초과 월0.17점 (만점도달 8년)
+// 6급·연구사·지도사·기능6급이상: 72개월 이내 월0.35점, 초과 월0.11점 (만점도달 10년)
+// 5급: 84개월 이내 월0.31점, 초과 월0.07점 (만점도달 12년)
+OTHER_REGIONS.gyeongbuk.params = {
+  9: { base:60, rate:0.40, excessRate:0.17 },
+  8: { base:60, rate:0.40, excessRate:0.17 },
+  7: { base:60, rate:0.40, excessRate:0.17 },
+  6: { base:72, rate:0.35, excessRate:0.11 },
+  5: { base:84, rate:0.31, excessRate:0.07 },
+};
+// 경상북도 근무평정점 반영기간: 5급 최근3년, 6~7급·연구사·지도사·기능7급이상 최근2년, 8급이하·기능8급이하 최근1년
+// (반영 반기 수는 경기도와 동일한 구조이므로 GRADE_SEMESTERS_GYEONGGI 그대로 사용)
+OTHER_REGIONS.gyeongbuk.semesters = { ...GRADE_SEMESTERS_GYEONGGI };
+
+// 지역별 근무평정점 반영비율 (연도별 가중치) — 기본은 전국 공통 YEAR_WEIGHTS, 지역마다 다르면 여기에 별도 등록
+// 경상북도: 5급(3년) 최근1년 50%+최근1~2년 30%+최근2~3년 20% / 6·7급(2년) 60%+40%
+const REGION_YEAR_WEIGHTS = {
+  gyeongbuk: { 1:[100], 2:[60,40], 3:[50,30,20] },
+};
+
 // 그 외 광역시·도의 근평 등급간 점수차 (지자체·평정대상인원수별로 다르므로 기본값 1점, 사용자가 직접 입력 가능)
 let customGradeInterval = 1;
 function genTable(count, startScore, interval) {
@@ -1552,6 +1573,9 @@ const YEAR_WEIGHTS = {
   4: [25, 25, 25, 25],
 };
 function getYearWeights(years) {
+  const region = document.getElementById('region') ? document.getElementById('region').value : 'seoul';
+  const custom = REGION_YEAR_WEIGHTS[region];
+  if (custom && custom[years]) return custom[years];
   return YEAR_WEIGHTS[years] || Array(years).fill(Math.round(100 / years * 100) / 100);
 }
 // scores: 반기 점수 배열, [0]=이번반기(가장 최근) ... [n-1]=가장 오래된 반기. 반드시 짝수 길이.
