@@ -5,15 +5,15 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9941490255485877" crossorigin="anonymous"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>공무원 평정점수 계산기 — 서울시·경기·인천 승진 점수 자동 산출</title>
-<meta name="description" content="서울시·경기도·인천시 공무원 승진 평정점수를 간편하게 계산하세요. 근무성적평정, 경력평정, 가점을 자동 산출합니다.">
+<title>공무원 평정점수 계산기 — 지방공무원 승진 점수 자동 산출</title>
+<meta name="description" content="지방공무원의 승진 평정점수를 간편하게 계산하세요. 근무성적평정, 경력평정, 가점을 자동 산출합니다.">
 <meta name="robots" content="index, follow">
 
 <!-- ── Open Graph ── -->
 <meta property="og:type"        content="website">
 <meta property="og:site_name"   content="공무원 평정점수 계산기">
 <meta property="og:title"       content="공무원 평정점수 계산기 — 근평·경력·가점 자동 산출">
-<meta property="og:description" content="서울시·경기·인천 공무원 승진 평정점수를 간편하게 계산하세요. 근무성적평정, 경력평정, 가점을 입력하면 최종 점수를 즉시 산출합니다. 입력 정보는 서버에 저장되지 않습니다.">
+<meta property="og:description" content="지방공무원의 승진 평정점수를 간편하게 계산하세요. 근무성적평정, 경력평정, 가점을 입력하면 최종 점수를 즉시 산출합니다. 입력 정보는 서버에 저장되지 않습니다.">
 <meta property="og:url"         content="https://gong-score.co.kr/">
 <meta property="og:image"       content="https://gong-score.co.kr/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -23,7 +23,7 @@
 <!-- ── Twitter Card ── -->
 <meta name="twitter:card"        content="summary_large_image">
 <meta name="twitter:title"       content="공무원 평정점수 계산기 — 근평·경력·가점 자동 산출">
-<meta name="twitter:description" content="서울시·경기·인천 공무원 승진 평정점수를 간편하게 계산하세요. 입력 정보는 서버에 저장되지 않습니다.">
+<meta name="twitter:description" content="지방공무원의 승진 평정점수를 간편하게 계산하세요. 입력 정보는 서버에 저장되지 않습니다.">
 <meta name="twitter:image"       content="https://gong-score.co.kr/og-image.png">
 
 <!-- 애드센스 코드 삽입 자리 (승인 후 아래 두 줄 주석 해제 후 ca-pub 값 교체) -->
@@ -688,7 +688,7 @@
   <!-- 서비스 소개 -->
   <div class="intro-box">
     <h2>📌 이 계산기는 무엇인가요?</h2>
-    <p>서울시·경기도·인천시 소속 공무원의 <strong>승진 평정점수</strong>를 간편하게 계산할 수 있는 도구입니다. 근무성적평정(근평), 경력평정, 가점을 입력하면 최종 평정점수를 자동으로 산출합니다.</p>
+    <p>지방공무원의 <strong>승진 평정점수</strong>를 간편하게 계산할 수 있는 도구입니다. 근무성적평정(근평), 경력평정, 가점을 입력하면 최종 평정점수를 자동으로 산출합니다.</p>
 
     <div style="margin:1px 0; overflow-x:auto;">
       <svg viewBox="0 0 760 150" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%; max-width:607px; height:96px; display:block; margin:0 auto;">
@@ -762,6 +762,22 @@
             <option value="seoul">서울특별시</option>
             <option value="gyeonggi">경기도</option>
             <option value="incheon">인천광역시</option>
+            <optgroup label="기타 광역시·도 (경기도 기준 임시 적용)">
+              <option value="busan">부산광역시</option>
+              <option value="daegu">대구광역시</option>
+              <option value="gwangju">광주광역시</option>
+              <option value="daejeon">대전광역시</option>
+              <option value="ulsan">울산광역시</option>
+              <option value="sejong">세종특별자치시</option>
+              <option value="gangwon">강원특별자치도</option>
+              <option value="chungbuk">충청북도</option>
+              <option value="chungnam">충청남도</option>
+              <option value="jeonbuk">전북특별자치도</option>
+              <option value="jeonnam">전라남도</option>
+              <option value="gyeongbuk">경상북도</option>
+              <option value="gyeongnam">경상남도</option>
+              <option value="jeju">제주특별자치도</option>
+            </optgroup>
           </select>
         </div>
       </div>
@@ -1198,8 +1214,8 @@
     <h2>📖 지방공무원 평정점수 계산기 이용 가이드</h2>
     <div style="font-size:.85rem; line-height:1.95; color:var(--ink);">
       <h3 style="font-size:.92rem; color:var(--navy); margin:14px 0 8px;">1. 서비스 소개</h3>
-      <p style="margin-bottom:10px;">본 서비스는 「지방공무원 평정 규칙」 및 서울특별시·경기도·인천광역시의 인사규칙을 기반으로 <strong>근무성적평정(근평), 경력평정, 가산점(가점)</strong>을 자동으로 산출해주는 계산기입니다. 매 반기 엑셀로 일일이 계산할 필요 없이, 현재 본인의 평정점수와 다음 반기·다다음 반기 예상 점수까지 한 번에 확인할 수 있습니다.</p>
-      <p style="margin-bottom:0;">「지방공무원 평정 규칙」은 공통 기준을 정하지만, <strong>세부 배점·반영 비율·인정 항목은 각 자치단체(시·도, 시·군·구) 인사규칙에 따라 다르게 운영</strong>됩니다. 본 계산기는 서울시·경기도·인천시 기준을 우선 반영했으며, 다른 자치단체 소속이시라면 수치가 다를 수 있으니 직접입력 기능을 활용하거나 소속 기관 인사규칙을 함께 확인하시기 바랍니다.</p>
+      <p style="margin-bottom:10px;">본 서비스는 「지방공무원 평정 규칙」 및 각 시·도 인사규칙을 기반으로 <strong>근무성적평정(근평), 경력평정, 가산점(가점)</strong>을 자동으로 산출해주는 계산기입니다. 매 반기 엑셀로 일일이 계산할 필요 없이, 현재 본인의 평정점수와 다음 반기·다다음 반기 예상 점수까지 한 번에 확인할 수 있습니다.</p>
+      <p style="margin-bottom:0;">「지방공무원 평정 규칙」은 공통 기준을 정하지만, <strong>세부 배점·반영 비율·인정 항목은 각 자치단체(시·도, 시·군·구) 인사규칙에 따라 다르게 운영</strong>됩니다. 본 계산기는 서울시·경기도·인천시는 실제 인사규칙 수치를 반영했고, 그 외 광역시·도는 현재 경기도 기준을 임시로 적용하고 있습니다. 소속 기관의 정확한 수치가 다를 수 있으니 직접입력 기능을 활용하거나 소속 기관 인사규칙을 함께 확인하시기 바랍니다.</p>
 
       <h3 style="font-size:.92rem; color:var(--navy); margin:14px 0 8px;">2. 평정점수 산정 방법 총정리</h3>
       <p style="margin-bottom:8px;"><strong>① 근무성적평정 (최대 70점)</strong> — 전체 점수에서 가장 큰 비중을 차지합니다. 반기 점수를 단순 평균하는 게 아니라, <strong>연도별(상반기+하반기 평균)로 묶은 뒤 최근 연도일수록 더 큰 비중을 적용하는 가중평균</strong> 방식입니다. 아래는 서울·경기·인천 공통으로 적용한 기준이며, 다른 자치단체는 반영 연도 수·비율이 다를 수 있습니다.</p>
@@ -1460,10 +1476,30 @@ const GRADE_PARAMS_GYEONGGI = {
 // 인천: 서울시와 동일
 const GRADE_PARAMS_INCHEON = GRADE_PARAMS_SEOUL;
 
+// ── 그 외 광역시·도: 아직 정확한 인사규칙 수치를 확인하지 못해 경기도 기준을 임시로 적용 ──
+// 추후 각 지역 인사규칙을 확인하면 해당 지역 항목의 값만 개별적으로 교체하면 됨
+const OTHER_REGIONS = {
+  busan:     { name:'부산광역시' },
+  daegu:     { name:'대구광역시' },
+  gwangju:   { name:'광주광역시' },
+  daejeon:   { name:'대전광역시' },
+  ulsan:     { name:'울산광역시' },
+  sejong:    { name:'세종특별자치시' },
+  gangwon:   { name:'강원특별자치도' },
+  chungbuk:  { name:'충청북도' },
+  chungnam:  { name:'충청남도' },
+  jeonbuk:   { name:'전북특별자치도' },
+  jeonnam:   { name:'전라남도' },
+  gyeongbuk: { name:'경상북도' },
+  gyeongnam: { name:'경상남도' },
+  jeju:      { name:'제주특별자치도' },
+};
+
 function getGradeParams(grade) {
   const region = document.getElementById('region') ? document.getElementById('region').value : 'seoul';
   if (region === 'gyeonggi') return GRADE_PARAMS_GYEONGGI[grade];
   if (region === 'incheon')  return GRADE_PARAMS_INCHEON[grade];
+  if (OTHER_REGIONS[region]) return OTHER_REGIONS[region].params[grade];
   return GRADE_PARAMS_SEOUL[grade];
 }
 
@@ -1476,10 +1512,17 @@ function getGradeSemesters(grade) {
   const region = document.getElementById('region') ? document.getElementById('region').value : 'seoul';
   if (region === 'gyeonggi') return GRADE_SEMESTERS_GYEONGGI[grade];
   if (region === 'incheon')  return GRADE_SEMESTERS_INCHEON[grade];
+  if (OTHER_REGIONS[region]) return OTHER_REGIONS[region].semesters[grade];
   return GRADE_SEMESTERS_SEOUL[grade];
 }
 // 하위 호환용 (직접 참조 코드 대비)
 const GRADE_SEMESTERS = GRADE_SEMESTERS_SEOUL;
+
+// 그 외 광역시·도는 경기도 파라미터를 그대로 복사해 둠 (개별 지역 값은 추후 따로 교체)
+Object.keys(OTHER_REGIONS).forEach(key => {
+  OTHER_REGIONS[key].params    = JSON.parse(JSON.stringify(GRADE_PARAMS_GYEONGGI));
+  OTHER_REGIONS[key].semesters = { ...GRADE_SEMESTERS_GYEONGGI };
+});
 
 // ── 근무성적평가점수 반영방법: 연도별(2개 반기 평균) 가중평균 ──
 // 실제 평정 규칙: 연도 평균을 낸 뒤, 최근 연도일수록 더 높은(또는 동일한) 비중을 적용
@@ -1631,6 +1674,7 @@ const PERF_TABLE_GG_YANG_6 = [53,51,49,47,45,43,41,39,37,35,33];
 // ────────────────────────────────────────
 function isDistrict() {
   const region   = document.getElementById('region').value;
+  if (OTHER_REGIONS[region]) return false; // 광역단위로만 적용, 기초 지자체 구분 없음
   const district = document.getElementById('district') ? document.getElementById('district').value : 'bonchung';
   if (region === 'seoul') return district !== 'bonchung';
   if (region === 'gyeonggi') return district !== 'gg_bonchung';
@@ -1806,6 +1850,19 @@ function getPerfTableInfo() {
       label: getDistrictName() + ' 기타직 ' + (is6up ? '6급이상' : '5급이하') + ' 기준',
       tables: {
         su:   is6up ? PERF_TABLE_GU_SU_6  : PERF_TABLE_GU_SU_5,
+        woo:  PERF_TABLE_WOO_10,
+        yang: PERF_TABLE_YANG_10,
+      }
+    };
+  }
+
+  // ── 그 외 광역시·도 (경기도 본청 기준 임시 적용) ──
+  if (OTHER_REGIONS[region]) {
+    return {
+      type: 'gu',
+      label: OTHER_REGIONS[region].name + ' 행정직 등급 (경기도 기준 임시 적용)',
+      tables: {
+        su:   PERF_TABLE_ADMIN_GYEONGGI.map(t => t.score),
         woo:  PERF_TABLE_WOO_10,
         yang: PERF_TABLE_YANG_10,
       }
@@ -2016,7 +2073,7 @@ function onGradeChange() {
   const region = document.getElementById('region').value;
   const series = document.getElementById('series').value;
   let intervalNote;
-  if (region === 'gyeonggi' || region === 'incheon') {
+  if (region === 'gyeonggi' || region === 'incheon' || OTHER_REGIONS[region]) {
     intervalNote = '각 등급간 1점 차이 기본설정';
   } else {
     // 서울시
@@ -2398,7 +2455,7 @@ function calculate() {
   const txt = [
     `=== ${isDistrict() ? getDistrictName() : document.getElementById('region').options[document.getElementById('region').selectedIndex].text} 공무원 평정점수 계산 결과 ===`,
     `${lpad('직급')} : ${grade}급`,
-    `${lpad('소속')} : ${isDistrict() ? getDistrictName() + ' (자치구)' : '서울시 본청 / 기타 광역'}`,
+    `${lpad('소속')} : ${isDistrict() ? getDistrictName() + ' (자치구)' : document.getElementById('region').options[document.getElementById('region').selectedIndex].text + ' 본청'}`,
     `${lpad('평정기준일')} : ${targetStr}`,
     `${lpad('근무시작일')} : ${startStr}`,
     `${lpad('직전급수진급일')} : ${careerData.prevStr || '미입력'}`,
@@ -2896,26 +2953,30 @@ function onRegionChange() {
   const districtSel   = document.getElementById('district');
   const infoEl        = document.getElementById('districtInfo');
 
-  // 모든 광역에서 기초 지자체 드롭다운 표시
-  districtField.style.display = '';
+  // 서울·경기·인천만 기초 지자체 드롭다운 표시 (그 외 광역시·도는 광역단위로만 적용)
+  if (OTHER_REGIONS[region]) {
+    districtField.style.display = 'none';
+  } else {
+    districtField.style.display = '';
 
-  // 해당 광역의 optgroup만 표시, 나머지 숨김
-  const optgroups = districtSel.querySelectorAll('optgroup');
-  optgroups.forEach(og => {
-    const show = og.dataset.region === region;
-    og.style.display = show ? '' : 'none';
-    // 각 option도 동기화
-    og.querySelectorAll('option').forEach(opt => {
-      opt.disabled = !show;
-      opt.hidden   = !show;
+    // 해당 광역의 optgroup만 표시, 나머지 숨김
+    const optgroups = districtSel.querySelectorAll('optgroup');
+    optgroups.forEach(og => {
+      const show = og.dataset.region === region;
+      og.style.display = show ? '' : 'none';
+      // 각 option도 동기화
+      og.querySelectorAll('option').forEach(opt => {
+        opt.disabled = !show;
+        opt.hidden   = !show;
+      });
     });
-  });
 
-  // 현재 선택된 옵션이 이 광역 소속이 아니면 해당 광역 첫 옵션으로 초기화
-  const selOpt = districtSel.options[districtSel.selectedIndex];
-  if (selOpt && selOpt.dataset.region !== region) {
-    const firstValid = districtSel.querySelector(`option[data-region="${region}"]`);
-    if (firstValid) districtSel.value = firstValid.value;
+    // 현재 선택된 옵션이 이 광역 소속이 아니면 해당 광역 첫 옵션으로 초기화
+    const selOpt = districtSel.options[districtSel.selectedIndex];
+    if (selOpt && selOpt.dataset.region !== region) {
+      const firstValid = districtSel.querySelector(`option[data-region="${region}"]`);
+      if (firstValid) districtSel.value = firstValid.value;
+    }
   }
 
   infoEl.textContent = '';
