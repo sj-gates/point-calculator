@@ -754,7 +754,7 @@
   <!-- ① 소속 및 직급 선택 -->
   <div class="card">
     <div class="card-title"><span class="num">1</span> 소속 · 직렬 · 직급 선택</div>
-    <div class="grid-2" style="margin-bottom:14px; grid-template-columns:1fr 1fr;">
+    <div class="grid-2" id="row1Grid" style="margin-bottom:14px; grid-template-columns:1fr 1fr;">
       <div class="field">
         <label for="region">소속 광역</label>
         <div class="select-wrap">
@@ -790,7 +790,7 @@
         </div>
       </div>
     </div>
-    <div class="grid-2" style="grid-template-columns:1fr 1fr;">
+    <div class="grid-2" id="row2Grid" style="grid-template-columns:1fr 1fr;">
       <div class="field" id="districtField">
         <label for="district" id="districtLabel">기초 지자체 (시·구·군)</label>
         <div class="select-wrap">
@@ -876,7 +876,7 @@
           </select>
         </div>
       </div>
-      <div class="field">
+      <div class="field" id="gradeField">
         <label for="grade">현재 직급</label>
         <div class="select-wrap">
           <select id="grade" onchange="onGradeChange()">
@@ -2969,13 +2969,17 @@ function onRegionChange() {
   // 그 외 광역시·도는 직렬 구분 없이 광역+직급만 입력, 등급간 점수차 직접입력란 표시
   const seriesField   = document.getElementById('seriesField');
   const intervalField = document.getElementById('intervalField');
+  const row1Grid       = document.getElementById('row1Grid');
+  const gradeField      = document.getElementById('gradeField');
   if (OTHER_REGIONS[region]) {
     seriesField.style.display   = 'none';
     intervalField.style.display = '';
     document.getElementById('series').value = 'admin';
+    row1Grid.appendChild(gradeField); // 직급칸을 소속 광역 옆으로 이동 (직렬·기초지자체 칸이 모두 숨겨지므로)
   } else {
     seriesField.style.display   = '';
     intervalField.style.display = 'none';
+    document.getElementById('row2Grid').appendChild(gradeField); // 직급칸을 기초 지자체 옆으로 복귀
   }
 
   // 서울·경기·인천만 기초 지자체 드롭다운 표시 (그 외 광역시·도는 광역단위로만 적용)
