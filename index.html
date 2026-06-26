@@ -779,6 +779,18 @@
           </select>
         </div>
       </div>
+      <div class="field" id="seriesField">
+        <label for="series">직렬 선택</label>
+        <div class="select-wrap">
+          <select id="series" onchange="onGradeChange()">
+            <option value="admin">행정</option>
+            <option value="science">과학기술</option>
+            <option value="other">기타</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="grid-2">
       <div class="field" id="districtField">
         <label for="district" id="districtLabel">기초 지자체 (시·구·군)</label>
         <div class="select-wrap">
@@ -861,18 +873,6 @@
               <option value="ic_ganghwa" data-region="incheon">강화군</option>
               <option value="ic_ongjin" data-region="incheon">옹진군</option>
             </optgroup>
-          </select>
-        </div>
-      </div>
-    </div>
-    <div class="grid-2">
-      <div class="field" id="seriesField">
-        <label for="series">직렬 선택</label>
-        <div class="select-wrap">
-          <select id="series" onchange="onGradeChange()">
-            <option value="admin">행정</option>
-            <option value="science">과학기술</option>
-            <option value="other">기타</option>
           </select>
         </div>
       </div>
