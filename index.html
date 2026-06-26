@@ -866,7 +866,7 @@
       </div>
     </div>
     <div class="grid-2">
-      <div class="field">
+      <div class="field" id="seriesField">
         <label for="series">직렬 선택</label>
         <div class="select-wrap">
           <select id="series" onchange="onGradeChange()">
@@ -897,6 +897,11 @@
   <div class="card">
     <div class="card-title"><span class="num">2</span> 근무성적평정(근평) 점수 입력</div>
     <div class="hint" id="semesterHint"></div>
+    <div class="field" id="intervalField" style="display:none; margin-top:10px;">
+      <div class="hint" style="margin-bottom:8px;">등급간 점수 차이는 지자체별·평정대상인원수별로 다르게 정해지기 때문에, 정확한 수치를 알 수 없는 지역은 보편적인 점수차(1점)를 기본으로 적용했습니다. 소속 기관의 실제 점수차를 알고 계시면 직접 입력해 더 정확하게 계산해보세요.</div>
+      <label for="gradeInterval">등급간 점수 차이 (직접 입력, 기본값 1점)</label>
+      <input type="number" id="gradeInterval" min="0.1" step="0.1" value="1" onchange="onGradeIntervalChange()" style="max-width:140px;">
+    </div>
 
     <!-- 탭 -->
     <div style="display:flex; gap:6px; margin-top:16px; margin-bottom:16px;">
@@ -1522,6 +1527,20 @@ Object.keys(OTHER_REGIONS).forEach(key => {
   OTHER_REGIONS[key].semesters = { ...GRADE_SEMESTERS_GYEONGGI };
 });
 
+// 그 외 광역시·도의 근평 등급간 점수차 (지자체·평정대상인원수별로 다르므로 기본값 1점, 사용자가 직접 입력 가능)
+let customGradeInterval = 1;
+function genTable(count, startScore, interval) {
+  const arr = [];
+  for (let i = 0; i < count; i++) arr.push(Math.round((startScore - i * interval) * 100) / 100);
+  return arr;
+}
+function genOtherRegionTables(interval) {
+  const su  = genTable(7, 70, interval);
+  const woo = genTable(11, su[su.length - 1] - interval, interval);
+  const yang = genTable(11, woo[woo.length - 1], interval * 2);
+  return { su, woo, yang };
+}
+
 // ── 근무성적평가점수 반영방법: 연도별(2개 반기 평균) 가중평균 ──
 // 실제 평정 규칙: 연도 평균을 낸 뒤, 최근 연도일수록 더 높은(또는 동일한) 비중을 적용
 // 공식 기준 — 5급(3년): 34/33/33%, 6·7급(2년): 50/50%, 8급이하(1년): 100%
@@ -1854,16 +1873,12 @@ function getPerfTableInfo() {
     };
   }
 
-  // ── 그 외 광역시·도 (경기도 본청 기준 임시 적용) ──
+  // ── 그 외 광역시·도 (경기도 본청 기준 임시 적용, 등급간 점수차는 직접 입력 가능) ──
   if (OTHER_REGIONS[region]) {
     return {
       type: 'gu',
       label: OTHER_REGIONS[region].name + ' 행정직 등급 (경기도 기준 임시 적용)',
-      tables: {
-        su:   PERF_TABLE_ADMIN_GYEONGGI.map(t => t.score),
-        woo:  PERF_TABLE_WOO_10,
-        yang: PERF_TABLE_YANG_10,
-      }
+      tables: genOtherRegionTables(customGradeInterval),
     };
   }
 
@@ -2951,6 +2966,18 @@ function onRegionChange() {
   const districtSel   = document.getElementById('district');
   const infoEl        = document.getElementById('districtInfo');
 
+  // 그 외 광역시·도는 직렬 구분 없이 광역+직급만 입력, 등급간 점수차 직접입력란 표시
+  const seriesField   = document.getElementById('seriesField');
+  const intervalField = document.getElementById('intervalField');
+  if (OTHER_REGIONS[region]) {
+    seriesField.style.display   = 'none';
+    intervalField.style.display = '';
+    document.getElementById('series').value = 'admin';
+  } else {
+    seriesField.style.display   = '';
+    intervalField.style.display = 'none';
+  }
+
   // 서울·경기·인천만 기초 지자체 드롭다운 표시 (그 외 광역시·도는 광역단위로만 적용)
   if (OTHER_REGIONS[region]) {
     districtField.style.display = 'none';
@@ -2980,6 +3007,13 @@ function onRegionChange() {
   infoEl.textContent = '';
   infoEl.classList.remove('show');
 
+  onGradeChange();
+}
+
+// 등급간 점수차 직접입력 변경 시 점수표 재계산
+function onGradeIntervalChange() {
+  const v = parseFloat(document.getElementById('gradeInterval').value);
+  customGradeInterval = (!isNaN(v) && v > 0) ? v : 1;
   onGradeChange();
 }
 
