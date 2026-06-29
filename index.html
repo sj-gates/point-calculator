@@ -414,31 +414,6 @@
   .affiliate a:hover { text-decoration: underline; }
   .affiliate .ad-tag { color: #aaa; font-size: .68rem; }
 
-  /* ── 개인정보처리방침 모달 ── */
-  .privacy-modal {
-    display: none; position: fixed; inset: 0;
-    background: rgba(0,0,0,.5); z-index: 10000;
-    padding: 20px; overflow-y: auto;
-  }
-  .privacy-modal.show { display: flex; align-items: flex-start; justify-content: center; }
-  .privacy-inner {
-    background: #fff; border-radius: 12px;
-    max-width: 640px; width: 100%;
-    padding: 32px 28px; margin: auto;
-    position: relative;
-  }
-  .privacy-inner h2 { font-size: 1.1rem; color: var(--navy); margin-bottom: 18px; }
-  .privacy-inner h3 { font-size: .88rem; color: var(--navy); margin: 16px 0 6px; font-weight: 700; }
-  .privacy-inner p, .privacy-inner li {
-    font-size: .8rem; color: var(--muted); line-height: 1.8;
-  }
-  .privacy-inner ul { padding-left: 16px; }
-  .privacy-close {
-    position: absolute; top: 16px; right: 16px;
-    background: none; border: none; font-size: 1.3rem;
-    cursor: pointer; color: var(--muted);
-  }
-
   /* ── 서비스 소개 / FAQ ── */
   .intro-box {
     background: #fff; border: 1px solid var(--border);
@@ -668,7 +643,7 @@
   <p style="margin-top:6px; font-size:.72rem; color:rgba(255,255,255,.4);">
     문의: <a href="mailto:sj.gates@gmail.com" style="color:rgba(255,255,255,.5); text-decoration:none;">sj.gates@gmail.com</a>
     &nbsp;|&nbsp;
-    <a href="#" onclick="openPrivacy(); return false;" style="color:rgba(255,255,255,.5); text-decoration:none;">개인정보처리방침</a>
+    <a href="privacy.html" style="color:rgba(255,255,255,.5); text-decoration:none;">개인정보처리방침</a>
   </p>
   <div class="gold-line"></div>
 </header>
@@ -1418,7 +1393,7 @@
   <div style="margin-bottom:6px;">
     문의: <a href="mailto:sj.gates@gmail.com" style="color:var(--muted); text-decoration:none;">sj.gates@gmail.com</a>
     &nbsp;|&nbsp;
-    <a href="#" onclick="openPrivacy(); return false;" style="color:var(--muted); text-decoration:none;">개인정보처리방침</a>
+    <a href="privacy.html" style="color:var(--muted); text-decoration:none;">개인정보처리방침</a>
     &nbsp;|&nbsp;
     <a href="about.html" style="color:var(--muted); text-decoration:none;">서비스 소개</a>
   </div>
@@ -1426,35 +1401,6 @@
   기관별로 근무성적평정 등급간 차가 상이하기에 정확하게 계산하기 위해선 직접입력하여 계산하시기 바랍니다.<br>
   입력 정보는 서버에 저장되지 않습니다.
 </footer>
-
-<!-- 개인정보처리방침 모달 -->
-<div class="privacy-modal" id="privacyModal" onclick="closePrivacyOutside(event)">
-  <div class="privacy-inner">
-    <button class="privacy-close" onclick="closePrivacy()">✕</button>
-    <h2>🔒 개인정보처리방침</h2>
-    <p>공무원 평정점수 계산기(이하 "본 서비스")는 이용자의 개인정보를 소중히 여기며, 다음과 같이 개인정보처리방침을 안내합니다.</p>
-
-    <h3>1. 수집하는 개인정보</h3>
-    <p>본 서비스는 <strong>별도의 개인정보를 수집하지 않습니다.</strong> 이용자가 입력하는 직급, 근무기간, 점수 등의 정보는 브라우저 내에서만 계산에 사용되며 서버로 전송되거나 저장되지 않습니다.</p>
-
-    <h3>2. 쿠키 및 광고</h3>
-    <p>본 서비스는 광고 제공을 위해 Google AdSense 및 카카오 애드핏을 사용할 수 있습니다. 이 광고 서비스들은 이용자의 브라우저에 쿠키를 저장하여 관심 기반 광고를 제공할 수 있습니다.</p>
-    <ul>
-      <li>Google 개인정보처리방침: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></li>
-      <li>Google 광고 설정: <a href="https://adssettings.google.com" target="_blank" rel="noopener">adssettings.google.com</a></li>
-    </ul>
-
-    <h3>3. 문의</h3>
-    <p>개인정보 관련 문의사항은 아래 이메일로 연락해 주세요.<br>
-    📧 <a href="mailto:sj.gates@gmail.com">sj.gates@gmail.com</a></p>
-
-    <h3>4. 방침 변경</h3>
-    <p>본 방침은 관련 법령 및 서비스 변경에 따라 업데이트될 수 있으며, 변경 시 본 페이지를 통해 공지합니다.</p>
-    <p style="margin-top:16px; color:#aaa; font-size:.73rem;">최종 업데이트: 2026년 6월</p>
-
-    <button class="btn btn-primary" onclick="closePrivacy()" style="margin-top:20px;">닫기</button>
-  </div>
-</div>
 
 <script>
 // ────────────────────────────────────────
@@ -2572,17 +2518,6 @@ async function sharePageUrl() {
 // ────────────────────────────────────────
 // 비교 시뮬레이션
 // ────────────────────────────────────────
-function openPrivacy() {
-  document.getElementById('privacyModal').classList.add('show');
-  document.body.style.overflow = 'hidden';
-}
-function closePrivacy() {
-  document.getElementById('privacyModal').classList.remove('show');
-  document.body.style.overflow = '';
-}
-function closePrivacyOutside(e) {
-  if (e.target === document.getElementById('privacyModal')) closePrivacy();
-}
 
 function openCompareModal() {
   buildCompareInputs();
