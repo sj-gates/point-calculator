@@ -2379,6 +2379,11 @@ function toggleCalculate() {
 }
 
 function calculate() {
+  if (typeof gtag === 'function') {
+    const region = document.getElementById('region')?.value || 'unknown';
+    const grade  = document.getElementById('grade')?.value  || 'unknown';
+    gtag('event', 'click_calculate', { region, grade });
+  }
   const grade     = parseInt(document.getElementById('grade').value);
   const n         = getGradeSemesters(grade);
   const targetStr = document.getElementById('targetDate').value;
