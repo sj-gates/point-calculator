@@ -2419,11 +2419,10 @@ function calculate() {
   }
   const avgPerf = Math.round(sum / n * 100) / 100;
 
-  // 경력
+  // 경력 (날짜 미입력 시 경력평정 0점으로 처리)
   const careerData = getCareerData();
-  if (!careerData) { alert('날짜를 모두 입력해주세요.'); return; }
-  if (careerData.error) { alert(careerData.error); return; }
-  const careerScore = careerData.score;
+  if (careerData && careerData.error) { alert(careerData.error); return; }
+  const careerScore = careerData ? careerData.score : 0;
 
   // 가점
   const plusScore = Math.min(parseFloat(document.getElementById('plusScore').value) || 0, MAX_PLUS_SCORE);
