@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# 구글 소유권 확인 파일 색인 제외
+Disallow: /googleb2312eb4e1502598.html
+
+Sitemap: https://gong-score.co.kr/sitemap.xml
