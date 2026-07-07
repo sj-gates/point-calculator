@@ -1,0 +1,48 @@
+<svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>가점 0.5점으로 근평 격차를 뒤집는 예시</title>
+<desc>A는 수6, B는 수1을 받아 4반기 평균에서 B가 0.38점 앞서지만, A가 가점 0.5점을 확보하면 최종적으로 A가 0.12점 앞선다는 것을 보여주는 비교 그림</desc>
+<defs>
+  <style>
+    .navy{fill:#0f2340} .gold{fill:#c8a84b} .paper{fill:#f2ede3} .border{stroke:#d8d0be}
+    .ink{fill:#1a1a2e} .muted{fill:#6b6b7a} .white{fill:#ffffff} .red{fill:#c0392b}
+    .lbl{font-family:'Noto Serif KR',serif;font-size:16px;font-weight:700}
+    .sub{font-family:'Noto Serif KR',serif;font-size:12.5px}
+    .small{font-family:'Noto Serif KR',serif;font-size:11px}
+    .num{font-family:'DM Mono',monospace;font-size:20px;font-weight:700}
+  </style>
+</defs>
+<rect x="0" y="0" width="700" height="300" fill="#faf8f3"/>
+
+<text x="350" y="28" text-anchor="middle" class="lbl navy">가점 0.5점이 근평 격차를 뒤집는다</text>
+
+<g>
+  <rect x="40" y="50" width="280" height="90" rx="10" fill="#ffffff" class="border"/>
+  <text x="60" y="76" class="sub ink" font-weight="700">A — 이번반기 수6 (68.5점)</text>
+  <text x="60" y="98" class="small muted">우1·우1·우1·수6 평균</text>
+  <text x="270" y="100" text-anchor="end" class="num navy">64.90</text>
+</g>
+
+<g>
+  <rect x="380" y="50" width="280" height="90" rx="10" class="navy"/>
+  <text x="400" y="76" class="sub" fill="#c7cde0" font-weight="700">B — 이번반기 수1 (70.0점)</text>
+  <text x="400" y="98" class="small" fill="#9aa3b5">우1·우1·우1·수1 평균</text>
+  <text x="610" y="100" text-anchor="end" class="num gold">65.28</text>
+</g>
+
+<text x="350" y="168" text-anchor="middle" class="lbl" fill="#c0392b">B가 0.38점 앞섬</text>
+
+<line x1="40" y1="190" x2="660" y2="190" stroke="#d8d0be" stroke-width="1"/>
+
+<g>
+  <rect x="40" y="206" width="280" height="60" rx="10" class="gold"/>
+  <text x="60" y="230" class="sub navy" font-weight="700">A + 자격증 가점 0.5점</text>
+  <text x="270" y="254" text-anchor="end" class="num navy">65.40</text>
+</g>
+<g>
+  <rect x="380" y="206" width="280" height="60" rx="10" fill="#ffffff" class="border"/>
+  <text x="400" y="230" class="sub ink" font-weight="700">B (가점 없음)</text>
+  <text x="610" y="254" text-anchor="end" class="num navy">65.28</text>
+</g>
+
+<text x="350" y="290" text-anchor="middle" class="lbl gold">A가 0.12점 역전</text>
+</svg>

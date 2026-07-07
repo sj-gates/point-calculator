@@ -1,0 +1,35 @@
+<svg viewBox="0 0 700 260" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>서울시 본청 행정직 수1과 우1 점수 격차에서 가점 0.5점이 차지하는 비중</title>
+<desc>서울시 본청 행정직 기준 수1은 70.0점, 우1은 63.7점으로 격차가 6.3점인데, 가점 0.5점은 이 격차의 약 8퍼센트에 불과하다는 것을 보여주는 막대 그림</desc>
+<defs>
+  <style>
+    .navy{fill:#0f2340} .gold{fill:#c8a84b} .paper{fill:#f2ede3} .border{stroke:#d8d0be}
+    .ink{fill:#1a1a2e} .muted{fill:#6b6b7a} .white{fill:#ffffff}
+    .lbl{font-family:'Noto Serif KR',serif;font-size:16px;font-weight:700}
+    .sub{font-family:'Noto Serif KR',serif;font-size:13px}
+    .num{font-family:'DM Mono',monospace;font-size:22px;font-weight:700}
+  </style>
+</defs>
+<rect x="0" y="0" width="700" height="260" fill="#faf8f3"/>
+
+<text x="350" y="32" text-anchor="middle" class="lbl navy">수1과 우1, 6.3점 차이 중 가점 0.5점은?</text>
+
+<g>
+  <rect x="120" y="64" width="140" height="130" rx="10" class="navy"/>
+  <text x="190" y="116" text-anchor="middle" class="num" fill="#faf8f3">70.0</text>
+  <text x="190" y="142" text-anchor="middle" class="sub" fill="#c7cde0">수1</text>
+</g>
+
+<text x="350" y="135" text-anchor="middle" class="lbl" fill="#c0392b">6.3점 차이</text>
+
+<g>
+  <rect x="440" y="100" width="140" height="94" rx="10" fill="#ffffff" class="border"/>
+  <text x="510" y="148" text-anchor="middle" class="num navy">63.7</text>
+  <text x="510" y="174" text-anchor="middle" class="sub muted">우1</text>
+</g>
+
+<rect x="120" y="64" width="140" height="16" rx="6" class="gold"/>
+<text x="190" y="56" text-anchor="middle" class="sub navy" font-weight="700">가점 0.5점 (8%)</text>
+
+<text x="350" y="234" text-anchor="middle" class="sub ink">가점 0.5점으로는 수1↔우1 차이를 거의 못 메웁니다</text>
+</svg>

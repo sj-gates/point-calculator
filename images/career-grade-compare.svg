@@ -1,0 +1,49 @@
+<svg viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>9·8급과 7급 이상에서 경력평정이 갖는 의미 비교</title>
+<desc>9급·8급은 보통 경력평정 만점에 도달하기 전에 진급해 경력평정 점수 차이가 크게 남지만, 7급 이상은 직전 직급 경력까지 누적되어 경력평정이 이미 만점에 가까워 실제 승부는 근평에서 갈린다는 것을 비교하는 그림</desc>
+<defs>
+  <style>
+    .navy{fill:#0f2340} .gold{fill:#c8a84b} .paper{fill:#f2ede3} .border{stroke:#d8d0be}
+    .ink{fill:#1a1a2e} .muted{fill:#6b6b7a} .white{fill:#ffffff}
+    .lbl{font-family:'Noto Serif KR',serif;font-size:16px;font-weight:700}
+    .sub{font-family:'Noto Serif KR',serif;font-size:12px}
+    .small{font-family:'Noto Serif KR',serif;font-size:11.5px}
+    .num{font-family:'DM Mono',monospace;font-size:13px;font-weight:700}
+  </style>
+</defs>
+<rect x="0" y="0" width="700" height="320" fill="#faf8f3"/>
+
+<text x="350" y="28" text-anchor="middle" class="lbl navy">9·8급과 7급 이상, 경력평정의 의미가 다르다</text>
+
+<g>
+  <rect x="20" y="50" width="310" height="250" rx="12" fill="#ffffff" class="border"/>
+  <text x="175" y="80" text-anchor="middle" class="lbl navy">9급ㆍ8급</text>
+
+  <rect x="45" y="100" width="260" height="18" rx="9" class="paper border"/>
+  <rect x="45" y="100" width="172" height="18" rx="9" class="gold"/>
+  <text x="175" y="113" text-anchor="middle" class="num navy" font-size="11">경력평정 약 20점 / 30점</text>
+
+  <text x="45" y="150" class="small ink">• 보통 만점(30점) 도달 전에</text>
+  <text x="55" y="168" class="small ink">진급하는 경우가 많음</text>
+  <text x="45" y="194" class="small ink">• 처음 임용된 직급이라</text>
+  <text x="55" y="212" class="small ink">직전 직급 경력이 적거나 없음</text>
+  <text x="45" y="238" class="small ink" font-weight="700">→ 경력평정 점수 차이가</text>
+  <text x="55" y="256" class="small ink" font-weight="700">근평만큼 승부를 가른다</text>
+</g>
+
+<g>
+  <rect x="370" y="50" width="310" height="250" rx="12" fill="#ffffff" class="border"/>
+  <text x="525" y="80" text-anchor="middle" class="lbl navy">7급 이상</text>
+
+  <rect x="395" y="100" width="260" height="18" rx="9" class="paper border"/>
+  <rect x="395" y="100" width="260" height="18" rx="9" class="gold"/>
+  <text x="525" y="113" text-anchor="middle" class="num navy" font-size="11">경력평정 30점 / 30점 (만점)</text>
+
+  <text x="395" y="150" class="small ink">• 직전 직급 경력이 60%로</text>
+  <text x="405" y="168" class="small ink">반영되며 경력이 빠르게 누적</text>
+  <text x="395" y="194" class="small ink">• 대부분 진급 시점에</text>
+  <text x="405" y="212" class="small ink">경력평정이 이미 만점에 근접</text>
+  <text x="395" y="238" class="small ink" font-weight="700">→ 경력평정은 큰 차이가 없고</text>
+  <text x="405" y="256" class="small ink" font-weight="700">실제 승부는 근평에서 갈린다</text>
+</g>
+</svg>

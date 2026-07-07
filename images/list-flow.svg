@@ -1,0 +1,94 @@
+<svg viewBox="0 0 700 290" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>평정 기준일부터 승진 발령까지의 흐름</title>
+<desc>상반기(6월 30일)와 하반기(12월 31일) 기준일 이후 명부 작성, 명부 발효, 승진 발령으로 이어지는 절차를 나란히 비교한 흐름도</desc>
+<defs>
+  <style>
+    .navy{fill:#0f2340} .gold{fill:#c8a84b} .paper{fill:#f2ede3}
+    .ink{fill:#1a1a2e} .muted{fill:#6b6b7a}
+    .lbl{font-family:'Noto Serif KR',serif;font-size:15px;font-weight:700}
+    .sub{font-family:'Noto Serif KR',serif;font-size:12.5px}
+    .small{font-family:'Noto Serif KR',serif;font-size:11px}
+    .mon{font-family:'DM Mono',monospace;font-size:13px;font-weight:700}
+  </style>
+</defs>
+<rect x="0" y="0" width="700" height="290" fill="#faf8f3"/>
+
+<text x="350" y="28" text-anchor="middle" class="lbl navy">기준일 → 명부 발효 → 승진 발령 흐름</text>
+
+<!-- ── 상반기 row ── -->
+<text x="30" y="62" class="sub navy" font-weight="700">상반기</text>
+
+<!-- step 1 -->
+<rect x="30" y="70" width="130" height="66" rx="8" fill="#0f2340"/>
+<text x="95" y="96" text-anchor="middle" class="mon" fill="#c8a84b">6월 30일</text>
+<text x="95" y="114" text-anchor="middle" class="small" fill="#c7cde0">평정 기준일</text>
+<text x="95" y="130" text-anchor="middle" class="small" fill="#9aa3b5">근평·경력·가점 확정</text>
+
+<!-- arrow -->
+<polygon points="162,100 182,94 182,88 196,103 182,118 182,112 162,106" fill="#c8a84b"/>
+
+<!-- step 2 -->
+<rect x="198" y="70" width="130" height="66" rx="8" fill="#0f2340"/>
+<text x="263" y="96" text-anchor="middle" class="mon" fill="#c8a84b">7월 중</text>
+<text x="263" y="114" text-anchor="middle" class="small" fill="#c7cde0">명부 작성</text>
+<text x="263" y="130" text-anchor="middle" class="small" fill="#9aa3b5">순위 산정·확정</text>
+
+<!-- arrow -->
+<polygon points="330,100 350,94 350,88 364,103 350,118 350,112 330,106" fill="#c8a84b"/>
+
+<!-- step 3 -->
+<rect x="366" y="70" width="130" height="66" rx="8" fill="#0f2340"/>
+<text x="431" y="96" text-anchor="middle" class="mon" fill="#c8a84b">7~8월</text>
+<text x="431" y="114" text-anchor="middle" class="small" fill="#c7cde0">명부 발효</text>
+<text x="431" y="130" text-anchor="middle" class="small" fill="#9aa3b5">승진 대상자 확정</text>
+
+<!-- arrow -->
+<polygon points="498,100 518,94 518,88 532,103 518,118 518,112 498,106" fill="#c8a84b"/>
+
+<!-- step 4 -->
+<rect x="534" y="70" width="136" height="66" rx="8" fill="#c8a84b"/>
+<text x="602" y="96" text-anchor="middle" class="mon navy">8월 이후</text>
+<text x="602" y="114" text-anchor="middle" class="small navy" font-weight="700">승진 발령</text>
+<text x="602" y="130" text-anchor="middle" class="small navy">결원 발생 시 순위대로</text>
+
+<!-- ── divider ── -->
+<line x1="30" y1="152" x2="670" y2="152" stroke="#d8d0be" stroke-width="1" stroke-dasharray="5,4"/>
+
+<!-- ── 하반기 row ── -->
+<text x="30" y="176" class="sub navy" font-weight="700">하반기</text>
+
+<!-- step 1 -->
+<rect x="30" y="184" width="130" height="66" rx="8" fill="#f2ede3"/>
+<text x="95" y="210" text-anchor="middle" class="mon ink">12월 31일</text>
+<text x="95" y="228" text-anchor="middle" class="small ink">평정 기준일</text>
+<text x="95" y="244" text-anchor="middle" class="small muted">근평·경력·가점 확정</text>
+
+<!-- arrow -->
+<polygon points="162,214 182,208 182,202 196,217 182,232 182,226 162,220" fill="#c8a84b"/>
+
+<!-- step 2 -->
+<rect x="198" y="184" width="130" height="66" rx="8" fill="#f2ede3"/>
+<text x="263" y="210" text-anchor="middle" class="mon ink">1월 중</text>
+<text x="263" y="228" text-anchor="middle" class="small ink">명부 작성</text>
+<text x="263" y="244" text-anchor="middle" class="small muted">순위 산정·확정</text>
+
+<!-- arrow -->
+<polygon points="330,214 350,208 350,202 364,217 350,232 350,226 330,220" fill="#c8a84b"/>
+
+<!-- step 3 -->
+<rect x="366" y="184" width="130" height="66" rx="8" fill="#f2ede3"/>
+<text x="431" y="210" text-anchor="middle" class="mon ink">1~2월</text>
+<text x="431" y="228" text-anchor="middle" class="small ink">명부 발효</text>
+<text x="431" y="244" text-anchor="middle" class="small muted">승진 대상자 확정</text>
+
+<!-- arrow -->
+<polygon points="498,214 518,208 518,202 532,217 518,232 518,226 498,220" fill="#c8a84b"/>
+
+<!-- step 4 -->
+<rect x="534" y="184" width="136" height="66" rx="8" fill="#c8a84b"/>
+<text x="602" y="210" text-anchor="middle" class="mon navy">2월 이후</text>
+<text x="602" y="228" text-anchor="middle" class="small navy" font-weight="700">승진 발령</text>
+<text x="602" y="244" text-anchor="middle" class="small navy">결원 발생 시 순위대로</text>
+
+<text x="350" y="277" text-anchor="middle" class="small muted">※ 명부 작성·발효 시기는 기관별로 상이합니다. 소속 기관 인사담당 부서에 확인하세요.</text>
+</svg>
