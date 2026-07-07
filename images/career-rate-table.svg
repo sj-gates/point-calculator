@@ -1,0 +1,89 @@
+<svg viewBox="0 0 700 260" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>서울시·경기도 직급별 경력평정 점수율표</title>
+<desc>서울시와 경기도의 직급별 기준 개월, 기준 개월 이내 점수율, 초과 점수율을 비교하는 표</desc>
+<defs>
+  <style>
+    .navy{fill:#0f2340} .gold{fill:#c8a84b} .paper{fill:#f2ede3} .white{fill:#ffffff}
+    .ink{fill:#1a1a2e} .muted{fill:#6b6b7a}
+    .htext{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:700;fill:#ffffff}
+    .lbl{font-family:'Noto Serif KR',serif;font-size:16px;font-weight:700}
+    .cell{font-family:'Noto Serif KR',serif;font-size:12.5px}
+    .cellb{font-family:'DM Mono',monospace;font-size:12.5px;font-weight:700}
+  </style>
+</defs>
+<rect x="0" y="0" width="700" height="260" fill="#faf8f3"/>
+
+<text x="180" y="26" text-anchor="middle" class="lbl navy">서울시</text>
+<text x="530" y="26" text-anchor="middle" class="lbl navy">경기도</text>
+
+<g>
+  <rect x="20" y="44" width="70" height="30" class="navy"/>
+  <rect x="90" y="44" width="80" height="30" class="navy"/>
+  <rect x="170" y="44" width="90" height="30" class="navy"/>
+  <rect x="260" y="44" width="90" height="30" class="navy"/>
+  <text x="55" y="64" text-anchor="middle" class="htext">직급</text>
+  <text x="130" y="64" text-anchor="middle" class="htext">기준개월</text>
+  <text x="215" y="64" text-anchor="middle" class="htext">기준내(월)</text>
+  <text x="305" y="64" text-anchor="middle" class="htext">초과(월)</text>
+</g>
+
+<g>
+  <rect x="20" y="74" width="320" height="36" class="white"/>
+  <text x="55" y="96" text-anchor="middle" class="cell ink">9·8·7급</text>
+  <text x="130" y="96" text-anchor="middle" class="cellb navy">60</text>
+  <text x="215" y="96" text-anchor="middle" class="cellb navy">0.48점</text>
+  <text x="305" y="96" text-anchor="middle" class="cellb navy">0.05점</text>
+</g>
+<g>
+  <rect x="20" y="110" width="320" height="36" class="paper"/>
+  <text x="55" y="132" text-anchor="middle" class="cell ink">6급</text>
+  <text x="130" y="132" text-anchor="middle" class="cellb navy">72</text>
+  <text x="215" y="132" text-anchor="middle" class="cellb navy">0.40점</text>
+  <text x="305" y="132" text-anchor="middle" class="cellb navy">0.04점</text>
+</g>
+<g>
+  <rect x="20" y="146" width="320" height="36" class="white"/>
+  <text x="55" y="168" text-anchor="middle" class="cell ink">5급</text>
+  <text x="130" y="168" text-anchor="middle" class="cellb navy">84</text>
+  <text x="215" y="168" text-anchor="middle" class="cellb navy">0.34점</text>
+  <text x="305" y="168" text-anchor="middle" class="cellb navy">0.03점</text>
+</g>
+
+<g>
+  <rect x="370" y="44" width="70" height="30" class="navy"/>
+  <rect x="440" y="44" width="80" height="30" class="navy"/>
+  <rect x="520" y="44" width="90" height="30" class="navy"/>
+  <rect x="610" y="44" width="90" height="30" class="navy"/>
+  <text x="405" y="64" text-anchor="middle" class="htext">직급</text>
+  <text x="480" y="64" text-anchor="middle" class="htext">기준개월</text>
+  <text x="565" y="64" text-anchor="middle" class="htext">기준내(월)</text>
+  <text x="655" y="64" text-anchor="middle" class="htext">초과(월)</text>
+</g>
+
+<g>
+  <rect x="370" y="74" width="320" height="36" class="white"/>
+  <text x="405" y="96" text-anchor="middle" class="cell ink">9·8·7급</text>
+  <text x="480" y="96" text-anchor="middle" class="cellb navy">60</text>
+  <text x="565" y="96" text-anchor="middle" class="cellb navy">0.49점</text>
+  <text x="655" y="96" text-anchor="middle" class="cellb navy">0.05점</text>
+</g>
+<g>
+  <rect x="370" y="110" width="320" height="36" class="paper"/>
+  <text x="405" y="132" text-anchor="middle" class="cell ink">6급</text>
+  <text x="480" y="132" text-anchor="middle" class="cellb navy">72</text>
+  <text x="565" y="132" text-anchor="middle" class="cellb navy">0.40점</text>
+  <text x="655" y="132" text-anchor="middle" class="cellb navy">0.05점</text>
+</g>
+<g>
+  <rect x="370" y="146" width="320" height="36" class="white"/>
+  <text x="405" y="168" text-anchor="middle" class="cell ink">5급</text>
+  <text x="480" y="168" text-anchor="middle" class="cellb navy">84</text>
+  <text x="565" y="168" text-anchor="middle" class="cellb navy">0.34점</text>
+  <text x="655" y="168" text-anchor="middle" class="cellb navy">0.04점</text>
+</g>
+
+<line x1="350" y1="20" x2="350" y2="190" stroke="#d8d0be" stroke-width="1"/>
+
+<text x="350" y="218" text-anchor="middle" class="cell muted">기준개월(base) 이내에는 점수율이 높고, 초과하는 순간부터 점수율이 약 10분의 1 수준으로 급감합니다.</text>
+<text x="350" y="240" text-anchor="middle" class="cell muted">소속 기관에 따라 수치가 다를 수 있으니 실제 적용 전 인사규칙을 확인하세요.</text>
+</svg>

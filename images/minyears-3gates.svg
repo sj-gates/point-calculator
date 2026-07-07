@@ -1,0 +1,60 @@
+<svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>최저연수를 채워도 바로 승진되지 않는 이유</title>
+<desc>최저연수 충족은 출발선일 뿐이며, 명부 등재 후 평정점수 순위와 결원 발생이라는 두 관문을 더 통과해야 실제 승진이 되는 구조를 보여주는 그림</desc>
+<defs>
+  <style>
+    .navy{fill:#0f2340} .gold{fill:#c8a84b} .paper{fill:#f2ede3}
+    .ink{fill:#1a1a2e} .muted{fill:#6b6b7a} .red{fill:#c0392b}
+    .lbl{font-family:'Noto Serif KR',serif;font-size:15px;font-weight:700}
+    .sub{font-family:'Noto Serif KR',serif;font-size:12.5px}
+    .small{font-family:'Noto Serif KR',serif;font-size:11px}
+    .step{font-family:'DM Mono',monospace;font-size:13px;font-weight:700}
+  </style>
+</defs>
+<rect width="700" height="300" fill="#faf8f3"/>
+
+<text x="350" y="28" text-anchor="middle" class="lbl navy">최저연수 충족은 "출발선"일 뿐 — 승진까지 3개의 관문</text>
+
+<!-- 관문 1: 최저연수 -->
+<rect x="30" y="52" width="190" height="150" rx="12" fill="#f2ede3"/>
+<circle cx="60" cy="82" r="16" fill="#0f2340"/>
+<text x="60" y="88" text-anchor="middle" class="step" fill="#c8a84b">1</text>
+<text x="130" y="88" text-anchor="middle" class="sub ink" font-weight="700">최저연수 충족</text>
+<text x="125" y="118" text-anchor="middle" class="small ink">현 직급 최소 재직 기간</text>
+<text x="125" y="136" text-anchor="middle" class="small ink">채우면 명부 등재 자격</text>
+<text x="125" y="162" text-anchor="middle" class="small muted">휴직·직위해제·정직</text>
+<text x="125" y="178" text-anchor="middle" class="small muted">기간은 산입 제외</text>
+
+<!-- arrow -->
+<polygon points="222,120 242,114 242,108 256,123 242,138 242,132 222,126" fill="#c8a84b"/>
+
+<!-- 관문 2: 평정점수 순위 -->
+<rect x="258" y="52" width="190" height="150" rx="12" fill="#0f2340"/>
+<circle cx="288" cy="82" r="16" fill="#c8a84b"/>
+<text x="288" y="88" text-anchor="middle" class="step navy">2</text>
+<text x="360" y="88" text-anchor="middle" class="sub" fill="#c8a84b" font-weight="700">평정점수 순위</text>
+<text x="353" y="118" text-anchor="middle" class="small" fill="#c7cde0">근평 + 경력 + 가점</text>
+<text x="353" y="136" text-anchor="middle" class="small" fill="#c7cde0">합산 점수로 명부 순위 결정</text>
+<text x="353" y="162" text-anchor="middle" class="small" fill="#9aa3b5">경쟁자보다 순위가</text>
+<text x="353" y="178" text-anchor="middle" class="small" fill="#9aa3b5">높아야 먼저 승진</text>
+
+<!-- arrow -->
+<polygon points="450,120 470,114 470,108 484,123 470,138 470,132 450,126" fill="#c8a84b"/>
+
+<!-- 관문 3: 결원 발생 -->
+<rect x="486" y="52" width="184" height="150" rx="12" fill="#c8a84b"/>
+<circle cx="514" cy="82" r="16" fill="#0f2340"/>
+<text x="514" y="88" text-anchor="middle" class="step" fill="#c8a84b">3</text>
+<text x="586" y="88" text-anchor="middle" class="sub navy" font-weight="700">결원 발생</text>
+<text x="578" y="118" text-anchor="middle" class="small navy">상위 직급에 자리가</text>
+<text x="578" y="136" text-anchor="middle" class="small navy">생겨야 발령 가능</text>
+<text x="578" y="162" text-anchor="middle" class="small" fill="#3a2a00">명부 1순위라도 결원</text>
+<text x="578" y="178" text-anchor="middle" class="small" fill="#3a2a00">없으면 무기한 대기</text>
+
+<!-- 하단 요약 -->
+<rect x="30" y="222" width="640" height="46" rx="10" fill="#0f2340"/>
+<text x="350" y="242" text-anchor="middle" class="sub" fill="#c8a84b" font-weight="700">개정으로 최저연수가 짧아진 만큼 명부 진입자가 늘어 순위 경쟁은 오히려 치열해집니다</text>
+<text x="350" y="260" text-anchor="middle" class="small" fill="#c7cde0">결국 승진 시점을 결정하는 건 ② 평정점수 순위 — 매 반기 근평 관리가 핵심입니다</text>
+
+<text x="350" y="290" text-anchor="middle" class="small muted">※ 9급→8급처럼 경쟁이 적은 구간은 최저연수 도달 직후 승진되기도 합니다. 기관별 상황에 따라 다릅니다.</text>
+</svg>

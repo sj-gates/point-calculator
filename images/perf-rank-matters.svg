@@ -1,0 +1,50 @@
+<svg viewBox="0 0 700 280" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>점수보다 순위가 중요하다는 것을 보여주는 삽화</title>
+<desc>같은 그룹 안에서 점수가 높아도 경쟁자가 많으면 순위가 밀려 승진 대기하고, 점수가 낮아도 경쟁자가 적으면 순위가 앞서 승진할 수 있다는 두 가지 상황을 비교하는 그림</desc>
+<defs>
+  <style>
+    .navy{fill:#0f2340} .gold{fill:#c8a84b} .paper{fill:#f2ede3} .border{stroke:#d8d0be}
+    .ink{fill:#1a1a2e} .muted{fill:#6b6b7a} .white{fill:#ffffff} .red{fill:#c0392b}
+    .lbl{font-family:'Noto Serif KR',serif;font-size:14px;font-weight:700}
+    .sub{font-family:'Noto Serif KR',serif;font-size:11.5px}
+    .small{font-family:'Noto Serif KR',serif;font-size:10.5px}
+  </style>
+</defs>
+<rect x="0" y="0" width="700" height="280" fill="#faf8f3"/>
+
+<text x="170" y="30" text-anchor="middle" class="lbl navy">내 점수가 높아도 순위가 밀리면</text>
+
+<g>
+  <circle cx="170" cy="64" r="14" class="paper border"/>
+  <text x="170" y="68" text-anchor="middle" class="small ink">1</text>
+  <circle cx="170" cy="96" r="14" class="paper border"/>
+  <text x="170" y="100" text-anchor="middle" class="small ink">2</text>
+  <circle cx="170" cy="128" r="14" class="paper border"/>
+  <text x="170" y="132" text-anchor="middle" class="small ink">3</text>
+  <line x1="100" y1="146" x2="240" y2="146" stroke="#c0392b" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <circle cx="170" cy="166" r="16" class="gold"/>
+  <text x="170" y="171" text-anchor="middle" class="small navy" font-weight="700">나</text>
+  <circle cx="170" cy="200" r="14" class="paper border"/>
+  <text x="170" y="204" text-anchor="middle" class="small ink">5</text>
+</g>
+<text x="250" y="148" class="small red">결원(TO) 3명</text>
+<text x="170" y="232" text-anchor="middle" class="sub ink">90점인데 4등</text>
+<text x="170" y="250" text-anchor="middle" class="sub muted">→ 자리가 없어서 대기</text>
+
+<line x1="350" y1="20" x2="350" y2="260" stroke="#d8d0be" stroke-width="1"/>
+
+<text x="530" y="30" text-anchor="middle" class="lbl navy">점수가 낮아도 경쟁자가 적으면</text>
+
+<g>
+  <circle cx="530" cy="64" r="14" class="paper border"/>
+  <text x="530" y="68" text-anchor="middle" class="small ink">1</text>
+  <circle cx="530" cy="96" r="16" class="gold"/>
+  <text x="530" y="101" text-anchor="middle" class="small navy" font-weight="700">나</text>
+  <line x1="460" y1="114" x2="600" y2="114" stroke="#c0392b" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <circle cx="530" cy="134" r="14" class="paper border"/>
+  <text x="530" y="138" text-anchor="middle" class="small ink">3</text>
+</g>
+<text x="610" y="116" class="small red">결원(TO) 2명</text>
+<text x="530" y="232" text-anchor="middle" class="sub ink">80점인데 2등</text>
+<text x="530" y="250" text-anchor="middle" class="sub muted">→ 자리가 있어서 승진</text>
+</svg>

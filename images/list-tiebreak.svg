@@ -1,0 +1,70 @@
+<svg viewBox="0 0 700 280" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>승진후보자명부 동점자 처리 기준</title>
+<desc>평정 합산점수가 같을 때 ①근무성적평정 ②경력평정 ③임용일자 순으로 우선순위를 적용하는 동점자 처리 기준을 보여주는 그림</desc>
+<defs>
+  <style>
+    .navy{fill:#0f2340} .gold{fill:#c8a84b} .paper{fill:#f2ede3}
+    .ink{fill:#1a1a2e} .muted{fill:#6b6b7a}
+    .lbl{font-family:'Noto Serif KR',serif;font-size:15px;font-weight:700}
+    .sub{font-family:'Noto Serif KR',serif;font-size:12.5px}
+    .small{font-family:'Noto Serif KR',serif;font-size:11px}
+    .mono{font-family:'DM Mono',monospace;font-size:22px;font-weight:700}
+    .rank{font-family:'DM Mono',monospace;font-size:13px;font-weight:700}
+  </style>
+</defs>
+<rect width="700" height="280" fill="#faf8f3"/>
+
+<text x="350" y="28" text-anchor="middle" class="lbl navy">동점자가 나오면? — 우선순위 처리 기준</text>
+
+<!-- 상단: 동점 상황 -->
+<rect x="200" y="42" width="130" height="52" rx="8" fill="#ffffff" stroke="#d8d0be" stroke-width="1"/>
+<text x="265" y="64" text-anchor="middle" class="sub ink" font-weight="700">A 공무원</text>
+<text x="265" y="84" text-anchor="middle" class="mono navy">87.5점</text>
+
+<text x="350" y="74" text-anchor="middle" class="lbl" fill="#c0392b">=</text>
+
+<rect x="370" y="42" width="130" height="52" rx="8" fill="#ffffff" stroke="#d8d0be" stroke-width="1"/>
+<text x="435" y="64" text-anchor="middle" class="sub ink" font-weight="700">B 공무원</text>
+<text x="435" y="84" text-anchor="middle" class="mono navy">87.5점</text>
+
+<text x="350" y="118" text-anchor="middle" class="sub" fill="#c0392b" font-weight="700">합산 점수가 같을 때 → 아래 순서로 판가름</text>
+
+<!-- 우선순위 3단계 -->
+<!-- 1순위 -->
+<rect x="30" y="130" width="196" height="100" rx="12" fill="#0f2340"/>
+<circle cx="60" cy="158" r="16" fill="#c8a84b"/>
+<text x="60" y="164" text-anchor="middle" class="rank navy">①</text>
+<text x="136" y="158" text-anchor="middle" class="sub" fill="#c8a84b" font-weight="700">근무성적평정</text>
+<text x="136" y="178" text-anchor="middle" class="small" fill="#c7cde0">근평 점수가 높은 사람</text>
+<text x="136" y="196" text-anchor="middle" class="small" fill="#c7cde0">먼저 승진</text>
+<text x="136" y="218" text-anchor="middle" class="small" fill="#9aa3b5">(경력·가점 제외한</text>
+<text x="136" y="230" text-anchor="middle" class="small" fill="#9aa3b5">순수 근평 점수)</text>
+
+<!-- arrow -->
+<text x="252" y="186" text-anchor="middle" class="lbl gold">→</text>
+
+<!-- 2순위 -->
+<rect x="268" y="130" width="164" height="100" rx="12" fill="#0f2340"/>
+<circle cx="294" cy="158" r="16" fill="#c8a84b"/>
+<text x="294" y="164" text-anchor="middle" class="rank navy">②</text>
+<text x="358" y="158" text-anchor="middle" class="sub" fill="#c8a84b" font-weight="700">경력평정</text>
+<text x="358" y="178" text-anchor="middle" class="small" fill="#c7cde0">경력평정 점수가</text>
+<text x="358" y="196" text-anchor="middle" class="small" fill="#c7cde0">높은 사람 먼저</text>
+<text x="358" y="218" text-anchor="middle" class="small" fill="#9aa3b5">①도 같을 때</text>
+<text x="358" y="230" text-anchor="middle" class="small" fill="#9aa3b5">적용</text>
+
+<!-- arrow -->
+<text x="448" y="186" text-anchor="middle" class="lbl gold">→</text>
+
+<!-- 3순위 -->
+<rect x="464" y="130" width="206" height="100" rx="12" fill="#f2ede3"/>
+<circle cx="492" cy="158" r="16" fill="#0f2340"/>
+<text x="492" y="164" text-anchor="middle" class="rank" fill="#c8a84b">③</text>
+<text x="580" y="158" text-anchor="middle" class="sub ink" font-weight="700">임용일자</text>
+<text x="580" y="178" text-anchor="middle" class="small ink">임용일이 빠른 사람</text>
+<text x="580" y="196" text-anchor="middle" class="small ink">(오래 근무한 사람)</text>
+<text x="580" y="218" text-anchor="middle" class="small muted">①②도 같을 때</text>
+<text x="580" y="230" text-anchor="middle" class="small muted">최종 판가름</text>
+
+<text x="350" y="258" text-anchor="middle" class="small muted">※ 동점자 처리 기준은 기관별 인사규칙에 따라 다를 수 있습니다. 소속 기관 규칙을 확인하세요.</text>
+</svg>

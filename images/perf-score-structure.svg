@@ -1,0 +1,53 @@
+<svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>평정점수 구성 105점 삽화</title>
+<desc>근무성적평정 70점, 경력평정 30점, 가점 5점을 더하면 105점 만점의 평정점수가 된다는 것을 보여주는 그림</desc>
+<defs>
+  <style>
+    .navy{fill:#0f2340} .gold{fill:#c8a84b} .paper{fill:#f2ede3} .border{stroke:#d8d0be}
+    .ink{fill:#1a1a2e} .muted{fill:#6b6b7a} .white{fill:#ffffff}
+    .lbl{font-family:'Noto Serif KR',serif;font-size:15px;font-weight:700}
+    .sub{font-family:'Noto Serif KR',serif;font-size:12px}
+    .num{font-family:'DM Mono',monospace;font-size:26px;font-weight:700}
+  </style>
+</defs>
+<rect x="0" y="0" width="700" height="220" fill="#faf8f3"/>
+
+<g>
+  <rect x="30" y="40" width="160" height="130" rx="12" class="paper border"/>
+  <text x="110" y="68" text-anchor="middle" class="lbl navy">근무성적평정</text>
+  <text x="110" y="86" text-anchor="middle" class="sub muted">(근평)</text>
+  <text x="110" y="128" text-anchor="middle" class="num navy">70</text>
+  <text x="110" y="150" text-anchor="middle" class="sub muted">점</text>
+</g>
+
+<text x="206" y="118" text-anchor="middle" class="num gold">+</text>
+
+<g>
+  <rect x="222" y="40" width="160" height="130" rx="12" class="paper border"/>
+  <text x="302" y="68" text-anchor="middle" class="lbl navy">경력평정</text>
+  <text x="302" y="86" text-anchor="middle" class="sub muted">(근무 연수)</text>
+  <text x="302" y="128" text-anchor="middle" class="num navy">30</text>
+  <text x="302" y="150" text-anchor="middle" class="sub muted">점</text>
+</g>
+
+<text x="398" y="118" text-anchor="middle" class="num gold">+</text>
+
+<g>
+  <rect x="414" y="40" width="160" height="130" rx="12" class="paper border"/>
+  <text x="494" y="68" text-anchor="middle" class="lbl navy">가점</text>
+  <text x="494" y="86" text-anchor="middle" class="sub muted">(자격증ㆍ어학)</text>
+  <text x="494" y="128" text-anchor="middle" class="num navy">5</text>
+  <text x="494" y="150" text-anchor="middle" class="sub muted">점</text>
+</g>
+
+<text x="590" y="118" text-anchor="middle" class="num gold">=</text>
+
+<g>
+  <rect x="606" y="34" width="68" height="142" rx="12" class="navy"/>
+  <text x="640" y="80" text-anchor="middle" class="sub gold" font-weight="700">최대</text>
+  <text x="640" y="118" text-anchor="middle" class="num gold">105</text>
+  <text x="640" y="140" text-anchor="middle" class="sub white" opacity="0.85">점</text>
+</g>
+
+<text x="350" y="205" text-anchor="middle" class="sub ink">근평 + 경력평정 + 가점 = 내 평정점수</text>
+</svg>

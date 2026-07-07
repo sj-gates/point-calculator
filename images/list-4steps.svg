@@ -1,0 +1,68 @@
+<svg viewBox="0 0 700 270" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>승진후보자명부 작성 4단계 프로세스</title>
+<defs>
+  <style>
+    .navy{fill:#0f2340} .gold{fill:#c8a84b} .paper{fill:#f2ede3}
+    .ink{fill:#1a1a2e} .muted{fill:#6b6b7a}
+    .lbl{font-family:'Noto Serif KR',serif;font-size:15px;font-weight:700}
+    .sub{font-family:'Noto Serif KR',serif;font-size:12px}
+    .step{font-family:'DM Mono',monospace;font-size:13px;font-weight:700}
+  </style>
+</defs>
+<rect width="700" height="270" fill="#faf8f3"/>
+
+<text x="350" y="28" text-anchor="middle" class="lbl navy">승진후보자명부 작성 — 4단계 프로세스</text>
+
+<!-- Step 1 -->
+<rect x="30" y="50" width="140" height="160" rx="12" fill="#0f2340"/>
+<circle cx="100" cy="82" r="18" fill="#c8a84b"/>
+<text x="100" y="88" text-anchor="middle" class="step navy">1</text>
+<text x="100" y="116" text-anchor="middle" class="sub" fill="#c8a84b" font-weight="700">근무성적평정</text>
+<text x="100" y="136" text-anchor="middle" class="sub" fill="#c7cde0">반기 말 기준</text>
+<text x="100" y="154" text-anchor="middle" class="sub" fill="#c7cde0">(6/30 또는</text>
+<text x="100" y="170" text-anchor="middle" class="sub" fill="#c7cde0">12/31)</text>
+<text x="100" y="192" text-anchor="middle" class="sub" fill="#9aa3b5">평정권자가</text>
+<text x="100" y="206" text-anchor="middle" class="sub" fill="#9aa3b5">등급 부여</text>
+
+<!-- arrow 1→2 -->
+<polygon points="172,128 192,122 192,116 206,131 192,146 192,140 172,134" fill="#c8a84b"/>
+
+<!-- Step 2 -->
+<rect x="208" y="50" width="140" height="160" rx="12" fill="#0f2340"/>
+<circle cx="278" cy="82" r="18" fill="#c8a84b"/>
+<text x="278" y="88" text-anchor="middle" class="step navy">2</text>
+<text x="278" y="116" text-anchor="middle" class="sub" fill="#c8a84b" font-weight="700">경력·가점 산정</text>
+<text x="278" y="136" text-anchor="middle" class="sub" fill="#c7cde0">기준일 기준</text>
+<text x="278" y="154" text-anchor="middle" class="sub" fill="#c7cde0">경력 월수 산정</text>
+<text x="278" y="174" text-anchor="middle" class="sub" fill="#9aa3b5">자격증·어학</text>
+<text x="278" y="190" text-anchor="middle" class="sub" fill="#9aa3b5">가점 합산</text>
+
+<!-- arrow 2→3 -->
+<polygon points="350,128 370,122 370,116 384,131 370,146 370,140 350,134" fill="#c8a84b"/>
+
+<!-- Step 3 -->
+<rect x="386" y="50" width="140" height="160" rx="12" fill="#0f2340"/>
+<circle cx="456" cy="82" r="18" fill="#c8a84b"/>
+<text x="456" y="88" text-anchor="middle" class="step navy">3</text>
+<text x="456" y="116" text-anchor="middle" class="sub" fill="#c8a84b" font-weight="700">명부 작성·확정</text>
+<text x="456" y="136" text-anchor="middle" class="sub" fill="#c7cde0">점수 순서대로</text>
+<text x="456" y="154" text-anchor="middle" class="sub" fill="#c7cde0">명부 작성</text>
+<text x="456" y="174" text-anchor="middle" class="sub" fill="#9aa3b5">인사위원회</text>
+<text x="456" y="190" text-anchor="middle" class="sub" fill="#9aa3b5">심의 후 확정</text>
+
+<!-- arrow 3→4 -->
+<polygon points="528,128 548,122 548,116 562,131 548,146 548,140 528,134" fill="#c8a84b"/>
+
+<!-- Step 4 -->
+<rect x="564" y="50" width="110" height="160" rx="12" fill="#c8a84b"/>
+<circle cx="619" cy="82" r="18" fill="#0f2340"/>
+<text x="619" y="88" text-anchor="middle" class="step" fill="#c8a84b">4</text>
+<text x="619" y="116" text-anchor="middle" class="sub navy" font-weight="700">발효·발령</text>
+<text x="619" y="136" text-anchor="middle" class="sub navy">명부 발효 후</text>
+<text x="619" y="154" text-anchor="middle" class="sub navy">결원 발생 시</text>
+<text x="619" y="174" text-anchor="middle" class="sub navy">상위자부터</text>
+<text x="619" y="190" text-anchor="middle" class="sub navy">승진 발령</text>
+
+<text x="350" y="244" text-anchor="middle" class="sub muted">명부는 반기마다 새로 작성됩니다. 이번 반기 1순위도 다음 반기에 밀릴 수 있습니다.</text>
+<text x="350" y="260" text-anchor="middle" class="sub muted">매 반기 근평 관리가 중요한 이유입니다.</text>
+</svg>

@@ -1,0 +1,48 @@
+<svg viewBox="0 0 700 230" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>서울시·경기도·인천시 자격증 가점 비교표</title>
+<desc>해당 계급 이상 인정 자격증과 바로 하위 계급 인정 자격증의 가점이 서울시, 경기도, 인천시별로 다르다는 것을 비교하는 표</desc>
+<defs>
+  <style>
+    .navy{fill:#0f2340} .gold{fill:#c8a84b} .paper{fill:#f2ede3} .white{fill:#ffffff}
+    .ink{fill:#1a1a2e} .muted{fill:#6b6b7a}
+    .htext{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:700;fill:#ffffff}
+    .lbl{font-family:'Noto Serif KR',serif;font-size:16px;font-weight:700}
+    .cell{font-family:'Noto Serif KR',serif;font-size:12.5px}
+    .cellb{font-family:'DM Mono',monospace;font-size:13px;font-weight:700}
+  </style>
+</defs>
+<rect x="0" y="0" width="700" height="230" fill="#faf8f3"/>
+
+<text x="350" y="26" text-anchor="middle" class="lbl navy">자격증 가점 비교 (기관별)</text>
+
+<g>
+  <rect x="60" y="44" width="220" height="30" class="navy"/>
+  <rect x="280" y="44" width="120" height="30" class="navy"/>
+  <rect x="400" y="44" width="120" height="30" class="navy"/>
+  <rect x="520" y="44" width="120" height="30" class="navy"/>
+  <text x="170" y="64" text-anchor="middle" class="htext">자격증 인정 구분</text>
+  <text x="340" y="64" text-anchor="middle" class="htext">서울시</text>
+  <text x="460" y="64" text-anchor="middle" class="htext">경기도</text>
+  <text x="580" y="64" text-anchor="middle" class="htext">인천시</text>
+</g>
+
+<g>
+  <rect x="60" y="74" width="580" height="50" class="white"/>
+  <text x="70" y="95" class="cell ink">해당 계급 이상</text>
+  <text x="70" y="113" class="cell ink">인정 자격증</text>
+  <text x="340" y="103" text-anchor="middle" class="cellb navy">0.24점</text>
+  <text x="460" y="103" text-anchor="middle" class="cellb navy">0.5점</text>
+  <text x="580" y="103" text-anchor="middle" class="cellb navy">0.5점</text>
+</g>
+<g>
+  <rect x="60" y="124" width="580" height="50" class="paper"/>
+  <text x="70" y="145" class="cell ink">바로 하위 계급</text>
+  <text x="70" y="163" class="cell ink">인정 자격증</text>
+  <text x="340" y="153" text-anchor="middle" class="cellb navy">0.12점</text>
+  <text x="460" y="153" text-anchor="middle" class="cellb navy">0.25점</text>
+  <text x="580" y="153" text-anchor="middle" class="cellb navy">—</text>
+</g>
+
+<text x="350" y="196" text-anchor="middle" class="cell muted">동일 직렬 내에서는 가장 높은 등급의 자격증 1개만 인정됩니다.</text>
+<text x="350" y="214" text-anchor="middle" class="cell muted">인정 자격증 목록은 기관별 인사규칙 별표에서 확인하세요.</text>
+</svg>
