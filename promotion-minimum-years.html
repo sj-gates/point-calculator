@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9941490255485877" crossorigin="anonymous"></script>
@@ -30,19 +30,32 @@
   header h1 span{color:var(--gold);}
   header p{margin-top:8px;font-size:.78rem;color:rgba(255,255,255,.55);position:relative;}
   .gold-line{width:48px;height:2px;background:var(--gold);margin:14px auto 0;position:relative;}
-  nav.breadcrumb{max-width:760px;margin:16px auto 0;padding:0 20px;font-size:.76rem;color:var(--muted);}
+  nav.breadcrumb{max-width:820px;margin:16px auto 0;padding:0 20px;font-size:.76rem;color:var(--muted);}
   nav.breadcrumb a{color:var(--gold);text-decoration:none;}
-  main{max-width:760px;margin:0 auto;padding:24px 20px 60px;}
-  .article-hero{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 24px 22px;margin-bottom:20px;box-shadow:var(--card-shadow);}
-  .article-hero .tag{display:inline-block;background:var(--navy);color:var(--gold);font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:99px;letter-spacing:.05em;margin-bottom:12px;}
-  .article-hero h2{font-size:clamp(1.1rem,3.5vw,1.45rem);font-weight:700;color:var(--navy);line-height:1.45;margin-bottom:10px;}
-  .article-hero .meta{font-size:.74rem;color:var(--muted);}
-  .card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);}
-  .card h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
-  .card h3 .num{background:var(--navy);color:var(--gold);font-family:'DM Mono',monospace;font-size:.72rem;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-  .card p{font-size:.88rem;line-height:1.9;color:var(--ink);margin-bottom:10px;}
-  .card p:last-child{margin-bottom:0;}
-  .hint{font-size:.78rem;color:var(--muted);padding:10px 14px;background:var(--paper);border-left:3px solid var(--gold);border-radius:0 5px 5px 0;margin:12px 0;}
+  main{max-width:820px;margin:0 auto;padding:32px 20px 60px;}
+
+  .intro{margin-bottom:32px;}
+  .intro .eyebrow{font-size:.72rem;font-weight:700;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;}
+  .intro h2{font-size:clamp(1.3rem,4vw,1.8rem);font-weight:700;color:var(--navy);line-height:1.4;margin-bottom:14px;}
+  .intro p{font-size:.87rem;color:var(--muted);line-height:1.85;}
+
+  /* 경력 사다리 - 가로 스크롤 단계형, 다른 페이지의 세로 카드와 다른 시각 언어 */
+  .ladder-wrap{overflow-x:auto;margin:28px 0 8px;padding-bottom:8px;}
+  .ladder{display:flex;gap:0;min-width:640px;}
+  .ladder-step{flex:1;text-align:center;position:relative;padding:0 4px;}
+  .ladder-step:not(:last-child)::after{content:'→';position:absolute;right:-4px;top:38px;color:var(--gold);font-weight:700;font-size:1.1rem;}
+  .ladder-step .rank{background:var(--navy);color:#fff;font-size:.78rem;font-weight:700;padding:8px 4px;border-radius:8px 8px 0 0;}
+  .ladder-step .old{background:#f0ede6;color:#999;text-decoration:line-through;font-family:'DM Mono',monospace;font-size:.78rem;padding:6px 4px;}
+  .ladder-step .new{background:var(--gold);color:var(--navy);font-family:'DM Mono',monospace;font-weight:700;font-size:.92rem;padding:8px 4px;border-radius:0 0 8px 8px;}
+  .ladder-legend{display:flex;gap:16px;justify-content:center;font-size:.74rem;color:var(--muted);margin-bottom:28px;}
+  .ladder-legend span{display:flex;align-items:center;gap:5px;}
+  .ladder-legend i{width:12px;height:12px;border-radius:3px;display:inline-block;}
+
+  section.sec{margin-bottom:36px;padding-bottom:32px;border-bottom:1px solid var(--border);}
+  section.sec:last-of-type{border-bottom:none;}
+  .sec h3{font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:14px;}
+  .sec p{font-size:.88rem;line-height:1.9;color:var(--ink);margin-bottom:12px;}
+
   table{width:100%;border-collapse:collapse;font-size:.82rem;margin:14px 0;}
   thead tr{background:var(--navy);color:#fff;}
   thead th{padding:9px 12px;text-align:left;}
@@ -54,14 +67,16 @@
   .badge{display:inline-block;padding:2px 9px;border-radius:99px;font-size:.72rem;font-weight:700;}
   .badge-green{background:#d4edda;color:#1a6b45;}
   .badge-warn{background:#fff3cd;color:#856404;}
-  .cta-box{background:var(--navy);border-radius:10px;padding:22px 24px;text-align:center;margin-top:28px;}
+  .hint{font-size:.78rem;color:var(--muted);padding:10px 14px;background:var(--paper);border-left:3px solid var(--gold);border-radius:0 5px 5px 0;margin:12px 0;}
+  .sec img{width:100%;height:auto;margin-top:16px;border-radius:8px;border:1px solid var(--border);}
+
+  .cta-box{background:var(--navy);border-radius:10px;padding:24px;text-align:center;margin-top:12px;}
   .cta-box p{color:rgba(255,255,255,.75);font-size:.85rem;margin-bottom:14px;}
-  .cta-btn{display:inline-block;background:var(--gold);color:var(--navy);font-weight:700;font-family:'Noto Serif KR',serif;padding:12px 28px;border-radius:7px;text-decoration:none;font-size:.92rem;transition:opacity .2s;}
-  .cta-btn:hover{opacity:.85;}
-  .ad-slot{background:var(--paper);border:1px dashed var(--border);border-radius:6px;text-align:center;padding:14px;font-size:.75rem;color:var(--muted);margin:20px 0;}
-  .ad-slot strong{display:block;margin-bottom:4px;color:var(--navy);}
+  .cta-btn{display:inline-block;background:var(--gold);color:var(--navy);font-weight:700;font-family:'Noto Serif KR',serif;padding:12px 28px;border-radius:7px;text-decoration:none;font-size:.92rem;}
+  .related-strip{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px;}
+  .related-strip a{font-size:.76rem;color:var(--navy);background:#fff;border:1px solid var(--border);padding:6px 12px;border-radius:6px;text-decoration:none;}
+  .related-strip a:hover{border-color:var(--gold);color:var(--gold);}
   footer{text-align:center;padding:24px;font-size:.72rem;color:var(--muted);border-top:1px solid var(--border);}
-  @media(max-width:540px){.card{padding:20px 16px;}.article-hero{padding:20px 16px 16px;}}
 </style>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1KXD1P0ZVC"></script>
@@ -87,23 +102,61 @@
 
 <main>
 
-<div class="article-hero">
-    <span class="tag">승진 가이드</span>
-    <h2>공무원 직급별 승진소요 최저연수 총정리<br>— 9급부터 4급까지 (2026 개정 반영)</h2>
-    <p class="meta">최종 업데이트 2026년 · 지방공무원임용령 개정 기준</p>
+  <div class="intro">
+    <div class="eyebrow">승진 가이드 · 2026 임용령 개정 반영</div>
+    <h2>9급에서 3급까지, 최저연수 사다리</h2>
+    <p>승진소요 최저연수는 상위 직급으로 승진하기 위해 현 직급에서 반드시 채워야 하는 최소 재직 기간입니다. 2026년 임용령 개정으로 대부분의 구간이 단축됐습니다. 아래 사다리에서 개정 전후를 한눈에 비교해보세요.</p>
   </div>
 
-  <div class="card">
-    <h3><span class="num">1</span> 승진소요 최저연수란?</h3>
+  <div class="ladder-wrap">
+    <div class="ladder">
+      <div class="ladder-step">
+        <div class="rank">9급→8급</div>
+        <div class="old">1년 6개월</div>
+        <div class="new">1년</div>
+      </div>
+      <div class="ladder-step">
+        <div class="rank">8급→7급</div>
+        <div class="old">2년</div>
+        <div class="new">1년</div>
+      </div>
+      <div class="ladder-step">
+        <div class="rank">7급→6급</div>
+        <div class="old">2년</div>
+        <div class="new">1년</div>
+      </div>
+      <div class="ladder-step">
+        <div class="rank">6급→5급</div>
+        <div class="old">3년 6개월</div>
+        <div class="new">2년</div>
+      </div>
+      <div class="ladder-step">
+        <div class="rank">5급→4급</div>
+        <div class="old">4년</div>
+        <div class="new">3년</div>
+      </div>
+      <div class="ladder-step">
+        <div class="rank">4급→3급</div>
+        <div class="old">3년</div>
+        <div class="new">3년</div>
+      </div>
+    </div>
+  </div>
+  <div class="ladder-legend">
+    <span><i style="background:#f0ede6;"></i>기존</span>
+    <span><i style="background:var(--gold);"></i>개정 후 (현재)</span>
+  </div>
+
+  <section class="sec">
+    <h3>승진소요 최저연수란?</h3>
     <p>승진소요 최저연수는 상위 직급으로 승진하기 위해 <strong>현 직급에서 반드시 채워야 하는 최소 재직 기간</strong>입니다. 아무리 근무성적이 좋고 경력평정 점수가 높아도, 최저연수를 채우지 못하면 승진후보자명부에 올라갈 수 없습니다.</p>
     <p>이 최저연수는 「지방공무원임용령」에서 정한 전국 공통 하한선입니다. 즉 어떤 기관도 이보다 짧은 기간으로 승진시킬 수 없으며, 오히려 기관별 인사규칙으로 이보다 <strong>더 긴 연수를 추가로 요구</strong>할 수 있습니다. 따라서 최저연수는 "이 기간만 채우면 승진할 수 있는 조건"이 아니라 "이 기간을 채우지 못하면 승진 자체가 불가능한 조건"으로 이해하는 것이 정확합니다.</p>
     <p>최저연수 계산에서 실무적으로 가장 혼동되는 부분은 <strong>임용일과 발령일의 기준</strong>입니다. 최저연수는 현 직급으로 임용된 날짜부터 기산하며, 전보나 부서 이동은 최저연수 산정에 영향을 주지 않습니다. 다만 승진임용, 강임, 직권면직 후 재임용 등 신분 변동이 있었던 경우에는 별도의 기산 규정이 적용될 수 있으므로 인사기록카드를 통해 정확한 기산일을 확인해야 합니다.</p>
     <div class="hint">💡 최저연수는 휴직·직위해제·강등 기간 등을 제외하고 산정합니다. 단순 재직 기간과 다를 수 있습니다.</div>
-  </div>
+  </section>
 
-  <div class="card">
-    <h3><span class="num">2</span> 일반직 공무원 직급별 최저연수</h3>
-    <p>지방공무원임용령 기준 일반직 공무원의 직급별 승진소요 최저연수는 아래와 같습니다. <strong>임용령 개정으로 최저연수가 전반적으로 단축</strong>되었으니 이전에 알고 있던 기간과 다를 수 있습니다.</p>
+  <section class="sec">
+    <h3>직급별 최저연수 상세표</h3>
     <table>
       <thead><tr><th>현재 직급</th><th class="td-c">승진 목표</th><th class="td-c">기존</th><th class="td-c">개정 후 (현재)</th><th class="td-c">비고</th></tr></thead>
       <tbody>
@@ -116,11 +169,11 @@
       </tbody>
     </table>
     <div class="hint">※ 연구직·지도직·기능직 등은 별도 기준이 적용됩니다. 기관별로 더 긴 연수를 규칙으로 정할 수 있습니다. 최저연수가 단축된 만큼 명부 진입 대상자가 늘어나 순위 경쟁은 오히려 치열해질 수 있습니다.</div>
-    <img src="images/minyears-revised.svg" alt="직급별 승진소요 최저연수 개정 전후 비교표" style="width:100%;height:auto;margin-top:16px;border-radius:8px;border:1px solid var(--border);">
-  </div>
+    <img src="images/minyears-revised.svg" alt="직급별 승진소요 최저연수 개정 전후 비교표">
+  </section>
 
-  <div class="card">
-    <h3><span class="num">3</span> 서울시·자치구 추가 기준</h3>
+  <section class="sec">
+    <h3>서울시·자치구 추가 기준</h3>
     <p>서울시 본청과 25개 자치구는 지방공무원임용령 최저연수 외에 <strong>기관별 인사규칙으로 더 긴 연수를 적용</strong>하는 경우가 많습니다. 특히 6급→5급 승진은 경쟁이 치열해 실질적인 대기 기간이 훨씬 길어지는 경우가 일반적입니다.</p>
     <table>
       <thead><tr><th>구분</th><th class="td-c">6급→5급 기준</th><th>특이사항</th></tr></thead>
@@ -130,10 +183,10 @@
       </tbody>
     </table>
     <div class="hint">💡 정확한 최저연수는 소속 기관의 인사규칙을 반드시 확인하세요.</div>
-  </div>
+  </section>
 
-  <div class="card">
-    <h3><span class="num">4</span> 최저연수 산입 제외 기간</h3>
+  <section class="sec">
+    <h3>최저연수 산입 제외 기간</h3>
     <p>아래 기간은 승진소요 최저연수에 산입되지 않습니다.</p>
     <table>
       <thead><tr><th>제외 사유</th><th class="td-c">산입 여부</th></tr></thead>
@@ -145,27 +198,25 @@
         <tr><td>육아휴직 (법정 기간 내)</td><td class="td-c td-bold" style="color:#1a6b45;">산입</td></tr>
       </tbody>
     </table>
-  </div>
+  </section>
 
-  <div class="card">
-    <h3><span class="num">5</span> 최저연수를 채웠다고 바로 승진되는 건 아니다</h3>
+  <section class="sec">
+    <h3>최저연수를 채웠다고 바로 승진되는 건 아니다</h3>
     <p>최저연수는 <strong>승진 자격의 최소 조건</strong>일 뿐입니다. 실제 승진은 평정점수 순위와 결원 상황에 따라 결정됩니다. 9급 → 8급처럼 경쟁이 적은 직급은 최저연수 도달 직후 승진이 가능하지만, 6급 → 5급처럼 TO가 제한된 경우에는 최저연수를 훨씬 초과하더라도 대기하는 경우가 많습니다.</p>
     <p>실제로 현장에서는 최저연수를 채운 뒤 1~3년을 추가로 대기하다가 승진하는 경우가 흔합니다. 이 대기 기간 동안의 근평 관리가 결국 승진 시점을 앞당기는 핵심 변수가 됩니다. 최저연수를 갓 채운 시점의 신규 대상자와, 이미 수년간 명부에서 대기해온 기존 대상자가 함께 경쟁하는 구조이기 때문에, 최저연수 충족 이후에도 근평·경력평정·가점 관리를 계속 이어가야 합니다.</p>
     <p>따라서 승진을 준비하는 공무원이라면 최저연수 충족 여부를 확인하는 것과 별개로, 본인이 속한 직급의 <strong>평균 승진 소요 기간</strong>(최저연수 + 실질 대기 기간)을 함께 파악해두는 것이 현실적인 계획 수립에 도움이 됩니다.</p>
     <div class="hint">📌 결국 중요한 건 <strong>평정점수 순위</strong>입니다. 내 점수가 몇 위인지 파악하는 것이 핵심입니다.</div>
-    <img src="images/minyears-3gates.svg" alt="최저연수 충족 후 승진까지 거쳐야 하는 3단계 관문" style="width:100%;height:auto;margin-top:16px;border-radius:8px;border:1px solid var(--border);">
+    <img src="images/minyears-3gates.svg" alt="최저연수 충족 후 승진까지 거쳐야 하는 3단계 관문">
+  </section>
+
+  <div class="related-strip">
+    <a href="promotion-list-guide.html">명부 작성 가이드</a>
+    <a href="leave-calculation-guide.html">휴직 경력산입</a>
+    <a href="discipline-effect.html">징계 영향</a>
+    <a href="special-appointment.html">특별승진 제도</a>
+    <a href="promotion-strategy.html">직급별 승진 전략</a>
   </div>
 
-<div class="related-links" style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);">
-    <h3 style="font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:14px;">📚 함께 읽으면 좋은 글</h3>
-    <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
-      <li><a href="promotion-list-guide.html" style="font-size:.85rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:6px;"><span style="color:var(--gold);">→</span> 승진후보자명부 작성 방법 가이드</a></li>
-      <li><a href="leave-calculation-guide.html" style="font-size:.85rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:6px;"><span style="color:var(--gold);">→</span> 휴직 유형별 경력 산입 완전 정리</a></li>
-      <li><a href="discipline-effect.html" style="font-size:.85rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:6px;"><span style="color:var(--gold);">→</span> 징계·직위해제가 승진에 미치는 영향</a></li>
-      <li><a href="special-appointment.html" style="font-size:.85rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:6px;"><span style="color:var(--gold);">→</span> 특별 승진 제도 완전 정리</a></li>
-      <li><a href="promotion-strategy.html" style="font-size:.85rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:6px;"><span style="color:var(--gold);">→</span> 직급별 승진 전략 가이드</a></li>
-    </ul>
-  </div>
   <div class="cta-box">
     <p>내 현재 평정점수와 예상 순위가 궁금하신가요?<br>직급과 날짜만 입력하면 자동으로 계산해드립니다.</p>
     <a class="cta-btn" href="index.html">🏆 평정점수 계산하러 가기</a>
