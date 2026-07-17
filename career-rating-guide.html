@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9941490255485877" crossorigin="anonymous"></script>
@@ -8,7 +8,7 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>공무원 경력평정 계산 방법 완전 정리 — 지방공무원</title>
-<meta name="description" content="공무원 승진 경력평정이란 무엇인지, 현 직급 경력과 직전 직급 경력이 어떻게 점수로 환산되는지 단계별로 알기 쉽게 정리했습니다.">
+<meta name="description" content="공무원 승진 경력평정이란 무엇인지, 현 직급 경력과 직전 직급 경력이 어떻게 점수로 환산되는지 5단계 타임라인으로 알기 쉽게 정리했습니다.">
 <meta name="robots" content="index, follow">
 
 <meta property="og:type"         content="article">
@@ -40,22 +40,26 @@
 
   nav.breadcrumb{max-width:760px;margin:16px auto 0;padding:0 20px;font-size:.76rem;color:var(--muted);}
   nav.breadcrumb a{color:var(--gold);text-decoration:none;}
-  nav.breadcrumb a:hover{text-decoration:underline;}
 
-  main{max-width:760px;margin:0 auto;padding:24px 20px 60px;}
+  main{max-width:760px;margin:0 auto;padding:32px 20px 60px;}
 
-  .article-hero{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 24px 22px;margin-bottom:20px;box-shadow:var(--card-shadow);}
-  .article-hero .tag{display:inline-block;background:var(--navy);color:var(--gold);font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:99px;letter-spacing:.05em;margin-bottom:12px;}
-  .article-hero h2{font-size:clamp(1.1rem,3.5vw,1.45rem);font-weight:700;color:var(--navy);line-height:1.45;margin-bottom:10px;}
-  .article-hero .meta{font-size:.74rem;color:var(--muted);}
+  .intro{margin-bottom:44px;}
+  .intro .eyebrow{font-size:.72rem;font-weight:700;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;}
+  .intro h2{font-size:clamp(1.3rem,4vw,1.8rem);font-weight:700;color:var(--navy);line-height:1.4;margin-bottom:14px;}
+  .intro p{font-size:.87rem;color:var(--muted);line-height:1.85;}
+  .intro .formula-pill{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;font-family:'DM Mono',monospace;font-size:.8rem;font-weight:700;padding:10px 18px;border-radius:99px;margin-top:16px;}
+  .intro .formula-pill .g{color:var(--gold);}
 
-  .card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);}
-  .card h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
-  .card h3 .num{background:var(--navy);color:var(--gold);font-family:'DM Mono',monospace;font-size:.72rem;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-  .card p{font-size:.88rem;line-height:1.9;color:var(--ink);margin-bottom:10px;}
-  .card p:last-child{margin-bottom:0;}
+  /* 세로 타임라인 - 다른 페이지의 카드 나열과 완전히 다른 구조 */
+  .timeline{position:relative;padding-left:38px;}
+  .timeline::before{content:'';position:absolute;left:13px;top:6px;bottom:6px;width:2px;background:linear-gradient(to bottom, var(--gold), var(--border));}
 
-  .hint{font-size:.78rem;color:var(--muted);padding:10px 14px;background:var(--paper);border-left:3px solid var(--gold);border-radius:0 5px 5px 0;margin:12px 0;}
+  .tl-step{position:relative;padding-bottom:44px;}
+  .tl-step:last-child{padding-bottom:0;}
+  .tl-step .tl-dot{position:absolute;left:-38px;top:0;width:28px;height:28px;border-radius:50%;background:var(--navy);border:3px solid var(--cream);color:var(--gold);font-family:'DM Mono',monospace;font-size:.75rem;font-weight:700;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 2px var(--gold);}
+  .tl-step h3{font-size:1.02rem;font-weight:700;color:var(--navy);margin-bottom:10px;padding-top:2px;}
+  .tl-step p{font-size:.87rem;line-height:1.9;color:var(--ink);margin-bottom:10px;}
+  .tl-step p:last-of-type{margin-bottom:0;}
 
   table{width:100%;border-collapse:collapse;font-size:.82rem;margin:14px 0;}
   thead tr{background:var(--navy);color:#fff;}
@@ -66,26 +70,24 @@
   .td-c{text-align:center;}
   .td-bold{font-weight:700;color:var(--navy);}
 
-  .formula-box{background:var(--navy);color:#fff;border-radius:8px;padding:18px 20px;margin:14px 0;font-family:'DM Mono',monospace;font-size:.88rem;line-height:1.8;}
-  .formula-box .f-label{font-size:.7rem;color:rgba(255,255,255,.5);margin-bottom:6px;font-family:'Noto Serif KR',serif;}
-  .formula-box .f-val{color:var(--gold);}
-
+  .hint{font-size:.78rem;color:var(--muted);padding:10px 14px;background:var(--paper);border-left:3px solid var(--gold);border-radius:0 5px 5px 0;margin:12px 0;}
   .example-box{background:var(--paper);border:1px solid var(--border);border-radius:8px;padding:16px 18px;margin:14px 0;font-size:.84rem;line-height:1.9;}
   .example-box .ex-title{font-weight:700;color:var(--navy);margin-bottom:8px;}
+  .tl-step img{width:100%;height:auto;margin-top:14px;border-radius:8px;border:1px solid var(--border);}
 
-  .cta-box{background:var(--navy);border-radius:10px;padding:22px 24px;text-align:center;margin-top:28px;}
+  .cta-box{background:var(--navy);border-radius:10px;padding:24px;text-align:center;margin-top:44px;}
   .cta-box p{color:rgba(255,255,255,.75);font-size:.85rem;margin-bottom:14px;}
-  .cta-btn{display:inline-block;background:var(--gold);color:var(--navy);font-weight:700;font-family:'Noto Serif KR',serif;padding:12px 28px;border-radius:7px;text-decoration:none;font-size:.92rem;transition:opacity .2s;}
-  .cta-btn:hover{opacity:.85;}
+  .cta-btn{display:inline-block;background:var(--gold);color:var(--navy);font-weight:700;font-family:'Noto Serif KR',serif;padding:12px 28px;border-radius:7px;text-decoration:none;font-size:.92rem;}
 
-  .ad-slot{background:var(--paper);border:1px dashed var(--border);border-radius:6px;text-align:center;padding:14px;font-size:.75rem;color:var(--muted);margin:20px 0;}
-  .ad-slot strong{display:block;margin-bottom:4px;color:var(--navy);}
+  .related-strip{display:flex;flex-wrap:wrap;gap:8px;margin-top:32px;padding-top:20px;border-top:1px solid var(--border);}
+  .related-strip a{font-size:.76rem;color:var(--navy);background:#fff;border:1px solid var(--border);padding:6px 12px;border-radius:6px;text-decoration:none;}
+  .related-strip a:hover{border-color:var(--gold);color:var(--gold);}
 
   footer{text-align:center;padding:24px;font-size:.72rem;color:var(--muted);border-top:1px solid var(--border);}
 
   @media(max-width:540px){
-    .card{padding:20px 16px;}
-    .article-hero{padding:20px 16px 16px;}
+    .timeline{padding-left:30px;}
+    .tl-step .tl-dot{left:-30px;width:24px;height:24px;font-size:.68rem;}
   }
 </style>
 <!-- Google Analytics -->
@@ -112,111 +114,108 @@
 
 <main>
 
-<!-- 아티클 헤더 -->
-  <div class="article-hero">
-    <span class="tag">경력평정 가이드</span>
-    <h2>공무원 경력평정 계산 방법 완전 정리<br>— 지방공무원 기준</h2>
-    <p class="meta">최종 업데이트 2026년 · 지방공무원 평정 규칙 기준</p>
+  <div class="intro">
+    <div class="eyebrow">경력평정 가이드 · 5단계로 이해하기</div>
+    <h2>경력평정 30점, 어떻게 계산될까요?</h2>
+    <p>경력평정은 근무성적평정(70점)과 함께 평정점수의 핵심 축입니다. 오래 근무할수록 오르지만, 계산 방식과 포화 구간을 모르면 승진 타이밍을 놓치기 쉽습니다. 아래 5단계를 순서대로 따라가며 이해해보세요.</p>
+    <div class="formula-pill">경력평정 <span class="g">30점</span> + 근평 <span class="g">70점</span> + 가점 <span class="g">5점</span> = 105점</div>
   </div>
 
-  <!-- 1. 경력평정이란 -->
-  <div class="card">
-    <h3><span class="num">1</span> 경력평정이란?</h3>
-    <p>경력평정은 승진후보자명부를 작성할 때 <strong>근무 기간에 따라 부여하는 점수</strong>입니다. 근무성적평정(70점 만점)과 함께 평정점수의 핵심 축을 이루며, 경력평정 만점은 <strong>30점</strong>입니다.</p>
-    <p>오래 근무할수록 점수가 올라가는 구조이지만, 휴직 유형에 따라 산입 여부가 달라지기 때문에 단순 재직 기간과는 다를 수 있습니다.</p>
-    <div class="hint">💡 경력평정 + 근무성적평정 + 가점 = 최종 평정점수 (만점 105점)</div>
-  </div>
+  <div class="timeline">
 
-  <!-- 2. 산정 구조 -->
-  <div class="card">
-    <h3><span class="num">2</span> 경력평정 산정 구조</h3>
-    <p>경력평정은 현 직급 경력과 직전 직급 경력을 합산해 단일 점수율로 환산합니다. 직전 직급 경력은 <strong>60% 환산</strong> 후 현 직급 경력에 합산하고, 합산된 가중 경력 개월수에 직급별 점수율을 적용합니다.</p>
-    <table>
-      <thead><tr><th>구분</th><th>처리 방법</th></tr></thead>
-      <tbody>
-        <tr><td>현 직급 경력</td><td class="td-bold">100% 그대로 산입</td></tr>
-        <tr><td>직전 직급 경력</td><td class="td-bold">60% 환산 후 합산</td></tr>
-        <tr><td>합산 가중 경력</td><td class="td-bold">직급별 점수율 적용 → 경력평정 산출 (만점 30점)</td></tr>
-      </tbody>
-    </table>
-    <div class="hint">※ 잔여일 합산(현 직급 잔여일 + 직전 직급 60% 환산 잔여일)이 15일 이상이면 1개월로 올림 처리합니다.</div>
-  </div>
-
-  <!-- 3. 점수 환산 방법 -->
-  <div class="card">
-    <h3><span class="num">3</span> 직급별 점수율 및 환산 공식</h3>
-    <p>경력평정은 직급별로 기준 개월수(base)까지는 높은 점수율을, 초과분에는 낮은 점수율을 적용합니다. 서울시·인천시·경기도 기준은 아래와 같습니다.</p>
-
-    <table>
-      <thead><tr><th>지역</th><th>직급</th><th class="td-c">base (개월)</th><th class="td-c">이하 점수율</th><th class="td-c">초과 점수율</th></tr></thead>
-      <tbody>
-        <tr><td>서울</td><td>9·8·7급</td><td class="td-c">60개월</td><td class="td-c td-bold">0.48점/월</td><td class="td-c">0.05점/월</td></tr>
-        <tr><td>서울</td><td>6급</td><td class="td-c">72개월</td><td class="td-c td-bold">0.40점/월</td><td class="td-c">0.04점/월</td></tr>
-        <tr><td>서울</td><td>5급</td><td class="td-c">84개월</td><td class="td-c td-bold">0.34점/월</td><td class="td-c">0.03점/월</td></tr>
-        <tr><td>경기도</td><td>9·8·7급</td><td class="td-c">60개월</td><td class="td-c td-bold">0.49점/월</td><td class="td-c">0.05점/월</td></tr>
-        <tr><td>경기도</td><td>6급</td><td class="td-c">72개월</td><td class="td-c td-bold">0.40점/월</td><td class="td-c">0.05점/월</td></tr>
-        <tr><td>경기도</td><td>5급</td><td class="td-c">84개월</td><td class="td-c td-bold">0.34점/월</td><td class="td-c">0.04점/월</td></tr>
-      </tbody>
-    </table>
-
-    <div class="example-box">
-      <div class="ex-title">📌 예시 — 서울시 8급, 현 직급 36개월 + 직전 직급 24개월</div>
-      직전 직급 60% 환산: 24개월 × 0.6 = 14개월<br>
-      합산: 36 + 14 = 50개월 → 50 × 0.48 = <strong>경력평정 24.00점</strong>
+    <div class="tl-step">
+      <div class="tl-dot">1</div>
+      <h3>경력평정이란?</h3>
+      <p>경력평정은 승진후보자명부를 작성할 때 <strong>근무 기간에 따라 부여하는 점수</strong>입니다. 근무성적평정(70점 만점)과 함께 평정점수의 핵심 축을 이루며, 경력평정 만점은 <strong>30점</strong>입니다.</p>
+      <p>오래 근무할수록 점수가 올라가는 구조이지만, 휴직 유형에 따라 산입 여부가 달라지기 때문에 단순 재직 기간과는 다를 수 있습니다.</p>
     </div>
-    <img src="images/career-rate-table.svg" alt="서울시·경기도 직급별 경력평정 점수율표" style="width:100%;height:auto;margin-top:16px;border-radius:8px;border:1px solid var(--border);">
+
+    <div class="tl-step">
+      <div class="tl-dot">2</div>
+      <h3>산정 구조 — 현 직급 + 직전 직급</h3>
+      <p>경력평정은 현 직급 경력과 직전 직급 경력을 합산해 단일 점수율로 환산합니다. 직전 직급 경력은 <strong>60% 환산</strong> 후 현 직급 경력에 합산하고, 합산된 가중 경력 개월수에 직급별 점수율을 적용합니다.</p>
+      <table>
+        <thead><tr><th>구분</th><th>처리 방법</th></tr></thead>
+        <tbody>
+          <tr><td>현 직급 경력</td><td class="td-bold">100% 그대로 산입</td></tr>
+          <tr><td>직전 직급 경력</td><td class="td-bold">60% 환산 후 합산</td></tr>
+          <tr><td>합산 가중 경력</td><td class="td-bold">직급별 점수율 적용 → 경력평정 산출</td></tr>
+        </tbody>
+      </table>
+      <div class="hint">※ 잔여일 합산(현 직급 잔여일 + 직전 직급 60% 환산 잔여일)이 15일 이상이면 1개월로 올림 처리합니다.</div>
+    </div>
+
+    <div class="tl-step">
+      <div class="tl-dot">3</div>
+      <h3>직급별 점수율 및 환산 공식</h3>
+      <p>경력평정은 직급별로 기준 개월수(base)까지는 높은 점수율을, 초과분에는 낮은 점수율을 적용합니다. 서울시·인천시·경기도 기준은 아래와 같습니다.</p>
+      <table>
+        <thead><tr><th>지역</th><th>직급</th><th class="td-c">base (개월)</th><th class="td-c">이하 점수율</th><th class="td-c">초과 점수율</th></tr></thead>
+        <tbody>
+          <tr><td>서울</td><td>9·8·7급</td><td class="td-c">60개월</td><td class="td-c td-bold">0.48점/월</td><td class="td-c">0.05점/월</td></tr>
+          <tr><td>서울</td><td>6급</td><td class="td-c">72개월</td><td class="td-c td-bold">0.40점/월</td><td class="td-c">0.04점/월</td></tr>
+          <tr><td>서울</td><td>5급</td><td class="td-c">84개월</td><td class="td-c td-bold">0.34점/월</td><td class="td-c">0.03점/월</td></tr>
+          <tr><td>경기도</td><td>9·8·7급</td><td class="td-c">60개월</td><td class="td-c td-bold">0.49점/월</td><td class="td-c">0.05점/월</td></tr>
+          <tr><td>경기도</td><td>6급</td><td class="td-c">72개월</td><td class="td-c td-bold">0.40점/월</td><td class="td-c">0.05점/월</td></tr>
+          <tr><td>경기도</td><td>5급</td><td class="td-c">84개월</td><td class="td-c td-bold">0.34점/월</td><td class="td-c">0.04점/월</td></tr>
+        </tbody>
+      </table>
+      <div class="example-box">
+        <div class="ex-title">📌 예시 — 서울시 8급, 현 직급 36개월 + 직전 직급 24개월</div>
+        직전 직급 60% 환산: 24개월 × 0.6 = 14개월<br>
+        합산: 36 + 14 = 50개월 → 50 × 0.48 = <strong>경력평정 24.00점</strong>
+      </div>
+      <img src="images/career-rate-table.svg" alt="서울시·경기도 직급별 경력평정 점수율표">
+    </div>
+
+    <div class="tl-step">
+      <div class="tl-dot">4</div>
+      <h3>휴직 유형별 경력 산입 여부</h3>
+      <p>모든 휴직 기간이 경력으로 인정되는 것은 아닙니다. 휴직 사유에 따라 전부 산입, 일부 산입, 미산입으로 나뉩니다.</p>
+      <table>
+        <thead><tr><th>휴직 유형</th><th class="td-c">산입 여부</th></tr></thead>
+        <tbody>
+          <tr><td>공무상 질병·부상 휴직</td><td class="td-c td-bold" style="color:#1a6b45;">전부 산입</td></tr>
+          <tr><td>병역 휴직</td><td class="td-c td-bold" style="color:#1a6b45;">전부 산입</td></tr>
+          <tr><td>육아 휴직 (자녀 1명, 최초 1년)</td><td class="td-c td-bold" style="color:#1a6b45;">전부 산입</td></tr>
+          <tr><td>일반 질병 휴직</td><td class="td-c td-bold" style="color:#c0392b;">미산입</td></tr>
+          <tr><td>가사 휴직 (간호 등)</td><td class="td-c td-bold" style="color:#c0392b;">미산입</td></tr>
+          <tr><td>자기 개발 휴직</td><td class="td-c td-bold" style="color:#c0392b;">미산입</td></tr>
+        </tbody>
+      </table>
+      <div class="hint">⚠️ 휴직 유형 및 산입 기준은 기관별 인사규칙에 따라 일부 다를 수 있습니다. 정확한 사항은 소속 인사담당 부서에 확인하세요.</div>
+    </div>
+
+    <div class="tl-step">
+      <div class="tl-dot">5</div>
+      <h3>경력이 쌓일수록 점수가 덜 오르는 이유</h3>
+      <p>경력평정은 초반에 빠르게 오르다가 일정 기간(base)을 넘으면 증가폭이 크게 줄어드는 구조입니다. <strong>경기도 7급</strong>을 예로 들면, 60개월(5년)까지는 월 <strong>0.49점</strong>씩 오르지만, 60개월을 넘는 순간부터 월 <strong>0.05점</strong>으로 약 10분의 1 수준으로 급감합니다.</p>
+      <table>
+        <thead><tr><th>가중 경력</th><th class="td-c">경력평정</th><th class="td-c">월 증가폭</th></tr></thead>
+        <tbody>
+          <tr><td>1년 (12개월)</td><td class="td-c td-bold">5.88점</td><td class="td-c" style="color:#1a6b45; font-weight:700;">+0.49점/월</td></tr>
+          <tr><td>2년 (24개월)</td><td class="td-c td-bold">11.76점</td><td class="td-c" style="color:#1a6b45; font-weight:700;">+0.49점/월</td></tr>
+          <tr><td>3년 (36개월)</td><td class="td-c td-bold">17.64점</td><td class="td-c" style="color:#1a6b45; font-weight:700;">+0.49점/월</td></tr>
+          <tr><td>4년 (48개월)</td><td class="td-c td-bold">23.52점</td><td class="td-c" style="color:#1a6b45; font-weight:700;">+0.49점/월</td></tr>
+          <tr><td style="font-weight:700; color:var(--navy);">5년 (60개월) — 기준점</td><td class="td-c td-bold">29.40점</td><td class="td-c" style="color:#1a6b45; font-weight:700;">+0.49점/월</td></tr>
+          <tr><td style="color:var(--muted);">5년 6개월 (66개월)</td><td class="td-c td-bold" style="color:var(--muted);">29.70점</td><td class="td-c" style="color:#c0392b; font-weight:700;">+0.05점/월</td></tr>
+          <tr><td style="color:var(--muted);">6년 (72개월) — 만점</td><td class="td-c td-bold" style="color:var(--muted);">30.00점</td><td class="td-c" style="color:#c0392b; font-weight:700;">+0.05점/월</td></tr>
+        </tbody>
+      </table>
+      <div class="hint">💡 60개월(5년) 이후에는 만점(30점)까지 12개월을 더 채워야 0.60점만 올라갑니다. 사실상 60개월이 경력평정의 실질적 포화 시점이므로, 승진을 노린다면 5년 전후 타이밍이 핵심입니다.</div>
+      <img src="images/career-growth-curve.svg" alt="경기도 7급 경력평정 누적점수 증가 곡선 — 60개월 이후 급감">
+    </div>
+
   </div>
 
-  <!-- 4. 휴직 처리 -->
-  <div class="card">
-    <h3><span class="num">4</span> 휴직 유형별 경력 산입 여부</h3>
-    <p>모든 휴직 기간이 경력으로 인정되는 것은 아닙니다. 휴직 사유에 따라 전부 산입, 일부 산입, 미산입으로 나뉩니다.</p>
-    <table>
-      <thead><tr><th>휴직 유형</th><th class="td-c">산입 여부</th></tr></thead>
-      <tbody>
-        <tr><td>공무상 질병·부상 휴직</td><td class="td-c td-bold" style="color:#1a6b45;">전부 산입</td></tr>
-        <tr><td>병역 휴직</td><td class="td-c td-bold" style="color:#1a6b45;">전부 산입</td></tr>
-        <tr><td>육아 휴직 (자녀 1명, 최초 1년)</td><td class="td-c td-bold" style="color:#1a6b45;">전부 산입</td></tr>
-        <tr><td>일반 질병 휴직</td><td class="td-c td-bold" style="color:#c0392b;">미산입</td></tr>
-        <tr><td>가사 휴직 (간호 등)</td><td class="td-c td-bold" style="color:#c0392b;">미산입</td></tr>
-        <tr><td>자기 개발 휴직</td><td class="td-c td-bold" style="color:#c0392b;">미산입</td></tr>
-      </tbody>
-    </table>
-    <div class="hint">⚠️ 휴직 유형 및 산입 기준은 기관별 인사규칙에 따라 일부 다를 수 있습니다. 정확한 사항은 소속 인사담당 부서에 확인하세요.</div>
+  <div class="related-strip">
+    <a href="performance-rating-guide.html">근평 가이드</a>
+    <a href="leave-calculation-guide.html">휴직 경력산입</a>
+    <a href="promotion-minimum-years.html">최저연수 총정리</a>
+    <a href="bonus-points-guide.html">가점 전략</a>
+    <a href="discipline-effect.html">징계 영향</a>
   </div>
 
-  <!-- 5. 만점 도달 기간 -->
-  <div class="card">
-    <h3><span class="num">5</span> 경력이 쌓일수록 점수가 덜 오르는 이유</h3>
-    <p>경력평정은 초반에 빠르게 오르다가 일정 기간(base)을 넘으면 증가폭이 크게 줄어드는 구조입니다. <strong>경기도 7급</strong>을 예로 들면, 60개월(5년)까지는 월 <strong>0.49점</strong>씩 오르지만, 60개월을 넘는 순간부터 월 <strong>0.05점</strong>으로 약 10분의 1 수준으로 급감합니다.</p>
-
-    <table>
-      <thead><tr><th>가중 경력</th><th class="td-c">경력평정</th><th class="td-c">월 증가폭</th></tr></thead>
-      <tbody>
-        <tr><td>1년 (12개월)</td><td class="td-c td-bold">5.88점</td><td class="td-c" style="color:#1a6b45; font-weight:700;">+0.49점/월</td></tr>
-        <tr><td>2년 (24개월)</td><td class="td-c td-bold">11.76점</td><td class="td-c" style="color:#1a6b45; font-weight:700;">+0.49점/월</td></tr>
-        <tr><td>3년 (36개월)</td><td class="td-c td-bold">17.64점</td><td class="td-c" style="color:#1a6b45; font-weight:700;">+0.49점/월</td></tr>
-        <tr><td>4년 (48개월)</td><td class="td-c td-bold">23.52점</td><td class="td-c" style="color:#1a6b45; font-weight:700;">+0.49점/월</td></tr>
-        <tr><td style="font-weight:700; color:var(--navy);">5년 (60개월) — 기준점</td><td class="td-c td-bold">29.40점</td><td class="td-c" style="color:#1a6b45; font-weight:700;">+0.49점/월</td></tr>
-        <tr><td style="color:var(--muted);">5년 6개월 (66개월)</td><td class="td-c td-bold" style="color:var(--muted);">29.70점</td><td class="td-c" style="color:#c0392b; font-weight:700;">+0.05점/월</td></tr>
-        <tr><td style="color:var(--muted);">6년 (72개월) — 만점</td><td class="td-c td-bold" style="color:var(--muted);">30.00점</td><td class="td-c" style="color:#c0392b; font-weight:700;">+0.05점/월</td></tr>
-      </tbody>
-    </table>
-    <div class="hint">💡 60개월(5년) 이후에는 만점(30점)까지 12개월을 더 채워야 0.60점만 올라갑니다. 사실상 60개월이 경력평정의 실질적 포화 시점이므로, 승진을 노린다면 5년 전후 타이밍이 핵심입니다.</div>
-    <img src="images/career-growth-curve.svg" alt="경기도 7급 경력평정 누적점수 증가 곡선 — 60개월 이후 급감" style="width:100%;height:auto;margin-top:16px;border-radius:8px;border:1px solid var(--border);">
-  </div>
-
-<!-- CTA -->
-  <div class="related-links" style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);">
-    <h3 style="font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:14px;">📚 함께 읽으면 좋은 글</h3>
-    <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
-      <li><a href="performance-rating-guide.html" style="font-size:.85rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:6px;"><span style="color:var(--gold);">→</span> 근무성적평정(근평) 등급·점수 완전 가이드</a></li>
-      <li><a href="leave-calculation-guide.html" style="font-size:.85rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:6px;"><span style="color:var(--gold);">→</span> 휴직 유형별 경력 산입 완전 정리</a></li>
-      <li><a href="promotion-minimum-years.html" style="font-size:.85rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:6px;"><span style="color:var(--gold);">→</span> 직급별 승진소요 최저연수 총정리</a></li>
-      <li><a href="bonus-points-guide.html" style="font-size:.85rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:6px;"><span style="color:var(--gold);">→</span> 승진 가점 종류와 획득 전략</a></li>
-      <li><a href="discipline-effect.html" style="font-size:.85rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:6px;"><span style="color:var(--gold);">→</span> 징계·직위해제가 승진에 미치는 영향</a></li>
-    </ul>
-  </div>
   <div class="cta-box">
     <p>내 경력평정 점수가 궁금하신가요?<br>임용일과 평정 기준일만 입력하면 자동으로 계산해드립니다.</p>
     <a class="cta-btn" href="index.html">🏆 평정점수 계산하러 가기</a>
