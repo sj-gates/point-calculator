@@ -1093,6 +1093,14 @@
   <!-- ⑤ 계산 버튼 -->
   <button class="btn btn-primary" id="calcBtn" onclick="toggleCalculate()">🏆 평정점수 계산하기</button>
 
+  <div style="display:flex; justify-content:center; padding:16px 0;">
+    <ins class="kakao_ad_area" style="display:none;"
+    data-ad-unit = "DAN-AFaQUXIyvx8EIQI0"
+    data-ad-width = "320"
+    data-ad-height = "50"></ins>
+    <script type="text/javascript" src="//t1.kakaocdn.net/kas/static/ba.min.js" async></script>
+  </div>
+
   <!-- ⑥ 결과 -->
   <div class="result-card" id="resultCard">
     <h2 id="resultTitle">▪ 최종 평정점수 — 이번반기 (예상)</h2>
@@ -1140,15 +1148,6 @@
     <button class="btn btn-copy" onclick="copyResult()">📋 결과 텍스트 복사</button>
     <span id="copyMsg" style="font-size:.75rem; color:var(--green); margin-left:10px; display:none;">✔ 복사됐습니다!</span>
   </div>
-
-  <div style="display:flex; justify-content:center; padding:16px 0;">
-    <ins class="kakao_ad_area" style="display:none;"
-    data-ad-unit = "DAN-AFaQUXIyvx8EIQI0"
-    data-ad-width = "320"
-    data-ad-height = "50"></ins>
-    <script type="text/javascript" src="//t1.kakaocdn.net/kas/static/ba.min.js" async></script>
-  </div>
-
 
 <!-- 비교 모달 -->
 <div id="compareModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.45); z-index:9999; padding:20px; overflow:auto;">
