@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>공무원 명예퇴직수당 계산기 — 생년월일·호봉만 입력하면 30초 자동 산출 | 공스코어</title>
+<title>공무원 명예퇴직수당·퇴직수당 계산기 — 생년월일·호봉만 입력하면 자동 산출 | 공스코어</title>
 <meta name="description" content="공무원 명예퇴직수당이 얼마나 나오는지 궁금하셨죠? 생년월일, 임용일, 계급·호봉, 명예퇴직 예정일만 입력하면 2026년 봉급표와 「명예퇴직수당 등 지급 규정」 별표1 산식을 그대로 적용해 예상 명퇴수당을 즉시 계산합니다. 회원가입 없이 무료.">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
@@ -154,9 +154,9 @@
   .gs-menubar nav a.on{color:#fff;border-bottom-color:#c8a84b;}
   @media(max-width:420px){.gs-menubar nav a{font-size:.78rem;padding:14px 7px 12px;}.gs-menubar .gs-logo{font-size:.9rem;}}
 </style>
-<div class="gs-menubar"><div class="gs-in"><a class="gs-logo" href="index.html">공스코어</a><nav aria-label="사이트 메뉴"><a href="index.html">평정점수 계산기</a><a href="retirement-allowance-calculator.html" class="on" aria-current="page">명퇴수당 계산기</a><a href="performance-rating-guide.html">승진 가이드</a></nav></div></div>
+<div class="gs-menubar"><div class="gs-in"><a class="gs-logo" href="index.html">공스코어</a><nav aria-label="사이트 메뉴"><a href="index.html">평정점수</a><a href="salary-calculator.html">월급 실수령</a><a href="retirement-allowance-calculator.html" class="on" aria-current="page">명퇴·퇴직수당</a><a href="leave-compensation-calculator.html">연가보상비</a><a href="performance-rating-guide.html">가이드</a></nav></div></div>
 <header>
-  <a href="index.html" style="text-decoration:none; color:inherit;"><h1>공무원 <span>명예퇴직수당</span> 계산기</h1></a>
+  <a href="index.html" style="text-decoration:none; color:inherit;"><h1>공무원 <span>명퇴·퇴직수당</span> 계산기</h1></a>
   <p>생년월일·호봉·퇴직 예정일만 입력하면 규정 산식 그대로 즉시 산출</p>
   <div class="gold-line"></div>
   <a href="index.html" style="display:inline-block;margin-top:16px;padding:8px 22px;background:var(--gold,#c8a84b);color:#0f2340;font-family:'Noto Serif KR',serif;font-size:.85rem;font-weight:700;border-radius:6px;text-decoration:none;position:relative;z-index:1;">← 평정점수 계산기 홈으로</a>
@@ -263,9 +263,15 @@
       </div>
       <div class="hint" id="annualHint"></div>
     </div>
+
+    <div class="field" style="margin-top:18px;">
+      <label for="stdIncome">퇴직수당용 기준소득월액 (원)</label>
+      <input type="number" id="stdIncome" min="0" step="1000" oninput="stdManual=true">
+    </div>
+    <div class="hint">퇴직수당은 명퇴수당과 별도로 「공무원연금법」에 따라 받는 수당으로, <b>봉급이 아니라 기준소득월액</b>(수당을 포함한 연간 과세소득 ÷ 12)이 기준입니다. 호봉을 고르면 봉급·정근수당·명절휴가비·직급보조비로 대략 추정해 넣어두니, 공무원연금공단에서 조회한 실제 금액이 있으면 고쳐 입력하세요.</div>
   </div>
 
-  <button class="btn btn-primary" id="calcBtn" onclick="calculate()">💰 명예퇴직수당 계산하기</button>
+  <button class="btn btn-primary" id="calcBtn" onclick="calculate()">💰 명예퇴직수당·퇴직수당 계산하기</button>
   <div class="alert error" id="errBox" style="margin-bottom:20px;"></div>
 
   <!-- ── 결과 ── -->
@@ -293,6 +299,13 @@
       <div class="t-label">예상 명예퇴직수당 (세전)</div>
       <div class="t-val"><span id="rTotal">0</span><small>원</small></div>
       <div class="t-sub" id="rSub"></div>
+    </div>
+    <div id="sevBox" style="display:none;margin-top:18px;border-top:1px solid rgba(255,255,255,.15);padding-top:16px;">
+      <div class="score-grid" style="margin-bottom:12px;">
+        <div class="score-item"><div class="s-label">명예퇴직수당</div><div class="s-val" id="rHonor">-</div><div class="s-max">위 계산 결과</div></div>
+        <div class="score-item"><div class="s-label">퇴직수당</div><div class="s-val" id="rSev">-</div><div class="s-max" id="rSevSub">-</div></div>
+        <div class="score-item"><div class="s-label">합계 (세전)</div><div class="s-val" id="rSum" style="color:var(--gold);">-</div><div class="s-max">퇴직연금 별도</div></div>
+      </div>
     </div>
     <div class="alert warn" id="warnBox" style="background:rgba(255,248,225,.12);border-color:rgba(249,200,37,.5);color:#ffe28a;"></div>
     <div class="result-actions">
@@ -376,6 +389,13 @@
       산정 월봉급액: 4,899,800 × 68% = <strong>3,331,864원</strong> → 반액 <strong>1,665,932원</strong><br>
       정년잔여월수: <strong>36개월</strong> (1년 이상 5년 이내 → ① 산식)<br>
       명예퇴직수당: 1,665,932 × 36 = <strong>약 59,973,550원</strong>
+    </div>
+    <div class="example-box">
+      <div class="ex-title">📌 퇴직수당은 별도로 받습니다 (「공무원연금법」)</div>
+      명예퇴직수당과 별개로, 재직기간 1년 이상이면 퇴직 시 <strong>퇴직수당</strong>이 지급됩니다.<br>
+      <strong>퇴직수당 = 최종 기준소득월액 × 재직연수(최대 33년) × 지급비율</strong><br>
+      지급비율: 1년 이상 5년 미만 6.5% · 5년 이상 10년 미만 22.75% · 10년 이상 15년 미만 29.25% · 15년 이상 20년 미만 32.5% · <strong>20년 이상 39%</strong><br>
+      예) 기준소득월액 500만원, 재직 25년 → 500만 × 25 × 39% = <strong>약 4,875만원</strong>
     </div>
     <div class="hint">⚠️ 명예퇴직수당은 <b>퇴직소득</b>으로 과세되어 실수령액은 이보다 적습니다. 특별승진 대상자는 승진 직전 월봉급액을 기준으로 하며, 조기퇴직수당·자진퇴직수당, 위험직무 장해 가산액은 별도입니다. 예산 사정에 따라 명예퇴직 신청이 반려되거나 지급 시기가 조정될 수 있으니 반드시 소속 기관 인사부서에 확인하세요.</div>
   </div>
@@ -497,6 +517,22 @@ function onGradeChange(){
   buildSteps();
   salaryManual = false;
   $('salary').value = PAY_TABLE[$('grade').value][Number($('step').value)-1];
+  if(!stdManual) $('stdIncome').value = estimateStd($('grade').value, Number($('salary').value));
+}
+/* ── 퇴직수당 (공무원연금법 · 공무원연금공단 안내 기준) ── */
+const JIKGEUP = {1:750000,2:650000,3:500000,4:400000,5:250000,6:185000,7:180000,8:175000,9:175000};
+let stdManual = false;
+function estimateStd(g, pay){
+  return Math.round((pay + pay*0.5*2/12 + pay*0.6*2/12 + JIKGEUP[g] + 110000)/1000)*1000;
+}
+function severanceRate(y){
+  if(y<1) return 0; if(y<5) return 0.065; if(y<10) return 0.2275; if(y<15) return 0.2925; if(y<20) return 0.325; return 0.39;
+}
+function severance(std, svcMonths){
+  const years = svcMonths/12;
+  const rate = severanceRate(years);
+  const capped = Math.min(years, 33);
+  return { amount: Math.floor(std*capped*rate/10)*10, rate, years: capped };
 }
 function onSalaryManual(){ salaryManual = true; }
 function setPayType(t){
@@ -649,7 +685,24 @@ function calculate(){
     </tbody></table>`;
   $('timelineCard').style.display = '';
 
-  lastResult = { birth, quit, ret, rm, pay, base, half, r, total, eligible, payLabel, svc };
+  /* 퇴직수당 */
+  const std = Number($('stdIncome').value);
+  const honorAmt = eligible ? total : 0;
+  let sev = null;
+  if(svc!==null && std>0){
+    sev = severance(std, svc);
+    $('rHonor').textContent = fmt(honorAmt)+'원';
+    $('rSev').textContent = fmt(sev.amount)+'원';
+    $('rSevSub').textContent = `기준소득월액 × ${sev.years.toFixed(1)}년 × ${(sev.rate*100).toFixed(2)}%`;
+    $('rSum').textContent = fmt(honorAmt + sev.amount)+'원';
+    $('sevBox').style.display = '';
+  }else{
+    $('sevBox').style.display = 'none';
+    if(svc===null) warns.push('임용일을 입력하면 퇴직수당도 함께 계산됩니다.');
+    wb.innerHTML = warns.map(w=>'⚠️ '+w).join('<br>'); wb.classList.toggle('show', warns.length>0);
+  }
+
+  lastResult = { birth, quit, ret, rm, pay, base, half, r, total, eligible, payLabel, svc, sev };
   $('copyArea').classList.remove('show');
   setTimeout(()=>$('resultCard').scrollIntoView({behavior:'smooth', block:'start'}), 50);
 }
@@ -668,7 +721,7 @@ ${L.svc!==null?`재직기간       : ${Math.floor(L.svc/12)}년 ${L.svc%12}개�
 산정 월봉급액  : ${fmt(L.base)}원 (반액 ${fmt(L.half)}원)
 적용 구간      : ${L.r.tier}
 ────────────────────────
-예상 명퇴수당  : ${fmt(L.total)}원 (세전)
+예상 명퇴수당  : ${fmt(L.total)}원 (세전)${L.sev?`\n예상 퇴직수당  : ${fmt(L.sev.amount)}원 (세전)\n합계          : ${fmt((L.eligible?L.total:0)+L.sev.amount)}원`:''}
 지급 요건      : ${L.eligible?'충족':'미충족'}
 ────────────────────────
 ※ 참고용 · 실제 지급액은 소속 기관 인사부서 확인
@@ -686,6 +739,7 @@ function sharePageUrl(){
 buildSteps();
 $('step').value = 25;
 $('salary').value = PAY_TABLE[6][24];
+$('stdIncome').value = estimateStd(6, PAY_TABLE[6][24]);
 buildQuitChips();
 </script>
 </body>
