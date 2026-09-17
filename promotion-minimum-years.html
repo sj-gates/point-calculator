@@ -88,6 +88,18 @@
 </script>
 </head>
 <body>
+<style>
+  .gs-menubar{position:sticky;top:0;z-index:100;background:#0f2340;border-bottom:2px solid #c8a84b;}
+  .gs-menubar .gs-in{max-width:960px;margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between;height:48px;gap:12px;}
+  .gs-menubar .gs-logo{color:#c8a84b;font-weight:700;font-size:1rem;text-decoration:none;white-space:nowrap;font-family:'Noto Serif KR',serif;}
+  .gs-menubar nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;}
+  .gs-menubar nav::-webkit-scrollbar{display:none;}
+  .gs-menubar nav a{color:#c7cde0;text-decoration:none;font-size:.84rem;font-weight:600;padding:14px 10px 12px;border-bottom:2px solid transparent;white-space:nowrap;font-family:'Noto Serif KR',serif;transition:color .15s;}
+  .gs-menubar nav a:hover{color:#fff;}
+  .gs-menubar nav a.on{color:#fff;border-bottom-color:#c8a84b;}
+  @media(max-width:420px){.gs-menubar nav a{font-size:.78rem;padding:14px 7px 12px;}.gs-menubar .gs-logo{font-size:.9rem;}}
+</style>
+<div class="gs-menubar"><div class="gs-in"><a class="gs-logo" href="index.html">공스코어</a><nav aria-label="사이트 메뉴"><a href="index.html">평정점수 계산기</a><a href="retirement-allowance-calculator.html">명퇴수당 계산기</a><a href="performance-rating-guide.html" class="on" aria-current="page">승진 가이드</a></nav></div></div>
 
 <header>
   <a href="index.html" style="text-decoration:none; color:inherit;"><h1>공무원 <span>평정점수</span> 계산기</h1></a>

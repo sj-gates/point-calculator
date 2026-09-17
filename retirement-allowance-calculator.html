@@ -143,6 +143,18 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1KXD1P0ZVC');</script>
 </head>
 <body>
+<style>
+  .gs-menubar{position:sticky;top:0;z-index:100;background:#0f2340;border-bottom:2px solid #c8a84b;}
+  .gs-menubar .gs-in{max-width:960px;margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between;height:48px;gap:12px;}
+  .gs-menubar .gs-logo{color:#c8a84b;font-weight:700;font-size:1rem;text-decoration:none;white-space:nowrap;font-family:'Noto Serif KR',serif;}
+  .gs-menubar nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;}
+  .gs-menubar nav::-webkit-scrollbar{display:none;}
+  .gs-menubar nav a{color:#c7cde0;text-decoration:none;font-size:.84rem;font-weight:600;padding:14px 10px 12px;border-bottom:2px solid transparent;white-space:nowrap;font-family:'Noto Serif KR',serif;transition:color .15s;}
+  .gs-menubar nav a:hover{color:#fff;}
+  .gs-menubar nav a.on{color:#fff;border-bottom-color:#c8a84b;}
+  @media(max-width:420px){.gs-menubar nav a{font-size:.78rem;padding:14px 7px 12px;}.gs-menubar .gs-logo{font-size:.9rem;}}
+</style>
+<div class="gs-menubar"><div class="gs-in"><a class="gs-logo" href="index.html">공스코어</a><nav aria-label="사이트 메뉴"><a href="index.html">평정점수 계산기</a><a href="retirement-allowance-calculator.html" class="on" aria-current="page">명퇴수당 계산기</a><a href="performance-rating-guide.html">승진 가이드</a></nav></div></div>
 <header>
   <a href="index.html" style="text-decoration:none; color:inherit;"><h1>공무원 <span>명예퇴직수당</span> 계산기</h1></a>
   <p>생년월일·호봉·퇴직 예정일만 입력하면 규정 산식 그대로 즉시 산출</p>
@@ -150,27 +162,6 @@
   <a href="index.html" style="display:inline-block;margin-top:16px;padding:8px 22px;background:var(--gold,#c8a84b);color:#0f2340;font-family:'Noto Serif KR',serif;font-size:.85rem;font-weight:700;border-radius:6px;text-decoration:none;position:relative;z-index:1;">← 평정점수 계산기 홈으로</a>
 </header>
 
-<style>
-  .tool-nav{max-width:760px;margin:16px auto 0;padding:0 20px;}
-  .tool-nav .tn-box{display:flex;gap:6px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:6px;box-shadow:var(--card-shadow);}
-  .tool-nav a{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 10px;border-radius:9px;text-decoration:none;font-size:.84rem;font-weight:700;color:var(--muted);transition:all .2s;line-height:1.3;}
-  .tool-nav a:hover{color:var(--navy);background:var(--paper);}
-  .tool-nav a.on{background:var(--navy);color:var(--gold-lt,#f0dfa0);box-shadow:0 2px 10px rgba(15,35,64,.25);}
-  .tool-nav .tn-label{display:none;}
-  @media(min-width:1180px){
-    .tool-nav{position:fixed;left:calc(50% - 380px - 212px);top:120px;width:184px;margin:0;padding:0;z-index:50;}
-    .tool-nav .tn-box{flex-direction:column;gap:6px;padding:10px;}
-    .tool-nav .tn-label{display:block;font-size:.66rem;font-weight:700;color:var(--muted);letter-spacing:.08em;padding:4px 8px 8px;}
-    .tool-nav a{justify-content:flex-start;padding:12px;font-size:.86rem;}
-  }
-</style>
-<nav class="tool-nav" aria-label="계산기 선택">
-  <div class="tn-box">
-    <div class="tn-label">계산기 선택</div>
-    <a href="index.html"><span>🏆</span><span>평정점수 계산기</span></a>
-    <a href="retirement-allowance-calculator.html" class="on" aria-current="page"><span>💰</span><span>명예퇴직수당 계산기</span></a>
-  </div>
-</nav>
 <nav class="breadcrumb">
   <a href="index.html">홈</a> &rsaquo; 명예퇴직수당 계산기
 </nav>
