@@ -144,19 +144,19 @@
 </head>
 <body>
 <style>
-  .gs-menubar{position:sticky;top:0;z-index:100;background:#0f2340;border-bottom:2px solid #c8a84b;}
-  .gs-menubar .gs-in{max-width:960px;margin:0 auto;padding:0 16px;display:flex;align-items:center;justify-content:space-between;height:48px;gap:12px;}
-  .gs-menubar .gs-logo{color:#c8a84b;font-weight:700;font-size:1rem;text-decoration:none;white-space:nowrap;font-family:'Noto Serif KR',serif;}
-  .gs-menubar nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;}
+  .gs-menubar{position:sticky;top:0;z-index:100;background:#0f2340;border-bottom:2px solid #c8a84b;box-shadow:0 2px 10px rgba(0,0,0,.18);}
+  .gs-menubar .gs-in{max-width:980px;margin:0 auto;padding:0 14px;display:flex;align-items:center;justify-content:space-between;height:56px;gap:14px;}
+  .gs-menubar .gs-logo{color:#c8a84b;font-weight:700;font-size:1.12rem;text-decoration:none;white-space:nowrap;font-family:'Noto Serif KR',serif;}
+  .gs-menubar nav{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;align-items:center;}
   .gs-menubar nav::-webkit-scrollbar{display:none;}
-  .gs-menubar nav a{color:#c7cde0;text-decoration:none;font-size:.84rem;font-weight:600;padding:14px 10px 12px;border-bottom:2px solid transparent;white-space:nowrap;font-family:'Noto Serif KR',serif;transition:color .15s;}
-  .gs-menubar nav a:hover{color:#fff;}
-  .gs-menubar nav a.on{color:#fff;border-bottom-color:#c8a84b;}
-  @media(max-width:420px){.gs-menubar nav a{font-size:.78rem;padding:14px 7px 12px;}.gs-menubar .gs-logo{font-size:.9rem;}}
+  .gs-menubar nav a{color:#d5dbe8;text-decoration:none;font-size:.95rem;font-weight:700;padding:8px 14px;border-radius:999px;border:1.5px solid transparent;white-space:nowrap;font-family:'Noto Serif KR',serif;transition:all .15s;}
+  .gs-menubar nav a:hover{color:#fff;background:rgba(255,255,255,.08);}
+  .gs-menubar nav a.on{color:#0f2340;background:#c8a84b;border-color:#c8a84b;box-shadow:0 2px 8px rgba(200,168,75,.35);}
+  @media(max-width:600px){.gs-menubar .gs-in{height:52px;gap:10px;}.gs-menubar nav a{font-size:.86rem;padding:7px 11px;}.gs-menubar .gs-logo{font-size:1rem;}}
 </style>
-<div class="gs-menubar"><div class="gs-in"><a class="gs-logo" href="index.html">공스코어</a><nav aria-label="사이트 메뉴"><a href="index.html">평정점수</a><a href="salary-calculator.html" class="on" aria-current="page">월급 실수령</a><a href="retirement-allowance-calculator.html">명퇴·퇴직수당</a><a href="leave-compensation-calculator.html">연가보상비</a></nav></div></div>
+<div class="gs-menubar"><div class="gs-in"><a class="gs-logo" href="index.html">공스코어</a><nav aria-label="사이트 메뉴"><a href="index.html">평정점수 계산기</a><a href="salary-calculator.html" class="on" aria-current="page">월급 실수령 계산기</a><a href="retirement-allowance-calculator.html">명퇴·퇴직수당 계산기</a><a href="leave-compensation-calculator.html">연가보상비 계산기</a></nav></div></div>
 <header>
-  <a href="index.html" style="text-decoration:none; color:inherit;"><h1>공무원 <span>월급 실수령액</span> 계산기</h1></a>
+  <a href="index.html" style="text-decoration:none; color:inherit;"><h1><svg width="52" height="52" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false" style="vertical-align:middle; margin-right:8px; margin-bottom:3px;" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="7" width="18" height="11" rx="1.8" fill="#2e7d32"/><rect x="4" y="5" width="18" height="11" rx="1.8" fill="#43a047" stroke="#1b5e20" stroke-width=".4"/><circle cx="13" cy="10.5" r="3" fill="#a5d6a7"/><circle cx="13" cy="10.5" r="1.6" fill="#43a047"/><rect x="5.5" y="7" width="2.5" height="1.2" rx=".4" fill="#a5d6a7"/><rect x="18" y="12.8" width="2.5" height="1.2" rx=".4" fill="#a5d6a7"/></svg>공무원 <span>월급 실수령액</span> 계산기</h1></a>
   <p>계급·호봉·근무연수만 입력하면 2026 봉급표와 수당·공제를 반영해 산출</p>
   <div class="gold-line"></div>
   <a href="index.html" style="display:inline-block;margin-top:16px;padding:8px 22px;background:var(--gold,#c8a84b);color:#0f2340;font-family:'Noto Serif KR',serif;font-size:.85rem;font-weight:700;border-radius:6px;text-decoration:none;position:relative;z-index:1;">← 평정점수 계산기 홈으로</a>
