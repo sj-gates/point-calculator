@@ -7,13 +7,13 @@
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>공무원 직급별 승진소요 최저연수 총정리(2026 개정) — 9급부터 4급까지</title>
-<meta name="description" content="지방공무원임용령 개정으로 단축된 9급, 8급, 7급, 6급, 5급 공무원의 최저 재직 기간을 직급별로 정리했습니다. 승진소요연수를 채우지 못하면 명부에 올라가지 않으니 꼭 확인하세요.">
+<title>승진소요 최저연수 2026 개정표 — 5급 3년·6급 2년·7급 이하 1년 | 공스코어</title>
+<meta name="description" content="지방공무원임용령 개정으로 승진소요 최저연수가 5급 3년, 6급 2년, 7·8·9급 1년으로 줄었습니다. 개정 전후 비교표와 최저연수에서 빠지는 휴직·징계 기간까지 한 번에 확인하세요.">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="공무원 평정점수 계산기">
-<meta property="og:title" content="공무원 직급별 승진소요 최저연수 총정리(2026 개정)">
-<meta property="og:description" content="임용령 개정으로 단축된 9급부터 4급까지 승진에 필요한 최저 재직 기간을 정리했습니다.">
+<meta property="og:title" content="승진소요 최저연수 2026 개정표 — 5급 3년·6급 2년·7급 이하 1년">
+<meta property="og:description" content="5급 3년, 6급 2년, 7·8·9급 1년. 임용령 개정으로 단축된 직급별 승진소요 최저연수를 개정 전후 비교표로 정리했습니다.">
 <meta property="og:url" content="https://gong-score.co.kr/promotion-minimum-years.html">
 <link rel="canonical" href="https://gong-score.co.kr/promotion-minimum-years.html">
 <meta property="og:locale" content="ko_KR">
@@ -26,8 +26,8 @@
   body{font-family:'Noto Serif KR',serif;background:var(--cream);color:var(--ink);min-height:100vh;}
   header{background:var(--navy);padding:36px 24px 28px;text-align:center;position:relative;overflow:hidden;}
   header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 24px,rgba(200,168,75,.06) 24px,rgba(200,168,75,.06) 25px);}
-  header h1{font-size:clamp(1.1rem,4vw,1.6rem);font-weight:700;color:#fff;letter-spacing:-.02em;position:relative;}
-  header h1 span{color:var(--gold);}
+  header .site-title{margin:0;font-size:clamp(1.1rem,4vw,1.6rem);font-weight:700;color:#fff;letter-spacing:-.02em;position:relative;}
+  header .site-title span{color:var(--gold);}
   header p{margin-top:8px;font-size:.78rem;color:rgba(255,255,255,.55);position:relative;}
   .gold-line{width:48px;height:2px;background:var(--gold);margin:14px auto 0;position:relative;}
   nav.breadcrumb{max-width:820px;margin:16px auto 0;padding:0 20px;font-size:.76rem;color:var(--muted);}
@@ -36,7 +36,7 @@
 
   .intro{margin-bottom:32px;}
   .intro .eyebrow{font-size:.72rem;font-weight:700;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;}
-  .intro h2{font-size:clamp(1.3rem,4vw,1.8rem);font-weight:700;color:var(--navy);line-height:1.4;margin-bottom:14px;}
+  .intro h1,.intro h2{font-size:clamp(1.3rem,4vw,1.8rem);font-weight:700;color:var(--navy);line-height:1.4;margin-bottom:14px;}
   .intro p{font-size:.87rem;color:var(--muted);line-height:1.85;}
 
   /* 경력 사다리 - 가로 스크롤 단계형, 다른 페이지의 세로 카드와 다른 시각 언어 */
@@ -102,7 +102,7 @@
 <div class="gs-menubar"><div class="gs-in"><a class="gs-logo" href="index.html">공<span style="color:#c8a84b">스코어</span></a><nav aria-label="사이트 메뉴"><a href="index.html">평정점수 계산기</a><a href="salary-calculator.html">월급 실수령 계산기</a><a href="retirement-allowance-calculator.html">명퇴·퇴직수당 계산기</a><a href="leave-compensation-calculator.html">연가보상비 계산기</a></nav></div></div><script>(function(){var n=document.querySelector(".gs-menubar nav"),a=n&&n.querySelector("a.on");if(a)n.scrollLeft=a.offsetLeft-(n.clientWidth-a.offsetWidth)/2;})();</script>
 
 <header>
-  <a href="index.html" style="text-decoration:none; color:inherit;"><h1>공무원 <span>평정점수</span> 계산기</h1></a>
+  <a href="index.html" style="text-decoration:none; color:inherit;"><p class="site-title">공무원 <span>평정점수</span> 계산기</p></a>
   <p>지방공무원을 위한 승진 평정점수 자동 산출</p>
   <div class="gold-line"></div>
   <a href="index.html" style="display:inline-block;margin-top:16px;padding:8px 22px;background:var(--gold,#c8a84b);color:#0f2340;font-family:'Noto Serif KR',serif;font-size:.85rem;font-weight:700;border-radius:6px;text-decoration:none;position:relative;z-index:1;">← 계산기 홈으로</a>
@@ -116,7 +116,7 @@
 
   <div class="intro">
     <div class="eyebrow">승진 가이드 · 2026 임용령 개정 반영</div>
-    <h2>9급에서 3급까지, 최저연수 사다리</h2>
+    <h1>승진소요 최저연수, 9급에서 3급까지 한눈에</h1>
     <p>승진소요 최저연수는 상위 직급으로 승진하기 위해 현 직급에서 반드시 채워야 하는 최소 재직 기간입니다. 2026년 임용령 개정으로 대부분의 구간이 단축됐습니다. 아래 사다리에서 개정 전후를 한눈에 비교해보세요.</p>
   </div>
 
