@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9941490255485877" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>공무원 초과근무수당 계산기 2026 — 직급별 시간외근무수당 단가·정액분 자동 계산 | 공스코어</title>
+<meta name="description" content="이번 달 초과근무수당이 얼마인지 바로 계산하세요. 2026년 직급별 시간외근무수당 단가(9급 10,949원·7급 12,368원 등), 평일 1시간 공제, 정액분 10시간, 월 57시간 한도, 10월부터 폐지되는 하루 4시간 상한까지 반영합니다.">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="공스코어">
+<meta property="og:title" content="공무원 초과근무수당 계산기 2026 | 공스코어">
+<meta property="og:description" content="직급과 초과근무 시간만 넣으면 시간외근무수당을 규정 산식 그대로 계산합니다.">
+<meta property="og:url" content="https://gong-score.co.kr/overtime-pay-calculator.html">
+<link rel="canonical" href="https://gong-score.co.kr/overtime-pay-calculator.html">
+<meta property="og:image" content="https://gong-score.co.kr/og-image.png">
+<meta property="og:locale" content="ko_KR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0f2340;--gold:#c8a84b;--gold-lt:#f0dfa0;--cream:#faf8f3;--paper:#f2ede3;--ink:#1a1a2e;--muted:#6b6b7a;--border:#d8d0be;--red:#c0392b;--green:#1a6b45;--card-shadow:0 2px 20px rgba(15,35,64,.10);}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Serif KR',serif;background:var(--cream);color:var(--ink);min-height:100vh;}
+  header{background:var(--navy);padding:36px 24px 28px;text-align:center;position:relative;overflow:hidden;}
+  header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 24px,rgba(200,168,75,.06) 24px,rgba(200,168,75,.06) 25px);}
+  header h1{font-size:clamp(1.1rem,4vw,1.6rem);font-weight:700;color:#fff;letter-spacing:-.02em;position:relative;}
+  header h1 span{color:var(--gold);}
+  header p{margin-top:8px;font-size:.78rem;color:rgba(255,255,255,.55);position:relative;}
+  .gold-line{width:48px;height:2px;background:var(--gold);margin:14px auto 0;}
+  nav.breadcrumb{max-width:760px;margin:16px auto 0;padding:0 20px;font-size:.76rem;color:var(--muted);}
+  nav.breadcrumb a{color:var(--gold);text-decoration:none;}
+  main{max-width:760px;margin:0 auto;padding:24px 20px 60px;}
+  .article-hero{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 24px 22px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .article-hero .tag{display:inline-block;background:var(--navy);color:var(--gold);font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:99px;letter-spacing:.05em;margin-bottom:12px;}
+  .article-hero h2{font-size:clamp(1.1rem,3.5vw,1.45rem);font-weight:700;color:var(--navy);line-height:1.45;margin-bottom:10px;}
+  .article-hero .meta{font-size:.74rem;color:var(--muted);}
+  .card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);animation:fadeUp .4s ease both;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+  .card h3,.card-title{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:18px;display:flex;align-items:center;gap:8px;}
+  .card h3 .num,.card-title .num{background:var(--navy);color:var(--gold);font-family:'DM Mono',monospace;font-size:.72rem;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .card p{font-size:.88rem;line-height:1.9;color:var(--ink);margin-bottom:10px;}
+
+  /* ── 폼 요소 ── */
+  label{display:block;font-size:.78rem;color:var(--muted);margin-bottom:5px;font-weight:600;letter-spacing:.02em;}
+  select,input[type="number"],input[type="text"]{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:7px;font-family:'Noto Serif KR',serif;font-size:.88rem;color:var(--ink);background:var(--cream);transition:border-color .2s,box-shadow .2s;appearance:none;-webkit-appearance:none;}
+  select:focus,input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(200,168,75,.15);background:#fff;}
+  .select-wrap{position:relative;}
+  .select-wrap::after{content:'▾';position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--gold);pointer-events:none;font-size:.85rem;}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  .field{display:flex;flex-direction:column;}
+  .field + .field, .grid-2 + .field, .grid-2 + .grid-2, .field + .grid-2, .grid-3 + .field{margin-top:14px;}
+  .grid-2 > .field + .field, .grid-3 > .field + .field{margin-top:0;}
+  .grid-2, .grid-3{align-items:end;}
+  .hint{font-size:.73rem;color:var(--muted);margin-top:10px;padding:8px 12px;background:var(--paper);border-left:3px solid var(--gold);border-radius:0 5px 5px 0;line-height:1.7;}
+  .seg{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1.5px solid var(--border);border-radius:7px;overflow:hidden;}
+  .seg button{font-family:'Noto Serif KR',serif;font-size:.8rem;font-weight:600;padding:10px 6px;background:var(--cream);color:var(--muted);border:none;cursor:pointer;transition:all .15s;line-height:1.35;}
+  .seg button + button{border-left:1.5px solid var(--border);}
+  .seg button.on{background:var(--navy);color:var(--gold-lt);}
+  .seg button small{display:block;font-size:.68rem;font-weight:400;opacity:.8;margin-top:2px;}
+  .alert{padding:10px 14px;border-radius:7px;font-size:.8rem;margin-top:12px;display:none;line-height:1.7;}
+  .alert.error{background:#fdecea;border:1px solid #f5a0a0;color:var(--red);}
+  .alert.show{display:block;}
+
+  .btn{display:inline-flex;align-items:center;gap:7px;padding:11px 22px;border-radius:7px;font-family:'Noto Serif KR',serif;font-size:.85rem;font-weight:700;cursor:pointer;border:none;transition:all .2s;}
+  .btn-primary{background:var(--navy);color:#fff;width:100%;justify-content:center;font-size:.95rem;padding:14px;letter-spacing:.03em;}
+  .btn-primary:hover{background:#1a3a5c;transform:translateY(-1px);box-shadow:0 4px 16px rgba(15,35,64,.25);}
+
+  /* ── 결과 카드 ── */
+  .result-card{background:var(--navy);color:#fff;border-radius:10px;padding:28px 24px;margin-bottom:20px;box-shadow:0 4px 30px rgba(15,35,64,.25);display:none;}
+  .result-card.show{display:block;animation:fadeUp .5s ease both;}
+  .result-card h2{font-size:1rem;color:var(--gold-lt);margin-bottom:20px;letter-spacing:.05em;font-weight:600;}
+  .score-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px;}
+  .score-item{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:14px 10px;text-align:center;}
+  .score-item .s-label{font-size:.68rem;color:rgba(255,255,255,.55);margin-bottom:6px;}
+  .score-item .s-val{font-family:'DM Mono',monospace;font-size:1.15rem;font-weight:500;color:var(--gold-lt);word-break:keep-all;}
+  .score-item .s-max{font-size:.66rem;color:rgba(255,255,255,.4);margin-top:3px;}
+  .total-score{text-align:center;border-top:1px solid rgba(255,255,255,.15);padding-top:18px;}
+  .total-score .t-label{font-size:.8rem;color:rgba(255,255,255,.6);margin-bottom:6px;}
+  .total-score .t-val{font-family:'DM Mono',monospace;font-size:clamp(1.9rem,6vw,2.8rem);font-weight:500;color:var(--gold);line-height:1;}
+  .total-score .t-val small{font-size:.5em;color:var(--gold-lt);margin-left:4px;}
+  .total-score .t-sub{font-size:.75rem;color:rgba(255,255,255,.5);margin-top:10px;line-height:1.7;}
+  .total-score .t-warn{font-size:.74rem;color:#ffd98a;margin-top:10px;line-height:1.7;}
+
+  .formula-box{background:var(--navy);color:#fff;border-radius:8px;padding:18px 20px;margin:14px 0;font-family:'DM Mono',monospace;font-size:.82rem;line-height:1.9;overflow-x:auto;}
+  .formula-box .f-label{font-size:.7rem;color:rgba(255,255,255,.5);margin-bottom:6px;font-family:'Noto Serif KR',serif;}
+  .formula-box .f-val{color:var(--gold);}
+  .example-box{background:var(--paper);border:1px solid var(--border);border-radius:8px;padding:16px 18px;margin:14px 0;font-size:.84rem;line-height:1.9;}
+  .example-box .ex-title{font-weight:700;color:var(--navy);margin-bottom:8px;}
+  .table-wrap{overflow-x:auto;margin:14px 0;}
+  table{width:100%;border-collapse:collapse;font-size:.82rem;}
+  thead tr{background:var(--navy);color:#fff;}
+  thead th{padding:9px 12px;text-align:left;white-space:nowrap;}
+  tbody tr:nth-child(odd){background:#fff;}
+  tbody tr:nth-child(even){background:var(--paper);}
+  tbody tr.sel{background:var(--gold-lt);}
+  tbody td{padding:10px 12px;border-bottom:1px solid var(--border);line-height:1.6;white-space:nowrap;}
+  .td-c{text-align:center;}
+  .td-r{text-align:right;font-family:'DM Mono',monospace;}
+  .td-bold{font-weight:700;color:var(--navy);}
+  .faq h4{font-size:.9rem;font-weight:700;color:var(--navy);margin:16px 0 6px;}
+  .faq h4:first-child{margin-top:0;}
+  .faq p{font-size:.85rem;line-height:1.85;color:var(--ink);}
+  .step-list{display:flex;flex-direction:column;gap:14px;margin-top:6px;}
+  .step-item{display:flex;gap:14px;align-items:flex-start;}
+  .step-num{background:var(--gold);color:var(--navy);font-family:'DM Mono',monospace;font-size:.78rem;font-weight:700;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+  .step-item .s-title{font-size:.9rem;font-weight:700;color:var(--navy);margin-bottom:4px;}
+  .step-item .s-desc{font-size:.83rem;line-height:1.85;color:var(--ink);}
+  .change-list{list-style:none;display:flex;flex-direction:column;gap:8px;margin:6px 0 4px;}
+  .change-list li{font-size:.85rem;line-height:1.8;padding-left:18px;position:relative;}
+  .change-list li::before{content:'▸';position:absolute;left:0;color:var(--gold);}
+  .related-links{background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);}
+  .related-links h3{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:14px;}
+  .related-links ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .related-links li a{font-size:.85rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:6px;}
+  .related-links li a::before{content:'→';color:var(--gold);}
+  footer{text-align:center;padding:24px;font-size:.72rem;color:var(--muted);border-top:1px solid var(--border);line-height:1.8;}
+  @media(max-width:540px){
+    .card{padding:20px 16px;}.article-hero{padding:20px 16px 16px;}
+    .grid-2{grid-template-columns:1fr;}
+    .score-grid{grid-template-columns:1fr 1fr;}
+    .score-grid .score-item:first-child{grid-column:1/-1;}
+  }
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1KXD1P0ZVC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1KXD1P0ZVC');</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "호봉이 높으면 초과근무수당도 더 많나요?", "acceptedAnswer": {"@type": "Answer", "text": "아닙니다. 시간외근무수당 단가는 본인 호봉이 아니라 해당 계급 10호봉 봉급을 기준으로 정합니다. 같은 7급이면 1호봉이든 20호봉이든 1시간 단가가 12,368원으로 같습니다."}}, {"@type": "Question", "name": "평일 초과근무는 왜 1시간을 빼나요?", "acceptedAnswer": {"@type": "Answer", "text": "「지방공무원 수당 등에 관한 규정」 제15조에 따라 토요일·공휴일이 아닌 날은 그날의 시간외근무시간에서 1시간을 뺀 시간만 인정합니다. 18시에 퇴근 시간이 되고 21시까지 일했다면 3시간이 아니라 2시간이 인정됩니다. 토요일·공휴일 근무는 빼지 않습니다."}}, {"@type": "Question", "name": "초과근무를 안 해도 받는 수당이 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "있습니다. 정액분 10시간입니다. 한 달에 15일 이상 출근하면 초과근무 실적과 관계없이 10시간분을 받습니다. 15일보다 적게 출근하면 모자라는 1일마다 15분의 1씩 줄어듭니다. 연가·병가·휴직·결근 등으로 근무하지 않은 날은 출근일수에 들어가지 않습니다."}}, {"@type": "Question", "name": "밤 10시가 넘어서까지 일하면 야간수당이 붙나요?", "acceptedAnswer": {"@type": "Answer", "text": "일반 사무 공무원은 붙지 않습니다. 야간근무수당은 현업공무원 등 야간에만 근무하거나 주·야간 교대근무를 하는 사람에게 지급됩니다. 일반 행정직의 밤 근무는 시간외근무수당으로만 계산됩니다."}}, {"@type": "Question", "name": "5급도 초과근무수당을 받나요?", "acceptedAnswer": {"@type": "Answer", "text": "받을 수 있습니다. 다만 관리업무수당을 받는 사람(4급 이상, 5급 중 과장·담당관·사업소장 등)은 시간외근무수당·야간근무수당·휴일근무수당을 받지 않습니다."}}, {"@type": "Question", "name": "한 달에 57시간 넘게 일하면 어떻게 되나요?", "acceptedAnswer": {"@type": "Answer", "text": "57시간을 넘는 시간은 수당이 나오지 않습니다. 2026년 10월부터 하루 4시간 상한은 없어지지만 월 57시간 상한은 그대로 유지됩니다. 정액분 10시간은 이 한도와 별도라서 한 달 최대 67시간분까지 받을 수 있습니다."}}]}
+</script>
+</head>
+<body>
+<style>
+  .gs-menubar{position:sticky;top:0;z-index:100;background:#17191e;border-bottom:3px solid #c8a84b;box-shadow:0 3px 14px rgba(0,0,0,.35);}
+  .gs-menubar .gs-in{max-width:980px;margin:0 auto;padding:0 14px;display:flex;align-items:center;justify-content:space-between;height:56px;gap:14px;}
+  .gs-menubar .gs-logo{color:#ffffff;font-weight:700;font-size:1.12rem;text-decoration:none;white-space:nowrap;font-family:'Noto Serif KR',serif;}
+  .gs-menubar nav{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;align-items:center;}
+  .gs-menubar nav::-webkit-scrollbar{display:none;}
+  .gs-menubar nav a{color:#c9ced8;text-decoration:none;font-size:.95rem;font-weight:700;padding:8px 14px;border-radius:999px;border:1.5px solid transparent;white-space:nowrap;font-family:'Noto Serif KR',serif;transition:all .15s;}
+  .gs-menubar nav a:hover{color:#ffffff;background:rgba(255,255,255,.1);}
+  .gs-menubar nav a.on{color:#17191e;background:#c8a84b;border-color:#c8a84b;box-shadow:0 2px 10px rgba(200,168,75,.45);}
+  @media(max-width:600px){.gs-menubar .gs-in{height:52px;gap:10px;}.gs-menubar nav a{font-size:.86rem;padding:7px 11px;}.gs-menubar .gs-logo{font-size:1rem;}}
+</style>
+<div class="gs-menubar"><div class="gs-in"><a class="gs-logo" href="index.html">공<span style="color:#c8a84b">스코어</span></a><nav aria-label="사이트 메뉴"><a href="index.html">평정점수 계산기</a><a href="salary-calculator.html">월급 실수령 계산기</a><a href="overtime-pay-calculator.html" class="on" aria-current="page">초과근무수당 계산기</a><a href="retirement-allowance-calculator.html">명퇴·퇴직수당 계산기</a><a href="leave-compensation-calculator.html">연가보상비 계산기</a></nav></div></div><script>(function(){var n=document.querySelector(".gs-menubar nav"),a=n&&n.querySelector("a.on");if(a)n.scrollLeft=a.offsetLeft-(n.clientWidth-a.offsetWidth)/2;})();</script>
+<header>
+  <h1><svg width="52" height="52" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false" style="vertical-align:middle; margin-right:8px; margin-bottom:3px;" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="13.2" r="8.6" fill="#eceff1" stroke="#bdbdbd" stroke-width=".5"/><circle cx="11" cy="13.2" r="7.1" fill="#ffffff"/><g stroke="#90a4ae" stroke-width=".8" stroke-linecap="round"><line x1="11" y1="6.9" x2="11" y2="7.9"/><line x1="11" y1="18.5" x2="11" y2="19.5"/><line x1="4.7" y1="13.2" x2="5.7" y2="13.2"/><line x1="16.3" y1="13.2" x2="17.3" y2="13.2"/></g><line x1="11" y1="13.2" x2="7.3" y2="13.2" stroke="#0f2340" stroke-width="1.5" stroke-linecap="round"/><line x1="11" y1="13.2" x2="11" y2="8.4" stroke="#0f2340" stroke-width="1" stroke-linecap="round"/><circle cx="11" cy="13.2" r=".9" fill="#e57373"/><circle cx="19.6" cy="4.6" r="3.3" fill="#ffb300"/><circle cx="21.2" cy="3.4" r="2.8" fill="#0f2340"/></svg>공무원 <span>초과근무수당</span> 계산기</h1>
+  <p>직급과 이번 달 초과근무 시간만 입력하면 시간외근무수당을 규정 산식 그대로 산출</p>
+  <div class="gold-line"></div>
+</header>
+
+<nav class="breadcrumb">
+  <a href="index.html">홈</a> &rsaquo; 초과근무수당 계산기
+</nav>
+<main>
+  <div class="article-hero">
+    <span class="tag">시간외근무수당</span>
+    <h2>공무원 초과근무수당 계산기 2026<br>— 이번 달 야근, 얼마로 돌아올까?</h2>
+    <p class="meta">「지방공무원 수당 등에 관한 규정」 제15조 · 2026년 봉급표 10호봉 기준 단가 · 10월 1일 하루 4시간 상한 폐지 반영 · 입력 정보는 서버에 저장되지 않습니다</p>
+  </div>
+
+  <div style="display:flex; justify-content:center; padding:16px 0;">
+    <ins class="kakao_ad_area" style="display:none;"
+    data-ad-unit = "DAN-AFaQUXIyvx8EIQI0"
+    data-ad-width = "320"
+    data-ad-height = "50"></ins>
+    <script type="text/javascript" src="//t1.kakaocdn.net/kas/static/ba.min.js" async></script>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="num">1</span> 직급 · 출근일수</div>
+    <div class="grid-2">
+      <div class="field">
+        <label for="grade">직급</label>
+        <div class="select-wrap"><select id="grade" onchange="markRow()">
+          <option value="9">9급</option><option value="8">8급</option><option value="7" selected>7급</option>
+          <option value="6">6급</option><option value="5">5급</option>
+        </select></div>
+      </div>
+      <div class="field">
+        <label for="attend">이번 달 출근일수</label>
+        <input type="number" id="attend" min="0" max="31" step="1" value="20" inputmode="numeric">
+      </div>
+    </div>
+    <div class="field">
+      <label>적용 기준</label>
+      <div class="seg" id="modeSeg">
+        <button type="button" data-mode="old" onclick="setMode('old')">9월 근무분까지<small>하루 4시간 한도</small></button>
+        <button type="button" data-mode="new" onclick="setMode('new')">10월 근무분부터<small>하루 한도 없음</small></button>
+      </div>
+    </div>
+    <div class="hint">출근일수는 정액분(10시간) 계산에 쓰입니다. 연가·병가·휴직·결근처럼 근무하지 않은 날은 빼고, 출장은 포함해서 넣으세요. 4급 이상과 관리업무수당을 받는 5급(과장·담당관 등)은 시간외근무수당 대상이 아닙니다.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="num">2</span> 평일 초과근무</div>
+    <div class="grid-3">
+      <div class="field">
+        <label for="wDays">근무한 날 수</label>
+        <input type="number" id="wDays" min="0" max="31" step="1" value="8" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="wH">합계 (시간)</label>
+        <input type="number" id="wH" min="0" step="1" value="24" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="wM">합계 (분)</label>
+        <input type="number" id="wM" min="0" max="59" step="1" value="0" inputmode="numeric">
+      </div>
+    </div>
+    <div class="hint">퇴근 시간 이후 더 근무한 시간을 모두 더해서 넣으세요. <b>하루 1시간씩 빼는 계산은 계산기가 해 드립니다.</b> 예: 18시 퇴근인데 8일 동안 21시까지 근무했다면 → 8일, 24시간.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="num">3</span> 토요일 · 공휴일 근무</div>
+    <div class="grid-3">
+      <div class="field">
+        <label for="hDays">근무한 날 수</label>
+        <input type="number" id="hDays" min="0" max="15" step="1" value="1" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="hH">합계 (시간)</label>
+        <input type="number" id="hH" min="0" step="1" value="4" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="hM">합계 (분)</label>
+        <input type="number" id="hM" min="0" max="59" step="1" value="0" inputmode="numeric">
+      </div>
+    </div>
+    <div class="hint">토요일·공휴일 근무는 <b>1시간을 빼지 않고</b> 근무한 시간 그대로 인정됩니다. 없으면 0으로 두세요.</div>
+  </div>
+
+  <button class="btn btn-primary" onclick="calculate()">🌙 초과근무수당 계산하기</button>
+  <div class="alert error" id="errBox" style="margin-top:14px;"></div>
+
+  <div class="result-card" id="resultCard" style="margin-top:20px;">
+    <h2>▪ 이번 달 초과근무수당</h2>
+    <div class="score-grid">
+      <div class="score-item">
+        <div class="s-label">1시간 단가</div>
+        <div class="s-val" id="rUnit">-</div>
+        <div class="s-max" id="rUnitSub">-</div>
+      </div>
+      <div class="score-item">
+        <div class="s-label">인정 시간 (실적분)</div>
+        <div class="s-val" id="rHours">-</div>
+        <div class="s-max">월 57시간 한도</div>
+      </div>
+      <div class="score-item">
+        <div class="s-label">정액분</div>
+        <div class="s-val" id="rFixed">-</div>
+        <div class="s-max" id="rFixedSub">-</div>
+      </div>
+    </div>
+    <div class="total-score">
+      <div class="t-label">예상 초과근무수당 합계 (세전)</div>
+      <div class="t-val"><span id="rTotal">0</span><small>원</small></div>
+      <div class="t-sub" id="rSub"></div>
+      <div class="t-warn" id="rWarn"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">4</span> 2026년 직급별 초과근무수당 단가표</h3>
+    <p>시간외근무수당 1시간 단가는 <strong>본인 호봉이 아니라 해당 계급 10호봉 봉급</strong>을 기준으로 정해집니다. 그래서 같은 직급이면 호봉과 상관없이 단가가 같습니다. 8급·9급은 10호봉 봉급의 60%, 7급 이상은 55%를 반영합니다.</p>
+    <div class="table-wrap">
+      <table><thead><tr><th>직급</th><th class="td-r">10호봉 봉급</th><th class="td-c">반영률</th><th class="td-r">1시간 단가</th><th class="td-r">정액분 (10시간)</th><th class="td-r">월 최대 (67시간)</th></tr></thead><tbody id="rateTbl">
+        <tr data-g="9"><td class="td-bold">9급</td><td class="td-r">2,542,700</td><td class="td-c">60%</td><td class="td-r td-bold">10,949원</td><td class="td-r">109,490원</td><td class="td-r">733,583원</td></tr>
+        <tr data-g="8"><td class="td-bold">8급</td><td class="td-r">2,813,000</td><td class="td-c">60%</td><td class="td-r td-bold">12,113원</td><td class="td-r">121,130원</td><td class="td-r">811,571원</td></tr>
+        <tr data-g="7"><td class="td-bold">7급</td><td class="td-r">3,133,300</td><td class="td-c">55%</td><td class="td-r td-bold">12,368원</td><td class="td-r">123,680원</td><td class="td-r">828,656원</td></tr>
+        <tr data-g="6"><td class="td-bold">6급</td><td class="td-r">3,468,700</td><td class="td-c">55%</td><td class="td-r td-bold">13,692원</td><td class="td-r">136,920원</td><td class="td-r">917,364원</td></tr>
+        <tr data-g="5"><td class="td-bold">5급</td><td class="td-r">4,066,800</td><td class="td-c">55%</td><td class="td-r td-bold">16,053원</td><td class="td-r">160,530원</td><td class="td-r">1,075,551원</td></tr>
+      </tbody></table>
+    </div>
+    <p>8급 단가(12,113원)가 7급(12,368원)과 거의 차이가 나지 않는 것도 반영률 차이 때문입니다. 월 최대는 실적분 57시간과 정액분 10시간을 합한 67시간 기준이며, 모두 세전 금액입니다.</p>
+    <div class="hint">단가 = 10호봉 봉급 × 반영률 × 1/209 × 150%, 원 미만 버림. 「지방공무원 수당 등에 관한 규정」 제15조와 시간외근무수당 기준호봉표(10호봉), 2026년 일반직 봉급표를 기준으로 계산했습니다.</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">5</span> 초과근무수당은 어떻게 계산되나요?</h3>
+    <div class="formula-box">
+      <div class="f-label">초과근무수당 (한 달)</div>
+      1시간 단가 <span class="f-val">×</span> (정액분 10시간 <span class="f-val">+</span> 인정 실적 시간)
+    </div>
+    <div class="step-list">
+      <div class="step-item"><div class="step-num">1</div><div>
+        <div class="s-title">평일은 하루 1시간을 뺍니다</div>
+        <div class="s-desc">토요일·공휴일이 아닌 날은 그날 초과근무한 시간에서 <strong>1시간을 뺀 시간</strong>만 인정합니다. 18시 퇴근인데 21시까지 일했다면 3시간이 아니라 2시간입니다. 토요일·공휴일은 빼지 않습니다.</div>
+      </div></div>
+      <div class="step-item"><div class="step-num">2</div><div>
+        <div class="s-title">한 달치를 분 단위로 더한 뒤 1시간 미만은 버립니다</div>
+        <div class="s-desc">날마다 끊어서 버리는 것이 아니라, 한 달 동안의 인정 시간을 <strong>분 단위까지 모두 더한 다음</strong> 1시간이 안 되는 나머지만 버립니다. 30분씩 네 번이면 2시간으로 인정됩니다.</div>
+      </div></div>
+      <div class="step-item"><div class="step-num">3</div><div>
+        <div class="s-title">실적분은 월 57시간까지</div>
+        <div class="s-desc">한 달에 수당을 받을 수 있는 실적 시간은 <strong>57시간</strong>이 최대입니다. 이 한도는 10월 이후에도 그대로입니다.</div>
+      </div></div>
+      <div class="step-item"><div class="step-num">4</div><div>
+        <div class="s-title">정액분 10시간은 따로 받습니다</div>
+        <div class="s-desc">한 달에 <strong>15일 이상 출근</strong>하면 초과근무를 하지 않아도 10시간분을 받습니다. 15일보다 적으면 모자라는 1일마다 15분의 1씩 줄어듭니다.</div>
+      </div></div>
+    </div>
+    <div class="example-box">
+      <div class="ex-title">📌 예시: 7급, 20일 출근, 평일 8일 동안 21시까지 근무 + 토요일 4시간</div>
+      평일: 24시간 − 8일 × 1시간 = 16시간<br>
+      토요일: 4시간 (공제 없음)<br>
+      실적분: 20시간 × 12,368원 = 247,360원<br>
+      정액분: 10시간 × 12,368원 = 123,680원<br>
+      <strong>합계 371,040원 (세전)</strong>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">6</span> 2026년 10월 1일부터 달라지는 점</h3>
+    <p>「공무원수당 등에 관한 규정」 개정안이 2026년 9월 15일 국무회의를 통과해 <strong>10월 1일부터</strong> 시행됩니다. 지방공무원 규정도 같은 내용의 개정안이 함께 입법예고되었습니다.</p>
+    <ul class="change-list">
+      <li><strong>하루 4시간 상한 폐지</strong> — 지금까지는 하루에 4시간까지만 수당이 나왔지만, 앞으로는 실제로 근무한 시간만큼 인정됩니다.</li>
+      <li><strong>월 57시간 상한은 유지</strong> — 휴식권 보장을 위해 한 달 한도는 그대로입니다.</li>
+      <li><strong>월 100시간 예외 폐지</strong> — 긴급 현안 대응 때 월 100시간까지 인정하던 예외 제도가 없어집니다.</li>
+      <li><strong>근무 확인 강화</strong> — 초과근무 중 일정 시간 간격으로 전자인사관리시스템(e-사람·인사랑 등)에 실제 근무 여부를 등록하고 부서장이 확인합니다.</li>
+      <li><strong>부정수령 제재 강화</strong> — 한 번 적발이라도 부정수령액이 50만원 이상이면 징계 의결을 요구합니다.</li>
+    </ul>
+    <div class="hint">위 계산기의 "적용 기준"에서 9월 근무분까지는 하루 4시간 한도를, 10월 근무분부터는 한도 없음을 선택하세요. 지방공무원 개정 규정의 정확한 시행 시기는 소속 기관 공지를 확인하세요.</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">7</span> 초과근무수당 자주 묻는 질문</h3>
+    <div class="faq">
+      <h4>Q. 호봉이 높으면 초과근무수당도 더 많나요?</h4>
+      <p>아닙니다. 단가는 본인 호봉이 아니라 <strong>해당 계급 10호봉 봉급</strong>을 기준으로 정합니다. 같은 7급이면 1호봉이든 20호봉이든 1시간 단가가 12,368원으로 같습니다.</p>
+      <h4>Q. 평일 초과근무는 왜 1시간을 빼나요?</h4>
+      <p>「지방공무원 수당 등에 관한 규정」 제15조에 따라 토요일·공휴일이 아닌 날은 그날의 시간외근무시간에서 <strong>1시간을 뺀 시간</strong>만 인정합니다. 18시 퇴근인데 21시까지 일했다면 2시간이 인정됩니다. 토요일·공휴일 근무는 빼지 않습니다.</p>
+      <h4>Q. 초과근무를 안 해도 받는 수당이 있나요?</h4>
+      <p>있습니다. <strong>정액분 10시간</strong>입니다. 한 달에 15일 이상 출근하면 실적과 관계없이 10시간분을 받고, 15일보다 적으면 모자라는 1일마다 15분의 1씩 줄어듭니다. 연가·병가·휴직·결근 등으로 근무하지 않은 날은 출근일수에 들어가지 않습니다.</p>
+      <h4>Q. 밤 10시가 넘어서까지 일하면 야간수당이 붙나요?</h4>
+      <p>일반 사무 공무원은 붙지 않습니다. 야간근무수당은 <strong>현업공무원 등 야간에만 근무하거나 주·야간 교대근무를 하는 사람</strong>에게 지급됩니다. 일반 행정직의 밤 근무는 시간외근무수당으로만 계산됩니다.</p>
+      <h4>Q. 5급도 초과근무수당을 받나요?</h4>
+      <p>받을 수 있습니다. 다만 <strong>관리업무수당을 받는 사람</strong>(4급 이상, 5급 중 과장·담당관·사업소장 등)은 시간외근무수당·야간근무수당·휴일근무수당을 받지 않습니다.</p>
+      <h4>Q. 한 달에 57시간 넘게 일하면 어떻게 되나요?</h4>
+      <p>57시간을 넘는 시간은 수당이 나오지 않습니다. 10월부터 하루 4시간 상한은 없어지지만 <strong>월 57시간 상한은 그대로</strong>입니다. 정액분 10시간은 이 한도와 별도라서 한 달 최대 67시간분까지 받을 수 있습니다.</p>
+    </div>
+    <div class="hint">「지방공무원 수당 등에 관한 규정」 제15조~제17조의2와 인사혁신처·행정안전부 발표 자료를 바탕으로 정리했습니다. 기관별 운영 기준(부서별 배정 시간 등)에 따라 실제 인정 시간은 달라질 수 있으니 인사·급여 담당 부서에 확인하세요.</div>
+  </div>
+
+  <div class="related-links">
+    <h3>📚 함께 보면 좋은 계산기</h3>
+    <ul>
+      <li><a href="salary-calculator.html">공무원 월급 실수령액 계산기</a></li>
+      <li><a href="leave-compensation-calculator.html">연가일수·연가보상비 계산기</a></li>
+      <li><a href="index.html">공무원 평정점수 계산기</a></li>
+      <li><a href="retirement-allowance-calculator.html">명예퇴직수당·퇴직수당 계산기</a></li>
+    </ul>
+  </div>
+</main>
+<footer>
+  <p style="margin-bottom:8px; font-size:.74rem; color:#888;">본 계산기는 2026년 「공무원보수규정」 봉급표와 「지방공무원 수당 등에 관한 규정」을 기준으로 제작되었습니다.<br>법령 개정에 따라 수치가 달라질 수 있으므로 정확한 내용은 <a href="https://www.law.go.kr" target="_blank" rel="noopener" style="color:var(--gold);">국가법령정보센터</a>에서 확인하세요.</p>
+  본 콘텐츠는 참고용이며 실제 지급액은 소속 기관 인사담당자에게 확인하시기 바랍니다.<br>
+  문의: <a href="mailto:sj.gates@gmail.com" style="color:var(--gold);">sj.gates@gmail.com</a>
+  &nbsp;|&nbsp;
+  <a href="about.html" style="color:var(--muted);">사이트 소개</a>
+  &nbsp;|&nbsp;
+  <a href="privacy.html" style="color:var(--muted);">개인정보처리방침</a>
+  &nbsp;|&nbsp;
+  <a href="terms.html" style="color:var(--muted);">이용약관</a>
+  &nbsp;|&nbsp;
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSdb4rv67jcf864HGBHFxyDnXfORjXDUwGg8uMD-WgwFDW1Vmw/viewform?usp=publish-editor" target="_blank" rel="noopener" style="color:var(--gold); font-weight:700;">🐞 오류 제보 및 피드백</a>
+</footer>
+
+<script>
+// 2026년 일반직 봉급표 10호봉 (시간외근무수당 기준호봉)
+const BASE10 = {9:2542700, 8:2813000, 7:3133300, 6:3468700, 5:4066800};
+// 봉급기준액 반영률(%): 8급 이하 60, 7급 이상 55
+const RATE = {9:60, 8:60, 7:55, 6:55, 5:55};
+const unitOf = g => Math.floor(BASE10[g] * RATE[g] * 15 / 209000);
+const fmt = n => Math.round(n).toLocaleString('ko-KR');
+const $ = id => document.getElementById(id);
+const hm = min => `${Math.floor(min/60)}시간${min%60 ? ' '+(min%60)+'분' : ''}`;
+let mode = 'new';
+
+function setMode(m){
+  mode = m;
+  document.querySelectorAll('#modeSeg button').forEach(b=>b.classList.toggle('on', b.dataset.mode===m));
+}
+function markRow(){
+  const g = $('grade').value;
+  document.querySelectorAll('#rateTbl tr').forEach(tr=>tr.classList.toggle('sel', tr.dataset.g===g));
+}
+function int(id){ return Math.floor(Number($(id).value) || 0); }
+
+function calculate(){
+  const err = $('errBox'); err.classList.remove('show');
+  const g = $('grade').value;
+  const attend = int('attend');
+  const wDays = int('wDays'), wMin = int('wH')*60 + int('wM');
+  const hDays = int('hDays'), hMin = int('hH')*60 + int('hM');
+  const e = [];
+  if (attend < 0 || attend > 31) e.push('출근일수는 0~31일 사이로 입력하세요.');
+  if ([wDays, wMin, hDays, hMin].some(v => v < 0)) e.push('음수는 입력할 수 없습니다.');
+  if (int('wM') > 59 || int('hM') > 59) e.push('분은 0~59 사이로 입력하세요.');
+  if (wMin > 0 && wDays === 0) e.push('평일 초과근무한 날 수를 입력하세요.');
+  if (hMin > 0 && hDays === 0) e.push('토요일·공휴일 근무한 날 수를 입력하세요.');
+  if (e.length){ err.innerHTML = e.map(x=>'• '+x).join('<br>'); err.classList.add('show'); $('resultCard').classList.remove('show'); return; }
+
+  const warn = [];
+  // 평일: 하루 1시간 공제
+  let wRec = Math.max(0, wMin - wDays*60);
+  let hRec = hMin;
+  if (mode === 'old'){
+    const wCap = wDays*240, hCap = hDays*240;
+    if (wRec > wCap){ warn.push(`평일은 하루 4시간 한도로 ${hm(wRec-wCap)}이 제외됐습니다.`); wRec = wCap; }
+    if (hRec > hCap){ warn.push(`토요일·공휴일은 하루 4시간 한도로 ${hm(hRec-hCap)}이 제외됐습니다.`); hRec = hCap; }
+  }
+  const recMin = wRec + hRec;
+  let hours = Math.floor(recMin / 60);
+  const dropMin = recMin % 60;
+  if (hours > 57){ warn.push(`월 57시간 한도를 넘은 ${hours-57}시간은 수당이 나오지 않습니다.`); hours = 57; }
+
+  const unit = unitOf(g);
+  const fixedDays = Math.min(attend, 15);
+  const fixed = Math.floor(unit * 10 * fixedDays / 15);
+  const perf = unit * hours;
+  const total = fixed + perf;
+
+  $('rUnit').textContent = fmt(unit) + '원';
+  $('rUnitSub').textContent = `${g}급 10호봉 × ${RATE[g]}%`;
+  $('rHours').textContent = hours + '시간';
+  $('rFixed').textContent = fmt(fixed) + '원';
+  $('rFixedSub').textContent = attend >= 15 ? '10시간분 전액' : `출근 ${attend}일 → ${fixedDays}/15 지급`;
+  $('rTotal').textContent = fmt(total);
+  $('rSub').innerHTML =
+    `평일 ${hm(wMin)} − 공제 ${wDays}시간 = ${hm(Math.max(0, wMin - wDays*60))} · 토요일·공휴일 ${hm(hMin)}<br>` +
+    `실적분 ${hours}시간 × ${fmt(unit)}원 = ${fmt(perf)}원 + 정액분 ${fmt(fixed)}원` +
+    (dropMin && hours < 57 ? `<br>1시간 미만 ${dropMin}분은 월 합산 후 버림` : '');
+  $('rWarn').innerHTML = warn.map(x=>'⚠ '+x).join('<br>');
+  markRow();
+  $('resultCard').classList.add('show');
+  if (typeof gtag === 'function') gtag('event', 'click_calculate', { calculator: 'overtime', grade: g + '급' });
+  setTimeout(()=>$('resultCard').scrollIntoView({behavior:'smooth', block:'start'}), 50);
+}
+(function init(){
+  setMode(new Date() >= new Date(2026, 9, 1) ? 'new' : 'old');
+  markRow();
+})();
+</script>
+</body>
+</html>
