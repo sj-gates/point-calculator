@@ -308,6 +308,8 @@
   본 콘텐츠는 참고용이며 실제 지급액은 소속 기관 인사담당자에게 확인하시기 바랍니다.<br>
   문의: <a href="mailto:sj.gates@gmail.com" style="color:var(--gold);">sj.gates@gmail.com</a>
   &nbsp;|&nbsp;
+  <a href="about.html" style="color:var(--muted);">사이트 소개</a>
+  &nbsp;|&nbsp;
   <a href="privacy.html" style="color:var(--muted);">개인정보처리방침</a>
   &nbsp;|&nbsp;
   <a href="terms.html" style="color:var(--muted);">이용약관</a>
@@ -367,10 +369,10 @@ function calculate(){
   if(hire&&base&&base<hire) e.push('기준일이 임용일보다 빠릅니다.');
   const pay=Number($('salary').value);
   if(!(pay>0)) e.push('월봉급액을 입력하세요.');
-  if(e.length){ err.innerHTML=e.map(x=>'• '+x).join('<br>'); err.classList.add('show'); return; }
-  const months=Math.max(0, monthsBetween(hire,base)-(Number($('exclude').value)||0));
+  if(e.length){ err.innerHTML=e.map(x=>'• '+x).join('<br>'); err.classList.add('show'); $('resultCard').classList.remove('show'); return; }
+  const months=Math.max(0, monthsBetween(hire,base)-Math.max(0,Number($('exclude').value)||0));
   const L=leaveDays(months);
-  const unused=Math.max(0,Number($('unused').value)||0);
+  const unused=Math.max(0,Math.floor(Number($('unused').value)||0));
   const comp=Math.min(20,unused,L.d);
   const unit=pay*0.86/30;
   const total=Math.floor(unit*comp/10)*10;

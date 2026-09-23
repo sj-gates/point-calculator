@@ -1959,13 +1959,14 @@ function getCareerData() {
   const targetStr = document.getElementById('targetDate').value;
   const startStr  = document.getElementById('startDate').value;
   const prevStr   = document.getElementById('prevGradeDate').value;
-  const excBreak  = parseFloat(document.getElementById('excludeBreak').value) || 0;
+  const excBreak  = Math.max(0, parseFloat(document.getElementById('excludeBreak').value) || 0);
 
   if (!targetStr || !startStr) return null;
 
   const target = new Date(targetStr);
   const start  = new Date(startStr);
   const prev   = prevStr ? new Date(prevStr) : null;
+  if (isNaN(target) || isNaN(start) || (prev && isNaN(prev))) return { error: '날짜를 YYYY-MM-DD 형식의 올바른 날짜로 입력해 주세요.' };
 
   if (start > target) return { error: '현 직급 근무 시작일이 평정 기준일보다 미래일 수 없습니다.' };
   if (prev && prev > start) return { error: '직전급수 진급일은 현 직급 근무 시작일보다 미래일 수 없습니다.' };
@@ -2406,7 +2407,7 @@ function togglePlusGuide() {
 }
 
 function onPlusInput() {
-  const v = Math.min(parseFloat(document.getElementById('plusScore').value) || 0, MAX_PLUS_SCORE);
+  const v = Math.max(0, Math.min(parseFloat(document.getElementById('plusScore').value) || 0, MAX_PLUS_SCORE));
   document.getElementById('plusLabel').textContent = `${v} / ${MAX_PLUS_SCORE}점`;
   setBar('plusBar', v / MAX_PLUS_SCORE);
 }
@@ -2425,8 +2426,8 @@ function toggleCalculate() {
     document.getElementById('copyBtnWrap').style.display = 'none';
     btn.textContent = '🏆 평정점수 계산하기';
   } else {
-    // 열기 (계산 실행)
-    calculate();
+    // 열기 (계산 실행) — 입력 오류로 중단되면 버튼 문구 유지
+    if (calculate() === false) return;
     btn.textContent = '✖ 결과 닫기';
   }
 }
@@ -2467,12 +2468,13 @@ function calculate() {
   const avgPerf = Math.round(sum / n * 100) / 100;
 
   // 경력 (날짜 미입력 시 경력평정 0점으로 처리)
+  if (!targetStr !== !startStr) { alert('평정 기준일과 현 직급 근무 시작일을 모두 입력해 주세요.'); return false; }
   const careerData = getCareerData();
-  if (careerData && careerData.error) { alert(careerData.error); return; }
+  if (careerData && careerData.error) { alert(careerData.error); return false; }
   const careerScore = careerData ? careerData.score : 0;
 
   // 가점
-  const plusScore = Math.min(parseFloat(document.getElementById('plusScore').value) || 0, MAX_PLUS_SCORE);
+  const plusScore = Math.max(0, Math.min(parseFloat(document.getElementById('plusScore').value) || 0, MAX_PLUS_SCORE));
 
   const total = Math.round((avgPerf + careerScore + plusScore) * 100) / 100;
 
@@ -2749,7 +2751,7 @@ function getCurrentScores() {
   const careerScore = careerData && !careerData.error ? careerData.score : 0;
 
   const perfAvg = calcWeightedPerfAvg(scores);
-  const plusScore = Math.min(parseFloat(document.getElementById('plusScore').value) || 0, MAX_PLUS_SCORE);
+  const plusScore = Math.max(0, Math.min(parseFloat(document.getElementById('plusScore').value) || 0, MAX_PLUS_SCORE));
   const total = Math.round((perfAvg + careerScore + plusScore) * 100) / 100;
   const careerMonths = careerData && !careerData.error ? careerData.totalMonths : 0;
   return { perfAvg, careerScore, careerMonths, plusScore, total, perfScores: scores };

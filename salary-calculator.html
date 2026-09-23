@@ -303,6 +303,8 @@
   본 콘텐츠는 참고용이며 실제 지급액은 소속 기관 인사담당자에게 확인하시기 바랍니다.<br>
   문의: <a href="mailto:sj.gates@gmail.com" style="color:var(--gold);">sj.gates@gmail.com</a>
   &nbsp;|&nbsp;
+  <a href="about.html" style="color:var(--muted);">사이트 소개</a>
+  &nbsp;|&nbsp;
   <a href="privacy.html" style="color:var(--muted);">개인정보처리방침</a>
   &nbsp;|&nbsp;
   <a href="terms.html" style="color:var(--muted);">이용약관</a>
@@ -385,7 +387,7 @@ function onStep(){ renderPayTable(); }
 function calculate(){
   const g=$('grade').value, s=Number($('step').value);
   const y=Math.max(0, Number($('years').value)||0);
-  const sp=Number($('spouse').value), kids=Math.max(0,Number($('kids').value)||0), others=Math.max(0,Number($('others').value)||0);
+  const sp=Number($('spouse').value), kids=Math.max(0,Math.floor(Number($('kids').value)||0)), others=Math.min(4,Math.max(0,Math.floor(Number($('others').value)||0)));
   const ot=Math.max(0, Number($('overtime').value)||0);
   const pay=PAY_TABLE[g][s-1];
   const jik=JIKGEUP[g], add=jeonggeunAdd(y), fam=familyAllow(sp,kids,others);
@@ -397,7 +399,7 @@ function calculate(){
   const stdMonth = taxableAnnual/12;
   const pension = stdMonth*PENSION;
   const health = stdMonth*HEALTH, ltc = stdMonth*LTC;
-  const social = (health+ltc)*12;
+  const social = (pension+health+ltc)*12; // 공무원연금 기여금은 연금보험료공제, 건강·장기요양은 특별소득공제
   const persons = 1 + Math.min(4, sp+others) + kids;
   const itax = annualIncomeTax(taxableAnnual, persons, social, kids);
   const ltax = itax*0.1;
