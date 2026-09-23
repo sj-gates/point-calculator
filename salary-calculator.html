@@ -435,6 +435,7 @@ function calculate(){
   </tbody></table>`;
   $('resultCard').classList.add('show');
   $('detailCard').style.display='';
+  if (typeof gtag === 'function') gtag('event', 'click_calculate', { calculator: 'salary', grade: g + '급' });
   setTimeout(()=>$('resultCard').scrollIntoView({behavior:'smooth',block:'start'}),50);
 }
 

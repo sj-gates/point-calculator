@@ -704,6 +704,7 @@ function calculate(){
 
   lastResult = { birth, quit, ret, rm, pay, base, half, r, total, eligible, payLabel, svc, sev };
   $('copyArea').classList.remove('show');
+  if (typeof gtag === 'function') gtag('event', 'click_calculate', { calculator: 'retirement', grade: payType === 'hobong' ? $('grade').value + '급' : payType, eligible: eligible ? 'yes' : 'no' });
   setTimeout(()=>$('resultCard').scrollIntoView({behavior:'smooth', block:'start'}), 50);
 }
 

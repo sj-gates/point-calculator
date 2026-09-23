@@ -385,6 +385,7 @@ function calculate(){
   $('rSub').innerHTML=`보상일수 ${comp}일 (미사용 ${unused}일 · 한도 20일)<br>상반기(6월) 약 ${fmt(first)}원 + 하반기(12월) 약 ${fmt(total-first)}원 · 봉급 변동은 미반영`;
   document.querySelectorAll('#leaveTbl tr').forEach(tr=>tr.classList.toggle('sel',Number(tr.dataset.i)===L.i));
   $('resultCard').classList.add('show');
+  if (typeof gtag === 'function') gtag('event', 'click_calculate', { calculator: 'leave', grade: $('grade').value + '급' });
   setTimeout(()=>$('resultCard').scrollIntoView({behavior:'smooth',block:'start'}),50);
 }
 (function init(){
