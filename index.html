@@ -637,8 +637,9 @@
   .gs-menubar nav a:hover{color:#ffffff;background:rgba(255,255,255,.1);}
   .gs-menubar nav a.on{color:#17191e;background:#c8a84b;border-color:#c8a84b;box-shadow:0 2px 10px rgba(200,168,75,.45);}
   @media(max-width:600px){.gs-menubar .gs-in{height:52px;gap:10px;}.gs-menubar nav a{font-size:.86rem;padding:7px 11px;}.gs-menubar .gs-logo{font-size:1rem;}}
+  @media(max-width:600px){.gs-menubar nav{-webkit-mask-image:linear-gradient(90deg,#000 80%,transparent);mask-image:linear-gradient(90deg,#000 80%,transparent);}.gs-menubar nav.end{-webkit-mask-image:none;mask-image:none;}}
 </style>
-<div class="gs-menubar"><div class="gs-in"><a class="gs-logo" href="index.html">공<span style="color:#c8a84b">스코어</span></a><nav aria-label="사이트 메뉴"><a href="index.html" class="on" aria-current="page">평정점수 계산기</a><a href="salary-calculator.html">월급 실수령 계산기</a><a href="overtime-pay-calculator.html">초과근무수당 계산기</a><a href="parental-leave-calculator.html">육아휴직수당 계산기</a><a href="retirement-allowance-calculator.html">명퇴·퇴직수당 계산기</a><a href="leave-compensation-calculator.html">연가보상비 계산기</a></nav></div></div><script>(function(){var n=document.querySelector(".gs-menubar nav"),a=n&&n.querySelector("a.on");if(a)n.scrollLeft=a.offsetLeft-(n.clientWidth-a.offsetWidth)/2;})();</script>
+<div class="gs-menubar"><div class="gs-in"><a class="gs-logo" href="index.html">공<span style="color:#c8a84b">스코어</span></a><nav aria-label="사이트 메뉴"><a href="index.html" class="on" aria-current="page">평정점수 계산기</a><a href="salary-calculator.html">월급 실수령 계산기</a><a href="overtime-pay-calculator.html">초과근무수당 계산기</a><a href="parental-leave-calculator.html">육아휴직수당 계산기</a><a href="retirement-allowance-calculator.html">명퇴·퇴직수당 계산기</a><a href="leave-compensation-calculator.html">연가보상비 계산기</a></nav></div></div><script>(function(){var n=document.querySelector(".gs-menubar nav"),a=n&&n.querySelector("a.on");if(a)n.scrollLeft=a.offsetLeft-(n.clientWidth-a.offsetWidth)/2;if(n){var f=function(){n.classList.toggle("end",n.scrollLeft+n.clientWidth>=n.scrollWidth-4)};n.addEventListener("scroll",f,{passive:true});window.addEventListener("resize",f);f();}})();</script>
 
 <header>
   <h1>
@@ -853,7 +854,7 @@
               <option value="gg_goyang" data-region="gyeonggi">고양시</option>
               <option value="gg_gucheon" data-region="gyeonggi">구리시</option>
               <option value="gg_anseong" data-region="gyeonggi">안성시</option>
-              <option value="gg_uiwang" data-region="gyeonggi">의왕시</option>
+              <option value="gg_gwacheon" data-region="gyeonggi">과천시</option>
               <option value="gg_gapyeong2" data-region="gyeonggi">연천군</option>
             </optgroup>
             <!-- 인천광역시 -->
@@ -1044,7 +1045,7 @@
           </table>
           <div style="margin-top:5px; color:var(--muted); font-size:.7rem; line-height:1.4;">
             ※ 직렬·직급별 인정 자격증은 각 기관별 인사규칙의 가점 인정 자격증 별표에서 확인하세요.
-            <a href="seoul-certification-table.html" target="_blank" style="color:var(--gold); font-weight:700;">📋 서울시 기준 전체 목록 보기 (별표23)</a>
+            <a href="seoul-certification-table.html" target="_blank" rel="noopener" style="color:var(--gold); font-weight:700;">📋 서울시 기준 전체 목록 보기 (별표23)</a>
           </div>
         </div>
 
@@ -1244,7 +1245,7 @@
         <li>9급: 최근 1년 반영 — 100%</li>
       </ul>
       <p style="margin-bottom:8px;"><strong>② 경력평정 (최대 30점)</strong> — 현 직급 경력은 100% 그대로, 직전 직급 경력은 60%로 환산해 합산한 뒤 직급별 점수율(기준 개월 이하/초과 점수율)을 적용합니다. 기준 개월(base)에 도달하기까지는 점수율이 높고, 초과분부터는 점수율이 크게 낮아져 만점 도달 시점이 의외로 늦습니다. 이 기준 개월·점수율도 자치단체별로 다르게 정해져 있습니다.</p>
-      <p style="margin-bottom:0;"><strong>③ 가산점 (최대 5점)</strong> — 직무관련 자격증, 어학 성적(TOEIC 등), 특수지·격무부서 근무 경력 등을 합산합니다. 동일 직렬 내에서는 가장 높은 등급의 자격증 1개만 인정되며, <strong>자격증 인정 목록과 가점 단가는 기관별 인사규칙 별표에서 각각 다르게 정해집니다</strong> (서울시 기준 전체 목록은 <a href="seoul-certification-table.html" target="_blank" style="color:var(--gold); font-weight:700;">여기</a>에서 확인 가능. 경기·인천 등은 별도 별표 적용).</p>
+      <p style="margin-bottom:0;"><strong>③ 가산점 (최대 5점)</strong> — 직무관련 자격증, 어학 성적(TOEIC 등), 특수지·격무부서 근무 경력 등을 합산합니다. 동일 직렬 내에서는 가장 높은 등급의 자격증 1개만 인정되며, <strong>자격증 인정 목록과 가점 단가는 기관별 인사규칙 별표에서 각각 다르게 정해집니다</strong> (서울시 기준 전체 목록은 <a href="seoul-certification-table.html" target="_blank" rel="noopener" style="color:var(--gold); font-weight:700;">여기</a>에서 확인 가능. 경기·인천 등은 별도 별표 적용).</p>
     </div>
   </div>
 
@@ -2515,10 +2516,10 @@ function calculate() {
     `=== ${isDistrict() ? getDistrictName() : document.getElementById('region').options[document.getElementById('region').selectedIndex].text} 공무원 평정점수 계산 결과 ===`,
     `${lpad('직급')} : ${grade}급`,
     `${lpad('소속')} : ${isDistrict() ? getDistrictName() + ' (자치구)' : document.getElementById('region').options[document.getElementById('region').selectedIndex].text + ' 본청'}`,
-    `${lpad('평정기준일')} : ${targetStr}`,
-    `${lpad('근무시작일')} : ${startStr}`,
-    `${lpad('직전급수진급일')} : ${careerData.prevStr || '미입력'}`,
-    `${lpad('인정경력')} : ${formatMonths(careerData.totalMonths)} (${careerData.totalMonths}개월)`,
+    `${lpad('평정기준일')} : ${targetStr || '미입력'}`,
+    `${lpad('근무시작일')} : ${startStr || '미입력'}`,
+    `${lpad('직전급수진급일')} : ${(careerData && careerData.prevStr) || '미입력'}`,
+    `${lpad('인정경력')} : ${careerData ? `${formatMonths(careerData.totalMonths)} (${careerData.totalMonths}개월)` : '날짜 미입력 (경력평정 0점)'}`,
     '',
     `${lpad('근무성적평정')} : ${avgPerf}점 (70점 만점)`,
     `${lpad('경력평정')} : ${careerScore}점 (30점 만점)`,

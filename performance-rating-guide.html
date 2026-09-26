@@ -15,6 +15,7 @@
 <meta property="og:title" content="공무원 근평(근무성적평정) 기준 — 수·우·양·가 등급 비율과 70점 환산법 | 공스코어">
 <meta property="og:description" content="내 근평 등급은 승진에 몇 점으로 반영될까? 수·우·양·가 등급별 분포 비율, 반영 반기 수, 70점 만점 환산 방법까지 예시와 함께 알기 쉽게 확인해 보세요.">
 <meta property="og:url" content="https://gong-score.co.kr/performance-rating-guide.html">
+<meta property="og:image" content="https://gong-score.co.kr/og-image.png">
 <link rel="canonical" href="https://gong-score.co.kr/performance-rating-guide.html">
 <meta property="og:locale" content="ko_KR">
 
@@ -64,7 +65,7 @@
   .td-c{text-align:center;}
   .td-bold{font-weight:700;color:var(--navy);}
   .grade-bar{display:flex;height:32px;border-radius:6px;overflow:hidden;margin:14px 0;font-size:.76rem;font-weight:700;}
-  .grade-bar div{display:flex;align-items:center;justify-content:center;color:#fff;}
+  .grade-bar div{display:flex;align-items:center;justify-content:center;color:#fff;white-space:nowrap;overflow:hidden;}
   .formula-box{background:var(--navy);color:#fff;border-radius:8px;padding:18px 20px;margin:14px 0;font-family:'DM Mono',monospace;font-size:.88rem;line-height:1.8;}
   .formula-box .f-label{font-size:.7rem;color:rgba(255,255,255,.5);margin-bottom:6px;font-family:'Noto Serif KR',serif;}
   .example-box{background:var(--paper);border:1px solid var(--border);border-radius:8px;padding:16px 18px;margin:14px 0;font-size:.84rem;line-height:1.9;}
@@ -104,8 +105,9 @@
   .gs-menubar nav a:hover{color:#ffffff;background:rgba(255,255,255,.1);}
   .gs-menubar nav a.on{color:#17191e;background:#c8a84b;border-color:#c8a84b;box-shadow:0 2px 10px rgba(200,168,75,.45);}
   @media(max-width:600px){.gs-menubar .gs-in{height:52px;gap:10px;}.gs-menubar nav a{font-size:.86rem;padding:7px 11px;}.gs-menubar .gs-logo{font-size:1rem;}}
+  @media(max-width:600px){.gs-menubar nav{-webkit-mask-image:linear-gradient(90deg,#000 80%,transparent);mask-image:linear-gradient(90deg,#000 80%,transparent);}.gs-menubar nav.end{-webkit-mask-image:none;mask-image:none;}}
 </style>
-<div class="gs-menubar"><div class="gs-in"><a class="gs-logo" href="index.html">공<span style="color:#c8a84b">스코어</span></a><nav aria-label="사이트 메뉴"><a href="index.html">평정점수 계산기</a><a href="salary-calculator.html">월급 실수령 계산기</a><a href="overtime-pay-calculator.html">초과근무수당 계산기</a><a href="parental-leave-calculator.html">육아휴직수당 계산기</a><a href="retirement-allowance-calculator.html">명퇴·퇴직수당 계산기</a><a href="leave-compensation-calculator.html">연가보상비 계산기</a></nav></div></div><script>(function(){var n=document.querySelector(".gs-menubar nav"),a=n&&n.querySelector("a.on");if(a)n.scrollLeft=a.offsetLeft-(n.clientWidth-a.offsetWidth)/2;})();</script>
+<div class="gs-menubar"><div class="gs-in"><a class="gs-logo" href="index.html">공<span style="color:#c8a84b">스코어</span></a><nav aria-label="사이트 메뉴"><a href="index.html">평정점수 계산기</a><a href="salary-calculator.html">월급 실수령 계산기</a><a href="overtime-pay-calculator.html">초과근무수당 계산기</a><a href="parental-leave-calculator.html">육아휴직수당 계산기</a><a href="retirement-allowance-calculator.html">명퇴·퇴직수당 계산기</a><a href="leave-compensation-calculator.html">연가보상비 계산기</a></nav></div></div><script>(function(){var n=document.querySelector(".gs-menubar nav"),a=n&&n.querySelector("a.on");if(a)n.scrollLeft=a.offsetLeft-(n.clientWidth-a.offsetWidth)/2;if(n){var f=function(){n.classList.toggle("end",n.scrollLeft+n.clientWidth>=n.scrollWidth-4)};n.addEventListener("scroll",f,{passive:true});window.addEventListener("resize",f);f();}})();</script>
 
 <header>
   <a href="index.html" style="text-decoration:none; color:inherit;"><p class="site-title">공<span>스코어</span></p></a>
@@ -164,10 +166,10 @@
     <div class="sec-head"><span class="sn">02</span><h3>등급별 점수 (5급 이하 기준)</h3></div>
     <p>5급 이하 공무원의 근평 등급별 점수는 아래와 같습니다. 각 등급은 반기 1회 평정분의 점수이며, 승진에는 최근 수 개 반기의 평균을 활용합니다.</p>
     <div class="grade-bar">
-      <div style="width:40%;background:#0f2340;">수 (최우수)</div>
-      <div style="width:30%;background:#2e5fa3;">우 (우수)</div>
-      <div style="width:20%;background:#6b6b7a;">양 (보통)</div>
-      <div style="width:10%;background:#c0392b;">가 (미흡)</div>
+      <div style="width:20%;background:#0f2340;">수 20%</div>
+      <div style="width:40%;background:#2e5fa3;">우 40%</div>
+      <div style="width:30%;background:#6b6b7a;">양 30%</div>
+      <div style="width:10%;background:#c0392b;">가 10%</div>
     </div>
     <table>
       <thead><tr><th>등급</th><th class="td-c">비율 강제 배분</th><th>의미</th></tr></thead>
