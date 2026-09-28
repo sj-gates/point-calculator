@@ -37,6 +37,24 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://gong-score.co.kr/performance-rating-process.html</loc>
+    <lastmod>2026-09-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gong-score.co.kr/performance-rating-appeal.html</loc>
+    <lastmod>2026-09-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gong-score.co.kr/probation-period-guide.html</loc>
+    <lastmod>2026-09-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://gong-score.co.kr/performance-rating-guide.html</loc>
     <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
