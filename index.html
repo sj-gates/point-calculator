@@ -455,6 +455,8 @@
   .date-input-wrap input {
     padding-right: 38px;
   }
+  .date-input-wrap.is-disabled input { background: var(--paper); color: var(--muted); opacity: .6; cursor: not-allowed; }
+  .date-input-wrap.is-disabled .cal-icon-btn { opacity: .3; pointer-events: none; }
   .cal-icon-btn {
     position: absolute;
     right: 8px;
@@ -987,7 +989,7 @@
         </button>
         <div class="cal-popup" id="cal-prevGradeDate"></div>
       </div>
-      <div class="hint">직전급수 진급일부터 현 직급 근무 시작일 전까지의 기간은 60%로 환산해 경력평정에 반영합니다.</div>
+      <div class="hint" id="prevGradeHint">직전급수 진급일부터 현 직급 근무 시작일 전까지의 기간은 60%로 환산해 경력평정에 반영합니다.</div>
     </div>
     <div class="field">
       <label for="excludeBreak">경력 미합산 휴직 개월 수 (일반 질병 등)</label>
@@ -2133,12 +2135,40 @@ function switchTab(idx) {
   onPerfInput();
 }
 
+// 9급은 직전급수가 없으므로 직전급수 진급일 입력칸을 비활성화한다
+function syncPrevGradeFields(grade) {
+  const is9 = grade === 9;
+  ['prevGradeDate', 'cmpPrevStart'].forEach(id => {
+    const inp = document.getElementById(id);
+    if (!inp) return;
+    const wrap = inp.closest('.date-input-wrap');
+    const had = inp.value !== '';
+    inp.disabled = is9;
+    inp.placeholder = is9 ? '9급은 직전급수 없음' : 'YYYY-MM-DD';
+    if (wrap) {
+      wrap.classList.toggle('is-disabled', is9);
+      const pop = wrap.querySelector('.cal-popup');
+      if (is9 && pop) pop.classList.remove('show', 'open');
+    }
+    if (is9 && had) {
+      inp.value = '';
+      if (id === 'prevGradeDate' && typeof recalcCareer === 'function') recalcCareer();
+      if (id === 'cmpPrevStart' && typeof onCmpCareerInput === 'function') onCmpCareerInput();
+    }
+  });
+  const hint = document.getElementById('prevGradeHint');
+  if (hint) hint.textContent = is9
+    ? '9급은 직전급수가 없으므로 현 직급 경력만 경력평정에 반영합니다.'
+    : '직전급수 진급일부터 현 직급 근무 시작일 전까지의 기간은 60%로 환산해 경력평정에 반영합니다.';
+}
+
 function onGradeChange() {
   const grade = parseInt(document.getElementById('grade').value);
   const n = getGradeSemesters(grade);
   const tableInfo = getPerfTableInfo();
 
   updateDistrictInfo();
+  syncPrevGradeFields(grade);
 
   const region = document.getElementById('region').value;
   const series = document.getElementById('series').value;
