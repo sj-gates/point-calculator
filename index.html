@@ -909,22 +909,24 @@
       <button id="tab-btn-0" onclick="switchTab(0)"
         style="flex:1; padding:9px 4px; border-radius:7px; border:1.5px solid var(--gold);
                background:var(--navy); color:var(--gold); font-family:inherit;
-               font-size:.8rem; font-weight:700; cursor:pointer;">
-        이번반기 (예상)
+               font-size:.8rem; font-weight:700; cursor:pointer; line-height:1.35;">
+        <span id="tab-title-0">이번 평정</span><br><small id="tab-sub-0" style="font-weight:500; opacity:.8;"></small>
       </button>
       <button id="tab-btn-1" onclick="switchTab(1)"
         style="flex:1; padding:9px 4px; border-radius:7px; border:1.5px solid var(--border);
                background:var(--paper); color:var(--muted); font-family:inherit;
-               font-size:.8rem; font-weight:700; cursor:pointer;">
-        다음반기 (예상)
+               font-size:.8rem; font-weight:700; cursor:pointer; line-height:1.35;">
+        <span id="tab-title-1">다음 평정 미리보기</span><br><small id="tab-sub-1" style="font-weight:500; opacity:.8;"></small>
       </button>
       <button id="tab-btn-2" onclick="switchTab(2)"
         style="flex:1; padding:9px 4px; border-radius:7px; border:1.5px solid var(--border);
                background:var(--paper); color:var(--muted); font-family:inherit;
-               font-size:.8rem; font-weight:700; cursor:pointer;">
-        다다음반기 (예상)
+               font-size:.8rem; font-weight:700; cursor:pointer; line-height:1.35;">
+        <span id="tab-title-2">그다음 평정 미리보기</span><br><small id="tab-sub-2" style="font-weight:500; opacity:.8;"></small>
       </button>
     </div>
+
+    <div class="hint" id="tabHint" style="margin:-6px 0 14px;">기본은 <b>이번 평정</b>입니다. 미리보기 탭은 앞으로 받을 근평을 미리 넣어 보고 점수가 어떻게 바뀌는지 확인하는 기능입니다.</div>
 
     <!-- 탭별 입력 패널 -->
     <div id="scoreInputs-0"></div>
@@ -1120,7 +1122,7 @@
 
   <!-- ⑥ 결과 -->
   <div class="result-card" id="resultCard">
-    <h2 id="resultTitle">▪ 최종 평정점수 — 이번반기 (예상)</h2>
+    <h2 id="resultTitle">▪ 최종 평정점수 — 이번 평정</h2>
     <div class="score-grid">
       <div class="score-item">
         <div class="s-label">근무성적평정</div>
@@ -2167,6 +2169,34 @@ function syncPrevGradeFields(grade) {
     : '직전급수 진급일부터 현 직급 근무 시작일 전까지의 기간은 60%로 환산해 경력평정에 반영합니다.';
 }
 
+// 평정 기준일(없으면 오늘)을 기준으로 "2026 하반기" 같은 실제 반기 이름을 만든다
+function semesterName(offset) {
+  const v = (document.getElementById('targetDate') || {}).value || '';
+  const m = v.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  const base = m ? new Date(+m[1], +m[2] - 1, +m[3]) : new Date();
+  let idx = base.getFullYear() * 2 + (base.getMonth() < 6 ? 0 : 1) + offset;
+  return `${Math.floor(idx / 2)} ${idx % 2 === 0 ? '상반기' : '하반기'}`;
+}
+function semesterLabels(n) {
+  return [
+    Array.from({length: n}, (_, i) => i === 0 ? `${semesterName(0)} · 이번 평정 (예상)` : semesterName(-i)),
+    Array.from({length: n}, (_, i) => i === 0 ? `${semesterName(1)} · 다음 평정 (예상)` : i === 1 ? `${semesterName(0)} · 이번 평정 (예상)` : semesterName(-(i - 1))),
+    Array.from({length: n}, (_, i) => i === 0 ? `${semesterName(2)} · 그다음 평정 (예상)` : i === 1 ? `${semesterName(1)} · 다음 평정 (예상)` : i === 2 ? `${semesterName(0)} · 이번 평정 (예상)` : semesterName(-(i - 2))),
+  ];
+}
+function updateSemesterLabels() {
+  const n = getGradeSemesters(parseInt(document.getElementById('grade').value));
+  const labels = semesterLabels(n);
+  [0, 1, 2].forEach(t => {
+    const sub = document.getElementById(`tab-sub-${t}`);
+    if (sub) sub.textContent = semesterName(t);
+    for (let i = 0; i < n; i++) {
+      const el = document.getElementById(`lbl_${t}_${i}`);
+      if (el) el.textContent = labels[t][i];
+    }
+  });
+}
+
 function onGradeChange() {
   const grade = parseInt(document.getElementById('grade').value);
   const n = getGradeSemesters(grade);
@@ -2188,33 +2218,16 @@ function onGradeChange() {
   }
   const years = Math.ceil(n / 2);
   const weights = getYearWeights(years);
-  const yearLabels = ['최근 1년', '최근 1~2년', '최근 2~3년', '최근 3~4년'];
+  const yearLabels = ['최근 1년', '1~2년 전', '2~3년 전', '3~4년 전'];
   const weightDesc = weights.map((w, idx) => `${yearLabels[idx] || `최근 ${idx}~${idx+1}년`} ${w}%`).join(' + ');
   document.getElementById('semesterHint').textContent =
-    `💡 ${grade}급은 직전 ${n}개 반기(${years}년)를 연도별(반기 평균) 가중평균으로 반영합니다 — ${weightDesc}. (${intervalNote})`;
+    `💡 ${grade}급은 최근 ${n}번(${years}년) 받은 근평을 반영합니다 — ${weightDesc}. 가장 최근 반기부터 차례로 입력하세요. (${intervalNote})`;
 
   // 탭별 라벨 정의
   // 탭0: 이번반기(예상), 직전1~N반기
   // 탭1: 다음반기(예상), 이번반기(예상), 직전1~N-1반기
   // 탭2: 다다음반기(예상), 다음반기(예상), 이번반기(예상), 직전1~N-2반기
-  const tabLabels = [
-    // 탭0
-    Array.from({length: n}, (_, i) =>
-      i === 0 ? '이번반기 (예상)' : `직전 ${i}반기`),
-    // 탭1
-    Array.from({length: n}, (_, i) => {
-      if (i === 0) return '다음반기 (예상)';
-      if (i === 1) return '이번반기 (예상)';
-      return `직전 ${i-1}반기`;
-    }),
-    // 탭2
-    Array.from({length: n}, (_, i) => {
-      if (i === 0) return '다다음반기 (예상)';
-      if (i === 1) return '다음반기 (예상)';
-      if (i === 2) return '이번반기 (예상)';
-      return `직전 ${i-2}반기`;
-    }),
-  ];
+  const tabLabels = semesterLabels(n);
 
   [0,1,2].forEach(tabIdx => {
     const container = document.getElementById(`scoreInputs-${tabIdx}`);
@@ -2233,7 +2246,7 @@ function onGradeChange() {
           `<option value="${t.score}">${t.label} (${t.score}점)</option>`
         ).join('');
         field.innerHTML = `
-          <label>${lbl}</label>
+          <label id="lbl_${tabIdx}_${i}">${lbl}</label>
           <div class="select-wrap">
             <select id="score_${tabIdx}_${i}" onchange="onPerfInput(); if(${tabIdx}===0) syncTabsFromBase()">${options}</select>
           </div>`;
@@ -2246,7 +2259,7 @@ function onGradeChange() {
         if (hasWoo)  catOpts += '<option value="woo">우</option>';
         if (hasYang) catOpts += '<option value="yang">양</option>';
         field.innerHTML = `
-          <label>${lbl}</label>
+          <label id="lbl_${tabIdx}_${i}">${lbl}</label>
           <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
             <div class="select-wrap" style="flex:1; min-width:60px;">
               <select id="grade_cat_${tabIdx}_${i}" onchange="updateRankOptionsTab(${tabIdx},${i}); onPerfInput()">
@@ -2282,6 +2295,7 @@ function onGradeChange() {
   // affiliateLink 요소가 있을 때만 실행
   const affLink = document.getElementById('affiliateLink');
   if (affLink) affLink.textContent = '추천 수험서 보기';
+  updateSemesterLabels();
   switchTab(activeTab);
   recalcCareer();
 }
@@ -2544,7 +2558,7 @@ function calculate() {
   const total = Math.round((avgPerf + careerScore + plusScore) * 100) / 100;
 
   // 결과 표시
-  const tabNames = ['이번반기 (예상)', '다음반기 (예상)', '다다음반기 (예상)'];
+  const tabNames = [`이번 평정 (${semesterName(0)})`, `다음 평정 미리보기 (${semesterName(1)})`, `그다음 평정 미리보기 (${semesterName(2)})`];
   document.getElementById('resultTitle').textContent = `▪ 최종 평정점수 — ${tabNames[activeTab]}`;
   document.getElementById('rPerf').textContent   = avgPerf;
   document.getElementById('rCareer').textContent = careerScore;
@@ -3376,6 +3390,8 @@ window.addEventListener('DOMContentLoaded', () => {
   document.getElementById('series').addEventListener('change', onGradeChange);
   document.getElementById('excludeBreak').addEventListener('input', recalcCareer);
   document.getElementById('targetDate').addEventListener('change', recalcCareer);
+  document.getElementById('targetDate').addEventListener('change', updateSemesterLabels);
+  document.getElementById('targetDate').addEventListener('input', updateSemesterLabels);
   document.getElementById('startDate').addEventListener('change', recalcCareer);
   document.getElementById('prevGradeDate').addEventListener('change', recalcCareer);
   document.getElementById('plusScore').addEventListener('input', onPlusInput);
