@@ -1,0 +1,26 @@
+{
+  "name": "공스코어 — 지방공무원 계산기",
+  "short_name": "공스코어",
+  "description": "지방공무원 평정점수·월급 실수령액·초과근무수당·육아휴직수당·명퇴수당·연가보상비·임대주택 합격선 무료 계산기",
+  "id": "/",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#faf8f3",
+  "theme_color": "#0f2340",
+  "lang": "ko",
+  "dir": "ltr",
+  "categories": ["productivity", "utilities", "finance"],
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "월급 실수령 계산기", "short_name": "월급", "url": "/salary-calculator.html?source=pwa", "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }] },
+    { "name": "초과근무수당 계산기", "short_name": "초과근무", "url": "/overtime-pay-calculator.html?source=pwa", "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }] },
+    { "name": "육아휴직수당 계산기", "short_name": "육아휴직", "url": "/parental-leave-calculator.html?source=pwa", "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }] },
+    { "name": "임대주택 합격선", "short_name": "임대주택", "url": "/rental-housing.html?source=pwa", "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }] }
+  ]
+}
