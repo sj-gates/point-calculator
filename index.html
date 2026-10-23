@@ -3230,10 +3230,13 @@ function formatDateInput(el, e) {
           if(p.id !== 'cal-' + id) p.classList.remove('open');
         });
         
-        // 기존에 입력된 날짜가 있다면 그 날짜를 기준으로 달력 초기화
+        // 입력된 날짜가 있으면 그 날짜, 없으면 오늘이 속한 연·월로 달력을 연다
+        today = new Date();
+        currentYear = today.getFullYear();
+        currentMonth = today.getMonth();
         if (inp.value) {
           const parts = inp.value.split('-');
-          if (parts.length === 3) {
+          if (parts.length === 3 && !isNaN(parseInt(parts[0])) && !isNaN(parseInt(parts[1]))) {
             currentYear = parseInt(parts[0]);
             currentMonth = parseInt(parts[1]) - 1;
           }
@@ -3267,10 +3270,12 @@ function formatDateInput(el, e) {
       const selectWrap = document.createElement('div');
       selectWrap.className = 'cal-select-wrap';
       
-      // 연도 선택 드롭다운 (1980년 ~ 2050년까지 광범위하게 선택 가능)
+      // 연도 선택 드롭다운 (올해 기준 25년 전 ~ 10년 후, 범위 밖 날짜가 입력돼 있으면 그 연도까지 포함)
       const yearSelect = document.createElement('select');
       yearSelect.className = 'cal-year-select';
-      for (let i = 1980; i <= 2050; i++) {
+      const thisYear = new Date().getFullYear();
+      const minYear = Math.min(thisYear - 25, y), maxYear = Math.max(thisYear + 10, y);
+      for (let i = minYear; i <= maxYear; i++) {
         const opt = document.createElement('option');
         opt.value = i;
         opt.innerText = i + '년';
