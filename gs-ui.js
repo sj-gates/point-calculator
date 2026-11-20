@@ -1,26 +1,52 @@
 // 공스코어 통합 모던 UI 스크립트 (네비게이션 드롭다운·모바일 서랍·자동 목차·읽기 진행바)
 (function () {
-  // 1. 드롭다운 & 모바일 서랍 제어
-  const drop = document.querySelector('.gs-drop');
-  const dropBtn = document.querySelector('.gs-drop-btn');
-  if (drop && dropBtn) {
-    dropBtn.addEventListener('click', function (e) {
+  // 1. 다중 드롭다운 & 모바일 서랍 제어
+  const drops = Array.from(document.querySelectorAll('.gs-drop'));
+  drops.forEach(function (drop) {
+    const btn = drop.querySelector('.gs-drop-btn');
+    if (!btn) return;
+    btn.addEventListener('click', function (e) {
       e.stopPropagation();
-      const isOpen = drop.classList.toggle('open');
-      dropBtn.setAttribute('aria-expanded', String(isOpen));
-    });
-    document.addEventListener('click', function (e) {
-      if (!drop.contains(e.target)) {
-        drop.classList.remove('open');
-        dropBtn.setAttribute('aria-expanded', 'false');
+      const willOpen = !drop.classList.contains('open');
+      drops.forEach(function (other) {
+        other.classList.remove('open');
+        const ob = other.querySelector('.gs-drop-btn');
+        if (ob) ob.setAttribute('aria-expanded', 'false');
+      });
+      if (willOpen) {
+        drop.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
       }
+    });
+  });
+
+  if (drops.length) {
+    document.addEventListener('click', function (e) {
+      drops.forEach(function (drop) {
+        if (!drop.contains(e.target)) {
+          drop.classList.remove('open');
+          const btn = drop.querySelector('.gs-drop-btn');
+          if (btn) btn.setAttribute('aria-expanded', 'false');
+        }
+      });
     });
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') {
-        drop.classList.remove('open');
-        dropBtn.setAttribute('aria-expanded', 'false');
+        drops.forEach(function (drop) {
+          drop.classList.remove('open');
+          const btn = drop.querySelector('.gs-drop-btn');
+          if (btn) btn.setAttribute('aria-expanded', 'false');
+        });
       }
     });
+  }
+
+  // URL ?year=2027 활성 시 2027 메뉴 버튼 하이라이트
+  if (new URLSearchParams(window.location.search).get('year') === '2027') {
+    const b27 = document.querySelector('.gs-drop-btn-2027');
+    const bSal = document.querySelector('.gs-drop-btn:not(.gs-drop-btn-2027)');
+    if (b27) b27.classList.add('on');
+    if (bSal) bSal.classList.remove('on');
   }
 
   const mobBtn = document.querySelector('.gs-mobile-btn');

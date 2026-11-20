@@ -2,7 +2,7 @@
 // - 페이지는 항상 인터넷에서 먼저 받아온다(네트워크 우선). 그래서 사이트를 고치면 바로 반영된다.
 // - 인터넷이 끊겼을 때만 전에 본 페이지를 기기에 저장해 둔 사본으로 보여 준다.
 // - 광고·통계·글꼴처럼 다른 사이트에서 오는 요청은 건드리지 않는다.
-const CACHE = 'gongscore-v4';
+const CACHE = 'gongscore-v5';
 const PRECACHE = ['/', '/icon-192.png', '/favicon.svg'];
 
 self.addEventListener('install', event => {

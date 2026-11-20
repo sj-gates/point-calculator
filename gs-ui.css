@@ -194,6 +194,134 @@ body:not(.gs-page-rental) .filter-btn {
   box-shadow: 0 2px 10px rgba(226, 190, 93, 0.28);
 }
 
+.gs-drop-btn-2027 {
+  border: 1px solid rgba(226, 190, 93, 0.48) !important;
+  background: rgba(226, 190, 93, 0.11) !important;
+  color: #f3dc96 !important;
+}
+
+.gs-drop-btn-2027:hover {
+  background: rgba(226, 190, 93, 0.22) !important;
+  color: #ffffff !important;
+}
+
+.gs-drop-btn-2027.on {
+  background: #e2be5d !important;
+  color: #0f2340 !important;
+  border-color: #e2be5d !important;
+}
+
+.gs-badge-new {
+  font-family: var(--gs-mono) !important;
+  font-size: 0.66rem !important;
+  font-weight: 700 !important;
+  background: #e2be5d;
+  color: #0f2340;
+  padding: 1px 5px;
+  border-radius: 4px;
+  line-height: 1.3;
+}
+
+.gs-drop-btn-2027.on .gs-badge-new {
+  background: #0f2340;
+  color: #f3dc96;
+}
+
+/* ── 계산기 2026/2027 연도 전환 바 ── */
+.gs-year-bar {
+  background: #ffffff;
+  border: 1px solid var(--gs-border);
+  border-radius: var(--gs-radius);
+  padding: 14px 18px;
+  margin-bottom: 16px;
+  box-shadow: var(--gs-shadow);
+}
+
+.gs-year-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.gs-year-label {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--gs-navy);
+}
+
+.gs-year-seg {
+  display: inline-flex;
+  background: #eef2f7;
+  padding: 3px;
+  border-radius: 10px;
+  gap: 3px;
+}
+
+.gs-year-seg button {
+  font-family: var(--gs-font) !important;
+  border: none;
+  background: transparent;
+  color: var(--gs-ink-2);
+  font-size: 0.84rem;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.gs-year-seg button.on {
+  background: var(--gs-navy);
+  color: #f3dc96;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(15, 35, 64, 0.18);
+}
+
+.gs-year-note {
+  display: none;
+  margin-top: 10px;
+  padding: 9px 12px;
+  background: #fdf8eb;
+  border: 1px solid #ebd79a;
+  border-radius: 8px;
+  font-size: 0.79rem;
+  line-height: 1.65;
+  color: #6b4e09;
+}
+
+.gs-year-note.show {
+  display: block;
+}
+
+.gs-year-diff {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(226, 190, 93, 0.18);
+  border: 1px solid rgba(226, 190, 93, 0.45);
+  color: #f3dc96;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .gs-year-bar {
+    padding: 12px 14px;
+  }
+  .gs-year-seg {
+    width: 100%;
+  }
+  .gs-year-seg button {
+    flex: 1;
+    padding: 8px 8px;
+    font-size: 0.8rem;
+  }
+}
+
 /* 드롭다운 메뉴 */
 .gs-drop {
   position: relative;
