@@ -45,6 +45,35 @@ body {
   line-height: 1.7;
 }
 
+/* 구버전 명조체(Noto Serif KR) 잔존 완전 제거 — 숫자 모노스페이스 제외 전 요소 Pretendard 통일 */
+body,
+body button,
+body input,
+body select,
+body textarea,
+.gs-menubar,
+.gs-menubar nav a,
+.gs-menubar .gs-drop-menu,
+.gs-menubar .gs-drop-menu a,
+.gs-menubar .gs-drop-menu strong,
+.gs-menubar .gs-drop-menu small,
+.gs-menubar .gs-mobile-drawer a,
+.gs-menubar .gs-mob-quick a,
+body:not(.gs-page-rental) h1,
+body:not(.gs-page-rental) h2,
+body:not(.gs-page-rental) h3,
+body:not(.gs-page-rental) h4,
+body:not(.gs-page-rental) a,
+body:not(.gs-page-rental) .guide-card,
+body:not(.gs-page-rental) .filter-btn {
+  font-family: var(--gs-font) !important;
+}
+
+/* 숫자·코드 전용 모노스페이스 유지 */
+.num, .toc-n, .s-val, .t-val, .cl-date, .gc-meta, .point-badge, .stat-box .n, pre, code {
+  font-family: var(--gs-mono) !important;
+}
+
 /* ── 읽기 진행 바 (가이드 페이지) ── */
 .gs-progress {
   position: fixed;
@@ -186,7 +215,7 @@ body {
   display: flex;
 }
 
-.gs-drop-menu a {
+.gs-menubar .gs-drop-menu a {
   display: flex !important;
   align-items: center !important;
   gap: 11px !important;
@@ -197,14 +226,18 @@ body {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
+  font-family: var(--gs-font) !important;
+  font-size: 0.88rem !important;
+  font-weight: 500 !important;
   transition: background 0.14s;
 }
 
-.gs-drop-menu a:hover {
-  background: var(--gs-subtle) !important;
+.gs-menubar .gs-drop-menu a:hover {
+  background: #f2f5fa !important;
+  color: var(--gs-navy) !important;
 }
 
-.gs-drop-menu a.on {
+.gs-menubar .gs-drop-menu a.on {
   background: var(--gs-gold-soft) !important;
   color: var(--gs-navy) !important;
 }
@@ -232,15 +265,19 @@ body {
 }
 
 .gs-drop-menu .dm-txt strong {
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--gs-navy);
+  font-family: var(--gs-font) !important;
+  font-size: 0.9rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em;
+  color: var(--gs-navy) !important;
 }
 
 .gs-drop-menu .dm-txt small {
-  font-size: 0.74rem;
-  font-weight: 400;
-  color: var(--gs-muted);
+  font-family: var(--gs-font) !important;
+  font-size: 0.76rem !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.01em;
+  color: var(--gs-muted) !important;
   margin-top: 2px;
 }
 
