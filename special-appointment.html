@@ -95,20 +95,6 @@
 {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "공스코어", "item": "https://gong-score.co.kr/"}, {"@type": "ListItem", "position": 2, "name": "특별 승진 제도 완전 정리", "item": "https://gong-score.co.kr/special-appointment.html"}]}
 </script>
 <style>
-  .gs-menubar{position:sticky;top:0;z-index:100;background:#17191e;border-bottom:3px solid #c8a84b;box-shadow:0 3px 14px rgba(0,0,0,.35);}
-  .gs-menubar .gs-in{max-width:1320px;margin:0 auto;padding:0 14px;display:flex;align-items:center;justify-content:space-between;height:56px;gap:14px;}
-  .gs-menubar .gs-logo{color:#ffffff;font-weight:700;font-size:1.12rem;text-decoration:none;white-space:nowrap;font-family:'Noto Serif KR',serif;}
-  .gs-menubar nav{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;align-items:center;}
-  .gs-menubar nav::-webkit-scrollbar{display:none;}
-  .gs-menubar nav a{color:#c9ced8;text-decoration:none;font-size:.95rem;font-weight:700;padding:8px 12px;border-radius:999px;border:1.5px solid transparent;white-space:nowrap;font-family:'Noto Serif KR',serif;transition:all .15s;flex-shrink:0;}
-  .gs-menubar nav a:hover{color:#ffffff;background:rgba(255,255,255,.1);}
-  .gs-menubar nav a.on{color:#17191e;background:#c8a84b;border-color:#c8a84b;box-shadow:0 2px 10px rgba(200,168,75,.45);}
-  @media(max-width:600px){.gs-menubar .gs-in{height:52px;gap:10px;}.gs-menubar nav a{font-size:.86rem;padding:7px 11px;}.gs-menubar .gs-logo{font-size:1rem;}}
-  .gs-menubar nav{-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent);}.gs-menubar nav.end{-webkit-mask-image:none;mask-image:none;}
-  .gs-menubar nav a .i{display:none;}.gs-menubar nav a .s{display:none;}
-  @media(max-width:600px){.gs-menubar .gs-in{height:62px;gap:8px;padding:0 10px;}.gs-menubar .gs-logo{font-size:.95rem;}.gs-menubar nav{gap:6px;}.gs-menubar nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:60px;padding:5px 7px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#eef1f6;font-size:.7rem;line-height:1.15;}.gs-menubar nav a .i{display:block;font-size:1.1rem;line-height:1;}.gs-menubar nav a .l{display:none;}.gs-menubar nav a .s{display:block;}.gs-menubar nav a.on{background:#c8a84b;border-color:#c8a84b;color:#17191e;box-shadow:0 2px 10px rgba(200,168,75,.45);}}
-</style>
-<style>
   .gs-editorial-bar{background:#f2ede3;border:1px solid #d8d0be;border-left:4px solid #0f2340;border-radius:8px;padding:14px 16px;margin:20px 0;font-size:.78rem;line-height:1.75;color:#1a1a2e;}
   .gs-editorial-bar strong{color:#0f2340;}
   .gs-editorial-bar a{color:#0f2340;font-weight:700;text-decoration:underline;}
@@ -116,7 +102,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Article","headline":"공무원 특별승진 제도 완전 정리 — 조건·절차·일반 승진과의 차이점","description":"지방공무원 특별승진의 다섯 가지 사유와 대상별 요건(포상·직무수행능력·제안·명예퇴직·공무 사망), 최저연수 단축, 절차, 일반 승진과의 차이를 지방공무원법·임용령 기준으로 정리했습니다.","image":"https://gong-score.co.kr/og-image.png","inLanguage":"ko","datePublished":"2026-07-08","dateModified":"2026-11-20","author":{"@type":"Organization","name":"공스코어 편집팀","url":"https://gong-score.co.kr/about.html"},"publisher":{"@type":"Organization","name":"공스코어","url":"https://gong-score.co.kr/","logo":{"@type":"ImageObject","url":"https://gong-score.co.kr/icon-512.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://gong-score.co.kr/special-appointment.html"}}
 </script>
-<link rel="stylesheet" href="/gs-ui.css">
+<link rel="stylesheet" href="/gs-ui.css?v=20261120b">
 <script src="/gs-ui.js" defer></script>
 </head>
 <body class="gs-page-guide">
@@ -124,46 +110,46 @@
   <div class="gs-in">
     <a class="gs-logo" href="index.html"><span class="gs-logo-mark" aria-hidden="true">공</span><span>공<span style="color:#e2be5d">스코어</span></span></a>
     <nav class="gs-nav-main" aria-label="사이트 주요 메뉴">
-      <a class="gs-nav-link" href="index.html">🏆 평정점수</a>
+      <a class="gs-nav-link" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg><span>평정점수</span></a>
       <div class="gs-drop">
-        <button type="button" class="gs-drop-btn" aria-expanded="false" aria-haspopup="true">🧮 급여·수당 계산기 <span class="gs-drop-caret" aria-hidden="true">▾</span></button>
+        <button type="button" class="gs-drop-btn" aria-expanded="false" aria-haspopup="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="11" x2="8.01" y2="11"/><line x1="12" y1="11" x2="12.01" y2="11"/><line x1="16" y1="11" x2="16.01" y2="11"/><line x1="8" y1="15" x2="8.01" y2="15"/><line x1="12" y1="15" x2="12.01" y2="15"/><line x1="16" y1="15" x2="16.01" y2="15"/></svg><span>급여·수당 계산기</span><svg class="gs-drop-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
         <div class="gs-drop-menu" role="menu">
-          <a href="salary-calculator.html" class=""><span class="dm-ico" aria-hidden="true">💵</span><span class="dm-txt"><strong>월급 실수령액 계산기</strong><small>2026 봉급표·수당·세금·기여금</small></span></a>
-          <a href="overtime-pay-calculator.html" class=""><span class="dm-ico" aria-hidden="true">🌙</span><span class="dm-txt"><strong>초과근무수당 계산기</strong><small>직급별 단가·정액분·월 57시간 한도</small></span></a>
-          <a href="parental-leave-calculator.html" class=""><span class="dm-ico" aria-hidden="true">👶</span><span class="dm-txt"><strong>육아휴직수당 계산기</strong><small>상한액·두 번째 휴직자·한부모 특례</small></span></a>
-          <a href="retirement-allowance-calculator.html" class=""><span class="dm-ico" aria-hidden="true">💰</span><span class="dm-txt"><strong>명퇴·퇴직수당 계산기</strong><small>정년잔여기간·별표1 산식 자동 산출</small></span></a>
-          <a href="leave-compensation-calculator.html" class=""><span class="dm-ico" aria-hidden="true">🏖️</span><span class="dm-txt"><strong>연가일수·연가보상비 계산기</strong><small>재직기간별 연가·상하반기 정산</small></span></a>
+          <a href="salary-calculator.html" class=""><span class="dm-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg></span><span class="dm-txt"><strong>월급 실수령액 계산기</strong><small>2026 봉급표·수당·세금·기여금</small></span><span class="dm-arr" aria-hidden="true">›</span></a>
+          <a href="overtime-pay-calculator.html" class=""><span class="dm-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg></span><span class="dm-txt"><strong>초과근무수당 계산기</strong><small>직급별 단가·정액분·월 57시간 한도</small></span><span class="dm-arr" aria-hidden="true">›</span></a>
+          <a href="parental-leave-calculator.html" class=""><span class="dm-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></span><span class="dm-txt"><strong>육아휴직수당 계산기</strong><small>상한액·두 번째 휴직자·한부모 특례</small></span><span class="dm-arr" aria-hidden="true">›</span></a>
+          <a href="retirement-allowance-calculator.html" class=""><span class="dm-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></span><span class="dm-txt"><strong>명퇴·퇴직수당 계산기</strong><small>정년잔여기간·별표1 산식 자동 산출</small></span><span class="dm-arr" aria-hidden="true">›</span></a>
+          <a href="leave-compensation-calculator.html" class=""><span class="dm-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span><span class="dm-txt"><strong>연가일수·연가보상비 계산기</strong><small>재직기간별 연가·상하반기 정산</small></span><span class="dm-arr" aria-hidden="true">›</span></a>
         </div>
       </div>
-      <a class="gs-nav-link" href="rental-housing.html">🏠 임대주택</a>
-      <a class="gs-nav-link on" href="guides.html">📚 승진·인사 가이드</a>
-      <a class="gs-nav-link" href="about.html">소개</a>
+      <a class="gs-nav-link" href="rental-housing.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5"/></svg><span>임대주택</span></a>
+      <a class="gs-nav-link on" href="guides.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg><span>승진·인사 가이드</span></a>
+      <a class="gs-nav-link" href="about.html"><span>소개</span></a>
     </nav>
     <button type="button" class="gs-mobile-btn" aria-expanded="false" aria-label="전체 메뉴 열기">☰ 전체 메뉴</button>
   </div>
   <div class="gs-mob-quick" aria-label="빠른 이동">
-    <a href="index.html" class="">🏆 평정점수</a>
-    <a href="salary-calculator.html" class="">💵 월급</a>
-    <a href="overtime-pay-calculator.html" class="">🌙 초과근무</a>
-    <a href="rental-housing.html" class="">🏠 임대주택</a>
-    <a href="guides.html" class="on">📚 가이드 21편</a>
+    <a href="index.html" class="">평정점수</a>
+    <a href="salary-calculator.html" class="">월급 계산기</a>
+    <a href="overtime-pay-calculator.html" class="">초과근무</a>
+    <a href="rental-housing.html" class="">임대주택</a>
+    <a href="guides.html" class="on">가이드 21편</a>
   </div>
   <div class="gs-mobile-drawer" aria-label="모바일 전체 메뉴">
     <div class="gs-mob-group-label">승진 · 보수 · 복지 계산기</div>
     <div class="gs-mob-grid">
-      <a href="index.html" class="">🏆 평정점수 계산기</a>
-      <a href="salary-calculator.html" class="">💵 월급 실수령액</a>
-      <a href="overtime-pay-calculator.html" class="">🌙 초과근무수당</a>
-      <a href="parental-leave-calculator.html" class="">👶 육아휴직수당</a>
-      <a href="retirement-allowance-calculator.html" class="">💰 명퇴·퇴직수당</a>
-      <a href="leave-compensation-calculator.html" class="">🏖️ 연가보상비</a>
-      <a href="rental-housing.html" class="">🏠 임대주택 합격선</a>
+      <a href="index.html" class="">평정점수 계산기</a>
+      <a href="salary-calculator.html" class="">월급 실수령액</a>
+      <a href="overtime-pay-calculator.html" class="">초과근무수당</a>
+      <a href="parental-leave-calculator.html" class="">육아휴직수당</a>
+      <a href="retirement-allowance-calculator.html" class="">명퇴·퇴직수당</a>
+      <a href="leave-compensation-calculator.html" class="">연가보상비</a>
+      <a href="rental-housing.html" class="">임대주택 합격선</a>
     </div>
     <div class="gs-mob-group-label">가이드 · 안내</div>
     <div class="gs-mob-grid">
-      <a href="guides.html" class="on">📚 승진·인사 가이드</a>
-      <a href="promotion-faq.html" class="">❓ 승진 평정 FAQ</a>
-      <a href="about.html" class="">ℹ️ 서비스 소개</a>
+      <a href="guides.html" class="on">승진·인사 가이드</a>
+      <a href="promotion-faq.html" class="">승진 평정 FAQ</a>
+      <a href="about.html" class="">서비스 소개</a>
     </div>
   </div>
 </div>

@@ -151,19 +151,33 @@ body:not(.gs-page-rental) .filter-btn {
 .gs-drop-btn {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  color: rgba(255, 255, 255, 0.82) !important;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.84) !important;
   background: transparent;
   border: 1px solid transparent;
-  border-radius: 9px !important;
-  padding: 8px 13px !important;
+  border-radius: 8px !important;
+  padding: 7px 12px !important;
   font-family: var(--gs-font) !important;
-  font-size: 0.9rem !important;
+  font-size: 0.875rem !important;
   font-weight: 600 !important;
+  letter-spacing: -0.02em;
   text-decoration: none !important;
   white-space: nowrap;
   cursor: pointer;
   transition: background 0.15s, color 0.15s;
+}
+
+.gs-nav-link svg,
+.gs-drop-btn svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  opacity: 0.82;
+}
+
+.gs-nav-link.on svg,
+.gs-drop-btn.on svg {
+  opacity: 1;
 }
 
 .gs-nav-link:hover,
@@ -177,7 +191,7 @@ body:not(.gs-page-rental) .filter-btn {
   color: #0f2340 !important;
   background: #e2be5d !important;
   font-weight: 700 !important;
-  box-shadow: 0 2px 10px rgba(226, 190, 93, 0.3);
+  box-shadow: 0 2px 10px rgba(226, 190, 93, 0.28);
 }
 
 /* 드롭다운 메뉴 */
@@ -186,8 +200,9 @@ body:not(.gs-page-rental) .filter-btn {
 }
 
 .gs-drop-caret {
-  font-size: 0.68rem;
-  opacity: 0.75;
+  width: 13px !important;
+  height: 13px !important;
+  opacity: 0.7;
   transition: transform 0.18s;
 }
 
@@ -198,13 +213,14 @@ body:not(.gs-page-rental) .filter-btn {
 .gs-drop-menu {
   position: absolute;
   top: calc(100% + 10px);
-  left: 0;
-  min-width: 270px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 296px;
   background: #ffffff;
-  border: 1px solid var(--gs-border);
+  border: 1px solid rgba(15, 35, 64, 0.1);
   border-radius: 14px;
-  padding: 8px;
-  box-shadow: 0 12px 36px rgba(15, 35, 64, 0.18);
+  padding: 6px;
+  box-shadow: 0 4px 12px rgba(15, 35, 64, 0.06), 0 18px 40px rgba(15, 35, 64, 0.14);
   display: none;
   flex-direction: column;
   gap: 2px;
@@ -219,7 +235,7 @@ body:not(.gs-page-rental) .filter-btn {
   display: flex !important;
   align-items: center !important;
   gap: 11px !important;
-  padding: 10px 12px !important;
+  padding: 9px 11px !important;
   border-radius: 10px !important;
   text-decoration: none !important;
   color: var(--gs-ink) !important;
@@ -227,18 +243,18 @@ body:not(.gs-page-rental) .filter-btn {
   border: none !important;
   box-shadow: none !important;
   font-family: var(--gs-font) !important;
-  font-size: 0.88rem !important;
+  font-size: 0.86rem !important;
   font-weight: 500 !important;
-  transition: background 0.14s;
+  transition: background 0.14s, transform 0.12s;
 }
 
 .gs-menubar .gs-drop-menu a:hover {
-  background: #f2f5fa !important;
+  background: #f3f6fb !important;
   color: var(--gs-navy) !important;
 }
 
 .gs-menubar .gs-drop-menu a.on {
-  background: var(--gs-gold-soft) !important;
+  background: #fdf7e7 !important;
   color: var(--gs-navy) !important;
 }
 
@@ -246,39 +262,66 @@ body:not(.gs-page-rental) .filter-btn {
   width: 34px;
   height: 34px;
   border-radius: 9px;
-  background: #f0f3f8;
+  background: #f1f4f9;
+  color: #1b365d;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.05rem;
   flex-shrink: 0;
+  transition: background 0.14s, color 0.14s;
 }
 
-.gs-drop-menu a.on .dm-ico {
-  background: #f3e4b8;
+.gs-drop-menu .dm-ico svg {
+  width: 17px;
+  height: 17px;
+  stroke-width: 1.85;
+}
+
+.gs-menubar .gs-drop-menu a:hover .dm-ico {
+  background: #e4ebf6;
+  color: #0f2340;
+}
+
+.gs-menubar .gs-drop-menu a.on .dm-ico {
+  background: #f3df9e;
+  color: #0f2340;
 }
 
 .gs-drop-menu .dm-txt {
   display: flex;
   flex-direction: column;
-  line-height: 1.3;
+  line-height: 1.32;
+  min-width: 0;
+  flex: 1;
 }
 
 .gs-drop-menu .dm-txt strong {
   font-family: var(--gs-font) !important;
-  font-size: 0.9rem !important;
-  font-weight: 700 !important;
-  letter-spacing: -0.02em;
-  color: var(--gs-navy) !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.025em !important;
+  color: #191f28 !important;
 }
 
 .gs-drop-menu .dm-txt small {
   font-family: var(--gs-font) !important;
-  font-size: 0.76rem !important;
+  font-size: 0.74rem !important;
   font-weight: 400 !important;
-  letter-spacing: -0.01em;
-  color: var(--gs-muted) !important;
+  letter-spacing: -0.015em !important;
+  color: #6b7684 !important;
   margin-top: 2px;
+}
+
+.gs-drop-menu .dm-arr {
+  color: #b0b8c1;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: transform 0.14s, color 0.14s;
+}
+
+.gs-menubar .gs-drop-menu a:hover .dm-arr {
+  color: var(--gs-navy);
+  transform: translateX(2px);
 }
 
 /* 모바일 메뉴 버튼 & 서랍 */
