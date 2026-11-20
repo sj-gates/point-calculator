@@ -65,7 +65,7 @@
   .category{margin-bottom:8px;}
   .category-head{display:flex;align-items:baseline;gap:10px;padding:22px 0 12px;scroll-margin-top:16px;}
   .category-head .cnum{font-family:'DM Mono',monospace;font-size:1.6rem;font-weight:700;color:var(--gold-lt);-webkit-text-stroke:1px var(--gold);}
-  .category-head h3{font-size:1.05rem;font-weight:700;color:var(--navy);}
+  .category-head h2,.category-head h3{font-size:1.05rem;font-weight:700;color:var(--navy);}
   .category-head .ccount{font-size:.74rem;color:var(--muted);margin-left:auto;}
 
   /* 네이티브 details/summary 아코디언 - 다른 페이지의 .card 패턴과 완전히 다른 구조 */
@@ -95,8 +95,6 @@
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "공스코어", "item": "https://gong-score.co.kr/"}, {"@type": "ListItem", "position": 2, "name": "승진 평정 FAQ 총정리", "item": "https://gong-score.co.kr/promotion-faq.html"}]}
 </script>
-</head>
-<body>
 <style>
   .gs-menubar{position:sticky;top:0;z-index:100;background:#17191e;border-bottom:3px solid #c8a84b;box-shadow:0 3px 14px rgba(0,0,0,.35);}
   .gs-menubar .gs-in{max-width:1320px;margin:0 auto;padding:0 14px;display:flex;align-items:center;justify-content:space-between;height:56px;gap:14px;}
@@ -111,14 +109,24 @@
   .gs-menubar nav a .i{display:none;}.gs-menubar nav a .s{display:none;}
   @media(max-width:600px){.gs-menubar .gs-in{height:62px;gap:8px;padding:0 10px;}.gs-menubar .gs-logo{font-size:.95rem;}.gs-menubar nav{gap:6px;}.gs-menubar nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:60px;padding:5px 7px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#eef1f6;font-size:.7rem;line-height:1.15;}.gs-menubar nav a .i{display:block;font-size:1.1rem;line-height:1;}.gs-menubar nav a .l{display:none;}.gs-menubar nav a .s{display:block;}.gs-menubar nav a.on{background:#c8a84b;border-color:#c8a84b;color:#17191e;box-shadow:0 2px 10px rgba(200,168,75,.45);}}
 </style>
-<div class="gs-menubar"><div class="gs-in"><a class="gs-logo" href="index.html">공<span style="color:#c8a84b">스코어</span></a><nav aria-label="사이트 메뉴"><a href="index.html"><span class="i" aria-hidden="true">🏆</span><span class="l">평정점수 계산기</span><span class="s">평정점수</span></a><a href="salary-calculator.html"><span class="i" aria-hidden="true">💵</span><span class="l">월급 실수령 계산기</span><span class="s">월급</span></a><a href="overtime-pay-calculator.html"><span class="i" aria-hidden="true">🌙</span><span class="l">초과근무수당 계산기</span><span class="s">초과근무</span></a><a href="parental-leave-calculator.html"><span class="i" aria-hidden="true">👶</span><span class="l">육아휴직수당 계산기</span><span class="s">육아휴직</span></a><a href="retirement-allowance-calculator.html"><span class="i" aria-hidden="true">💰</span><span class="l">명퇴·퇴직수당 계산기</span><span class="s">명퇴·퇴직</span></a><a href="leave-compensation-calculator.html"><span class="i" aria-hidden="true">🏖️</span><span class="l">연가보상비 계산기</span><span class="s">연가</span></a><a href="rental-housing.html"><span class="i" aria-hidden="true">🏠</span><span class="l">임대주택 합격선</span><span class="s">임대주택</span></a></nav></div></div><script>(function(){var n=document.querySelector(".gs-menubar nav"),a=n&&n.querySelector("a.on");if(a)n.scrollLeft=a.offsetLeft-(n.clientWidth-a.offsetWidth)/2;if(n){var f=function(){n.classList.toggle("end",n.scrollLeft+n.clientWidth>=n.scrollWidth-4)};n.addEventListener("scroll",f,{passive:true});window.addEventListener("resize",f);f();}})();</script>
+<style>
+  .gs-editorial-bar{background:#f2ede3;border:1px solid #d8d0be;border-left:4px solid #0f2340;border-radius:8px;padding:14px 16px;margin:20px 0;font-size:.78rem;line-height:1.75;color:#1a1a2e;}
+  .gs-editorial-bar strong{color:#0f2340;}
+  .gs-editorial-bar a{color:#0f2340;font-weight:700;text-decoration:underline;}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"공무원 승진 평정 자주 묻는 질문 FAQ 총정리 — 근평·경력·가점","description":"공무원 승진 평정과 관련해 가장 많이 묻는 질문 20가지를 한 곳에 모았습니다. 근무성적평정, 경력평정, 가점, 휴직 산입 등 핵심 궁금증을 클릭 한 번으로 확인하세요.","image":"https://gong-score.co.kr/og-image.png","inLanguage":"ko","datePublished":"2026-07-08","dateModified":"2026-11-20","author":{"@type":"Organization","name":"공스코어 편집팀","url":"https://gong-score.co.kr/about.html"},"publisher":{"@type":"Organization","name":"공스코어","url":"https://gong-score.co.kr/","logo":{"@type":"ImageObject","url":"https://gong-score.co.kr/icon-512.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://gong-score.co.kr/promotion-faq.html"}}
+</script>
+</head>
+<body>
+<div class="gs-menubar"><div class="gs-in"><a class="gs-logo" href="index.html">공<span style="color:#c8a84b">스코어</span></a><nav aria-label="사이트 메뉴"><a href="index.html"><span class="i" aria-hidden="true">🏆</span><span class="l">평정점수 계산기</span><span class="s">평정점수</span></a><a href="salary-calculator.html"><span class="i" aria-hidden="true">💵</span><span class="l">월급 실수령 계산기</span><span class="s">월급</span></a><a href="overtime-pay-calculator.html"><span class="i" aria-hidden="true">🌙</span><span class="l">초과근무수당 계산기</span><span class="s">초과근무</span></a><a href="parental-leave-calculator.html"><span class="i" aria-hidden="true">👶</span><span class="l">육아휴직수당 계산기</span><span class="s">육아휴직</span></a><a href="retirement-allowance-calculator.html"><span class="i" aria-hidden="true">💰</span><span class="l">명퇴·퇴직수당 계산기</span><span class="s">명퇴·퇴직</span></a><a href="leave-compensation-calculator.html"><span class="i" aria-hidden="true">🏖️</span><span class="l">연가보상비 계산기</span><span class="s">연가</span></a><a href="rental-housing.html"><span class="i" aria-hidden="true">🏠</span><span class="l">임대주택 합격선</span><span class="s">임대주택</span></a><a href="guides.html" class="on" aria-current="page"><span class="i" aria-hidden="true">📚</span><span class="l">승진·인사 가이드</span><span class="s">가이드</span></a></nav></div></div><script>(function(){var n=document.querySelector(".gs-menubar nav"),a=n&&n.querySelector("a.on");if(a)n.scrollLeft=a.offsetLeft-(n.clientWidth-a.offsetWidth)/2;if(n){var f=function(){n.classList.toggle("end",n.scrollLeft+n.clientWidth>=n.scrollWidth-4)};n.addEventListener("scroll",f,{passive:true});window.addEventListener("resize",f);f();}})();</script>
 <header>
   <a href="index.html" style="text-decoration:none; color:inherit;"><p class="site-title">공<span>스코어</span></p></a>
   <p>지방공무원 승진·보수 계산기와 인사 가이드</p>
   <div class="gold-line"></div>
 </header>
 <nav class="breadcrumb">
-  <a href="index.html">홈</a> &rsaquo; 승진 평정 FAQ 총정리
+  <a href="index.html">홈</a> &rsaquo; <a href="guides.html">승진·인사 가이드</a> &rsaquo; 승진 평정 FAQ 총정리
 </nav>
 <main>
 
@@ -139,11 +147,11 @@
   <section class="category" id="cat-perf">
     <div class="category-head">
       <span class="cnum">01</span>
-      <h3>근무성적평정 관련 질문</h3>
+      <h2>근무성적평정 관련 질문</h2>
       <span class="ccount">5문항</span>
     </div>
 
-    <details class="qa">
+    <details class="qa" open>
       <summary>근무성적평정은 언제, 몇 번 받나요?</summary>
       <div class="qa-body">근무성적평정은 <strong>매년 6월 말과 12월 말</strong>을 기준으로 연 2회(반기 1회) 실시합니다. 6월 평정은 상반기 근무를, 12월 평정은 하반기 근무를 평가합니다. 신규 임용자나 복직자처럼 평정 대상기간 중 근무 기간이 짧은 경우의 평정 방법은 행정안전부 지침과 기관 기준에 따르므로 인사부서에 확인하세요.</div>
     </details>
@@ -172,11 +180,11 @@
   <section class="category" id="cat-career">
     <div class="category-head">
       <span class="cnum">02</span>
-      <h3>경력평정 관련 질문</h3>
+      <h2>경력평정 관련 질문</h2>
       <span class="ccount">4문항</span>
     </div>
 
-    <details class="qa">
+    <details class="qa" open>
       <summary>경력평정 만점은 몇 점이고, 언제 도달하나요?</summary>
       <div class="qa-body">경력평정 만점은 <strong>30점</strong>입니다. 현 직급 경력에 직전 직급 경력을 60%로 환산해 더한 개월 수로 계산합니다. 서울시 기준 7~9급은 처음 60개월까지 매월 0.48점(60개월이면 28.8점), 그 뒤로는 매월 0.05점씩 더해져 약 84개월(7년)이면 만점에 도달합니다. 6급은 72개월까지 매월 0.40점, 5급은 84개월까지 매월 0.34점이 기준이며, 기관마다 점수표가 다를 수 있습니다. 내 경력평정 점수는 <a href="index.html" style="color:var(--navy);font-weight:700;">평정점수 계산기</a>에서 날짜만 넣으면 바로 계산됩니다.</div>
     </details>
@@ -200,11 +208,11 @@
   <section class="category" id="cat-bonus">
     <div class="category-head">
       <span class="cnum">03</span>
-      <h3>가점 관련 질문</h3>
+      <h2>가점 관련 질문</h2>
       <span class="ccount">5문항</span>
     </div>
 
-    <details class="qa">
+    <details class="qa" open>
       <summary>가점은 어떤 항목이 해당되나요?</summary>
       <div class="qa-body">기관마다 다르지만 보통 <strong>자격증·어학·특수지 근무</strong> 등이 가점 항목입니다. 어떤 자격증이 본인 직렬·계급에서 인정되는지는 소속 기관 인사규칙의 별표에서 확인해야 하는데, 서울특별시 기준 전체 목록은 <a href="seoul-certification-table.html" style="color:var(--gold);">서울특별시 가점대상 자격증 전체 목록 (별표23)</a> 페이지에서 직렬별로 확인할 수 있습니다.</div>
     </details>
@@ -233,11 +241,11 @@
   <section class="category" id="cat-leave">
     <div class="category-head">
       <span class="cnum">04</span>
-      <h3>휴직·특수 상황 관련 질문</h3>
+      <h2>휴직·특수 상황 관련 질문</h2>
       <span class="ccount">6문항</span>
     </div>
 
-    <details class="qa">
+    <details class="qa" open>
       <summary>육아휴직 중에도 경력평정 점수가 쌓이나요?</summary>
       <div class="qa-body">쌓입니다. 2025년 1월 개정으로 육아휴직 기간은 <strong>자녀 1명당 최대 3년까지 전부</strong> 경력평정과 승진소요 최저연수에 산입됩니다. 첫째·둘째 구분은 없고, 육아휴직 대신 시간선택제로 근무한 기간과 합쳐 자녀 1명당 3년이 한도입니다. 다만 육아휴직 중에는 근무성적평정 대상에서 제외됩니다.</div>
     </details>
@@ -277,6 +285,12 @@
     <a href="leave-calculation-guide.html">휴직 경력산입</a>
     <a href="promotion-list-guide.html">명부 작성 가이드</a>
   </div>
+
+  
+  <aside class="gs-editorial-bar" aria-label="콘텐츠 검수 정보">
+    <strong>📌 콘텐츠 검수 및 출처 안내</strong> · 작성·검수: <a href="about.html">공스코어 편집팀</a> · 최종 확인: 2026년 11월 20일<br>
+    국가법령정보센터(「지방공무원법」·「지방공무원 임용령」·「지방공무원 평정 규칙」) 및 서울·경기·인천 인사규칙 원문을 대조해 작성했습니다. 더 많은 주제는 <a href="guides.html">승진·인사 가이드 전체 모음(21편)</a>에서 확인하실 수 있습니다.
+  </aside>
 
   <div class="cta-box">
     <p>궁금증이 해소됐다면 내 실제 평정점수를 계산해보세요.<br>근평 등급·임용일·가점을 입력하면 즉시 산출합니다.</p>

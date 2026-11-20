@@ -42,8 +42,8 @@
   .article-hero h1,.article-hero h2{font-size:clamp(1.1rem,3.5vw,1.45rem);font-weight:700;color:var(--navy);line-height:1.45;margin-bottom:10px;}
   .article-hero .meta{font-size:.74rem;color:var(--muted);}
   .card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);}
-  .card h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
-  .card h3 .num{background:var(--navy);color:var(--gold);font-family:'DM Mono',monospace;font-size:.72rem;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .card h2,.card h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  .card h2 .num,.card h3 .num{background:var(--navy);color:var(--gold);font-family:'DM Mono',monospace;font-size:.72rem;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
   .card p{font-size:.88rem;line-height:1.9;color:var(--ink);margin-bottom:10px;}
   .hint{font-size:.78rem;color:var(--muted);padding:10px 14px;background:var(--paper);border-left:3px solid var(--gold);border-radius:0 5px 5px 0;margin:12px 0;}
   .region-tabs{display:flex;gap:0;margin-bottom:0;border-radius:8px 8px 0 0;overflow:hidden;}
@@ -77,7 +77,7 @@
   .cta-btn{display:inline-block;background:var(--gold);color:var(--navy);font-weight:700;font-family:'Noto Serif KR',serif;padding:12px 28px;border-radius:7px;text-decoration:none;font-size:.92rem;transition:opacity .2s;}
   .cta-btn:hover{opacity:.85;}
   .related-links{background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);}
-  .related-links h3{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:14px;}
+  .related-links h2,.related-links h3{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:14px;}
   .related-links ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
   .related-links li a{font-size:.85rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:6px;}
   .related-links li a::before{content:'→';color:var(--gold);}
@@ -91,8 +91,6 @@
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "공스코어", "item": "https://gong-score.co.kr/"}, {"@type": "ListItem", "position": 2, "name": "서울시·경기·인천 평정 기준 비교", "item": "https://gong-score.co.kr/grade-comparison.html"}]}
 </script>
-</head>
-<body>
 <style>
   .gs-menubar{position:sticky;top:0;z-index:100;background:#17191e;border-bottom:3px solid #c8a84b;box-shadow:0 3px 14px rgba(0,0,0,.35);}
   .gs-menubar .gs-in{max-width:1320px;margin:0 auto;padding:0 14px;display:flex;align-items:center;justify-content:space-between;height:56px;gap:14px;}
@@ -107,14 +105,24 @@
   .gs-menubar nav a .i{display:none;}.gs-menubar nav a .s{display:none;}
   @media(max-width:600px){.gs-menubar .gs-in{height:62px;gap:8px;padding:0 10px;}.gs-menubar .gs-logo{font-size:.95rem;}.gs-menubar nav{gap:6px;}.gs-menubar nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:60px;padding:5px 7px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#eef1f6;font-size:.7rem;line-height:1.15;}.gs-menubar nav a .i{display:block;font-size:1.1rem;line-height:1;}.gs-menubar nav a .l{display:none;}.gs-menubar nav a .s{display:block;}.gs-menubar nav a.on{background:#c8a84b;border-color:#c8a84b;color:#17191e;box-shadow:0 2px 10px rgba(200,168,75,.45);}}
 </style>
-<div class="gs-menubar"><div class="gs-in"><a class="gs-logo" href="index.html">공<span style="color:#c8a84b">스코어</span></a><nav aria-label="사이트 메뉴"><a href="index.html"><span class="i" aria-hidden="true">🏆</span><span class="l">평정점수 계산기</span><span class="s">평정점수</span></a><a href="salary-calculator.html"><span class="i" aria-hidden="true">💵</span><span class="l">월급 실수령 계산기</span><span class="s">월급</span></a><a href="overtime-pay-calculator.html"><span class="i" aria-hidden="true">🌙</span><span class="l">초과근무수당 계산기</span><span class="s">초과근무</span></a><a href="parental-leave-calculator.html"><span class="i" aria-hidden="true">👶</span><span class="l">육아휴직수당 계산기</span><span class="s">육아휴직</span></a><a href="retirement-allowance-calculator.html"><span class="i" aria-hidden="true">💰</span><span class="l">명퇴·퇴직수당 계산기</span><span class="s">명퇴·퇴직</span></a><a href="leave-compensation-calculator.html"><span class="i" aria-hidden="true">🏖️</span><span class="l">연가보상비 계산기</span><span class="s">연가</span></a><a href="rental-housing.html"><span class="i" aria-hidden="true">🏠</span><span class="l">임대주택 합격선</span><span class="s">임대주택</span></a></nav></div></div><script>(function(){var n=document.querySelector(".gs-menubar nav"),a=n&&n.querySelector("a.on");if(a)n.scrollLeft=a.offsetLeft-(n.clientWidth-a.offsetWidth)/2;if(n){var f=function(){n.classList.toggle("end",n.scrollLeft+n.clientWidth>=n.scrollWidth-4)};n.addEventListener("scroll",f,{passive:true});window.addEventListener("resize",f);f();}})();</script>
+<style>
+  .gs-editorial-bar{background:#f2ede3;border:1px solid #d8d0be;border-left:4px solid #0f2340;border-radius:8px;padding:14px 16px;margin:20px 0;font-size:.78rem;line-height:1.75;color:#1a1a2e;}
+  .gs-editorial-bar strong{color:#0f2340;}
+  .gs-editorial-bar a{color:#0f2340;font-weight:700;text-decoration:underline;}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"서울시·경기도·인천시 공무원 평정 기준 비교 — 근평·경력·가점 차이점 총정리","description":"서울시, 경기도, 인천시 공무원의 근무성적평정 등급 점수, 경력평정 산정 방식, 가점 기준이 어떻게 다른지 한눈에 비교합니다.","image":"https://gong-score.co.kr/og-image.png","inLanguage":"ko","datePublished":"2026-07-08","dateModified":"2026-11-20","author":{"@type":"Organization","name":"공스코어 편집팀","url":"https://gong-score.co.kr/about.html"},"publisher":{"@type":"Organization","name":"공스코어","url":"https://gong-score.co.kr/","logo":{"@type":"ImageObject","url":"https://gong-score.co.kr/icon-512.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://gong-score.co.kr/grade-comparison.html"}}
+</script>
+</head>
+<body>
+<div class="gs-menubar"><div class="gs-in"><a class="gs-logo" href="index.html">공<span style="color:#c8a84b">스코어</span></a><nav aria-label="사이트 메뉴"><a href="index.html"><span class="i" aria-hidden="true">🏆</span><span class="l">평정점수 계산기</span><span class="s">평정점수</span></a><a href="salary-calculator.html"><span class="i" aria-hidden="true">💵</span><span class="l">월급 실수령 계산기</span><span class="s">월급</span></a><a href="overtime-pay-calculator.html"><span class="i" aria-hidden="true">🌙</span><span class="l">초과근무수당 계산기</span><span class="s">초과근무</span></a><a href="parental-leave-calculator.html"><span class="i" aria-hidden="true">👶</span><span class="l">육아휴직수당 계산기</span><span class="s">육아휴직</span></a><a href="retirement-allowance-calculator.html"><span class="i" aria-hidden="true">💰</span><span class="l">명퇴·퇴직수당 계산기</span><span class="s">명퇴·퇴직</span></a><a href="leave-compensation-calculator.html"><span class="i" aria-hidden="true">🏖️</span><span class="l">연가보상비 계산기</span><span class="s">연가</span></a><a href="rental-housing.html"><span class="i" aria-hidden="true">🏠</span><span class="l">임대주택 합격선</span><span class="s">임대주택</span></a><a href="guides.html" class="on" aria-current="page"><span class="i" aria-hidden="true">📚</span><span class="l">승진·인사 가이드</span><span class="s">가이드</span></a></nav></div></div><script>(function(){var n=document.querySelector(".gs-menubar nav"),a=n&&n.querySelector("a.on");if(a)n.scrollLeft=a.offsetLeft-(n.clientWidth-a.offsetWidth)/2;if(n){var f=function(){n.classList.toggle("end",n.scrollLeft+n.clientWidth>=n.scrollWidth-4)};n.addEventListener("scroll",f,{passive:true});window.addEventListener("resize",f);f();}})();</script>
 <header>
   <a href="index.html" style="text-decoration:none; color:inherit;"><p class="site-title">공<span>스코어</span></p></a>
   <p>지방공무원 승진·보수 계산기와 인사 가이드</p>
   <div class="gold-line"></div>
 </header>
 <nav class="breadcrumb">
-  <a href="index.html">홈</a> &rsaquo; 서울시·경기·인천 평정 기준 비교
+  <a href="index.html">홈</a> &rsaquo; <a href="guides.html">승진·인사 가이드</a> &rsaquo; 서울시·경기·인천 평정 기준 비교
 </nav>
 <main>
 
@@ -126,14 +134,14 @@
 
 
   <div class="card">
-    <h3><span class="num">1</span> 세 기관 비교가 필요한 이유</h3>
+    <h2><span class="num">1</span> 세 기관 비교가 필요한 이유</h2>
     <p>지방공무원 평정은 「지방공무원 평정 규칙」이라는 공통 법령을 기반으로 하지만, 각 기관이 인사규칙으로 세부 기준을 자체적으로 정할 수 있습니다. 이 때문에 <strong>서울시, 경기도, 인천시는 같은 직급·경력이라도 최종 평정점수가 다를 수 있습니다.</strong></p>
     <p>특히 인사이동이나 전입을 고려하고 있거나, 기관 선택을 앞두고 있다면 각 기관의 평정 기준 차이를 미리 파악해두는 것이 중요합니다.</p>
     <div class="hint">💡 아래 비교표는 공개된 인사규칙과 일반적인 운영 사례를 기반으로 작성한 참고 자료입니다. 정확한 기준은 반드시 소속 기관에서 확인하세요.</div>
   </div>
 
   <div class="card">
-    <h3><span class="num">2</span> 근무성적평정 등급 점수 비교</h3>
+    <h2><span class="num">2</span> 근무성적평정 등급 점수 비교</h2>
     <p>근무성적평정은 반기(6개월)마다 70점 만점을 기준으로 등급별 원점수가 매겨지고, 여러 반기의 점수를 가중평균해 최종 근평 점수를 산출합니다. 최상위 등급(수1)의 원점수는 세 기관 모두 <strong>70.0점</strong>으로 동일하지만, 등급 간 점수 간격과 배분 방식은 기관·직렬에 따라 세부적으로 다를 수 있습니다.</p>
     <table>
       <thead>
@@ -150,7 +158,7 @@
   </div>
 
 <div class="card">
-    <h3><span class="num">3</span> 자격증 가점 비교 — 기관별 차이가 큰 항목</h3>
+    <h2><span class="num">3</span> 자격증 가점 비교 — 기관별 차이가 큰 항목</h2>
     <p>자격증 가점은 세 기관 간 차이가 가장 두드러지는 항목입니다. 서울시는 경기·인천에 비해 자격증 가점 단가가 낮게 책정되어 있습니다.</p>
     <table>
       <thead>
@@ -179,7 +187,7 @@
   </div>
 
   <div class="card">
-    <h3><span class="num">4</span> 경력평정 구조 비교</h3>
+    <h2><span class="num">4</span> 경력평정 구조 비교</h2>
     <p>경력평정의 기본 구조(현 직급 100% + 직전 직급 60%, 만점 30점)는 세 기관 모두 동일합니다. 다만 직전 직급 경력 인정 범위와 만점 기준은 기관 규칙에 따라 세부 차이가 있을 수 있습니다.</p>
     <p>경력평정은 현 직급에서의 근무 월수를 기준으로 산정합니다. 현 직급 경력은 100% 반영되고, 직전 직급 경력은 60%로 할인되어 합산됩니다. 예를 들어 7급 36개월 + 8급 경력을 60% 환산한 값을 더하여 경력평정 점수를 산출합니다. 세 기관 모두 이 기본 구조는 동일하지만, 월 환산 점수 단가(기본점 및 점수 증가율)는 기관별 인사규칙 별표에 명시된 수치가 적용됩니다.</p>
     <p>경력평정에서 주의해야 할 점은 <strong>휴직 기간 처리</strong>입니다. 육아휴직·질병휴직·개인사유 휴직 등 휴직 종류에 따라 경력으로 인정되는 범위가 다릅니다. 육아휴직은 2025년 1월 개정으로 자녀 1명당 최대 3년까지 전부 경력으로 인정되지만, 일반 질병휴직처럼 경력으로 인정되지 않는 휴직도 있습니다. 파견·교육 기간도 인정 여부가 기관마다 다를 수 있습니다.</p>
@@ -200,7 +208,7 @@
   </div>
 
   <div class="card">
-    <h3><span class="num">5</span> 세 기관 비교 — 종합 정리</h3>
+    <h2><span class="num">5</span> 세 기관 비교 — 종합 정리</h2>
     <p>서울시·경기도·인천시의 평정 기준을 종합하면, 가장 큰 차이는 <strong>자격증 가점 단가</strong>입니다. 서울시는 0.24점으로 경기·인천의 0.5점에 비해 절반 수준이기 때문에, 서울시 소속 공무원은 자격증 하나로 얻을 수 있는 가점 효과가 상대적으로 작습니다. 이 때문에 서울시에서는 어학 성적과 특수지 근무 가점을 병행하는 전략이 더 중요합니다.</p>
     <p>근무성적평정 등급 점수 자체는 세 기관이 거의 동일하지만, <strong>반영 반기 수와 연도별 가중치 구조</strong>에서 차이가 날 수 있습니다. 기관별 인사규칙에서 직급별 반영 반기 수와 가중치를 확인해야 정확한 산출이 가능합니다.</p>
     <p>경력평정 구조는 세 기관 모두 현 직급 100% + 직전 직급 60% + 만점 30점으로 동일하지만, 월별 점수 단가(증가율)는 기관마다 다릅니다. 같은 근무 개월 수라도 기관에 따라 경력평정 점수가 달라질 수 있으므로, 전입·전출을 고려할 때는 양쪽 기관의 경력평정 산정 방식을 미리 비교해보는 것이 좋습니다.</p>
@@ -209,7 +217,7 @@
   </div>
 
   <div class="related-links">
-    <h3>📚 함께 읽으면 좋은 글</h3>
+    <h2>📚 함께 읽으면 좋은 글</h2>
     <ul>
       <li><a href="bonus-points-guide.html">승진 가점 종류와 획득 전략 총정리</a></li>
       <li><a href="performance-rating-guide.html">근무성적평정(근평) 등급·점수 가이드</a></li>
@@ -217,6 +225,12 @@
       <li><a href="promotion-strategy.html">직급별 승진 전략 가이드</a></li>
     </ul>
   </div>
+
+  
+  <aside class="gs-editorial-bar" aria-label="콘텐츠 검수 정보">
+    <strong>📌 콘텐츠 검수 및 출처 안내</strong> · 작성·검수: <a href="about.html">공스코어 편집팀</a> · 최종 확인: 2026년 11월 20일<br>
+    국가법령정보센터(「지방공무원법」·「지방공무원 임용령」·「지방공무원 평정 규칙」) 및 서울·경기·인천 인사규칙 원문을 대조해 작성했습니다. 더 많은 주제는 <a href="guides.html">승진·인사 가이드 전체 모음(21편)</a>에서 확인하실 수 있습니다.
+  </aside>
 
   <div class="cta-box">
     <p>내 소속 기관 기준으로 평정점수를 직접 계산해보세요.<br>서울시·경기도·인천시 기준을 선택해 자동 산출합니다.</p>

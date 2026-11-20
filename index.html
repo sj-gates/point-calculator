@@ -38,11 +38,6 @@
 <meta name="twitter:description" content="지방공무원의 승진 평정점수를 간편하게 계산하세요. 입력 정보는 서버에 저장되지 않습니다.">
 <meta name="twitter:image"       content="https://gong-score.co.kr/og-image.png">
 
-<!-- 애드센스 코드 삽입 자리 (승인 후 아래 두 줄 주석 해제 후 ca-pub 값 교체) -->
-<!--
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
--->
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 
@@ -621,8 +616,6 @@
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "WebApplication", "name": "공무원 평정점수 계산기", "url": "https://gong-score.co.kr/", "description": "근평 등급·경력·가점을 입력하면 지방공무원 승진 평정점수를 자동 계산합니다.", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "browserRequirements": "JavaScript 사용", "inLanguage": "ko", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "KRW"}, "publisher": {"@type": "Organization", "name": "공스코어", "url": "https://gong-score.co.kr/"}}
 </script>
-</head>
-<body>
 <style>
   .gs-menubar{position:sticky;top:0;z-index:100;background:#17191e;border-bottom:3px solid #c8a84b;box-shadow:0 3px 14px rgba(0,0,0,.35);}
   .gs-menubar .gs-in{max-width:1320px;margin:0 auto;padding:0 14px;display:flex;align-items:center;justify-content:space-between;height:56px;gap:14px;}
@@ -636,8 +629,38 @@
   .gs-menubar nav{-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent);}.gs-menubar nav.end{-webkit-mask-image:none;mask-image:none;}
   .gs-menubar nav a .i{display:none;}.gs-menubar nav a .s{display:none;}
   @media(max-width:600px){.gs-menubar .gs-in{height:62px;gap:8px;padding:0 10px;}.gs-menubar .gs-logo{font-size:.95rem;}.gs-menubar nav{gap:6px;}.gs-menubar nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:60px;padding:5px 7px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#eef1f6;font-size:.7rem;line-height:1.15;}.gs-menubar nav a .i{display:block;font-size:1.1rem;line-height:1;}.gs-menubar nav a .l{display:none;}.gs-menubar nav a .s{display:block;}.gs-menubar nav a.on{background:#c8a84b;border-color:#c8a84b;color:#17191e;box-shadow:0 2px 10px rgba(200,168,75,.45);}}
+  .acc-item { border-bottom: 1px solid var(--border); }
+  .acc-item:last-child { border-bottom: none; }
+  .acc-btn {
+    width: 100%; background: none; border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 0; font-family: 'Noto Serif KR', serif;
+    font-size: .88rem; font-weight: 700; color: var(--navy);
+    text-align: left; gap: 10px;
+  }
+  .acc-btn .acc-arrow {
+    flex-shrink: 0; width: 20px; height: 20px;
+    background: var(--paper); border: 1px solid var(--border);
+    border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; font-size: .65rem; color: var(--gold);
+    transition: transform .25s;
+  }
+  .acc-btn.open .acc-arrow { transform: rotate(180deg); }
+  .acc-body {
+    font-size: .82rem; line-height: 1.85; color: var(--ink);
+    padding: 0 0 14px 0; display: none;
+    border-left: 3px solid var(--gold); padding-left: 12px;
+    margin-left: 2px;
+  }
+  .acc-body.open { display: block; }
+  .sim-case-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 12px; }
+  .sim-case { background: var(--paper); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
+  .sim-case h4 { font-size: .86rem; color: var(--navy); margin-bottom: 6px; }
+  .sim-case p { font-size: .81rem; line-height: 1.75; color: var(--ink); margin: 0; }
 </style>
-<div class="gs-menubar"><div class="gs-in"><a class="gs-logo" href="index.html">공<span style="color:#c8a84b">스코어</span></a><nav aria-label="사이트 메뉴"><a href="index.html" class="on" aria-current="page"><span class="i" aria-hidden="true">🏆</span><span class="l">평정점수 계산기</span><span class="s">평정점수</span></a><a href="salary-calculator.html"><span class="i" aria-hidden="true">💵</span><span class="l">월급 실수령 계산기</span><span class="s">월급</span></a><a href="overtime-pay-calculator.html"><span class="i" aria-hidden="true">🌙</span><span class="l">초과근무수당 계산기</span><span class="s">초과근무</span></a><a href="parental-leave-calculator.html"><span class="i" aria-hidden="true">👶</span><span class="l">육아휴직수당 계산기</span><span class="s">육아휴직</span></a><a href="retirement-allowance-calculator.html"><span class="i" aria-hidden="true">💰</span><span class="l">명퇴·퇴직수당 계산기</span><span class="s">명퇴·퇴직</span></a><a href="leave-compensation-calculator.html"><span class="i" aria-hidden="true">🏖️</span><span class="l">연가보상비 계산기</span><span class="s">연가</span></a><a href="rental-housing.html"><span class="i" aria-hidden="true">🏠</span><span class="l">임대주택 합격선</span><span class="s">임대주택</span></a></nav></div></div><script>(function(){var n=document.querySelector(".gs-menubar nav"),a=n&&n.querySelector("a.on");if(a)n.scrollLeft=a.offsetLeft-(n.clientWidth-a.offsetWidth)/2;if(n){var f=function(){n.classList.toggle("end",n.scrollLeft+n.clientWidth>=n.scrollWidth-4)};n.addEventListener("scroll",f,{passive:true});window.addEventListener("resize",f);f();}})();</script>
+</head>
+<body>
+<div class="gs-menubar"><div class="gs-in"><a class="gs-logo" href="index.html">공<span style="color:#c8a84b">스코어</span></a><nav aria-label="사이트 메뉴"><a href="index.html" class="on" aria-current="page"><span class="i" aria-hidden="true">🏆</span><span class="l">평정점수 계산기</span><span class="s">평정점수</span></a><a href="salary-calculator.html"><span class="i" aria-hidden="true">💵</span><span class="l">월급 실수령 계산기</span><span class="s">월급</span></a><a href="overtime-pay-calculator.html"><span class="i" aria-hidden="true">🌙</span><span class="l">초과근무수당 계산기</span><span class="s">초과근무</span></a><a href="parental-leave-calculator.html"><span class="i" aria-hidden="true">👶</span><span class="l">육아휴직수당 계산기</span><span class="s">육아휴직</span></a><a href="retirement-allowance-calculator.html"><span class="i" aria-hidden="true">💰</span><span class="l">명퇴·퇴직수당 계산기</span><span class="s">명퇴·퇴직</span></a><a href="leave-compensation-calculator.html"><span class="i" aria-hidden="true">🏖️</span><span class="l">연가보상비 계산기</span><span class="s">연가</span></a><a href="rental-housing.html"><span class="i" aria-hidden="true">🏠</span><span class="l">임대주택 합격선</span><span class="s">임대주택</span></a><a href="guides.html"><span class="i" aria-hidden="true">📚</span><span class="l">승진·인사 가이드</span><span class="s">가이드</span></a></nav></div></div><script>(function(){var n=document.querySelector(".gs-menubar nav"),a=n&&n.querySelector("a.on");if(a)n.scrollLeft=a.offsetLeft-(n.clientWidth-a.offsetWidth)/2;if(n){var f=function(){n.classList.toggle("end",n.scrollLeft+n.clientWidth>=n.scrollWidth-4)};n.addEventListener("scroll",f,{passive:true});window.addEventListener("resize",f);f();}})();</script>
 
 <header>
   <h1>
@@ -1040,7 +1063,7 @@
         <!-- 어학 -->
         <div style="margin-bottom:12px;">
           <div style="font-weight:700; color:var(--navy); border-bottom:1px solid var(--border);
-                      padding-bottom:4px; margin-bottom:6px;">🌐 어학 능력 (A시 예시) <span style="font-weight:400; color:var(--muted); font-size:.7rem;">최대 0.12점</span></div>
+                      padding-bottom:4px; margin-bottom:6px;">🌐 어학 능력 (서울특별시 기준) <span style="font-weight:400; color:var(--muted); font-size:.7rem;">최대 0.12점</span></div>
           <table style="width:100%; border-collapse:collapse; font-size:.76rem;">
             <thead>
               <tr style="background:var(--navy); color:#fff;">
@@ -1232,45 +1255,36 @@
       </ul>
       <p style="margin-bottom:8px;"><strong>② 경력평정 (최대 30점)</strong> — 현 직급 경력은 100% 그대로, 직전 직급 경력은 60%로 환산해 합산한 뒤 직급별 점수율(기준 개월 이하/초과 점수율)을 적용합니다. 기준 개월(base)에 도달하기까지는 점수율이 높고, 초과분부터는 점수율이 크게 낮아져 만점 도달 시점이 의외로 늦습니다. 이 기준 개월·점수율도 자치단체별로 다르게 정해져 있습니다.</p>
       <p style="margin-bottom:0;"><strong>③ 가산점 (최대 5점)</strong> — 직무관련 자격증, 어학 성적(TOEIC 등), 특수지·격무부서 근무 경력 등을 합산합니다. 동일 직렬 내에서는 가장 높은 등급의 자격증 1개만 인정되며, <strong>자격증 인정 목록과 가점 단가는 기관별 인사규칙 별표에서 각각 다르게 정해집니다</strong> (서울시 기준 전체 목록은 <a href="seoul-certification-table.html" target="_blank" rel="noopener" style="color:var(--gold); font-weight:700;">여기</a>에서 확인 가능. 경기·인천 등은 별도 별표 적용).</p>
+
+      <h3 style="font-size:.92rem; color:var(--navy); margin:18px 0 8px;">3. 직급·기관별 실제 평정점수 시뮬레이션 사례</h3>
+      <p style="margin-bottom:8px;">같은 연차라도 소속 지자체와 직급, 가점 보유 여부에 따라 최종 평정점수 구조가 크게 달라집니다. 아래 3가지 대표 사례를 참고해 내 점수의 어느 항목에서 격차가 발생하는지 점검해 보세요.</p>
+      <div class="sim-case-grid">
+        <div class="sim-case">
+          <h4>사례 ① 서울시 8급 행정직 (현 직급 3년 + 9급 2년, 자격증·어학 보유)</h4>
+          <p>경력평정은 현 직급 36개월 + 9급 24개월×60%(14개월) = 가중 50개월로 <strong>24.00점</strong>(월 0.48점)이 산출됩니다. 최근 4반기 근평이 우·우·수·수라면 70점 만점 중 약 64~66점대(기관별 표준분포표 차이 반영)가 형성되며, 해당 계급 자격증(0.24점)과 TOEIC 900+(0.12점)를 합쳐 가점 <strong>0.36점</strong>이 더해집니다. 8급 구간은 아직 경력 만점(60개월) 전이므로 반기마다 경력점수가 +2.88점씩 오르는 효과가 가장 큽니다.</p>
+        </div>
+        <div class="sim-case">
+          <h4>사례 ② 경기도 7급 (현 직급 4년 6개월 + 8급 3년, 경력 포화 구간 진입)</h4>
+          <p>가중 경력이 54개월 + 21개월 = 75개월로 경기도 7급 기준 개월(60개월)을 이미 넘겼습니다. 60개월까지는 월 0.49점(29.40점), 초과 12개월은 월 0.05점(+0.60점)이 적용되어 <strong>경력평정 30.00점 만점</strong>에 도달합니다. 이 시점부터는 시간이 흘러도 경력 점수가 더 오르지 않으므로, 최근 2년(4반기) 근평 등급과 경기도 자격증 가점(0.5점)이 명부 순위를 좌우합니다.</p>
+        </div>
+        <div class="sim-case">
+          <h4>사례 ③ 인천시 9급 신규 (현 직급 1년 6개월, 승진소요 최저연수 충족 직후)</h4>
+          <p>9급은 최근 1년(2반기) 근평만 100% 반영되므로, 바로 직전 2번의 평정 등급이 근평 70점 전체를 결정합니다. 경력평정은 18개월 기준 약 8.6점대에 머물지만, 동기 집단 전체가 비슷한 연차로 몰려 있어 <strong>근평 1등급 차이와 0.5점 자격증 가점 유무</strong>가 조기 8급 승진 여부를 가릅니다.</p>
+        </div>
+      </div>
     </div>
   </div>
 
   <!-- FAQ -->
   <div class="intro-box" style="margin-top:20px;">
     <h2>❓ 자주 묻는 질문 (FAQ)</h2>
-    <style>
-      .acc-item { border-bottom: 1px solid var(--border); }
-      .acc-item:last-child { border-bottom: none; }
-      .acc-btn {
-        width: 100%; background: none; border: none; cursor: pointer;
-        display: flex; align-items: center; justify-content: space-between;
-        padding: 14px 0; font-family: 'Noto Serif KR', serif;
-        font-size: .88rem; font-weight: 700; color: var(--navy);
-        text-align: left; gap: 10px;
-      }
-      .acc-btn .acc-arrow {
-        flex-shrink: 0; width: 20px; height: 20px;
-        background: var(--paper); border: 1px solid var(--border);
-        border-radius: 50%; display: flex; align-items: center;
-        justify-content: center; font-size: .65rem; color: var(--gold);
-        transition: transform .25s;
-      }
-      .acc-btn.open .acc-arrow { transform: rotate(180deg); }
-      .acc-body {
-        font-size: .82rem; line-height: 1.85; color: var(--ink);
-        padding: 0 0 14px 0; display: none;
-        border-left: 3px solid var(--gold); padding-left: 12px;
-        margin-left: 2px;
-      }
-      .acc-body.open { display: block; }
-    </style>
 
     <div class="acc-item">
-      <button class="acc-btn" onclick="toggleAcc(this)">
+      <button class="acc-btn open" onclick="toggleAcc(this)">
         Q. 경력평정이란 무엇인가요?
         <span class="acc-arrow">▼</span>
       </button>
-      <div class="acc-body">현 직급 근무 기간과 직전 직급 근무 기간(60% 환산)을 합산하여 산출하는 점수입니다. 근속 기간이 길수록 높은 점수를 받습니다.</div>
+      <div class="acc-body open">현 직급 근무 기간과 직전 직급 근무 기간(60% 환산)을 합산하여 산출하는 점수입니다. 근속 기간이 길수록 높은 점수를 받습니다.</div>
     </div>
 
     <div class="acc-item">
@@ -1329,21 +1343,13 @@
     }
   </script>
 
-</main>
 
-<footer>
-  <p style="margin-bottom:12px; font-size:.74rem; color:#888;">본 계산기는 「지방공무원 평정 규칙」(행정안전부), 「지방공무원 임용령」 및 각 시·도 인사규칙을 준수하여 제작되었습니다.<br>법령 개정에 따라 수치가 달라질 수 있으므로 정확한 내용은 <a href="https://www.law.go.kr" target="_blank" rel="noopener" style="color:var(--gold);">국가법령정보센터</a>에서 확인하세요.</p>
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLSdb4rv67jcf864HGBHFxyDnXfORjXDUwGg8uMD-WgwFDW1Vmw/viewform?usp=publish-editor" target="_blank" rel="noopener" style="display:inline-block; margin-bottom:16px; padding:9px 20px; background:var(--navy); color:var(--gold); border-radius:6px; font-size:.78rem; font-weight:700; text-decoration:none;">🐞 오류 제보 및 피드백 하기</a>
-  <div style="margin-bottom:8px;">
-    <strong style="color:var(--navy); font-size:.8rem;">공무원 평정점수 계산기</strong>
-  </div>
   <!-- 승진 가이드 링크 섹션 -->
-  <div style="max-width:760px; margin:0 auto 28px; padding:0 20px;">
+  <section aria-label="공스코어 계산기 및 승진 가이드" style="margin-top:24px;">
     <div style="background:#fff; border:1px solid var(--border); border-radius:10px; padding:24px; box-shadow:var(--card-shadow);">
-      <div style="font-size:.95rem; font-weight:700; color:var(--navy); margin-bottom:16px; display:flex; align-items:center; gap:8px;">
+      <h2 style="font-size:1rem; font-weight:700; color:var(--navy); margin-bottom:14px; display:flex; align-items:center; justify-content:space-between; gap:8px; flex-wrap:wrap;"><span style="display:flex;align-items:center;gap:8px;">
         <span style="background:var(--navy); color:var(--gold); font-size:.72rem; width:22px; height:22px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center;">📚</span>
-        공스코어 계산기 · 승진 가이드
-      </div>
+        공스코어 계산기 · 승진 가이드</span><a href="guides.html" style="font-size:.78rem; color:var(--gold); text-decoration:none;">전체 가이드 허브(21편) →</a></h2>
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
         <a href="overtime-pay-calculator.html" style="grid-column:1/-1; display:block; background:var(--navy); border:1px solid var(--navy); border-radius:8px; padding:14px 16px; text-decoration:none; transition:opacity .2s;">
           <div style="font-size:.72rem; color:var(--gold); font-weight:700; margin-bottom:4px;">🌙 NEW · 계산기</div>
@@ -1445,6 +1451,21 @@
           <div style="font-size:.84rem; color:var(--navy); font-weight:700; line-height:1.4;">특별 승진 제도 완전 정리</div>
           <div style="font-size:.74rem; color:var(--muted); margin-top:4px;">포상·직무·제안·명예퇴직 특별 승진 요건과 절차</div>
         </a>
+        <a href="long-service-promotion.html" style="display:block; background:var(--paper); border:1px solid var(--border); border-radius:8px; padding:14px 16px; text-decoration:none; transition:border-color .2s;">
+          <div style="font-size:.72rem; color:var(--gold); font-weight:700; margin-bottom:4px;">NEW · 근속승진</div>
+          <div style="font-size:.84rem; color:var(--navy); font-weight:700; line-height:1.4;">지방공무원 근속승진 완전 정리 (2026)</div>
+          <div style="font-size:.74rem; color:var(--muted); margin-top:4px;">5년6개월·7년·11년 소요기간, 6급 50% 한도와 단축 특례</div>
+        </a>
+        <a href="daewoo-allowance-guide.html" style="display:block; background:var(--paper); border:1px solid var(--border); border-radius:8px; padding:14px 16px; text-decoration:none; transition:border-color .2s;">
+          <div style="font-size:.72rem; color:var(--gold); font-weight:700; margin-bottom:4px;">NEW · 보수 가이드</div>
+          <div style="font-size:.84rem; color:var(--navy); font-weight:700; line-height:1.4;">대우공무원 선발 조건·수당(4.1%) 완전 정리</div>
+          <div style="font-size:.74rem; color:var(--muted); margin-top:4px;">6급 이하 4년 요건과 승진 시 대우수당 소멸 착시 비교</div>
+        </a>
+        <a href="jeonggeun-holiday-bonus.html" style="display:block; background:var(--paper); border:1px solid var(--border); border-radius:8px; padding:14px 16px; text-decoration:none; transition:border-color .2s;">
+          <div style="font-size:.72rem; color:var(--gold); font-weight:700; margin-bottom:4px;">NEW · 상여수당</div>
+          <div style="font-size:.84rem; color:var(--navy); font-weight:700; line-height:1.4;">정근수당·가산금·명절휴가비 완전 정리</div>
+          <div style="font-size:.74rem; color:var(--muted); margin-top:4px;">근무연수별 지급률(0~50%), 명절 60%, 휴직·신규 감액 기준</div>
+        </a>
         <a href="evaluation-period.html" style="display:block; background:var(--paper); border:1px solid var(--border); border-radius:8px; padding:14px 16px; text-decoration:none; transition:border-color .2s;">
           <div style="font-size:.72rem; color:var(--gold); font-weight:700; margin-bottom:4px;">평정 캘린더</div>
           <div style="font-size:.84rem; color:var(--navy); font-weight:700; line-height:1.4;">평정 기준일·시기 캘린더 완전 정리</div>
@@ -1463,7 +1484,17 @@
         </a>
       </div>
     </div>
+  </section>
+
+</main>
+
+<footer>
+  <p style="margin-bottom:12px; font-size:.74rem; color:#888;">본 계산기는 「지방공무원 평정 규칙」(행정안전부), 「지방공무원 임용령」 및 각 시·도 인사규칙을 준수하여 제작되었습니다.<br>법령 개정에 따라 수치가 달라질 수 있으므로 정확한 내용은 <a href="https://www.law.go.kr" target="_blank" rel="noopener" style="color:var(--gold);">국가법령정보센터</a>에서 확인하세요.</p>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSdb4rv67jcf864HGBHFxyDnXfORjXDUwGg8uMD-WgwFDW1Vmw/viewform?usp=publish-editor" target="_blank" rel="noopener" style="display:inline-block; margin-bottom:16px; padding:9px 20px; background:var(--navy); color:var(--gold); border-radius:6px; font-size:.78rem; font-weight:700; text-decoration:none;">🐞 오류 제보 및 피드백 하기</a>
+  <div style="margin-bottom:8px;">
+    <strong style="color:var(--navy); font-size:.8rem;">공스코어 (gong-score.co.kr)</strong>
   </div>
+
 
   <div style="margin-bottom:6px;">
     문의: <a href="mailto:sj.gates@gmail.com" style="color:var(--muted); text-decoration:none;">sj.gates@gmail.com</a>

@@ -42,8 +42,8 @@
   .article-hero h1,.article-hero h2{font-size:clamp(1.1rem,3.5vw,1.45rem);font-weight:700;color:var(--navy);line-height:1.45;margin-bottom:10px;}
   .article-hero .meta{font-size:.74rem;color:var(--muted);}
   .card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);}
-  .card h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
-  .card h3 .num{background:var(--navy);color:var(--gold);font-family:'DM Mono',monospace;font-size:.72rem;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .card h2,.card h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  .card h2 .num,.card h3 .num{background:var(--navy);color:var(--gold);font-family:'DM Mono',monospace;font-size:.72rem;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
   .card p{font-size:.88rem;line-height:1.9;color:var(--ink);margin-bottom:10px;}
   .hint{font-size:.78rem;color:var(--muted);padding:10px 14px;background:var(--paper);border-left:3px solid var(--gold);border-radius:0 5px 5px 0;margin:12px 0;}
   .grade-card{border:2px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:20px;}
@@ -81,7 +81,7 @@
   .cta-btn{display:inline-block;background:var(--gold);color:var(--navy);font-weight:700;font-family:'Noto Serif KR',serif;padding:12px 28px;border-radius:7px;text-decoration:none;font-size:.92rem;transition:opacity .2s;}
   .cta-btn:hover{opacity:.85;}
   .related-links{background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);}
-  .related-links h3{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:14px;}
+  .related-links h2,.related-links h3{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:14px;}
   .related-links ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
   .related-links li a{font-size:.85rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:6px;}
   .related-links li a::before{content:'→';color:var(--gold);}
@@ -95,8 +95,6 @@
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "공스코어", "item": "https://gong-score.co.kr/"}, {"@type": "ListItem", "position": 2, "name": "직급별 승진 전략 가이드", "item": "https://gong-score.co.kr/promotion-strategy.html"}]}
 </script>
-</head>
-<body>
 <style>
   .gs-menubar{position:sticky;top:0;z-index:100;background:#17191e;border-bottom:3px solid #c8a84b;box-shadow:0 3px 14px rgba(0,0,0,.35);}
   .gs-menubar .gs-in{max-width:1320px;margin:0 auto;padding:0 14px;display:flex;align-items:center;justify-content:space-between;height:56px;gap:14px;}
@@ -111,14 +109,24 @@
   .gs-menubar nav a .i{display:none;}.gs-menubar nav a .s{display:none;}
   @media(max-width:600px){.gs-menubar .gs-in{height:62px;gap:8px;padding:0 10px;}.gs-menubar .gs-logo{font-size:.95rem;}.gs-menubar nav{gap:6px;}.gs-menubar nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:60px;padding:5px 7px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#eef1f6;font-size:.7rem;line-height:1.15;}.gs-menubar nav a .i{display:block;font-size:1.1rem;line-height:1;}.gs-menubar nav a .l{display:none;}.gs-menubar nav a .s{display:block;}.gs-menubar nav a.on{background:#c8a84b;border-color:#c8a84b;color:#17191e;box-shadow:0 2px 10px rgba(200,168,75,.45);}}
 </style>
-<div class="gs-menubar"><div class="gs-in"><a class="gs-logo" href="index.html">공<span style="color:#c8a84b">스코어</span></a><nav aria-label="사이트 메뉴"><a href="index.html"><span class="i" aria-hidden="true">🏆</span><span class="l">평정점수 계산기</span><span class="s">평정점수</span></a><a href="salary-calculator.html"><span class="i" aria-hidden="true">💵</span><span class="l">월급 실수령 계산기</span><span class="s">월급</span></a><a href="overtime-pay-calculator.html"><span class="i" aria-hidden="true">🌙</span><span class="l">초과근무수당 계산기</span><span class="s">초과근무</span></a><a href="parental-leave-calculator.html"><span class="i" aria-hidden="true">👶</span><span class="l">육아휴직수당 계산기</span><span class="s">육아휴직</span></a><a href="retirement-allowance-calculator.html"><span class="i" aria-hidden="true">💰</span><span class="l">명퇴·퇴직수당 계산기</span><span class="s">명퇴·퇴직</span></a><a href="leave-compensation-calculator.html"><span class="i" aria-hidden="true">🏖️</span><span class="l">연가보상비 계산기</span><span class="s">연가</span></a><a href="rental-housing.html"><span class="i" aria-hidden="true">🏠</span><span class="l">임대주택 합격선</span><span class="s">임대주택</span></a></nav></div></div><script>(function(){var n=document.querySelector(".gs-menubar nav"),a=n&&n.querySelector("a.on");if(a)n.scrollLeft=a.offsetLeft-(n.clientWidth-a.offsetWidth)/2;if(n){var f=function(){n.classList.toggle("end",n.scrollLeft+n.clientWidth>=n.scrollWidth-4)};n.addEventListener("scroll",f,{passive:true});window.addEventListener("resize",f);f();}})();</script>
+<style>
+  .gs-editorial-bar{background:#f2ede3;border:1px solid #d8d0be;border-left:4px solid #0f2340;border-radius:8px;padding:14px 16px;margin:20px 0;font-size:.78rem;line-height:1.75;color:#1a1a2e;}
+  .gs-editorial-bar strong{color:#0f2340;}
+  .gs-editorial-bar a{color:#0f2340;font-weight:700;text-decoration:underline;}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"공무원 직급별 승진 전략 가이드 — 9급·8급·7급·6급별 평정점수 올리는 법","description":"9급에서 8급, 7급에서 6급, 6급에서 5급까지 각 직급별로 승진에 유리한 평정점수 관리 전략을 상세히 정리했습니다. 근평·경력·가점을 효율적으로 높이는 방법을 알아보세요.","image":"https://gong-score.co.kr/og-image.png","inLanguage":"ko","datePublished":"2026-07-08","dateModified":"2026-11-20","author":{"@type":"Organization","name":"공스코어 편집팀","url":"https://gong-score.co.kr/about.html"},"publisher":{"@type":"Organization","name":"공스코어","url":"https://gong-score.co.kr/","logo":{"@type":"ImageObject","url":"https://gong-score.co.kr/icon-512.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://gong-score.co.kr/promotion-strategy.html"}}
+</script>
+</head>
+<body>
+<div class="gs-menubar"><div class="gs-in"><a class="gs-logo" href="index.html">공<span style="color:#c8a84b">스코어</span></a><nav aria-label="사이트 메뉴"><a href="index.html"><span class="i" aria-hidden="true">🏆</span><span class="l">평정점수 계산기</span><span class="s">평정점수</span></a><a href="salary-calculator.html"><span class="i" aria-hidden="true">💵</span><span class="l">월급 실수령 계산기</span><span class="s">월급</span></a><a href="overtime-pay-calculator.html"><span class="i" aria-hidden="true">🌙</span><span class="l">초과근무수당 계산기</span><span class="s">초과근무</span></a><a href="parental-leave-calculator.html"><span class="i" aria-hidden="true">👶</span><span class="l">육아휴직수당 계산기</span><span class="s">육아휴직</span></a><a href="retirement-allowance-calculator.html"><span class="i" aria-hidden="true">💰</span><span class="l">명퇴·퇴직수당 계산기</span><span class="s">명퇴·퇴직</span></a><a href="leave-compensation-calculator.html"><span class="i" aria-hidden="true">🏖️</span><span class="l">연가보상비 계산기</span><span class="s">연가</span></a><a href="rental-housing.html"><span class="i" aria-hidden="true">🏠</span><span class="l">임대주택 합격선</span><span class="s">임대주택</span></a><a href="guides.html" class="on" aria-current="page"><span class="i" aria-hidden="true">📚</span><span class="l">승진·인사 가이드</span><span class="s">가이드</span></a></nav></div></div><script>(function(){var n=document.querySelector(".gs-menubar nav"),a=n&&n.querySelector("a.on");if(a)n.scrollLeft=a.offsetLeft-(n.clientWidth-a.offsetWidth)/2;if(n){var f=function(){n.classList.toggle("end",n.scrollLeft+n.clientWidth>=n.scrollWidth-4)};n.addEventListener("scroll",f,{passive:true});window.addEventListener("resize",f);f();}})();</script>
 <header>
   <a href="index.html" style="text-decoration:none; color:inherit;"><p class="site-title">공<span>스코어</span></p></a>
   <p>지방공무원 승진·보수 계산기와 인사 가이드</p>
   <div class="gold-line"></div>
 </header>
 <nav class="breadcrumb">
-  <a href="index.html">홈</a> &rsaquo; 직급별 승진 전략 가이드
+  <a href="index.html">홈</a> &rsaquo; <a href="guides.html">승진·인사 가이드</a> &rsaquo; 직급별 승진 전략 가이드
 </nav>
 <main>
 
@@ -130,7 +138,7 @@
 
 
   <div class="card">
-    <h3><span class="num">1</span> 승진 전략의 핵심 원칙</h3>
+    <h2><span class="num">1</span> 승진 전략의 핵심 원칙</h2>
     <p>평정점수는 근무성적평정(70점) + 경력평정(30점) + 가점(최대 5점)으로 구성됩니다. 하지만 직급별로 경쟁 구도와 핵심 변수가 다릅니다.</p>
     <table class="table-compact">
       <thead><tr><th>직급 구간</th><th class="td-c">경쟁 강도</th><th>핵심 변수</th></tr></thead>
@@ -291,7 +299,7 @@
   </div>
 
   <div class="card">
-    <h3><span class="num">5</span> 직급 공통 — 지금 당장 실행할 수 있는 전략</h3>
+    <h2><span class="num">5</span> 직급 공통 — 지금 당장 실행할 수 있는 전략</h2>
     <p>직급과 무관하게 지금 바로 실행할 수 있는 가장 효과적인 행동은 <strong>자격증과 어학 성적 확보</strong>입니다. 가점은 근평처럼 상대 경쟁이 아니라 절대 점수이기 때문에, 확보만 하면 조건 없이 내 점수에 더해집니다.</p>
     <p>자격증 가점을 받으려면 기관 인사규칙 별표에서 '해당 계급 이상 인정 자격증' 목록을 먼저 확인해야 합니다. 동일 직렬 내에서는 가장 높은 등급의 자격증 1개만 인정되므로, 중복 취득보다는 인정 등급이 높은 자격증 하나를 집중 준비하는 것이 효율적입니다.</p>
     <p>어학 성적의 경우 <strong>유효기간(통상 2년)</strong>이 있어 갱신이 필요합니다. 승진이 임박했을 때 어학 성적이 만료되면 가점을 잃게 되므로, 명부 순위와 결원 현황을 확인하면서 갱신 시점을 역산해 계획하는 것이 좋습니다.</p>
@@ -302,7 +310,7 @@
   </div>
 
   <div class="related-links">
-    <h3>📚 함께 읽으면 좋은 글</h3>
+    <h2>📚 함께 읽으면 좋은 글</h2>
     <ul>
       <li><a href="promotion-minimum-years.html">직급별 승진소요 최저연수 총정리</a></li>
       <li><a href="bonus-points-guide.html">승진 가점 종류와 획득 전략</a></li>
@@ -310,6 +318,12 @@
       <li><a href="performance-rating-guide.html">근무성적평정(근평) 등급·점수 가이드</a></li>
     </ul>
   </div>
+
+  
+  <aside class="gs-editorial-bar" aria-label="콘텐츠 검수 정보">
+    <strong>📌 콘텐츠 검수 및 출처 안내</strong> · 작성·검수: <a href="about.html">공스코어 편집팀</a> · 최종 확인: 2026년 11월 20일<br>
+    국가법령정보센터(「지방공무원법」·「지방공무원 임용령」·「지방공무원 평정 규칙」) 및 서울·경기·인천 인사규칙 원문을 대조해 작성했습니다. 더 많은 주제는 <a href="guides.html">승진·인사 가이드 전체 모음(21편)</a>에서 확인하실 수 있습니다.
+  </aside>
 
   <div class="cta-box">
     <p>내 직급·경력·가점을 입력해 현재 평정점수를 확인하세요.<br>경쟁자 대비 내 위치를 파악하는 첫걸음입니다.</p>

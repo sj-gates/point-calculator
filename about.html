@@ -42,8 +42,8 @@
   .article-hero h1,.article-hero h2{font-size:clamp(1.1rem,3.5vw,1.45rem);font-weight:700;color:var(--navy);line-height:1.45;margin-bottom:10px;}
   .article-hero .meta{font-size:.74rem;color:var(--muted);}
   .card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:28px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);}
-  .card h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:16px;display:flex;align-items:center;gap:8px;}
-  .card h3 .num{background:var(--navy);color:var(--gold);font-family:'DM Mono',monospace;font-size:.72rem;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .card h2,.card h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+  .card h2 .num,.card h3 .num{background:var(--navy);color:var(--gold);font-family:'DM Mono',monospace;font-size:.72rem;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
   .body-text{font-size:.88rem;line-height:2;color:var(--ink);}
   .body-text p{margin-bottom:14px;}
   .body-text p:last-child{margin-bottom:0;}
@@ -56,14 +56,14 @@
   .feature-item .f-title{font-size:.82rem;font-weight:700;color:var(--navy);margin-bottom:6px;}
   .feature-item .f-desc{font-size:.78rem;color:var(--muted);line-height:1.7;}
   .contact-box{background:var(--navy);border-radius:10px;padding:24px;margin-bottom:20px;}
-  .contact-box h3{font-size:.92rem;font-weight:700;color:var(--gold-lt);margin-bottom:14px;}
+  .contact-box h2,.contact-box h3{font-size:.92rem;font-weight:700;color:var(--gold-lt);margin-bottom:14px;}
   .contact-row{display:flex;align-items:center;gap:10px;font-size:.85rem;color:rgba(255,255,255,.8);margin-bottom:10px;}
   .contact-row:last-child{margin-bottom:0;}
   .contact-row .label{color:rgba(255,255,255,.45);font-size:.75rem;min-width:60px;}
   .contact-row a{color:var(--gold-lt);text-decoration:none;}
   .contact-row a:hover{text-decoration:underline;}
   .related-links{background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px 24px;margin-bottom:20px;box-shadow:var(--card-shadow);}
-  .related-links h3{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:14px;}
+  .related-links h2,.related-links h3{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:14px;}
   .related-links ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
   .related-links li a{font-size:.85rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:6px;}
   .related-links li a::before{content:'→';color:var(--gold);}
@@ -80,8 +80,6 @@
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "공스코어", "item": "https://gong-score.co.kr/"}, {"@type": "ListItem", "position": 2, "name": "서비스 소개", "item": "https://gong-score.co.kr/about.html"}]}
 </script>
-</head>
-<body>
 <style>
   .gs-menubar{position:sticky;top:0;z-index:100;background:#17191e;border-bottom:3px solid #c8a84b;box-shadow:0 3px 14px rgba(0,0,0,.35);}
   .gs-menubar .gs-in{max-width:1320px;margin:0 auto;padding:0 14px;display:flex;align-items:center;justify-content:space-between;height:56px;gap:14px;}
@@ -96,7 +94,9 @@
   .gs-menubar nav a .i{display:none;}.gs-menubar nav a .s{display:none;}
   @media(max-width:600px){.gs-menubar .gs-in{height:62px;gap:8px;padding:0 10px;}.gs-menubar .gs-logo{font-size:.95rem;}.gs-menubar nav{gap:6px;}.gs-menubar nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:60px;padding:5px 7px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#eef1f6;font-size:.7rem;line-height:1.15;}.gs-menubar nav a .i{display:block;font-size:1.1rem;line-height:1;}.gs-menubar nav a .l{display:none;}.gs-menubar nav a .s{display:block;}.gs-menubar nav a.on{background:#c8a84b;border-color:#c8a84b;color:#17191e;box-shadow:0 2px 10px rgba(200,168,75,.45);}}
 </style>
-<div class="gs-menubar"><div class="gs-in"><a class="gs-logo" href="index.html">공<span style="color:#c8a84b">스코어</span></a><nav aria-label="사이트 메뉴"><a href="index.html"><span class="i" aria-hidden="true">🏆</span><span class="l">평정점수 계산기</span><span class="s">평정점수</span></a><a href="salary-calculator.html"><span class="i" aria-hidden="true">💵</span><span class="l">월급 실수령 계산기</span><span class="s">월급</span></a><a href="overtime-pay-calculator.html"><span class="i" aria-hidden="true">🌙</span><span class="l">초과근무수당 계산기</span><span class="s">초과근무</span></a><a href="parental-leave-calculator.html"><span class="i" aria-hidden="true">👶</span><span class="l">육아휴직수당 계산기</span><span class="s">육아휴직</span></a><a href="retirement-allowance-calculator.html"><span class="i" aria-hidden="true">💰</span><span class="l">명퇴·퇴직수당 계산기</span><span class="s">명퇴·퇴직</span></a><a href="leave-compensation-calculator.html"><span class="i" aria-hidden="true">🏖️</span><span class="l">연가보상비 계산기</span><span class="s">연가</span></a><a href="rental-housing.html"><span class="i" aria-hidden="true">🏠</span><span class="l">임대주택 합격선</span><span class="s">임대주택</span></a></nav></div></div><script>(function(){var n=document.querySelector(".gs-menubar nav"),a=n&&n.querySelector("a.on");if(a)n.scrollLeft=a.offsetLeft-(n.clientWidth-a.offsetWidth)/2;if(n){var f=function(){n.classList.toggle("end",n.scrollLeft+n.clientWidth>=n.scrollWidth-4)};n.addEventListener("scroll",f,{passive:true});window.addEventListener("resize",f);f();}})();</script>
+</head>
+<body>
+<div class="gs-menubar"><div class="gs-in"><a class="gs-logo" href="index.html">공<span style="color:#c8a84b">스코어</span></a><nav aria-label="사이트 메뉴"><a href="index.html"><span class="i" aria-hidden="true">🏆</span><span class="l">평정점수 계산기</span><span class="s">평정점수</span></a><a href="salary-calculator.html"><span class="i" aria-hidden="true">💵</span><span class="l">월급 실수령 계산기</span><span class="s">월급</span></a><a href="overtime-pay-calculator.html"><span class="i" aria-hidden="true">🌙</span><span class="l">초과근무수당 계산기</span><span class="s">초과근무</span></a><a href="parental-leave-calculator.html"><span class="i" aria-hidden="true">👶</span><span class="l">육아휴직수당 계산기</span><span class="s">육아휴직</span></a><a href="retirement-allowance-calculator.html"><span class="i" aria-hidden="true">💰</span><span class="l">명퇴·퇴직수당 계산기</span><span class="s">명퇴·퇴직</span></a><a href="leave-compensation-calculator.html"><span class="i" aria-hidden="true">🏖️</span><span class="l">연가보상비 계산기</span><span class="s">연가</span></a><a href="rental-housing.html"><span class="i" aria-hidden="true">🏠</span><span class="l">임대주택 합격선</span><span class="s">임대주택</span></a><a href="guides.html"><span class="i" aria-hidden="true">📚</span><span class="l">승진·인사 가이드</span><span class="s">가이드</span></a></nav></div></div><script>(function(){var n=document.querySelector(".gs-menubar nav"),a=n&&n.querySelector("a.on");if(a)n.scrollLeft=a.offsetLeft-(n.clientWidth-a.offsetWidth)/2;if(n){var f=function(){n.classList.toggle("end",n.scrollLeft+n.clientWidth>=n.scrollWidth-4)};n.addEventListener("scroll",f,{passive:true});window.addEventListener("resize",f);f();}})();</script>
 <header>
   <a href="index.html" style="text-decoration:none; color:inherit;"><p class="site-title">공<span>스코어</span></p></a>
   <p>지방공무원 승진·보수 계산기와 인사 가이드</p>
@@ -116,7 +116,7 @@
 
   <!-- 서비스 소개 -->
   <div class="card">
-    <h3><span class="num">1</span> 이 서비스는 무엇인가요?</h3>
+    <h2><span class="num">1</span> 이 서비스는 무엇인가요?</h2>
     <div class="body-text">
       <p><strong>공스코어(gong-score.co.kr)</strong>는 지방공무원이 승진 점수와 월급·수당을 직접 계산해 볼 수 있도록 만든 무료 계산기 모음입니다.</p>
       <p>대표 기능인 <a href="index.html">평정점수 계산기</a>는 근무성적평정(근평) 등급, 경력 기간, 가점을 입력하면 최종 평정점수를 즉시 산출합니다. 입력하신 정보는 <strong>브라우저 내에서만 처리</strong>되며 서버로 전송되지 않습니다. 다시 입력하는 번거로움을 줄이도록 직급·호봉 같은 일부 값만 이용자 기기에 기억하며, 계산기 화면의 지우기 버튼으로 바로 지울 수 있습니다.</p>
@@ -128,7 +128,7 @@
 
   <!-- 평정점수란 -->
   <div class="card">
-    <h3><span class="num">2</span> 지방공무원 평정점수란?</h3>
+    <h2><span class="num">2</span> 지방공무원 평정점수란?</h2>
     <div class="body-text">
       <p>지방공무원의 승진은 <strong>승진후보자명부</strong> 상의 순위에 따라 결정됩니다. 이 명부는 평정점수 합계가 높은 순서대로 작성되며, 결원이 생겼을 때 명부 상위자부터 순서대로 승진 발령이 납니다.</p>
       <p>평정점수는 크게 세 가지 항목의 합산으로 구성됩니다.</p>
@@ -141,7 +141,7 @@
 
   <!-- 만든 이유 -->
   <div class="card">
-    <h3><span class="num">3</span> 왜 이 계산기를 만들었나요?</h3>
+    <h2><span class="num">3</span> 왜 이 계산기를 만들었나요?</h2>
     <div class="body-text">
       <p>공무원 승진 평정은 대부분의 직원에게 반기마다 찾아오는 중요한 사안임에도 불구하고, 본인의 예상 점수를 쉽게 확인할 수 있는 공개 도구가 사실상 없었습니다. 기관마다 엑셀 파일을 따로 사용하거나, 직접 계산식을 손으로 풀어보는 방식에 의존하는 경우가 많았습니다.</p>
       <p>특히 경력평정은 현 직급·직전 직급 경력을 월 단위로 계산하고 가중치를 적용해야 하기 때문에, 기준일과 임용일 사이의 정확한 개월 수를 구하는 것만으로도 번거로운 작업이 됩니다. 근무성적평정 역시 직급·기관별로 반영 반기 수와 가중치가 달라 혼동이 생기기 쉽습니다.</p>
@@ -153,7 +153,7 @@
 
   <!-- 주요 기능 -->
   <div class="card">
-    <h3><span class="num">4</span> 주요 기능</h3>
+    <h2><span class="num">4</span> 주요 기능</h2>
     <div class="feature-grid">
       <div class="feature-item">
         <div class="f-title">🏙️ 기관별 점수표 적용</div>
@@ -198,20 +198,36 @@
     </div>
   </div>
 
+  <!-- 데이터 검증 및 편집 원칙 -->
+  <div class="card">
+    <h2><span class="num">5</span> 데이터 검증 및 콘텐츠 편집 원칙</h2>
+    <div class="body-text">
+      <p>공스코어에 수록된 모든 계산 산식과 21편의 인사·승진 가이드는 아래 3단계 검증 기준을 거쳐 제작하고 정기적으로 업데이트합니다.</p>
+      <p><strong>① 공식 법령 및 인사규칙 원문 대조</strong> — 국가법령정보센터(law.go.kr)에 공포된 「지방공무원법」, 「지방공무원 임용령」, 「지방공무원 평정 규칙」, 「공무원보수규정」, 「지방공무원 수당 등에 관한 규정」과 서울특별시·경기도·인천광역시 인사규칙 별표 원문을 직접 확인해 수치를 입력합니다.</p>
+      <p><strong>② 공공데이터 기반 객관성 유지</strong> — 임대주택 합격선·경쟁률·보증금 등 통계성 자료는 공공데이터포털 개방 데이터와 최신 모집공고를 교차 확인하여 출처와 기준일을 페이지 상단에 명시합니다.</p>
+      <p><strong>③ 개정 법령 반영 및 오류 제보 처리</strong> — 매년 봉급표·건강보험료율·수당 단가·임용령이 개정될 때마다 계산 로직과 관련 가이드를 함께 갱신하며, 오류 제보 폼과 이메일로 접수된 지자체별 차이·개정 사항은 검토 후 순차 반영합니다.</p>
+    </div>
+    <div class="hint">📅 최근 주요 유지관리 이력: 2026-11-20 승진·인사 가이드 허브(21편) 개편 및 실무 시뮬레이션 보강 · 2026-10-27 계산기 간 로컬 프로필 연동 정비 · 2026-10-23 임대주택 54개 단지 공공데이터 및 10월 초과근무 규정 개정 반영</div>
+  </div>
+
   <!-- 운영자 정보 -->
   <div class="contact-box">
-    <h3>운영자 정보 및 문의</h3>
+    <h2>운영자 정보 및 문의</h2>
     <div class="contact-row">
       <span class="label">서비스명</span>
-      공스코어 (지방공무원 승진·보수 계산기)
+      공스코어 (지방공무원 승진·보수 계산기 및 인사 가이드)
     </div>
     <div class="contact-row">
       <span class="label">도메인</span>
       <a href="https://gong-score.co.kr/">gong-score.co.kr</a>
     </div>
     <div class="contact-row">
+      <span class="label">편집·운영</span>
+      공스코어 편집팀 (개인 독립 운영 · 지방공무원 인사·보수 규정 연구 및 도구 개발)
+    </div>
+    <div class="contact-row">
       <span class="label">운영 목적</span>
-      공무원 승진·보수 관련 참고 계산 — 개인 운영, 모든 기능 무료 (운영비 충당을 위해 광고가 표시될 수 있음)
+      공무원 승진·보수 관련 참고 계산 및 법령 해설 — 모든 기능 무료 (운영비 충당을 위해 콘텐츠 페이지에 광고가 표시될 수 있음)
     </div>
     <div class="contact-row">
       <span class="label">이메일</span>
@@ -225,7 +241,7 @@
 
   <!-- 면책 조항 -->
   <div class="card">
-    <h3><span class="num">5</span> 면책 조항</h3>
+    <h2><span class="num">6</span> 면책 조항</h2>
     <div class="body-text">
       <p>본 계산기의 결과는 <strong>참고용 시뮬레이션</strong>이며, 어떠한 법적 효력이나 책임을 지지 않습니다. 법령 개정 또는 기관별 내규 차이로 인해 실제 평정점수와 다를 수 있습니다.</p>
       <p>정확한 평정점수는 반드시 <strong>소속 기관 인사부서</strong>에 확인하시기 바랍니다. 특히 휴직 이력, 징계, 파견 등 특수 이력이 있는 경우 실제 점수와 차이가 더 클 수 있습니다.</p>
@@ -233,8 +249,9 @@
   </div>
 
   <div class="related-links">
-    <h3>📚 주요 가이드 페이지</h3>
+    <h2>📚 주요 가이드 페이지</h2>
     <ul>
+      <li><a href="guides.html"><strong>승진·인사 가이드 전체 모음 (21편 카테고리별 보기)</strong></a></li>
       <li><a href="performance-rating-guide.html">근무성적평정(근평) 등급·점수 완전 가이드</a></li>
       <li><a href="career-rating-guide.html">경력평정 계산 방법 완전 정리</a></li>
       <li><a href="bonus-points-guide.html">승진 가점 종류와 획득 전략</a></li>
@@ -251,7 +268,7 @@
 </main>
 <footer>
   <p style="margin-bottom:8px; font-size:.74rem; color:#888;">본 계산기는 「지방공무원 평정 규칙」(행정안전부), 「지방공무원 임용령」 및 각 시·도 인사규칙을 준수하여 제작되었습니다.<br>법령 개정에 따라 수치가 달라질 수 있으므로 정확한 내용은 <a href="https://www.law.go.kr" target="_blank" rel="noopener" style="color:var(--gold);">국가법령정보센터</a>에서 확인하세요.</p>
-  © 2026 공무원 평정점수 계산기 · <a href="privacy.html" style="color:var(--muted);">개인정보처리방침</a>
+  © 2026 공스코어 (gong-score.co.kr) · <a href="privacy.html" style="color:var(--muted);">개인정보처리방침</a>
   &nbsp;|&nbsp;
   <a href="terms.html" style="color:var(--muted);">이용약관</a> · <a href="about.html" style="color:var(--muted);">서비스 소개</a> · <a href="https://docs.google.com/forms/d/e/1FAIpQLSdb4rv67jcf864HGBHFxyDnXfORjXDUwGg8uMD-WgwFDW1Vmw/viewform?usp=publish-editor" target="_blank" rel="noopener" style="color:var(--gold); font-weight:700;">🐞 오류 제보 및 피드백</a>
   <div data-install-wrap hidden style="margin-top:12px;"><button type="button" data-install style="background:#0f2340;color:#f0dfa0;border:1px solid #c8a84b;border-radius:999px;padding:7px 16px;font-family:inherit;font-size:.78rem;font-weight:700;cursor:pointer;">📲 공스코어 앱으로 설치</button></div>
