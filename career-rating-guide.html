@@ -128,9 +128,57 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Article","headline":"공무원 경력평정 계산 방법 완전 정리 — 지방공무원","description":"공무원 승진 경력평정이란 무엇인지, 현 직급 경력과 직전 직급 경력이 어떻게 점수로 환산되는지 5단계 타임라인으로 알기 쉽게 정리했습니다.","image":"https://gong-score.co.kr/og-image.png","inLanguage":"ko","datePublished":"2026-07-08","dateModified":"2026-11-20","author":{"@type":"Organization","name":"공스코어 편집팀","url":"https://gong-score.co.kr/about.html"},"publisher":{"@type":"Organization","name":"공스코어","url":"https://gong-score.co.kr/","logo":{"@type":"ImageObject","url":"https://gong-score.co.kr/icon-512.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://gong-score.co.kr/career-rating-guide.html"}}
 </script>
+<link rel="stylesheet" href="/gs-ui.css">
+<script src="/gs-ui.js" defer></script>
 </head>
-<body>
-<div class="gs-menubar"><div class="gs-in"><a class="gs-logo" href="index.html">공<span style="color:#c8a84b">스코어</span></a><nav aria-label="사이트 메뉴"><a href="index.html"><span class="i" aria-hidden="true">🏆</span><span class="l">평정점수 계산기</span><span class="s">평정점수</span></a><a href="salary-calculator.html"><span class="i" aria-hidden="true">💵</span><span class="l">월급 실수령 계산기</span><span class="s">월급</span></a><a href="overtime-pay-calculator.html"><span class="i" aria-hidden="true">🌙</span><span class="l">초과근무수당 계산기</span><span class="s">초과근무</span></a><a href="parental-leave-calculator.html"><span class="i" aria-hidden="true">👶</span><span class="l">육아휴직수당 계산기</span><span class="s">육아휴직</span></a><a href="retirement-allowance-calculator.html"><span class="i" aria-hidden="true">💰</span><span class="l">명퇴·퇴직수당 계산기</span><span class="s">명퇴·퇴직</span></a><a href="leave-compensation-calculator.html"><span class="i" aria-hidden="true">🏖️</span><span class="l">연가보상비 계산기</span><span class="s">연가</span></a><a href="rental-housing.html"><span class="i" aria-hidden="true">🏠</span><span class="l">임대주택 합격선</span><span class="s">임대주택</span></a><a href="guides.html" class="on" aria-current="page"><span class="i" aria-hidden="true">📚</span><span class="l">승진·인사 가이드</span><span class="s">가이드</span></a></nav></div></div><script>(function(){var n=document.querySelector(".gs-menubar nav"),a=n&&n.querySelector("a.on");if(a)n.scrollLeft=a.offsetLeft-(n.clientWidth-a.offsetWidth)/2;if(n){var f=function(){n.classList.toggle("end",n.scrollLeft+n.clientWidth>=n.scrollWidth-4)};n.addEventListener("scroll",f,{passive:true});window.addEventListener("resize",f);f();}})();</script>
+<body class="gs-page-guide">
+<div class="gs-menubar">
+  <div class="gs-in">
+    <a class="gs-logo" href="index.html"><span class="gs-logo-mark" aria-hidden="true">공</span><span>공<span style="color:#e2be5d">스코어</span></span></a>
+    <nav class="gs-nav-main" aria-label="사이트 주요 메뉴">
+      <a class="gs-nav-link" href="index.html">🏆 평정점수</a>
+      <div class="gs-drop">
+        <button type="button" class="gs-drop-btn" aria-expanded="false" aria-haspopup="true">🧮 급여·수당 계산기 <span class="gs-drop-caret" aria-hidden="true">▾</span></button>
+        <div class="gs-drop-menu" role="menu">
+          <a href="salary-calculator.html" class=""><span class="dm-ico" aria-hidden="true">💵</span><span class="dm-txt"><strong>월급 실수령액 계산기</strong><small>2026 봉급표·수당·세금·기여금</small></span></a>
+          <a href="overtime-pay-calculator.html" class=""><span class="dm-ico" aria-hidden="true">🌙</span><span class="dm-txt"><strong>초과근무수당 계산기</strong><small>직급별 단가·정액분·월 57시간 한도</small></span></a>
+          <a href="parental-leave-calculator.html" class=""><span class="dm-ico" aria-hidden="true">👶</span><span class="dm-txt"><strong>육아휴직수당 계산기</strong><small>상한액·두 번째 휴직자·한부모 특례</small></span></a>
+          <a href="retirement-allowance-calculator.html" class=""><span class="dm-ico" aria-hidden="true">💰</span><span class="dm-txt"><strong>명퇴·퇴직수당 계산기</strong><small>정년잔여기간·별표1 산식 자동 산출</small></span></a>
+          <a href="leave-compensation-calculator.html" class=""><span class="dm-ico" aria-hidden="true">🏖️</span><span class="dm-txt"><strong>연가일수·연가보상비 계산기</strong><small>재직기간별 연가·상하반기 정산</small></span></a>
+        </div>
+      </div>
+      <a class="gs-nav-link" href="rental-housing.html">🏠 임대주택</a>
+      <a class="gs-nav-link on" href="guides.html">📚 승진·인사 가이드</a>
+      <a class="gs-nav-link" href="about.html">소개</a>
+    </nav>
+    <button type="button" class="gs-mobile-btn" aria-expanded="false" aria-label="전체 메뉴 열기">☰ 전체 메뉴</button>
+  </div>
+  <div class="gs-mob-quick" aria-label="빠른 이동">
+    <a href="index.html" class="">🏆 평정점수</a>
+    <a href="salary-calculator.html" class="">💵 월급</a>
+    <a href="overtime-pay-calculator.html" class="">🌙 초과근무</a>
+    <a href="rental-housing.html" class="">🏠 임대주택</a>
+    <a href="guides.html" class="on">📚 가이드 21편</a>
+  </div>
+  <div class="gs-mobile-drawer" aria-label="모바일 전체 메뉴">
+    <div class="gs-mob-group-label">승진 · 보수 · 복지 계산기</div>
+    <div class="gs-mob-grid">
+      <a href="index.html" class="">🏆 평정점수 계산기</a>
+      <a href="salary-calculator.html" class="">💵 월급 실수령액</a>
+      <a href="overtime-pay-calculator.html" class="">🌙 초과근무수당</a>
+      <a href="parental-leave-calculator.html" class="">👶 육아휴직수당</a>
+      <a href="retirement-allowance-calculator.html" class="">💰 명퇴·퇴직수당</a>
+      <a href="leave-compensation-calculator.html" class="">🏖️ 연가보상비</a>
+      <a href="rental-housing.html" class="">🏠 임대주택 합격선</a>
+    </div>
+    <div class="gs-mob-group-label">가이드 · 안내</div>
+    <div class="gs-mob-grid">
+      <a href="guides.html" class="on">📚 승진·인사 가이드</a>
+      <a href="promotion-faq.html" class="">❓ 승진 평정 FAQ</a>
+      <a href="about.html" class="">ℹ️ 서비스 소개</a>
+    </div>
+  </div>
+</div>
 
 <header>
   <a href="index.html" style="text-decoration:none; color:inherit;"><p class="site-title">공<span>스코어</span></p></a>
