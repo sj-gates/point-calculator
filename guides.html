@@ -23,7 +23,7 @@
 <link rel="canonical" href="https://gong-score.co.kr/guides.html">
 <meta property="og:locale" content="ko_KR">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{--navy:#0f2340;--gold:#c8a84b;--gold-lt:#f0dfa0;--cream:#faf8f3;--paper:#f2ede3;--ink:#1a1a2e;--muted:#6b6b7a;--border:#d8d0be;--green:#1a6b45;--card-shadow:0 2px 20px rgba(15,35,64,.10);}
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -100,8 +100,8 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"CollectionPage","name":"지방공무원 승진·인사 가이드 전체 모음","url":"https://gong-score.co.kr/guides.html","description":"지방공무원 승진 평정점수, 근평, 경력평정, 가점, 휴직, 징계, 시보, 지자체별 기준 비교까지 18편의 실무 가이드를 주제별로 정리한 허브 페이지입니다.","inLanguage":"ko","dateModified":"2026-11-20","publisher":{"@type":"Organization","name":"공스코어","url":"https://gong-score.co.kr/"}}
 </script>
-<link rel="stylesheet" href="/gs-ui.css?v=20261120c">
-<script src="/gs-ui.js?v=20261120c" defer></script>
+<link rel="stylesheet" href="/gs-ui.css?v=20261121a">
+<script src="/gs-ui.js?v=20261121a" defer></script>
 </head>
 <body class="gs-page-hub">
 <div class="gs-menubar">
@@ -196,12 +196,34 @@
     </div>
   </section>
 
+  <div class="gs-guide-search" role="search" aria-label="가이드 키워드 검색">
+    <div class="gs-search-row">
+      <span class="gs-search-ico" aria-hidden="true">🔍</span>
+      <input type="search" id="guideSearchInput" placeholder="궁금한 인사·보수 키워드를 검색해 보세요 (예: 육아휴직, 가점, 2027, 대우수당, 이의신청, 시보...)" autocomplete="off">
+      <button type="button" id="guideSearchClear" class="gs-search-clear" style="display:none;" aria-label="검색어 지우기">✕</button>
+    </div>
+    <div class="gs-search-tags" aria-label="자주 찾는 키워드">
+      <span class="gs-tag-lbl">추천 검색어:</span>
+      <button type="button" class="gs-kw-chip" data-kw="육아휴직">#육아휴직</button>
+      <button type="button" class="gs-kw-chip" data-kw="가점">#가점·자격증</button>
+      <button type="button" class="gs-kw-chip" data-kw="2027">#2027봉급</button>
+      <button type="button" class="gs-kw-chip" data-kw="대우공무원">#대우공무원(4.1%)</button>
+      <button type="button" class="gs-kw-chip" data-kw="이의신청">#근평이의신청</button>
+      <button type="button" class="gs-kw-chip" data-kw="근속승진">#근속승진</button>
+      <span class="gs-search-count" id="guideSearchCount">전체 22편 표시 중</span>
+    </div>
+  </div>
+
   <div class="filter-bar" role="tablist" aria-label="가이드 카테고리 필터">
     <button type="button" class="filter-btn active" data-cat="all">전체 보기 (22)</button>
     <button type="button" class="filter-btn" data-cat="core">평정점수 핵심 (6)</button>
     <button type="button" class="filter-btn" data-cat="strategy">승진 전략·명부·일정 (6)</button>
     <button type="button" class="filter-btn" data-cat="special">휴직·징계·시보·근속 (5)</button>
     <button type="button" class="filter-btn" data-cat="ref">보수·2027·FAQ (5)</button>
+  </div>
+  <div id="guideEmptyState" class="gs-search-empty" style="display:none;">
+    <p>조건에 맞는 가이드를 찾지 못했습니다.</p>
+    <button type="button" id="guideResetBtn" class="filter-btn active">전체 가이드 다시 보기</button>
   </div>
 
   <!-- 1. 평정점수 핵심 -->
@@ -434,18 +456,87 @@
 
 <script>
 (function(){
-  const btns = document.querySelectorAll('.filter-btn');
+  const btns = document.querySelectorAll('.filter-btn[data-cat]');
   const secs = document.querySelectorAll('.cat-section');
+  const input = document.getElementById('guideSearchInput');
+  const clearBtn = document.getElementById('guideSearchClear');
+  const countEl = document.getElementById('guideSearchCount');
+  const emptyEl = document.getElementById('guideEmptyState');
+  const resetBtn = document.getElementById('guideResetBtn');
+  const kwChips = document.querySelectorAll('.gs-kw-chip');
+  let activeCat = 'all';
+
+  function applyFilter(){
+    const q = (input ? input.value : '').trim().toLowerCase();
+    if (clearBtn) clearBtn.style.display = q ? '' : 'none';
+    let totalShown = 0;
+
+    secs.forEach(sec => {
+      const catMatch = (activeCat === 'all' || sec.dataset.section === activeCat);
+      if (!catMatch) {
+        sec.style.display = 'none';
+        return;
+      }
+      const cards = sec.querySelectorAll('.guide-card');
+      let secShown = 0;
+      cards.forEach(card => {
+        const txt = card.textContent.toLowerCase();
+        const match = !q || txt.includes(q);
+        card.style.display = match ? '' : 'none';
+        if (match) secShown++;
+      });
+      sec.style.display = secShown > 0 ? '' : 'none';
+      totalShown += secShown;
+    });
+
+    if (countEl) {
+      countEl.textContent = q || activeCat !== 'all'
+        ? `총 22편 중 ${totalShown}편 표시`
+        : '전체 22편 표시 중';
+    }
+    if (emptyEl) emptyEl.style.display = totalShown === 0 ? '' : 'none';
+  }
+
   btns.forEach(btn => {
     btn.addEventListener('click', () => {
       btns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      const cat = btn.dataset.cat;
-      secs.forEach(sec => {
-        sec.style.display = (cat === 'all' || sec.dataset.section === cat) ? '' : 'none';
-      });
+      activeCat = btn.dataset.cat;
+      applyFilter();
     });
   });
+
+  if (input) {
+    input.addEventListener('input', applyFilter);
+  }
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      input.value = '';
+      applyFilter();
+      input.focus();
+    });
+  }
+  kwChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const kw = chip.dataset.kw || '';
+      if (input.value === kw) {
+        input.value = '';
+      } else {
+        input.value = kw;
+        activeCat = 'all';
+        btns.forEach(b => b.classList.toggle('active', b.dataset.cat === 'all'));
+      }
+      applyFilter();
+    });
+  });
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      if (input) input.value = '';
+      activeCat = 'all';
+      btns.forEach(b => b.classList.toggle('active', b.dataset.cat === 'all'));
+      applyFilter();
+    });
+  }
 })();
 </script>
 </body>

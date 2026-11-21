@@ -24,7 +24,7 @@
 <meta property="og:image" content="https://gong-score.co.kr/og-image.png">
 <meta property="og:locale" content="ko_KR">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{--navy:#0f2340;--gold:#c8a84b;--gold-lt:#f0dfa0;--cream:#faf8f3;--paper:#f2ede3;--ink:#1a1a2e;--muted:#6b6b7a;--border:#d8d0be;--red:#c0392b;--green:#1a6b45;--card-shadow:0 2px 20px rgba(15,35,64,.10);}
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -161,8 +161,8 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"봉급표 금액과 실제 통장 실수령액이 왜 다른가요?","acceptedAnswer":{"@type":"Answer","text":"봉급표 금액은 수당과 공제를 반영하기 전의 기본급(본봉)입니다. 실제 급여는 여기에 정액급식비(16만원·비과세), 직급보조비, 정근수당 가산금, 가족수당, 초과근무수당 등을 더한 뒤 공무원연금 기여금(기준소득월액의 9%), 건강보험·장기요양보험료, 소득세·지방소득세를 원천징수하고 지급됩니다."}},{"@type":"Question","name":"공무원연금 기여금 9%는 본봉 기준인가요, 기준소득월액 기준인가요?","acceptedAnswer":{"@type":"Answer","text":"본봉이 아니라 기준소득월액의 9%입니다. 기준소득월액은 전년도 과세 대상 보수 총액(봉급·정근수당·명절휴가비·성과상여금·초과근무수당 등 포함, 비과세 정액급식비 제외)의 월평균액을 기반으로 매년 5월 갱신되어 적용됩니다."}},{"@type":"Question","name":"초과근무를 안 해도 시간외근무수당이 나오나요?","acceptedAnswer":{"@type":"Answer","text":"네, 정규 근무일 기준 월 15일 이상 정상 출근(출장·육아시간 사용일 포함)하면 실제 초과근무 실적과 무관하게 시간외근무수당 정액분(10시간분)이 지급됩니다."}},{"@type":"Question","name":"2027년 보수 3.9% 인상안이 반영되면 실수령액은 얼마나 오르나요?","acceptedAnswer":{"@type":"Answer","text":"2027년 보수 3.9% 인상안과 6~9급 직급보조비 인상(+2만~3.5만원), 5~7급 초과근무 감액조정률 60% 확대안이 함께 적용되면 1인 가구·정액분 10시간 기준 일반 달 실수령액은 9·8급 약 +8.2~8.6만원, 7급 10호봉 약 +11.4만원, 6급 15호봉 약 +14.6만원 증가하는 것으로 추정됩니다."}}]}
 </script>
-<link rel="stylesheet" href="/gs-ui.css?v=20261120c">
-<script src="/gs-ui.js?v=20261120c" defer></script>
+<link rel="stylesheet" href="/gs-ui.css?v=20261121a">
+<script src="/gs-ui.js?v=20261121a" defer></script>
 </head>
 <body class="gs-page-tool">
 <div class="gs-menubar">
@@ -303,13 +303,26 @@
     </div>
     <div class="field">
       <label for="overtime">월 시간외근무수당 등 기타 수당 (원, 선택)</label>
-      <input type="number" id="overtime" min="0" step="10000" value="0">
+      <input type="number" id="overtime" min="0" step="10000" value="0" oninput="clearOtPreset(); liveCalc();">
+      <div class="gs-ot-chips" id="otChips" aria-label="시간외근무수당 빠른 선택">
+        <button type="button" class="gs-ot-chip on" data-ot-hrs="0" onclick="setOtPreset(0)">초과 없음 (0원)</button>
+        <button type="button" class="gs-ot-chip" data-ot-hrs="10" onclick="setOtPreset(10)">정액분 10시간</button>
+        <button type="button" class="gs-ot-chip" data-ot-hrs="20" onclick="setOtPreset(20)">정액10h + 실적10h</button>
+        <button type="button" class="gs-ot-chip" data-ot-hrs="30" onclick="setOtPreset(30)">정액10h + 실적20h</button>
+        <button type="button" class="gs-ot-chip" data-ot-hrs="40" onclick="setOtPreset(40)">정액10h + 실적30h</button>
+      </div>
     </div>
-    <div class="hint">초과근무를 안 해도 한 달에 15일 이상 출근하면 시간외근무수당 정액분(10시간분, 7급 123,680원)이 나옵니다. 내 금액은 <a href="overtime-pay-calculator.html" style="color:var(--navy);font-weight:700;">초과근무수당 계산기</a>에서 확인한 뒤 입력하세요.</div>
+    <div class="field" style="margin-top:10px;">
+      <label class="gs-check-row" for="daewoo">
+        <input type="checkbox" id="daewoo" onchange="liveCalc()">
+        <span><strong>대우공무원 수당 적용</strong> (월봉급액의 <strong>4.1%</strong> 자동 가산 · <a href="daewoo-allowance-guide.html" style="color:var(--navy);text-decoration:underline;">선발 요건 보기</a>)</span>
+      </label>
+    </div>
+    <div class="hint" id="otRateHint">초과근무를 안 해도 한 달에 15일 이상 출근하면 시간외근무수당 정액분(10시간분, 7급 123,680원)이 나옵니다. 위 버튼으로 바로 반영하거나 <a href="overtime-pay-calculator.html" style="color:var(--navy);font-weight:700;">초과근무수당 계산기</a>에서 야간·휴일수당까지 계산해 입력하세요.</div>
     <div class="hint">가족수당: 배우자 4만원, 첫째 5만원, 둘째 8만원, 셋째 이후 12만원, 기타 부양가족 1인당 2만원. 자녀를 제외한 부양가족은 최대 4명까지 인정됩니다.</div>
   </div>
 
-  <button class="btn btn-primary" id="calcBtn" onclick="calculate()">💵 실수령액 계산하기</button>
+  <button class="btn btn-primary" id="calcBtn" onclick="calculate(false)">💵 실수령액 계산하기</button>
 
   <div class="result-card" id="resultCard" style="margin-top:20px;">
     <h2>▪ 2026년 예상 보수 (세후 추정)</h2>
@@ -335,12 +348,13 @@
       <div class="t-val"><span id="rNet">0</span><small>원</small></div>
       <div class="t-sub" id="rSub"></div>
     </div>
+    <div class="gs-pay-bar" id="payBarWrap" aria-label="월 보수 구성 및 실수령 비중"></div>
   </div>
 
   <div class="card" id="detailCard" style="display:none;">
     <h3><span class="num">3</span> 항목별 내역</h3>
     <div class="table-wrap" id="detailTable"></div>
-    <div class="hint">⚠️ 공제액은 2026년 요율과 소득세법 산식으로 추정한 값입니다. 실제 원천징수는 간이세액표·전년도 기준소득월액·연말정산에 따라 달라지며, 성과상여금·대우공무원수당·특수업무수당 등은 포함하지 않았습니다.</div>
+    <div class="hint">⚠️ 공제액은 2026~2027년 요율과 소득세법 산식으로 추정한 값입니다. 실제 원천징수는 간이세액표·전년도 기준소득월액·연말정산에 따라 달라지며, 성과상여금·특수업무수당 등은 포함하지 않았습니다.</div>
   </div>
 
   <div class="card">
@@ -484,17 +498,64 @@ const PAY_TABLE = {
 };
 const JIKGEUP_2026 = {1:750000,2:650000,3:500000,4:400000,5:250000,6:185000,7:180000,8:175000,9:175000};
 const JIKGEUP_2027 = {1:750000,2:650000,3:500000,4:400000,5:250000,6:220000,7:205000,8:195000,9:195000};
+const OT_RATE_2026 = {9:10949, 8:12113, 7:12368, 6:13692, 5:16053};
+const OT_RATE_2027 = {9:11376, 8:12585, 7:14018, 6:15519, 5:18195};
 const PAY_TABLE_2026 = PAY_TABLE;
 const PAY_TABLE_2027 = Object.fromEntries(
   Object.entries(PAY_TABLE_2026).map(([g, arr]) => [g, arr.map(v => Math.round(v * 1.039 / 100) * 100)])
 );
 let activeYear = 2026;
+let activeOtHrs = 0;
 const getPay = (yr, g, s) => (yr === 2027 ? PAY_TABLE_2027 : PAY_TABLE_2026)[g][s - 1];
 const getJik = (yr, g) => (yr === 2027 ? JIKGEUP_2027 : JIKGEUP_2026)[g];
+const getOtRate = (yr, g) => (yr === 2027 ? OT_RATE_2027 : OT_RATE_2026)[g] || 0;
 const MEAL = 160000;
 const HEALTH = 0.0719/2, LTC = 0.009448/2, PENSION = 0.09;
 const fmt = n => Math.round(n).toLocaleString('ko-KR');
 const $ = id => document.getElementById(id);
+
+function updateOtUI(){
+  const g = Number($('grade').value);
+  const rate = getOtRate(activeYear, g);
+  const wrap = $('otChips');
+  if (!wrap) return;
+  wrap.querySelectorAll('.gs-ot-chip').forEach(btn => {
+    const hrs = Number(btn.dataset.otHrs);
+    btn.classList.toggle('on', activeOtHrs === hrs);
+    if (hrs === 10 && rate > 0) {
+      btn.textContent = `정액분 10h (${fmt(rate * 10)}원)`;
+    } else if (hrs === 10) {
+      btn.textContent = '정액분 10시간';
+    }
+  });
+  const hint = $('otRateHint');
+  if (hint) {
+    if (rate > 0) {
+      hint.innerHTML = `초과근무를 안 해도 한 달에 15일 이상 출근하면 시간외근무수당 정액분(10시간분, ${activeYear}년 ${g}급 기준 <strong>${fmt(rate * 10)}원</strong> · 시간당 ${fmt(rate)}원)이 지급됩니다. 위 칩을 누르면 자동 입력되며, 야간·휴일수당 포함 정밀 계산은 <a href="overtime-pay-calculator.html" style="color:var(--navy);font-weight:700;">초과근무수당 계산기</a>를 이용하세요.`;
+    } else {
+      hint.innerHTML = `4급 이상 공무원은 시간외근무수당 대신 관리업무수당(월봉급액의 9%)이 지급됩니다. 기타 수당이 있다면 직접 입력해 주세요.`;
+    }
+  }
+  if (activeOtHrs !== null && activeOtHrs > 0) {
+    $('overtime').value = rate > 0 ? rate * activeOtHrs : 0;
+  }
+}
+function setOtPreset(hrs){
+  activeOtHrs = hrs;
+  const g = Number($('grade').value);
+  const rate = getOtRate(activeYear, g);
+  $('overtime').value = hrs === 0 ? 0 : (rate * hrs);
+  updateOtUI();
+  liveCalc();
+}
+function clearOtPreset(){
+  activeOtHrs = null;
+  const wrap = $('otChips');
+  if (wrap) wrap.querySelectorAll('.gs-ot-chip').forEach(b => b.classList.remove('on'));
+}
+function liveCalc(){
+  if ($('resultCard').classList.contains('show')) calculate(true);
+}
 
 function setYear(yr, silent){
   activeYear = yr === 2027 ? 2027 : 2026;
@@ -509,11 +570,12 @@ function setYear(yr, silent){
   if (cap) cap.textContent = activeYear === 2027
     ? '2027년 일반직공무원 예상 봉급표 (단위: 원/월, 2026 봉급표 × 1.039 추정치)'
     : '2026년 일반직공무원 봉급표 (단위: 원/월, 「공무원보수규정」 별표3 기준)';
+  updateOtUI();
   if (!silent) {
     const u = new URL(location.href);
     if (activeYear === 2027) u.searchParams.set('year', '2027'); else u.searchParams.delete('year');
     history.replaceState(null, '', u.pathname + u.search);
-    if ($('resultCard').classList.contains('show')) calculate();
+    if ($('resultCard').classList.contains('show')) calculate(true);
   }
 }
 
@@ -568,13 +630,14 @@ function renderPayTable(){
   const c=document.querySelector(`.paytbl td[data-g="${g}"][data-s="${s}"]`);
   if(c) c.classList.add('on');
 }
-function onGrade(){ buildSteps(); renderPayTable(); }
-function onStep(){ renderPayTable(); }
+function onGrade(){ buildSteps(); renderPayTable(); updateOtUI(); liveCalc(); }
+function onStep(){ renderPayTable(); liveCalc(); }
 
-function calcForYear(yr, g, s, y, sp, kids, others, ot){
+function calcForYear(yr, g, s, y, sp, kids, others, ot, isDaewoo){
   const pay=getPay(yr, g, s);
+  const daewoo = isDaewoo ? Math.floor(pay * 0.041 / 10) * 10 : 0;
   const jik=getJik(yr, g), add=jeonggeunAdd(y), fam=familyAllow(sp,kids,others);
-  const monthly = pay + MEAL + jik + add + fam + ot;
+  const monthly = pay + daewoo + MEAL + jik + add + fam + ot;
   const jgRate = jeonggeunRate(y);
   const jg = pay*jgRate, holiday = pay*0.6;
   const annual = monthly*12 + jg*2 + holiday*2;
@@ -589,23 +652,24 @@ function calcForYear(yr, g, s, y, sp, kids, others, ot){
   const monthDed = pension + health + ltc + (itax+ltax)/12;
   const net = monthly - monthDed;
   const annualNet = annual - monthDed*12;
-  return { pay, jik, add, fam, monthly, jgRate, jg, holiday, annual, pension, health, ltc, itax, ltax, monthDed, net, annualNet };
+  return { pay, daewoo, jik, add, fam, monthly, jgRate, jg, holiday, annual, pension, health, ltc, itax, ltax, monthDed, net, annualNet };
 }
 
-function calculate(){
+function calculate(silent){
   const g=$('grade').value, s=Number($('step').value);
   const y=Math.max(0, Number($('years').value)||0);
   const sp=Number($('spouse').value), kids=Math.max(0,Math.floor(Number($('kids').value)||0)), others=Math.min(4,Math.max(0,Math.floor(Number($('others').value)||0)));
   const ot=Math.max(0, Number($('overtime').value)||0);
-  const cur = calcForYear(activeYear, g, s, y, sp, kids, others, ot);
-  const { pay, jik, add, fam, monthly, jgRate, jg, holiday, annual, pension, health, ltc, itax, ltax, monthDed, net, annualNet } = cur;
+  const isDaewoo = Boolean($('daewoo') && $('daewoo').checked);
+  const cur = calcForYear(activeYear, g, s, y, sp, kids, others, ot, isDaewoo);
+  const { pay, daewoo, jik, add, fam, monthly, jgRate, jg, holiday, annual, pension, health, ltc, itax, ltax, monthDed, net, annualNet } = cur;
 
   const h2 = $('resultCard').querySelector('h2');
   if (h2) h2.textContent = activeYear === 2027 ? '▪ 2027년 예상 보수 (3.9% 인상안 · 세후 추정)' : '▪ 2026년 예상 보수 (세후 추정)';
 
   let diffHtml = '';
   if (activeYear === 2027) {
-    const base26 = calcForYear(2026, g, s, y, sp, kids, others, ot);
+    const base26 = calcForYear(2026, g, s, y, sp, kids, others, ot, isDaewoo);
     diffHtml = `<br><span class="gs-year-diff">2026년 대비 일반 달 실수령 +${fmt(net - base26.net)}원 · 세전 연봉 +${fmt((annual - base26.annual)/10000)}만원</span>`;
   }
 
@@ -613,17 +677,42 @@ function calculate(){
   $('rDed').textContent = fmt(monthDed)+'원';
   $('rAnnual').textContent = fmt(annual/10000)+'만원';
   $('rNet').textContent = fmt(net);
-  $('rSub').innerHTML = `${activeYear}년 ${g}급 ${s}호봉 · 근무 ${y}년 기준<br>연간 실수령 약 ${fmt(annualNet/10000)}만원 · 월평균 약 ${fmt(annualNet/12/10000)}만원 (정근수당·명절휴가비 포함)${diffHtml}`;
+  $('rSub').innerHTML = `${activeYear}년 ${g}급 ${s}호봉 · 근무 ${y}년${isDaewoo?' · 대우수당(4.1%) 포함':''} 기준<br>연간 실수령 약 ${fmt(annualNet/10000)}만원 · 월평균 약 ${fmt(annualNet/12/10000)}만원 (정근수당·명절휴가비 포함)${diffHtml}`;
+
+  const allowSum = monthly - pay;
+  const pPay = Math.round((pay / monthly) * 100);
+  const pAllow = Math.max(0, 100 - pPay);
+  const pNet = Math.round((net / monthly) * 100);
+  const pDed = Math.max(0, 100 - pNet);
+  const pb = $('payBarWrap');
+  if (pb) {
+    pb.innerHTML = `
+      <div class="gs-pb-row">
+        <span class="gs-pb-lbl">세전 구성</span>
+        <div class="gs-pb-track">
+          <div class="gs-pb-seg seg-pay" style="width:${pPay}%">기본급 ${pPay}%</div>
+          <div class="gs-pb-seg seg-allow" style="width:${pAllow}%">수당 ${pAllow}%</div>
+        </div>
+      </div>
+      <div class="gs-pb-row">
+        <span class="gs-pb-lbl">세후 비중</span>
+        <div class="gs-pb-track">
+          <div class="gs-pb-seg seg-net" style="width:${pNet}%">실수령 ${pNet}%</div>
+          <div class="gs-pb-seg seg-ded" style="width:${pDed}%">공제 ${pDed}%</div>
+        </div>
+      </div>`;
+  }
 
   const r = (k,v,note='')=>`<tr><td>${k}</td><td class="td-r">${fmt(v)}원</td><td style="color:var(--muted);font-size:.76rem;white-space:normal">${note}</td></tr>`;
   $('detailTable').innerHTML = `<table><thead><tr><th>항목</th><th style="text-align:right">금액</th><th>비고</th></tr></thead><tbody>
     <tr><td colspan="3" class="td-bold">매달 지급</td></tr>
     ${r('봉급', pay, `${g}급 ${s}호봉`)}
+    ${isDaewoo ? r('대우공무원수당', daewoo, '월봉급액의 4.1%') : ''}
     ${r('정액급식비', MEAL, '비과세')}
     ${r('직급보조비', jik, `${g}급`)}
     ${r('정근수당 가산금', add, `근무 ${y}년`)}
     ${r('가족수당', fam)}
-    ${ot?r('시간외근무수당 등', ot, '직접 입력'):''}
+    ${ot?r('시간외근무수당 등', ot, activeOtHrs ? `${activeOtHrs}시간분 자동 반영` : '직접 입력'):''}
     <tr class="sel"><td class="td-bold">월 세전 합계</td><td class="td-r td-bold">${fmt(monthly)}원</td><td></td></tr>
     <tr><td colspan="3" class="td-bold">연 2회 지급</td></tr>
     ${r('정근수당 (1월·7월)', jg, `봉급의 ${Math.round(jgRate*100)}% × 연 2회`)}
@@ -637,12 +726,19 @@ function calculate(){
   </tbody></table>`;
   $('resultCard').classList.add('show');
   $('detailCard').style.display='';
-  if (typeof gtag === 'function') gtag('event', 'click_calculate', { calculator: 'salary', grade: g + '급' });
-  setTimeout(()=>$('resultCard').scrollIntoView({behavior:'smooth',block:'start'}),50);
+  if (!silent) {
+    if (typeof gtag === 'function') gtag('event', 'click_calculate', { calculator: 'salary', grade: g + '급' });
+    setTimeout(()=>$('resultCard').scrollIntoView({behavior:'smooth',block:'start'}),50);
+  }
 }
 
-buildSteps(); $('step').value = 10; renderPayTable();
+['years','spouse','kids','others'].forEach(id => {
+  const el = $(id);
+  if (el) el.addEventListener('change', liveCalc);
+});
+buildSteps(); $('step').value = 10; renderPayTable(); updateOtUI();
 if (new URLSearchParams(location.search).get('year') === '2027') setYear(2027, true);
+calculate(true);
 </script>
 </body>
 </html>

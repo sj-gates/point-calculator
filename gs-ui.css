@@ -1055,3 +1055,278 @@ footer {
   color: var(--gs-muted) !important;
   padding: 28px 20px !important;
 }
+
+/* ── 계산기 프로필 자동 연동 & 원클릭 초기화 바 ── */
+.gs-profile-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 9px 14px;
+  margin-bottom: 14px;
+  font-size: 0.79rem;
+  color: #334155;
+}
+.gs-profile-bar .gs-prof-txt strong {
+  color: var(--gs-navy);
+}
+.gs-profile-bar .gs-prof-sub {
+  color: #64748b;
+  font-size: 0.74rem;
+}
+.gs-profile-bar .gs-prof-reset {
+  background: #ffffff;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-family: var(--gs-font);
+  font-size: 0.74rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.14s;
+}
+.gs-profile-bar .gs-prof-reset:hover {
+  background: var(--gs-navy);
+  color: #f3dc96;
+  border-color: var(--gs-navy);
+}
+
+/* ── 월급 계산기: 시간외근무수당 프리셋 칩 & 대우공무원 체크박스 ── */
+.gs-ot-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+.gs-ot-chip {
+  background: #f8fafc;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  padding: 5px 11px;
+  font-family: var(--gs-font);
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.14s;
+}
+.gs-ot-chip:hover {
+  border-color: var(--gs-navy);
+  color: var(--gs-navy);
+}
+.gs-ot-chip.on {
+  background: var(--gs-navy);
+  color: #f3dc96;
+  border-color: var(--gs-navy);
+  font-weight: 700;
+}
+.gs-check-row {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 0.84rem !important;
+  font-weight: 500 !important;
+  color: #1e293b !important;
+  cursor: pointer;
+  margin-bottom: 0 !important;
+}
+.gs-check-row input[type="checkbox"] {
+  width: 17px !important;
+  height: 17px !important;
+  margin: 0 !important;
+  accent-color: var(--gs-navy);
+  cursor: pointer;
+}
+
+/* ── 월급 계산기: 보수 구성 비중 바 ── */
+.gs-pay-bar {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.gs-pb-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.gs-pb-lbl {
+  width: 60px;
+  flex-shrink: 0;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+}
+.gs-pb-track {
+  flex: 1;
+  height: 24px;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+.gs-pb-seg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 0 6px;
+}
+.gs-pb-seg.seg-pay {
+  background: #3b82f6;
+  color: #ffffff;
+}
+.gs-pb-seg.seg-allow {
+  background: #d4aa42;
+  color: #0f2340;
+}
+.gs-pb-seg.seg-net {
+  background: #10b981;
+  color: #06281e;
+}
+.gs-pb-seg.seg-ded {
+  background: rgba(248, 113, 113, 0.85);
+  color: #ffffff;
+}
+
+/* ── 계산 결과 카드 내 결과 복사 / 링크 공유 버튼 바 ── */
+.gs-res-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+.gs-res-btn {
+  flex: 1;
+  min-width: 150px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #f8fafc;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-family: var(--gs-font);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.gs-res-btn:hover {
+  background: rgba(212, 170, 66, 0.22);
+  border-color: #f3dc96;
+  color: #f3dc96;
+}
+
+/* ── 가이드 허브 실시간 검색바 ── */
+.gs-guide-search {
+  background: #ffffff;
+  border: 1px solid var(--gs-border-strong);
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  box-shadow: 0 2px 10px rgba(15, 35, 64, 0.04);
+}
+.gs-search-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f8fafc;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 8px 12px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.gs-search-row:focus-within {
+  border-color: var(--gs-navy);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(15, 35, 64, 0.08);
+}
+.gs-search-ico {
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+.gs-search-row input[type="search"] {
+  flex: 1;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 2px 0 !important;
+  font-size: 0.9rem !important;
+  color: var(--gs-ink) !important;
+  outline: none !important;
+}
+.gs-search-clear {
+  background: #e2e8f0;
+  color: #475569;
+  border: none;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.gs-search-tags {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+.gs-tag-lbl {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #64748b;
+  margin-right: 2px;
+}
+.gs-kw-chip {
+  background: #f1f5f9;
+  color: #334155;
+  border: 1px solid #e2e8f0;
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-family: var(--gs-font);
+  font-size: 0.74rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.14s;
+}
+.gs-kw-chip:hover {
+  background: var(--gs-navy);
+  color: #f3dc96;
+  border-color: var(--gs-navy);
+}
+.gs-search-count {
+  margin-left: auto;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--gs-navy);
+}
+.gs-search-empty {
+  text-align: center;
+  background: #ffffff;
+  border: 1px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 28px 16px;
+  margin-bottom: 18px;
+}
+.gs-search-empty p {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin-bottom: 12px;
+}
