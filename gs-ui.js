@@ -1,4 +1,4 @@
-// 공스코어 통합 모던 UI 스크립트 (네비게이션·자동 목차·프로필 로컬 연동·결과 복사/공유)
+// 공스코어 통합 모던 UI 스크립트 (네비게이션·자동 목차·프로필 백그라운드 자동 연동·결과 복사/공유)
 (function () {
   // 1. 다중 드롭다운 & 모바일 서랍 제어
   const drops = Array.from(document.querySelectorAll('.gs-drop'));
@@ -57,6 +57,14 @@
       mobBtn.setAttribute('aria-expanded', String(isOpen));
       mobBtn.textContent = isOpen ? '✕ 닫기' : '☰ 전체 메뉴';
     });
+  }
+
+  // 상단 좌우 스크롤 메뉴(.gs-mob-quick)에서 현재 활성화된 계산기 칩이 화면 가운데에 보이도록 가로 위치 조정
+  const quickBar = document.querySelector('.gs-mob-quick');
+  const activeQuick = quickBar && quickBar.querySelector('a.on');
+  if (quickBar && activeQuick) {
+    const targetLeft = activeQuick.offsetLeft - (quickBar.clientWidth / 2) + (activeQuick.offsetWidth / 2);
+    if (targetLeft > 0) quickBar.scrollLeft = targetLeft;
   }
 
   // 2. 가이드 페이지 자동 목차(TOC) + 읽기 진행 바
@@ -123,7 +131,7 @@
     updateBar();
   }
 
-  // 3. 계산기 간 기본 프로필(계급·호봉·근무연수·임용일) 브라우저 내 자동 연동 및 원클릭 초기화
+  // 3. 계산기 간 기본 프로필(계급·호봉·근무연수·임용일·생년월일) 백그라운드 자동 연동 (별도 배너 없이 자동 반영)
   const PROFILE_KEY = 'gs_profile_v1';
   const gradeEl = document.getElementById('grade') || document.getElementById('simGrade');
   const stepEl = document.getElementById('step') || document.getElementById('simStep');
@@ -145,17 +153,14 @@
       const cur = loadProfile();
       const next = Object.assign({}, cur, patch);
       localStorage.setItem(PROFILE_KEY, JSON.stringify(next));
-      updateProfileBarText(next);
     } catch (e) {}
   }
 
   function runSilentCalculate() {
     if (typeof window.calculate !== 'function') return;
-    // salary-calculator 등 calculate(true)를 지원하는 경우
     if (window.calculate.length >= 1) {
       try { window.calculate(true); return; } catch (e) {}
     }
-    // scrollIntoView를 일시 억제하여 초기 로드 시 화면 스크롤 점프 방지
     const origScroll = Element.prototype.scrollIntoView;
     Element.prototype.scrollIntoView = function () {};
     try {
@@ -164,19 +169,6 @@
     setTimeout(function () {
       Element.prototype.scrollIntoView = origScroll;
     }, 120);
-  }
-
-  let profileBarStatusEl = null;
-  function updateProfileBarText(p) {
-    if (!profileBarStatusEl) return;
-    const parts = [];
-    const gVal = (gradeEl && gradeEl.value) || p.grade;
-    const sVal = (stepEl && stepEl.value) || p.step;
-    if (gVal) parts.push(gVal + '급');
-    if (sVal) parts.push(sVal + '호봉');
-    if ((yearsEl && yearsEl.value) || p.years) parts.push('근무 ' + ((yearsEl && yearsEl.value) || p.years) + '년');
-    const summary = parts.length ? ' (' + parts.join(' · ') + ')' : '';
-    profileBarStatusEl.innerHTML = '🔄 <strong>내 직급·호봉 브라우저 자동 연동</strong>' + summary + ' <span class="gs-prof-sub">· 서버 전송 없음</span>';
   }
 
   if (gradeEl || stepEl || yearsEl || hireEl) {
@@ -229,35 +221,6 @@
       birthEl.value = saved.birth;
     }
 
-    // 프로필 연동 상태 & 지우기 바 삽입
-    const anchor = document.querySelector('.gs-year-bar') || document.querySelector('main .article-hero') || document.querySelector('main .card');
-    if (anchor && anchor.parentNode && !document.querySelector('.gs-profile-bar')) {
-      const pBar = document.createElement('div');
-      pBar.className = 'gs-profile-bar';
-      pBar.setAttribute('aria-label', '계산기 입력값 브라우저 연동 상태');
-      pBar.innerHTML =
-        '<span class="gs-prof-txt"></span>' +
-        '<button type="button" class="gs-prof-reset" title="브라우저에 임시 저장된 직급·호봉·임용일 정보를 즉시 삭제합니다">저장값 지우기</button>';
-      profileBarStatusEl = pBar.querySelector('.gs-prof-txt');
-      updateProfileBarText(saved);
-
-      const resetBtn = pBar.querySelector('.gs-prof-reset');
-      resetBtn.addEventListener('click', function () {
-        try {
-          localStorage.removeItem(PROFILE_KEY);
-          localStorage.removeItem('gongscore_profile');
-        } catch (e) {}
-        profileBarStatusEl.innerHTML = '✓ <strong>브라우저 내 저장된 직급·호봉·임용일 정보가 삭제되었습니다.</strong>';
-      });
-
-      if (anchor.classList.contains('card')) {
-        anchor.insertAdjacentElement('beforebegin', pBar);
-      } else {
-        anchor.insertAdjacentElement('afterend', pBar);
-      }
-    }
-
-    // 입력 변경 시 localStorage 저장
     if (gradeEl) {
       gradeEl.addEventListener('change', function () {
         saveProfile({ grade: gradeEl.value, step: stepEl ? stepEl.value : undefined });
