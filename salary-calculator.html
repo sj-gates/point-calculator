@@ -158,6 +158,9 @@
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "공스코어", "item": "https://gong-score.co.kr/"}, {"@type": "ListItem", "position": 2, "name": "월급 실수령액 계산기", "item": "https://gong-score.co.kr/salary-calculator.html"}]}
 </script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"봉급표 금액과 실제 통장 실수령액이 왜 다른가요?","acceptedAnswer":{"@type":"Answer","text":"봉급표 금액은 수당과 공제를 반영하기 전의 기본급(본봉)입니다. 실제 급여는 여기에 정액급식비(16만원·비과세), 직급보조비, 정근수당 가산금, 가족수당, 초과근무수당 등을 더한 뒤 공무원연금 기여금(기준소득월액의 9%), 건강보험·장기요양보험료, 소득세·지방소득세를 원천징수하고 지급됩니다."}},{"@type":"Question","name":"공무원연금 기여금 9%는 본봉 기준인가요, 기준소득월액 기준인가요?","acceptedAnswer":{"@type":"Answer","text":"본봉이 아니라 기준소득월액의 9%입니다. 기준소득월액은 전년도 과세 대상 보수 총액(봉급·정근수당·명절휴가비·성과상여금·초과근무수당 등 포함, 비과세 정액급식비 제외)의 월평균액을 기반으로 매년 5월 갱신되어 적용됩니다."}},{"@type":"Question","name":"초과근무를 안 해도 시간외근무수당이 나오나요?","acceptedAnswer":{"@type":"Answer","text":"네, 정규 근무일 기준 월 15일 이상 정상 출근(출장·육아시간 사용일 포함)하면 실제 초과근무 실적과 무관하게 시간외근무수당 정액분(10시간분)이 지급됩니다."}},{"@type":"Question","name":"2027년 보수 3.9% 인상안이 반영되면 실수령액은 얼마나 오르나요?","acceptedAnswer":{"@type":"Answer","text":"2027년 보수 3.9% 인상안과 6~9급 직급보조비 인상(+2만~3.5만원), 5~7급 초과근무 감액조정률 60% 확대안이 함께 적용되면 1인 가구·정액분 10시간 기준 일반 달 실수령액은 9·8급 약 +8.2~8.6만원, 7급 10호봉 약 +11.4만원, 6급 15호봉 약 +14.6만원 증가하는 것으로 추정됩니다."}}]}
+</script>
 <link rel="stylesheet" href="/gs-ui.css?v=20261120c">
 <script src="/gs-ui.js?v=20261120c" defer></script>
 </head>
@@ -419,10 +422,23 @@
     <p><strong>급여명세서 점검 시 꼭 확인할 3가지:</strong> ① <strong>정액급식비 16만원</strong>은 비과세 항목이라 소득세와 기여금 산정에서 제외됩니다. ② 15일 이상 정상 출근한 달에는 초과근무를 하지 않아도 <strong>시간외근무수당 정액분(10시간분)</strong>이 자동 지급됩니다. ③ 승진 시에는 1호봉이 감호되므로(예: 8급 7호봉 → 7급 6호봉), 직급별 승진 전후 실제 연봉 변화는 <a href="promotion-perspective.html" style="color:var(--navy);font-weight:700;">승진의 실제 급여 효과 분석</a> 글에서 함께 비교해 보세요.</p>
   </div>
 
+  <div class="card">
+    <h3><span class="num">7</span> 공무원 월급 실수령액 자주 묻는 질문</h3>
+    <p><strong>Q1. 봉급표 금액과 실제 통장에 찍히는 실수령액이 왜 다른가요?</strong><br>
+    봉급표에 적힌 숫자는 수당과 공제를 반영하기 전의 순수 기본급(본봉)입니다. 매월 급여일에는 기본급에 정액급식비(16만원·비과세), 직급보조비, 정근수당 가산금, 가족수당, 시간외근무수당 등이 더해지고, 여기서 공무원연금 기여금(기준소득월액의 9%), 건강보험·장기요양보험료, 근로소득세·지방소득세가 공제된 금액이 입금됩니다.</p>
+    <p><strong>Q2. 공무원연금 기여금 9%는 본봉의 9%인가요?</strong><br>
+    아닙니다. 본봉이 아니라 <strong>기준소득월액의 9%</strong>입니다. 기준소득월액은 기본급뿐 아니라 정근수당·명절휴가비·성과상여금·초과근무수당 등 과세 대상 보수를 합산한 월평균 소득을 기준으로 산정되므로, 일반 달 세전 월급 대비 기여금 체감 비중은 9%보다 높게 느껴집니다.</p>
+    <p><strong>Q3. 초과근무를 하나도 하지 않은 달에도 시간외근무수당이 나오나요?</strong><br>
+    네, 한 달에 정규 근무일 기준 <strong>15일 이상 출근</strong>(출장 및 육아시간 사용일 포함)하면 실제 야근 실적과 관계없이 시간외근무수당 정액분(10시간분, 2026년 7급 기준 123,680원)이 지급됩니다. 15일 미만 출근 시에만 미달 일수만큼 15분의 1씩 감액됩니다.</p>
+    <p><strong>Q4. 2027년 3.9% 보수 인상안이 적용되면 실수령액은 얼마나 늘어나나요?</strong><br>
+    화면 상단의 <strong>[2027년 예상 (3.9%↑)]</strong> 버튼을 누르면 봉급 3.9% 인상안과 6~9급 직급보조비 인상안(+2만~3.5만원), 건강보험료율 7.19% 동결을 반영한 2027년 예상 실수령액과 2026년 대비 월·연간 차액을 즉시 비교할 수 있습니다.</p>
+  </div>
+
   <div class="related-links">
     <h3>📚 함께 보면 좋은 계산기</h3>
     <ul>
       <li><a href="index.html">공무원 평정점수 계산기 — 근평·경력·가점 자동 산출</a></li>
+      <li><a href="2027-pay-guide.html">2027년 공무원 봉급표·수당 변경 총정리 (3.9% 인상안)</a></li>
       <li><a href="retirement-allowance-calculator.html">명예퇴직수당·퇴직수당 계산기</a></li>
       <li><a href="leave-compensation-calculator.html">연가일수·연가보상비 계산기</a></li>
       <li><a href="overtime-pay-calculator.html">공무원 초과근무수당 계산기</a></li>
@@ -433,6 +449,11 @@
       <li><a href="jeonggeun-holiday-bonus.html">정근수당·정근수당가산금·명절휴가비 완전 정리</a></li>
     </ul>
   </div>
+
+  <aside class="gs-editorial-bar" aria-label="콘텐츠 검수 정보">
+    <strong>📌 콘텐츠 검수 및 출처 안내</strong> · 작성·검수: <a href="about.html">공스코어 편집팀</a> · 최종 확인: 2026년 11월 21일<br>
+    국가법령정보센터(「공무원보수규정」 별표3·「지방공무원 수당 등에 관한 규정」·「공무원연금법」) 및 2026~2027년 건강보험료율(7.19%) 고시 기준을 대조해 제작·검수했습니다. 전체 해설은 <a href="guides.html">승진·인사 가이드 전체 모음(22편)</a>에서 확인하실 수 있습니다.
+  </aside>
 </main>
 <footer>
   <p style="margin-bottom:8px; font-size:.74rem; color:#888;">본 계산기는 2026년 「공무원보수규정」 봉급표와 공무원 수당·복무 관련 규정을 기준으로 제작되었습니다.<br>법령 개정에 따라 수치가 달라질 수 있으므로 정확한 내용은 <a href="https://www.law.go.kr" target="_blank" rel="noopener" style="color:var(--gold);">국가법령정보센터</a>에서 확인하세요.</p>
