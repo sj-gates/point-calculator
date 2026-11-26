@@ -176,8 +176,8 @@
     <h2><span class="num">1</span> 이 서비스는 무엇인가요?</h2>
     <div class="body-text">
       <p><strong>공스코어(gong-score.co.kr)</strong>는 지방공무원이 승진 점수와 월급·수당을 직접 계산해 볼 수 있도록 만든 무료 계산기 모음입니다.</p>
-      <p>대표 기능인 <a href="index.html">평정점수 계산기</a>는 근무성적평정(근평) 등급, 경력 기간, 가점을 입력하면 최종 평정점수를 즉시 산출합니다. 입력하신 정보는 <strong>브라우저 내에서만 처리</strong>되며 서버로 전송되지 않습니다. 다시 입력하는 번거로움을 줄이도록 직급·호봉 같은 일부 값만 이용자 기기에 기억하며, 계산기 화면의 지우기 버튼으로 바로 지울 수 있습니다.</p>
-      <p>평정점수 계산기 외에도 <a href="salary-calculator.html">월급 실수령액 계산기</a>, <a href="overtime-pay-calculator.html">초과근무수당 계산기</a>, <a href="parental-leave-calculator.html">육아휴직수당 계산기</a>, <a href="retirement-allowance-calculator.html">명예퇴직수당·퇴직수당 계산기</a>, <a href="leave-compensation-calculator.html">연가일수·연가보상비 계산기</a>, <a href="rental-housing.html">공무원 임대주택 합격선 계산기</a>를 함께 제공합니다. 모든 계산기는 봉급표와 수당·복무 규정 같은 공식 자료를 확인해 만들었고, 계산 방법과 근거 조문을 각 페이지에 함께 적어 두었습니다. 승진 제도를 설명하는 가이드 글도 꾸준히 추가하고 있습니다.</p>
+      <p>대표 기능인 <a href="index.html">평정점수 계산기</a>는 근무성적평정(근평) 등급, 경력 기간, 가점을 입력하면 최종 평정점수를 즉시 산출합니다. 입력하신 정보는 <strong>브라우저 내에서만 처리</strong>되며 서버로 전송되지 않습니다. 다시 입력하는 번거로움을 줄이도록 직급·호봉 같은 일부 값만 이용자 기기(localStorage)에 임시 기억하며, 브라우저의 사이트 데이터 삭제로 언제든 지울 수 있습니다.</p>
+      <p>평정점수 계산기 외에도 <a href="salary-calculator.html">월급 실수령액 계산기</a>, <a href="overtime-pay-calculator.html">초과근무수당 계산기</a>, <a href="parental-leave-calculator.html">육아휴직수당 계산기</a>, <a href="retirement-allowance-calculator.html">명예퇴직수당·퇴직수당 계산기</a>, <a href="leave-compensation-calculator.html">연가일수·연가보상비 계산기</a>, <a href="rental-housing.html">공무원 임대주택 합격선 계산기</a>를 함께 제공합니다. 모든 계산기는 봉급표와 수당·복무 규정 같은 공식 자료를 확인해 만들었고, 계산 방법과 근거 조문을 각 페이지에 함께 적어 두었습니다. 국가법령과 지자체 인사규칙 별표를 원문 대조해 정리한 <a href="guides.html">승진·인사 실무 가이드 22편</a>도 함께 제공합니다.</p>
       <p>승진 시즌마다 인사부서에 물어보기 어려운 점수 추정을 편하게 할 수 있도록, 실제 평정 규칙과 기관별 점수표를 최대한 반영해 제작하였습니다. 서울특별시·경기도·인천광역시는 실제 인사규칙 수치를 적용하였으며, 그 외 광역시·도는 순차적으로 실제 파라미터를 반영해 나가고 있습니다.</p>
     </div>
     <div class="hint">본 계산기의 결과는 참고용이며, 정확한 평정점수는 소속 기관 인사담당자에게 확인하시기 바랍니다.</div>

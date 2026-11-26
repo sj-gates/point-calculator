@@ -2,13 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://gong-score.co.kr/</loc>
-    <lastmod>2026-11-21</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://gong-score.co.kr/guides.html</loc>
-    <lastmod>2026-11-21</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -44,7 +44,7 @@
   </url>
   <url>
     <loc>https://gong-score.co.kr/rental-housing.html</loc>
-    <lastmod>2026-11-21</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -182,19 +182,19 @@
   </url>
   <url>
     <loc>https://gong-score.co.kr/about.html</loc>
-    <lastmod>2026-11-21</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://gong-score.co.kr/privacy.html</loc>
-    <lastmod>2026-11-21</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://gong-score.co.kr/terms.html</loc>
-    <lastmod>2026-11-21</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
